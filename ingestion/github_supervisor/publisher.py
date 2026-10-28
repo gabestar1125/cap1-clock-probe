@@ -1,1 +1,216 @@
-IiIiRXZpZGVuY2UgcHVibGljYXRpb24g4oCUIHRoZSBwcm9iZS1wcm92ZW4gY29tbWl0LWJhY2sgcGF0dGVybiwKYWJzdHJhY3RlZC4gQSBQdWJsaXNoZXIgbWFwcyAoYnJhbmNoLCByZWxwYXRoKSAtPiBieXRlcyB3aXRoCndyaXRlLW9uY2Ugc2VtYW50aWNzIGZvciBldmlkZW5jZSBmaWxlczogcmUtcHVibGlzaGluZyBpZGVudGljYWwgYnl0ZXMKaXMgYW4gaWRlbXBvdGVudCBuby1vcDsgcHVibGlzaGluZyBkaWZmZXJlbnQgYnl0ZXMgYXQgYW4gZXZpZGVuY2UgcGF0aAppcyBhbiBpbnRlZ3JpdHkgZXJyb3IsIG5ldmVyIGFuIG92ZXJ3cml0ZS4gaGVhcnRiZWF0Lmpzb24gaXMgdGhlIHNvbGUKbXV0YWJsZSBwYXRoIChpdCBpcyBhIGxpdmVuZXNzIHNpZ25hbCwgbm90IGV2aWRlbmNlKS4KCi0gRGlyUHVibGlzaGVyOiB0aGUgcmVtb3RlIGlzIGEgZGlyZWN0b3J5IHRyZWUgKGxhYi9vZmZsaW5lIG1pcnJvciBvZgogIHRoZSBicmFuY2ggbGF5b3V0OyB1c2VkIGJ5IGV2ZXJ5IG9mZmxpbmUgdGVzdCkuCi0gR2l0UHVibGlzaGVyOiB0aGUgcmVtb3RlIGlzIGEgZ2l0IHJlcG9zaXRvcnk7IGVhY2ggYnJhbmNoIGlzIGEgcmVhbAogIGJyYW5jaCwgY3JlYXRlZCBvcnBoYW4gb24gZmlyc3QgcHVibGljYXRpb24sIGNvbW1pdHRlZCBhbmQgcHVzaGVkLgogIEV4ZXJjaXNlZCBvZmZsaW5lIGFnYWluc3QgbG9jYWwgYmFyZSByZXBvc2l0b3JpZXM7IG9uIEdpdEh1YiBpdCBpcwogIHRoZSByZWhlYXJzYWwvbGl2ZSBtZWNoYW5pc20uCiIiIgppbXBvcnQgb3MKaW1wb3J0IHN1YnByb2Nlc3MKCk1VVEFCTEVfUEFUSFMgPSB7ImhlYXJ0YmVhdC5qc29uIn0KCgpjbGFzcyBQdWJsaWNhdGlvbkVycm9yKEV4Y2VwdGlvbik6CiAgICBwYXNzCgoKY2xhc3MgSW50ZWdyaXR5RXJyb3IoUHVibGljYXRpb25FcnJvcik6CiAgICBwYXNzCgoKZGVmIF9pc19tdXRhYmxlKHJlbHBhdGgpOgogICAgcmV0dXJuIG9zLnBhdGguYmFzZW5hbWUocmVscGF0aCkgaW4gTVVUQUJMRV9QQVRIUwoKCmNsYXNzIERpclB1Ymxpc2hlcjoKICAgIGRlZiBfX2luaXRfXyhzZWxmLCByb290KToKICAgICAgICBzZWxmLnJvb3QgPSByb290CiAgICAgICAgb3MubWFrZWRpcnMocm9vdCwgZXhpc3Rfb2s9VHJ1ZSkKICAgICAgICBzZWxmLmJ5dGVzX3B1Ymxpc2hlZCA9IDAKCiAgICBkZWYgX2Z1bGwoc2VsZiwgYnJhbmNoLCByZWxwYXRoKToKICAgICAgICByZXR1cm4gb3MucGF0aC5qb2luKHNlbGYucm9vdCwgYnJhbmNoLCByZWxwYXRoKQoKICAgIGRlZiBwdWJsaXNoKHNlbGYsIGJyYW5jaCwgcmVscGF0aCwgZGF0YTogYnl0ZXMpOgogICAgICAgIGZ1bGwgPSBzZWxmLl9mdWxsKGJyYW5jaCwgcmVscGF0aCkKICAgICAgICBpZiBvcy5wYXRoLmV4aXN0cyhmdWxsKSBhbmQgbm90IF9pc19tdXRhYmxlKHJlbHBhdGgpOgogICAgICAgICAgICB3aXRoIG9wZW4oZnVsbCwgInJiIikgYXMgZjoKICAgICAgICAgICAgICAgIGlmIGYucmVhZCgpID09IGRhdGE6CiAgICAgICAgICAgICAgICAgICAgcmV0dXJuICJJREVNUE9URU5UIgogICAgICAgICAgICByYWlzZSBJbnRlZ3JpdHlFcnJvcigKICAgICAgICAgICAgICAgIGYid3JpdGUtb25jZSB2aW9sYXRpb24gYXQge2JyYW5jaH0ve3JlbHBhdGh9IikKICAgICAgICBvcy5tYWtlZGlycyhvcy5wYXRoLmRpcm5hbWUoZnVsbCksIGV4aXN0X29rPVRydWUpCiAgICAgICAgdG1wID0gZnVsbCArICIudG1wIgogICAgICAgIHdpdGggb3Blbih0bXAsICJ3YiIpIGFzIGY6CiAgICAgICAgICAgIGYud3JpdGUoZGF0YSkKICAgICAgICAgICAgZi5mbHVzaCgpCiAgICAgICAgICAgIG9zLmZzeW5jKGYuZmlsZW5vKCkpCiAgICAgICAgb3MucmVwbGFjZSh0bXAsIGZ1bGwpCiAgICAgICAgc2VsZi5ieXRlc19wdWJsaXNoZWQgKz0gbGVuKGRhdGEpCiAgICAgICAgcmV0dXJuICJQVUJMSVNIRUQiCgogICAgZGVmIHJlYWQoc2VsZiwgYnJhbmNoLCByZWxwYXRoKToKICAgICAgICBmdWxsID0gc2VsZi5fZnVsbChicmFuY2gsIHJlbHBhdGgpCiAgICAgICAgaWYgbm90IG9zLnBhdGguZXhpc3RzKGZ1bGwpOgogICAgICAgICAgICByZXR1cm4gTm9uZQogICAgICAgIHdpdGggb3BlbihmdWxsLCAicmIiKSBhcyBmOgogICAgICAgICAgICByZXR1cm4gZi5yZWFkKCkKCiAgICBkZWYgZXhpc3RzKHNlbGYsIGJyYW5jaCwgcmVscGF0aCk6CiAgICAgICAgcmV0dXJuIG9zLnBhdGguZXhpc3RzKHNlbGYuX2Z1bGwoYnJhbmNoLCByZWxwYXRoKSkKCiAgICBkZWYgbGlzdChzZWxmLCBicmFuY2gsIHByZWZpeD0iIik6CiAgICAgICAgYmFzZSA9IG9zLnBhdGguam9pbihzZWxmLnJvb3QsIGJyYW5jaCwgcHJlZml4KQogICAgICAgIG91dCA9IFtdCiAgICAgICAgaWYgbm90IG9zLnBhdGguaXNkaXIoYmFzZSk6CiAgICAgICAgICAgIHJldHVybiBvdXQKICAgICAgICBmb3Igcm9vdCwgX2RpcnMsIGZpbGVzIGluIG9zLndhbGsoYmFzZSk6CiAgICAgICAgICAgIGZvciBuYW1lIGluIGZpbGVzOgogICAgICAgICAgICAgICAgb3V0LmFwcGVuZChvcy5wYXRoLnJlbHBhdGgoCiAgICAgICAgICAgICAgICAgICAgb3MucGF0aC5qb2luKHJvb3QsIG5hbWUpLCBvcy5wYXRoLmpvaW4oc2VsZi5yb290LAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGJyYW5jaCkpKQogICAgICAgIHJldHVybiBzb3J0ZWQob3V0KQoKCmNsYXNzIEdpdFB1Ymxpc2hlcjoKICAgICIiIlB1Ymxpc2hlcyBvbnRvIHJlYWwgZ2l0IGJyYW5jaGVzIGZyb20gYSBkZWRpY2F0ZWQgY2xvbmUgdGhlCiAgICBwdWJsaXNoZXIgb3ducyBvdXRyaWdodCAocHVibGlzaGVyX2Nsb25lX2RpcikuIFNpbmdsZS13cml0ZXIgcGVyCiAgICBicmFuY2ggaXMgYSBwcm90b2NvbCBwcm9wZXJ0eSAodGhlIGF0b21pYyBjbGFpbSksIHNvIGEgcG9yY2VsYWluCiAgICBjaGVja291dC9jb21taXQvcHVzaCBjeWNsZSBwZXIgcHVibGljYXRpb24gaXMgc2FmZS4gRXhlcmNpc2VkCiAgICBvZmZsaW5lIGFnYWluc3QgbG9jYWwgYmFyZSByZXBvc2l0b3JpZXM7IG9uIEdpdEh1YiB0aGUgY2xvbmUncwogICAgb3JpZ2luIGlzIHRoZSByZXBvc2l0b3J5IEhUVFBTIFVSTCB3aXRoIHRoZSBqb2IgdG9rZW4uIiIiCgogICAgZGVmIF9faW5pdF9fKHNlbGYsIGNsb25lX2Rpcik6CiAgICAgICAgc2VsZi5yZXBvID0gY2xvbmVfZGlyCiAgICAgICAgc2VsZi5ieXRlc19wdWJsaXNoZWQgPSAwCiAgICAgICAgc2VsZi5fZW52ID0gZGljdCgKICAgICAgICAgICAgb3MuZW52aXJvbiwgR0lUX0FVVEhPUl9OQU1FPSJjYXAxLXN1cGVydmlzb3IiLAogICAgICAgICAgICBHSVRfQVVUSE9SX0VNQUlMPSJjYXAxQGxvY2FsaG9zdCIsCiAgICAgICAgICAgIEdJVF9DT01NSVRURVJfTkFNRT0iY2FwMS1zdXBlcnZpc29yIiwKICAgICAgICAgICAgR0lUX0NPTU1JVFRFUl9FTUFJTD0iY2FwMUBsb2NhbGhvc3QiKQogICAgICAgIHNlbGYuX2JyYW5jaCA9IE5vbmUKCiAgICBAY2xhc3NtZXRob2QKICAgIGRlZiBjbG9uZShjbHMsIG9yaWdpbiwgY2xvbmVfZGlyKToKICAgICAgICBwID0gc3VicHJvY2Vzcy5ydW4oWyJnaXQiLCAiY2xvbmUiLCBvcmlnaW4sIGNsb25lX2Rpcl0sCiAgICAgICAgICAgICAgICAgICAgICAgICAgIGNhcHR1cmVfb3V0cHV0PVRydWUsIHRleHQ9VHJ1ZSwgdGltZW91dD0zMDApCiAgICAgICAgaWYgcC5yZXR1cm5jb2RlICE9IDA6CiAgICAgICAgICAgIHJhaXNlIFB1YmxpY2F0aW9uRXJyb3IoImNsb25lOiAlcyIgJSBwLnN0ZGVyci5zdHJpcCgpKQogICAgICAgIHJldHVybiBjbHMoY2xvbmVfZGlyKQoKICAgIGRlZiBfZ2l0KHNlbGYsICphcmdzLCBjaGVjaz1UcnVlKToKICAgICAgICBwID0gc3VicHJvY2Vzcy5ydW4oWyJnaXQiLCAiLUMiLCBzZWxmLnJlcG9dICsgbGlzdChhcmdzKSwKICAgICAgICAgICAgICAgICAgICAgICAgICAgY2FwdHVyZV9vdXRwdXQ9VHJ1ZSwgdGV4dD1UcnVlLCB0aW1lb3V0PTEyMCwKICAgICAgICAgICAgICAgICAgICAgICAgICAgZW52PXNlbGYuX2VudikKICAgICAgICBpZiBjaGVjayBhbmQgcC5yZXR1cm5jb2RlICE9IDA6CiAgICAgICAgICAgIHJhaXNlIFB1YmxpY2F0aW9uRXJyb3IoImdpdCAlczogJXMiICUgKAogICAgICAgICAgICAgICAgYXJnc1swXSwgcC5zdGRlcnIuc3RyaXAoKSkpCiAgICAgICAgcmV0dXJuIHAKCiAgICBkZWYgX3JlbW90ZV90aXAoc2VsZiwgYnJhbmNoKToKICAgICAgICBwID0gc2VsZi5fZ2l0KCJscy1yZW1vdGUiLCAib3JpZ2luIiwgInJlZnMvaGVhZHMvJXMiICUgYnJhbmNoLAogICAgICAgICAgICAgICAgICAgICAgY2hlY2s9RmFsc2UpCiAgICAgICAgb3V0ID0gcC5zdGRvdXQuc3RyaXAoKQogICAgICAgIHJldHVybiBvdXQuc3BsaXQoKVswXSBpZiBvdXQgZWxzZSBOb25lCgogICAgZGVmIF9jaGVja291dChzZWxmLCBicmFuY2gpOgogICAgICAgIGlmIHNlbGYuX2JyYW5jaCA9PSBicmFuY2g6CiAgICAgICAgICAgIHJldHVybgogICAgICAgIHNlbGYuX2dpdCgiZmV0Y2giLCAib3JpZ2luIiwgY2hlY2s9RmFsc2UpCiAgICAgICAgbG9jYWwgPSAicHViLyVzIiAlIGJyYW5jaAogICAgICAgIGlmIHNlbGYuX3JlbW90ZV90aXAoYnJhbmNoKSBpcyBub3QgTm9uZToKICAgICAgICAgICAgc2VsZi5fZ2l0KCJjaGVja291dCIsICItQiIsIGxvY2FsLAogICAgICAgICAgICAgICAgICAgICAgInJlZnMvcmVtb3Rlcy9vcmlnaW4vJXMiICUgYnJhbmNoKQogICAgICAgIGVsc2U6CiAgICAgICAgICAgIHNlbGYuX2dpdCgiY2hlY2tvdXQiLCAiLS1vcnBoYW4iLCBsb2NhbCkKICAgICAgICAgICAgc2VsZi5fZ2l0KCJybSIsICItcmYiLCAiLS1xdWlldCIsICIuIiwgY2hlY2s9RmFsc2UpCiAgICAgICAgc2VsZi5fYnJhbmNoID0gYnJhbmNoCgogICAgZGVmIHJlYWQoc2VsZiwgYnJhbmNoLCByZWxwYXRoKToKICAgICAgICB0aXAgPSBzZWxmLl9yZW1vdGVfdGlwKGJyYW5jaCkKICAgICAgICBpZiB0aXAgaXMgTm9uZToKICAgICAgICAgICAgcmV0dXJuIE5vbmUKICAgICAgICBzZWxmLl9naXQoImZldGNoIiwgIm9yaWdpbiIsICJyZWZzL2hlYWRzLyVzIiAlIGJyYW5jaCwKICAgICAgICAgICAgICAgICAgY2hlY2s9RmFsc2UpCiAgICAgICAgcCA9IHNlbGYuX2dpdCgic2hvdyIsICIlczolcyIgJSAodGlwLCByZWxwYXRoKSwgY2hlY2s9RmFsc2UpCiAgICAgICAgaWYgcC5yZXR1cm5jb2RlICE9IDA6CiAgICAgICAgICAgIHJldHVybiBOb25lCiAgICAgICAgcmV0dXJuIHAuc3Rkb3V0LmVuY29kZSgpCgogICAgZGVmIGV4aXN0cyhzZWxmLCBicmFuY2gsIHJlbHBhdGgpOgogICAgICAgIHJldHVybiBzZWxmLnJlYWQoYnJhbmNoLCByZWxwYXRoKSBpcyBub3QgTm9uZQoKICAgIGRlZiBsaXN0KHNlbGYsIGJyYW5jaCwgcHJlZml4PSIiKToKICAgICAgICB0aXAgPSBzZWxmLl9yZW1vdGVfdGlwKGJyYW5jaCkKICAgICAgICBpZiB0aXAgaXMgTm9uZToKICAgICAgICAgICAgcmV0dXJuIFtdCiAgICAgICAgc2VsZi5fZ2l0KCJmZXRjaCIsICJvcmlnaW4iLCAicmVmcy9oZWFkcy8lcyIgJSBicmFuY2gsCiAgICAgICAgICAgICAgICAgIGNoZWNrPUZhbHNlKQogICAgICAgIHAgPSBzZWxmLl9naXQoImxzLXRyZWUiLCAiLXIiLCAiLS1uYW1lLW9ubHkiLCB0aXApCiAgICAgICAgcmV0dXJuIHNvcnRlZCh4IGZvciB4IGluIHAuc3Rkb3V0LnNwbGl0bGluZXMoKQogICAgICAgICAgICAgICAgICAgICAgaWYgeC5zdGFydHN3aXRoKHByZWZpeCkpCgogICAgZGVmIHB1Ymxpc2goc2VsZiwgYnJhbmNoLCByZWxwYXRoLCBkYXRhOiBieXRlcyk6CiAgICAgICAgZXhpc3RpbmcgPSBzZWxmLnJlYWQoYnJhbmNoLCByZWxwYXRoKQogICAgICAgIGlmIGV4aXN0aW5nIGlzIG5vdCBOb25lIGFuZCBub3QgX2lzX211dGFibGUocmVscGF0aCk6CiAgICAgICAgICAgIGlmIGV4aXN0aW5nID09IGRhdGE6CiAgICAgICAgICAgICAgICByZXR1cm4gIklERU1QT1RFTlQiCiAgICAgICAgICAgIHJhaXNlIEludGVncml0eUVycm9yKAogICAgICAgICAgICAgICAgZiJ3cml0ZS1vbmNlIHZpb2xhdGlvbiBhdCB7YnJhbmNofS97cmVscGF0aH0iKQogICAgICAgIHNlbGYuX2NoZWNrb3V0KGJyYW5jaCkKICAgICAgICBmdWxsID0gb3MucGF0aC5qb2luKHNlbGYucmVwbywgcmVscGF0aCkKICAgICAgICBvcy5tYWtlZGlycyhvcy5wYXRoLmRpcm5hbWUoZnVsbCksIGV4aXN0X29rPVRydWUpCiAgICAgICAgd2l0aCBvcGVuKGZ1bGwsICJ3YiIpIGFzIGY6CiAgICAgICAgICAgIGYud3JpdGUoZGF0YSkKICAgICAgICBzZWxmLl9naXQoImFkZCIsIHJlbHBhdGgpCiAgICAgICAgc3RhdHVzID0gc2VsZi5fZ2l0KCJzdGF0dXMiLCAiLS1wb3JjZWxhaW4iLCBjaGVjaz1GYWxzZSkuc3Rkb3V0CiAgICAgICAgaWYgc3RhdHVzLnN0cmlwKCk6CiAgICAgICAgICAgIHNlbGYuX2dpdCgiY29tbWl0IiwgIi0tcXVpZXQiLCAiLW0iLAogICAgICAgICAgICAgICAgICAgICAgImNhcDEgcHVibGlzaCAlcyIgJSByZWxwYXRoKQogICAgICAgICAgICBwdXNoID0gc2VsZi5fZ2l0KCJwdXNoIiwgIm9yaWdpbiIsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIkhFQUQ6cmVmcy9oZWFkcy8lcyIgJSBicmFuY2gsIGNoZWNrPUZhbHNlKQogICAgICAgICAgICBpZiBwdXNoLnJldHVybmNvZGUgIT0gMDoKICAgICAgICAgICAgICAgIHJhaXNlIFB1YmxpY2F0aW9uRXJyb3IoInB1c2ggJXM6ICVzIiAlICgKICAgICAgICAgICAgICAgICAgICBicmFuY2gsIHB1c2guc3RkZXJyLnN0cmlwKCkpKQogICAgICAgIHNlbGYuYnl0ZXNfcHVibGlzaGVkICs9IGxlbihkYXRhKQogICAgICAgIHJldHVybiAiUFVCTElTSEVEIgoKCmNsYXNzIEZhaWxpbmdQdWJsaXNoZXI6CiAgICAiIiJGYWlsdXJlLWluamVjdGlvbiB3cmFwcGVyOiByYWlzZXMgUHVibGljYXRpb25FcnJvciBvbiB0aGUgbmV4dAogICAgYGZhaWxfbmV4dGAgcHVibGlzaCBjYWxscyAob3IgYWxsIGNhbGxzIHdoaWxlIGBhbHdheXNgIGlzIHNldCkuIiIiCgogICAgZGVmIF9faW5pdF9fKHNlbGYsIGlubmVyKToKICAgICAgICBzZWxmLmlubmVyID0gaW5uZXIKICAgICAgICBzZWxmLmZhaWxfbmV4dCA9IDAKICAgICAgICBzZWxmLmFsd2F5cyA9IEZhbHNlCiAgICAgICAgc2VsZi5hdHRlbXB0cyA9IDAKCiAgICBAcHJvcGVydHkKICAgIGRlZiBieXRlc19wdWJsaXNoZWQoc2VsZik6CiAgICAgICAgcmV0dXJuIHNlbGYuaW5uZXIuYnl0ZXNfcHVibGlzaGVkCgogICAgZGVmIHB1Ymxpc2goc2VsZiwgYnJhbmNoLCByZWxwYXRoLCBkYXRhKToKICAgICAgICBzZWxmLmF0dGVtcHRzICs9IDEKICAgICAgICBpZiBzZWxmLmFsd2F5cyBvciBzZWxmLmZhaWxfbmV4dCA+IDA6CiAgICAgICAgICAgIGlmIHNlbGYuZmFpbF9uZXh0ID4gMDoKICAgICAgICAgICAgICAgIHNlbGYuZmFpbF9uZXh0IC09IDEKICAgICAgICAgICAgcmFpc2UgUHVibGljYXRpb25FcnJvcigiaW5qZWN0ZWQgcHVibGljYXRpb24gZmFpbHVyZSIpCiAgICAgICAgcmV0dXJuIHNlbGYuaW5uZXIucHVibGlzaChicmFuY2gsIHJlbHBhdGgsIGRhdGEpCgogICAgZGVmIHJlYWQoc2VsZiwgYnJhbmNoLCByZWxwYXRoKToKICAgICAgICByZXR1cm4gc2VsZi5pbm5lci5yZWFkKGJyYW5jaCwgcmVscGF0aCkKCiAgICBkZWYgZXhpc3RzKHNlbGYsIGJyYW5jaCwgcmVscGF0aCk6CiAgICAgICAgcmV0dXJuIHNlbGYuaW5uZXIuZXhpc3RzKGJyYW5jaCwgcmVscGF0aCkKCiAgICBkZWYgbGlzdChzZWxmLCBicmFuY2gsIHByZWZpeD0iIik6CiAgICAgICAgcmV0dXJuIHNlbGYuaW5uZXIubGlzdChicmFuY2gsIHByZWZpeCkK
+"""Evidence publication — the probe-proven commit-back pattern,
+abstracted. A Publisher maps (branch, relpath) -> bytes with
+write-once semantics for evidence files: re-publishing identical bytes
+is an idempotent no-op; publishing different bytes at an evidence path
+is an integrity error, never an overwrite. heartbeat.json is the sole
+mutable path (it is a liveness signal, not evidence).
+
+- DirPublisher: the remote is a directory tree (lab/offline mirror of
+  the branch layout; used by every offline test).
+- GitPublisher: the remote is a git repository; each branch is a real
+  branch, created orphan on first publication, committed and pushed.
+  Exercised offline against local bare repositories; on GitHub it is
+  the rehearsal/live mechanism.
+"""
+import os
+import subprocess
+
+MUTABLE_PATHS = {"heartbeat.json"}
+
+
+class PublicationError(Exception):
+    pass
+
+
+class IntegrityError(PublicationError):
+    pass
+
+
+def _is_mutable(relpath):
+    return os.path.basename(relpath) in MUTABLE_PATHS
+
+
+class DirPublisher:
+    def __init__(self, root):
+        self.root = root
+        os.makedirs(root, exist_ok=True)
+        self.bytes_published = 0
+
+    def _full(self, branch, relpath):
+        return os.path.join(self.root, branch, relpath)
+
+    def publish(self, branch, relpath, data: bytes):
+        full = self._full(branch, relpath)
+        if os.path.exists(full) and not _is_mutable(relpath):
+            with open(full, "rb") as f:
+                if f.read() == data:
+                    return "IDEMPOTENT"
+            raise IntegrityError(
+                f"write-once violation at {branch}/{relpath}")
+        os.makedirs(os.path.dirname(full), exist_ok=True)
+        tmp = full + ".tmp"
+        with open(tmp, "wb") as f:
+            f.write(data)
+            f.flush()
+            os.fsync(f.fileno())
+        os.replace(tmp, full)
+        self.bytes_published += len(data)
+        return "PUBLISHED"
+
+    def read(self, branch, relpath):
+        full = self._full(branch, relpath)
+        if not os.path.exists(full):
+            return None
+        with open(full, "rb") as f:
+            return f.read()
+
+    def exists(self, branch, relpath):
+        return os.path.exists(self._full(branch, relpath))
+
+    def list(self, branch, prefix=""):
+        base = os.path.join(self.root, branch, prefix)
+        out = []
+        if not os.path.isdir(base):
+            return out
+        for root, _dirs, files in os.walk(base):
+            for name in files:
+                out.append(os.path.relpath(
+                    os.path.join(root, name), os.path.join(self.root,
+                                                           branch)))
+        return sorted(out)
+
+
+class GitPublisher:
+    """Publishes onto real git branches from a dedicated clone the
+    publisher owns outright (publisher_clone_dir). Single-writer per
+    branch is a protocol property (the atomic claim), so a porcelain
+    checkout/commit/push cycle per publication is safe. Exercised
+    offline against local bare repositories; on GitHub the clone's
+    origin is the repository HTTPS URL with the job token."""
+
+    def __init__(self, clone_dir):
+        self.repo = clone_dir
+        self.bytes_published = 0
+        self._env = dict(
+            os.environ, GIT_AUTHOR_NAME="cap1-supervisor",
+            GIT_AUTHOR_EMAIL="cap1@localhost",
+            GIT_COMMITTER_NAME="cap1-supervisor",
+            GIT_COMMITTER_EMAIL="cap1@localhost")
+        self._branch = None
+
+    @classmethod
+    def clone(cls, origin, clone_dir):
+        p = subprocess.run(["git", "clone", origin, clone_dir],
+                           capture_output=True, text=True, timeout=300)
+        if p.returncode != 0:
+            raise PublicationError("clone: %s" % p.stderr.strip())
+        return cls(clone_dir)
+
+    def _git(self, *args, check=True):
+        p = subprocess.run(["git", "-C", self.repo] + list(args),
+                           capture_output=True, text=True, timeout=120,
+                           env=self._env)
+        if check and p.returncode != 0:
+            raise PublicationError("git %s: %s" % (
+                args[0], p.stderr.strip()))
+        return p
+
+    def _remote_tip(self, branch):
+        p = self._git("ls-remote", "origin", "refs/heads/%s" % branch,
+                      check=False)
+        out = p.stdout.strip()
+        return out.split()[0] if out else None
+
+    def _checkout(self, branch):
+        if self._branch == branch:
+            return
+        self._git("fetch", "origin", check=False)
+        local = "pub/%s" % branch
+        if self._remote_tip(branch) is not None:
+            self._git("checkout", "-B", local,
+                      "refs/remotes/origin/%s" % branch)
+        else:
+            self._git("checkout", "--orphan", local)
+            self._git("rm", "-rf", "--quiet", ".", check=False)
+        self._branch = branch
+
+    def read(self, branch, relpath):
+        tip = self._remote_tip(branch)
+        if tip is None:
+            return None
+        self._git("fetch", "origin", "refs/heads/%s" % branch,
+                  check=False)
+        p = self._git("show", "%s:%s" % (tip, relpath), check=False)
+        if p.returncode != 0:
+            return None
+        return p.stdout.encode()
+
+    def exists(self, branch, relpath):
+        return self.read(branch, relpath) is not None
+
+    def list(self, branch, prefix=""):
+        tip = self._remote_tip(branch)
+        if tip is None:
+            return []
+        self._git("fetch", "origin", "refs/heads/%s" % branch,
+                  check=False)
+        p = self._git("ls-tree", "-r", "--name-only", tip)
+        return sorted(x for x in p.stdout.splitlines()
+                      if x.startswith(prefix))
+
+    def publish(self, branch, relpath, data: bytes):
+        existing = self.read(branch, relpath)
+        if existing is not None and not _is_mutable(relpath):
+            if existing == data:
+                return "IDEMPOTENT"
+            raise IntegrityError(
+                f"write-once violation at {branch}/{relpath}")
+        self._checkout(branch)
+        full = os.path.join(self.repo, relpath)
+        os.makedirs(os.path.dirname(full), exist_ok=True)
+        with open(full, "wb") as f:
+            f.write(data)
+        self._git("add", relpath)
+        status = self._git("status", "--porcelain", check=False).stdout
+        if status.strip():
+            self._git("commit", "--quiet", "-m",
+                      "cap1 publish %s" % relpath)
+            push = self._git("push", "origin",
+                             "HEAD:refs/heads/%s" % branch, check=False)
+            if push.returncode != 0:
+                raise PublicationError("push %s: %s" % (
+                    branch, push.stderr.strip()))
+        self.bytes_published += len(data)
+        return "PUBLISHED"
+
+
+class FailingPublisher:
+    """Failure-injection wrapper: raises PublicationError on the next
+    `fail_next` publish calls (or all calls while `always` is set)."""
+
+    def __init__(self, inner):
+        self.inner = inner
+        self.fail_next = 0
+        self.always = False
+        self.attempts = 0
+
+    @property
+    def bytes_published(self):
+        return self.inner.bytes_published
+
+    def publish(self, branch, relpath, data):
+        self.attempts += 1
+        if self.always or self.fail_next > 0:
+            if self.fail_next > 0:
+                self.fail_next -= 1
+            raise PublicationError("injected publication failure")
+        return self.inner.publish(branch, relpath, data)
+
+    def read(self, branch, relpath):
+        return self.inner.read(branch, relpath)
+
+    def exists(self, branch, relpath):
+        return self.inner.exists(branch, relpath)
+
+    def list(self, branch, prefix=""):
+        return self.inner.list(branch, prefix)
