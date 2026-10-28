@@ -1,1 +1,59 @@
-IiIiU3ludGhldGljIGNvbm5lY3RvciBmYWN0b3J5IGZvciBzZWdfbWFpbiAocmVoZWFyc2FsL2VtcGlyaWNhbCkuCgpCdWlsZHMgYSBTdHViVmVudWUgb3ZlciB0aGUgZnJlZXplIHdpbmRvdydzIGdyaWQgdW5pdmVyc2UgYW5kIHdyYXBzCml0IGluIGFuIEluc3RydW1lbnRlZENvbm5lY3RvciB0aGF0IGFwcGVuZHMgZXZlcnkgY2FsbCAoaW4vb3V0CnRpbWVzdGFtcHMgZnJvbSB0aGUgcnVuJ3MgY2xvY2spIHRvIGEgSlNPTkwgcmVxdWVzdCBsb2cg4oCUIHRoZSBmaWxlCnRoZSByYXRlL2NvbmN1cnJlbmN5IGFuYWx5c2lzIG1lYXN1cmVzLiBQYXRoIGZyb20gZW52CkNBUDFfUkVRVUVTVF9MT0cgKGRlZmF1bHQ6IC4vY2FwMV9yZXF1ZXN0X2xvZy5qc29ubCkuIExhdGVuY3kgYW5kCmZhaWx1cmUgaW5qZWN0aW9uIGZyb20gZW52LCBmb3IgcmVoZWFyc2FsIHNjZW5hcmlvczoKICBDQVAxX1NUVUJfTEFURU5DWV9TICAgZmxvYXQgc2Vjb25kcyBlYWNoIGNhbGwgb2NjdXBpZXMKICBDQVAxX1NUVUJfRkFJTF9NT0RFICAgIiIgfCAic3Rvcm0iIChmaXJzdCB0d28gYXR0ZW1wdHMgb2YgZXZlcnkKICAgICAgICAgICAgICAgICAgICAgICAgbWFya2V0IGZldGNoIHJldHVybiBIVFRQIDUwMCkKVGhpcyBtb2R1bGUgaXMgdGhlIE9OTFkgY29ubmVjdG9yIHNlZ19tYWluIHdpcmVzIGluIHRoaXMgYnVpbGQ6IHRoZQpzeW50aGV0aWMgc3R1Yi4gWmVybyB2ZW51ZSByZXF1ZXN0cyBhcmUgcG9zc2libGUgdGhyb3VnaCBpdC4KIiIiCmltcG9ydCBqc29uCmltcG9ydCBvcwoKZnJvbSAudmVudWVfc3R1YiBpbXBvcnQgU3R1YlZlbnVlLCBJbnN0cnVtZW50ZWRDb25uZWN0b3IsIGdyaWRfbWFya2V0cwoKCmRlZiBzeW50aGV0aWNfY29ubmVjdG9yKGZyZWV6ZSwgY2xvY2ssIGxvZ19wYXRoPU5vbmUpOgogICAgZml4dHVyZV9wYXRoID0gb3MuZW52aXJvbi5nZXQoIkNBUDFfRklYVFVSRV9KU09OIikKICAgIGlmIGZpeHR1cmVfcGF0aDoKICAgICAgICB3aXRoIG9wZW4oZml4dHVyZV9wYXRoKSBhcyBmOgogICAgICAgICAgICBtYXJrZXRzID0ganNvbi5sb2FkKGYpCiAgICBlbHNlOgogICAgICAgIG1hcmtldHMgPSBncmlkX21hcmtldHMoZnJlZXplWyJzZXJpZXMiXSwgZnJlZXplWyJfYV9tcyJdLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgZnJlZXplWyJfZW5kX21zIl0pCiAgICBsYXRlbmN5ID0gZmxvYXQob3MuZW52aXJvbi5nZXQoIkNBUDFfU1RVQl9MQVRFTkNZX1MiLCAiMCIpKQogICAgbG9va2FoZWFkID0gaW50KG9zLmVudmlyb24uZ2V0KCJDQVAxX1NUVUJfTE9PS0FIRUFEX1MiLCAiMzYwMCIpKQogICAgZmFpbF9tb2RlID0gb3MuZW52aXJvbi5nZXQoIkNBUDFfU1RVQl9GQUlMX01PREUiLCAiIikKICAgIGF0dGVtcHRzID0ge30KCiAgICBkZWYgZmFpbHVyZXMoY2FsbF9ubywga2luZCwga2V5KToKICAgICAgICBpZiBmYWlsX21vZGUgPT0gInN0b3JtIiBhbmQga2luZCA9PSAibWFya2V0IjoKICAgICAgICAgICAgbiA9IGF0dGVtcHRzLmdldChrZXksIDApICsgMQogICAgICAgICAgICBhdHRlbXB0c1trZXldID0gbgogICAgICAgICAgICBpZiBuIDw9IDI6CiAgICAgICAgICAgICAgICByZXR1cm4gKCJzdGF0dXMiLCA1MDApCiAgICAgICAgcmV0dXJuIE5vbmUKCiAgICB2ZW51ZSA9IFN0dWJWZW51ZShtYXJrZXRzLCBjbG9jay5ub3dfcywgbGF0ZW5jeV9zPWxhdGVuY3ksCiAgICAgICAgICAgICAgICAgICAgICBmYWlsdXJlcz1mYWlsdXJlcyBpZiBmYWlsX21vZGUgZWxzZSBOb25lLAogICAgICAgICAgICAgICAgICAgICAgc2xlZXBfZm49Y2xvY2suc2xlZXBfcywKICAgICAgICAgICAgICAgICAgICAgIGxpc3RfbG9va2FoZWFkX3M9bG9va2FoZWFkKQogICAgbG9nX3BhdGggPSBsb2dfcGF0aCBvciBvcy5lbnZpcm9uLmdldCgKICAgICAgICAiQ0FQMV9SRVFVRVNUX0xPRyIsICJjYXAxX3JlcXVlc3RfbG9nLmpzb25sIikKICAgIHNpbmsgPSBfRmlsZVNpbmsobG9nX3BhdGgsIGNsb2NrKQogICAgcmV0dXJuIEluc3RydW1lbnRlZENvbm5lY3Rvcih2ZW51ZSwgY2xvY2subm93X3MsIHNpbmspCgoKY2xhc3MgX0ZpbGVTaW5rOgogICAgZGVmIF9faW5pdF9fKHNlbGYsIHBhdGgsIGNsb2NrKToKICAgICAgICBzZWxmLnBhdGggPSBwYXRoCiAgICAgICAgc2VsZi5jbG9jayA9IGNsb2NrCgogICAgZGVmIGFwcGVuZChzZWxmLCBlbnRyeSk6CiAgICAgICAgd2l0aCBvcGVuKHNlbGYucGF0aCwgImEiLCBlbmNvZGluZz0idXRmLTgiKSBhcyBmOgogICAgICAgICAgICBmLndyaXRlKGpzb24uZHVtcHMoZW50cnksIHNvcnRfa2V5cz1UcnVlKSArICJcbiIpCg==
+"""Synthetic connector factory for seg_main (rehearsal/empirical).
+
+Builds a StubVenue over the freeze window's grid universe and wraps
+it in an InstrumentedConnector that appends every call (in/out
+timestamps from the run's clock) to a JSONL request log — the file
+the rate/concurrency analysis measures. Path from env
+CAP1_REQUEST_LOG (default: ./cap1_request_log.jsonl). Latency and
+failure injection from env, for rehearsal scenarios:
+  CAP1_STUB_LATENCY_S   float seconds each call occupies
+  CAP1_STUB_FAIL_MODE   "" | "storm" (first two attempts of every
+                        market fetch return HTTP 500)
+This module is the ONLY connector seg_main wires in this build: the
+synthetic stub. Zero venue requests are possible through it.
+"""
+import json
+import os
+
+from .venue_stub import StubVenue, InstrumentedConnector, grid_markets
+
+
+def synthetic_connector(freeze, clock, log_path=None):
+    fixture_path = os.environ.get("CAP1_FIXTURE_JSON")
+    if fixture_path:
+        with open(fixture_path) as f:
+            markets = json.load(f)
+    else:
+        markets = grid_markets(freeze["series"], freeze["_a_ms"],
+                               freeze["_end_ms"])
+    latency = float(os.environ.get("CAP1_STUB_LATENCY_S", "0"))
+    lookahead = int(os.environ.get("CAP1_STUB_LOOKAHEAD_S", "3600"))
+    fail_mode = os.environ.get("CAP1_STUB_FAIL_MODE", "")
+    attempts = {}
+
+    def failures(call_no, kind, key):
+        if fail_mode == "storm" and kind == "market":
+            n = attempts.get(key, 0) + 1
+            attempts[key] = n
+            if n <= 2:
+                return ("status", 500)
+        return None
+
+    venue = StubVenue(markets, clock.now_s, latency_s=latency,
+                      failures=failures if fail_mode else None,
+                      sleep_fn=clock.sleep_s,
+                      list_lookahead_s=lookahead)
+    log_path = log_path or os.environ.get(
+        "CAP1_REQUEST_LOG", "cap1_request_log.jsonl")
+    sink = _FileSink(log_path, clock)
+    return InstrumentedConnector(venue, clock.now_s, sink)
+
+
+class _FileSink:
+    def __init__(self, path, clock):
+        self.path = path
+        self.clock = clock
+
+    def append(self, entry):
+        with open(self.path, "a", encoding="utf-8") as f:
+            f.write(json.dumps(entry, sort_keys=True) + "\n")
