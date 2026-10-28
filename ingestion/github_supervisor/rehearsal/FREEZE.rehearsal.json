@@ -1,1 +1,66 @@
-ewogImFjdGl2YXRpb25fQSI6ICIyMDI2LTExLTAzVDEyOjAwOjAwWiIsCiAiYnVkZ2V0cyI6IHsKICAiY29uY3VycmVuY3kiOiAxLAogICJtYXhfcmVjb3ZlcnlfcGVyX2RheSI6IDMsCiAgIm1heF9yZXRyaWVzIjogMiwKICAicGVyX21pbnV0ZSI6IDEwLAogICJzdG9yYWdlX2NhcF9ieXRlcyI6IDUyNDI4ODAwMCwKICAidG90YWxfcmVxdWVzdHMiOiA1MDAwCiB9LAogImNvZGVfaGFzaGVzIjogewogICJjYXAxX3NoYTI1NiI6ICI1ZTg1NDg3MjExNmZiZWM4YzAyYWQ2M2EwMjE2ZjI5ZDVmZjA2ZDZhOWJhZDY5MzcyY2JmMmE5ODdlYThiYTUwIiwKICAiY29uZmlnX3NoYTI1NiI6ICI3N2FiYWVlNDE4ZGY5M2U5YTI3ODM0ZDEzZmI0MGI0M2IwNGU5NmY5YjZhZWViN2NhMGZjNTc4NmYxNDI3NzcxIiwKICAidHJhbnNwb3J0X3NoYTI1NiI6ICIwMDUzOTk1MTQzMGY1YmZmNDk2ZWRlYmYwMmI1OTM1N2Y4OWRjZGZlMDlmNmYyNzMwMWQ1ODQyZWViNTRkMGVjIgogfSwKICJkYXQiOiB7CiAgImNsb2NrX3Bhc3MiOiB0cnVlLAogICJub3RlIjogIlNZTlRIRVRJQyByZWhlYXJzYWwgZnJlZXplIFx1MjAxNCBEQVQgZmxhZ3MgYXJlIGZpeHR1cmUgdmFsdWVzLCBub3QgZGVzdGluYXRpb24gZXZpZGVuY2UiLAogICJ0dl9wYXNzIjogdHJ1ZQogfSwKICJkZW5vbWluYXRvcl9ydWxlIjogIkVYQ0xVREVfQk9VTkRBUllfSU5FTElHSUJMRSIsCiAiaGFyZF9lbmQiOiAiMjAyNi0xMS0wNVQxMjowMDowMFoiLAogImxhYmVsIjogIlNZTlRIRVRJQyBSRUhFQVJTQUwgRlJFRVpFIC0gTk9UIEFOIEFDVElWQVRJT04gRlJFRVpFLiBBY2NlbGVyYXRlZCB2aXJ0dWFsLWNsb2NrIHJlaGVhcnNhbCBvbiBHaXRIdWIgQWN0aW9ucyB3aXRoIGEgc3R1YiB2ZW51ZTsgemVybyB2ZW51ZSByZXF1ZXN0cy4iLAogInBoYXNlIjogewogICJjaHVua19pbnRlcnZhbF9zIjogMTgwMCwKICAiY2xhaW1fc3RhbGVfcyI6IDkwMCwKICAiZGlzcGF0Y2hfbGVhZF9zIjogMTgwMCwKICAiZmluYWxfZ3JhY2VfcyI6IDkwMCwKICAiaGVhcnRiZWF0X3MiOiAzMDAsCiAgInBoYXNlX2JfcyI6IDkwMCwKICAicmVkaXNwYXRjaF9vZmZzZXRzX3MiOiBbCiAgIDM2MCwKICAgNzIwCiAgXSwKICAidGFpbF9zIjogMzAwLAogICJ0aWNrX2ludGVydmFsX3MiOiAxMjAKIH0sCiAicnVubmVyX2xlZyI6ICJ1YnVudHUtMjQuMDQtYXJtIiwKICJzY2hlbWEiOiAiY2FwMS1mcmVlemUvMSIsCiAic2VnbWVudF9wbGFuIjogewogICJsZW5ndGhzX3MiOiBbCiAgIDE4MDAwLAogICAxODAwMCwKICAgMTgwMDAsCiAgIDE4MDAwLAogICAxODAwMCwKICAgMTgwMDAsCiAgIDE4MDAwLAogICAxODAwMCwKICAgMTgwMDAsCiAgIDEwODAwCiAgXQogfSwKICJzZXJpZXMiOiBbCiAgIktYQlRDMTVNIiwKICAiS1hFVEgxNU0iLAogICJLWFNPTDE1TSIKIF0sCiAic3ludGhldGljIjogdHJ1ZSwKICJ0aHJlc2hvbGRzIjogewogICJhY3RpdmF0aW9uX2Nsb2NrX2JvdW5kX21zIjogMTAwLAogICJjb25zZWN1dGl2ZV9vdmVyX21heF9zdG9wIjogMywKICAicGVyX29ic2VydmF0aW9uX21heF9tcyI6IDI1MCwKICAidDMwMF9taW5fcGN0IjogMC45OAogfQp9
+{
+ "activation_A": "2026-11-03T12:00:00Z",
+ "budgets": {
+  "concurrency": 1,
+  "max_recovery_per_day": 3,
+  "max_retries": 2,
+  "per_minute": 10,
+  "storage_cap_bytes": 524288000,
+  "total_requests": 5000
+ },
+ "code_hashes": {
+  "cap1_sha256": "5e854872116fbec8c02ad63a0216f29d5ff06d6a9bad69372cbf2a987ea8ba50",
+  "config_sha256": "77abaee418df93e9a27834d13fb40b43b04e96f9b6aeeb7ca0fc5786f1427771",
+  "transport_sha256": "00539951430f5bff496edebf02b59357f89dcdfe09f6f27301d5842eeb54d0ec"
+ },
+ "dat": {
+  "clock_pass": true,
+  "note": "SYNTHETIC rehearsal freeze \u2014 DAT flags are fixture values, not destination evidence",
+  "tv_pass": true
+ },
+ "denominator_rule": "EXCLUDE_BOUNDARY_INELIGIBLE",
+ "hard_end": "2026-11-05T12:00:00Z",
+ "label": "SYNTHETIC REHEARSAL FREEZE - NOT AN ACTIVATION FREEZE. Accelerated virtual-clock rehearsal on GitHub Actions with a stub venue; zero venue requests.",
+ "phase": {
+  "chunk_interval_s": 1800,
+  "claim_stale_s": 900,
+  "dispatch_lead_s": 1800,
+  "final_grace_s": 900,
+  "heartbeat_s": 300,
+  "phase_b_s": 900,
+  "redispatch_offsets_s": [
+   360,
+   720
+  ],
+  "tail_s": 300,
+  "tick_interval_s": 120
+ },
+ "runner_leg": "ubuntu-24.04-arm",
+ "schema": "cap1-freeze/1",
+ "segment_plan": {
+  "lengths_s": [
+   18000,
+   18000,
+   18000,
+   18000,
+   18000,
+   18000,
+   18000,
+   18000,
+   18000,
+   10800
+  ]
+ },
+ "series": [
+  "KXBTC15M",
+  "KXETH15M",
+  "KXSOL15M"
+ ],
+ "synthetic": true,
+ "thresholds": {
+  "activation_clock_bound_ms": 100,
+  "consecutive_over_max_stop": 3,
+  "per_observation_max_ms": 250,
+  "t300_min_pct": 0.98
+ }
+}
