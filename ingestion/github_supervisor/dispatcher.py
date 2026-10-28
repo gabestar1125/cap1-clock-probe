@@ -1,1 +1,85 @@
-IiIiU3VjY2Vzc29yIGRpc3BhdGNoIOKAlCBkZXNpZ24gc2VjdGlvbiA0LgoKUHJpbWFyeSAocHJvZHVjdGlvbik6IEdpdEh1YkRpc3BhdGNoIOKAlCBhIHJ1bm5pbmcgam9iIGRpc3BhdGNoZXMgaXRzCnN1Y2Nlc3NvciB2aWEgdGhlIHdvcmtmbG93X2Rpc3BhdGNoIEFQSSB1c2luZyBvbmx5IGl0cyBHSVRIVUJfVE9LRU4KKHRoZSBkb2N1bWVudGVkIHJlY3Vyc2lvbi1ndWFyZCBleGVtcHRpb247IFBWLTEgbXVzdCBwcm92ZSBpdCBpbiB0aGUKc3ludGhldGljIHJlaGVhcnNhbCBiZWZvcmUgaXQgaXMgcmVsaWVkIG9uKS4gTm8gUEFUIGV4aXN0cyBhbnl3aGVyZSBpbgp0aGlzIGRlc2lnbiAoc2VjdGlvbiA0LjQpLgoKTGFiOiBSZWNvcmRpbmdEaXNwYXRjaCAoY2FwdHVyZXMgZGlzcGF0Y2ggcmVxdWVzdHM7IHRoZSBjaGFpbiBkcml2ZXIKYWN0cyBvbiB0aGVtKSwgRmFpbGluZ0Rpc3BhdGNoIChpbmplY3Rpb24pLCBhbmQgQ2FsbGJhY2tEaXNwYXRjaC4KIiIiCmltcG9ydCBqc29uCmltcG9ydCBvcwppbXBvcnQgc3VicHJvY2VzcwoKCmNsYXNzIERpc3BhdGNoRXJyb3IoRXhjZXB0aW9uKToKICAgIHBhc3MKCgpjbGFzcyBSZWNvcmRpbmdEaXNwYXRjaDoKICAgIGRlZiBfX2luaXRfXyhzZWxmKToKICAgICAgICBzZWxmLmNhbGxzID0gW10KCiAgICBkZWYgZGlzcGF0Y2goc2VsZiwgKiwgc2VnbWVudF9pbmRleCwgbWFuaWZlc3Rfc2hhMjU2LCByb2xlPSJzZWdtZW50Iik6CiAgICAgICAgc2VsZi5jYWxscy5hcHBlbmQoeyJzZWdtZW50X2luZGV4Ijogc2VnbWVudF9pbmRleCwKICAgICAgICAgICAgICAgICAgICAgICAgICAgIm1hbmlmZXN0X3NoYTI1NiI6IG1hbmlmZXN0X3NoYTI1NiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgInJvbGUiOiByb2xlfSkKICAgICAgICByZXR1cm4geyJkaXNwYXRjaGVkIjogVHJ1ZSwgInZpYSI6ICJyZWNvcmRpbmcifQoKCmNsYXNzIEZhaWxpbmdEaXNwYXRjaDoKICAgICIiIlJhaXNlcyBEaXNwYXRjaEVycm9yIG9uIGV2ZXJ5IGNhbGwgd2hpbGUgYGFsd2F5c19mYWlsYCwgZWxzZSBvbgogICAgdGhlIGZpcnN0IGBmYWlsX2ZpcnN0YCBjYWxscy4iIiIKCiAgICBkZWYgX19pbml0X18oc2VsZiwgaW5uZXI9Tm9uZSwgZmFpbF9maXJzdD0wLCBhbHdheXNfZmFpbD1GYWxzZSk6CiAgICAgICAgc2VsZi5pbm5lciA9IGlubmVyIG9yIFJlY29yZGluZ0Rpc3BhdGNoKCkKICAgICAgICBzZWxmLmZhaWxfZmlyc3QgPSBmYWlsX2ZpcnN0CiAgICAgICAgc2VsZi5hbHdheXNfZmFpbCA9IGFsd2F5c19mYWlsCiAgICAgICAgc2VsZi5hdHRlbXB0cyA9IDAKCiAgICBAcHJvcGVydHkKICAgIGRlZiBjYWxscyhzZWxmKToKICAgICAgICByZXR1cm4gc2VsZi5pbm5lci5jYWxscwoKICAgIGRlZiBkaXNwYXRjaChzZWxmLCAqKmt3KToKICAgICAgICBzZWxmLmF0dGVtcHRzICs9IDEKICAgICAgICBpZiBzZWxmLmFsd2F5c19mYWlsIG9yIHNlbGYuYXR0ZW1wdHMgPD0gc2VsZi5mYWlsX2ZpcnN0OgogICAgICAgICAgICByYWlzZSBEaXNwYXRjaEVycm9yKCJpbmplY3RlZCBkaXNwYXRjaCBmYWlsdXJlIikKICAgICAgICByZXR1cm4gc2VsZi5pbm5lci5kaXNwYXRjaCgqKmt3KQoKCmNsYXNzIEdpdEh1YkRpc3BhdGNoOgogICAgIiIid29ya2Zsb3dfZGlzcGF0Y2ggdmlhIHRoZSBHaXRIdWIgQVBJIHdpdGggdGhlIGpvYidzCiAgICBHSVRIVUJfVE9LRU4gKGVudiBHSF9UT0tFTi9HSVRIVUJfVE9LRU4pLiBVc2VkIG9ubHkgaW5zaWRlIEFjdGlvbnMKICAgIGpvYnMgKHJlaGVhcnNhbC9wcm9kdWN0aW9uKTsgbmV2ZXIgZnJvbSB0aGUgbGFiLiIiIgoKICAgIGRlZiBfX2luaXRfXyhzZWxmLCByZXBvLCB3b3JrZmxvd19maWxlLCByZWY9Im1haW4iKToKICAgICAgICBzZWxmLnJlcG8gPSByZXBvICAgICAgICAgICAgICAgICMgIm93bmVyL25hbWUiCiAgICAgICAgc2VsZi53b3JrZmxvd19maWxlID0gd29ya2Zsb3dfZmlsZQogICAgICAgIHNlbGYucmVmID0gcmVmCgogICAgZGVmIGRpc3BhdGNoKHNlbGYsICosIHNlZ21lbnRfaW5kZXgsIG1hbmlmZXN0X3NoYTI1Niwgcm9sZT0ic2VnbWVudCIpOgogICAgICAgIHRva2VuID0gb3MuZW52aXJvbi5nZXQoIkdIX1RPS0VOIikgb3Igb3MuZW52aXJvbi5nZXQoCiAgICAgICAgICAgICJHSVRIVUJfVE9LRU4iKQogICAgICAgIGlmIG5vdCB0b2tlbjoKICAgICAgICAgICAgcmFpc2UgRGlzcGF0Y2hFcnJvcigibm8gR0lUSFVCX1RPS0VOIGluIGVudmlyb25tZW50IikKICAgICAgICB1cmwgPSAoImh0dHBzOi8vYXBpLmdpdGh1Yi5jb20vcmVwb3MvJXMvYWN0aW9ucy93b3JrZmxvd3MvJXMvIgogICAgICAgICAgICAgICAiZGlzcGF0Y2hlcyIgJSAoc2VsZi5yZXBvLCBzZWxmLndvcmtmbG93X2ZpbGUpKQogICAgICAgIGJvZHkgPSBqc29uLmR1bXBzKHsicmVmIjogc2VsZi5yZWYsICJpbnB1dHMiOiB7CiAgICAgICAgICAgICJzZWdtZW50X2luZGV4Ijogc3RyKHNlZ21lbnRfaW5kZXgpLAogICAgICAgICAgICAibWFuaWZlc3Rfc2hhMjU2IjogbWFuaWZlc3Rfc2hhMjU2LCAicm9sZSI6IHJvbGV9fSkKICAgICAgICBwID0gc3VicHJvY2Vzcy5ydW4oCiAgICAgICAgICAgIFsiY3VybCIsICItc1MiLCAiLVgiLCAiUE9TVCIsIHVybCwKICAgICAgICAgICAgICItSCIsICJBdXRob3JpemF0aW9uOiBCZWFyZXIgJXMiICUgdG9rZW4sCiAgICAgICAgICAgICAiLUgiLCAiQWNjZXB0OiBhcHBsaWNhdGlvbi92bmQuZ2l0aHViK2pzb24iLAogICAgICAgICAgICAgIi1IIiwgIlgtR2l0SHViLUFwaS1WZXJzaW9uOiAyMDIyLTExLTI4IiwKICAgICAgICAgICAgICItZCIsIGJvZHksICItdyIsICJcbiV7aHR0cF9jb2RlfSJdLAogICAgICAgICAgICBjYXB0dXJlX291dHB1dD1UcnVlLCB0ZXh0PVRydWUsIHRpbWVvdXQ9MzApCiAgICAgICAgY29kZSA9IHAuc3Rkb3V0LnN0cmlwKCkuc3BsaXRsaW5lcygpWy0xXSBpZiBwLnN0ZG91dC5zdHJpcCgpIFwKICAgICAgICAgICAgZWxzZSAiMDAwIgogICAgICAgIGlmIGNvZGUgIT0gIjIwNCI6CiAgICAgICAgICAgIHJhaXNlIERpc3BhdGNoRXJyb3IoIndvcmtmbG93X2Rpc3BhdGNoIEhUVFAgJXM6ICVzIgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICUgKGNvZGUsIHAuc3Rkb3V0LnN0cmlwKClbOjIwMF0pKQogICAgICAgIHJldHVybiB7ImRpc3BhdGNoZWQiOiBUcnVlLCAidmlhIjogImdpdGh1Yi1hcGkifQo=
+"""Successor dispatch — design section 4.
+
+Primary (production): GitHubDispatch — a running job dispatches its
+successor via the workflow_dispatch API using only its GITHUB_TOKEN
+(the documented recursion-guard exemption; PV-1 must prove it in the
+synthetic rehearsal before it is relied on). No PAT exists anywhere in
+this design (section 4.4).
+
+Lab: RecordingDispatch (captures dispatch requests; the chain driver
+acts on them), FailingDispatch (injection), and CallbackDispatch.
+"""
+import json
+import os
+import subprocess
+
+
+class DispatchError(Exception):
+    pass
+
+
+class RecordingDispatch:
+    def __init__(self):
+        self.calls = []
+
+    def dispatch(self, *, segment_index, manifest_sha256, role="segment"):
+        self.calls.append({"segment_index": segment_index,
+                           "manifest_sha256": manifest_sha256,
+                           "role": role})
+        return {"dispatched": True, "via": "recording"}
+
+
+class FailingDispatch:
+    """Raises DispatchError on every call while `always_fail`, else on
+    the first `fail_first` calls."""
+
+    def __init__(self, inner=None, fail_first=0, always_fail=False):
+        self.inner = inner or RecordingDispatch()
+        self.fail_first = fail_first
+        self.always_fail = always_fail
+        self.attempts = 0
+
+    @property
+    def calls(self):
+        return self.inner.calls
+
+    def dispatch(self, **kw):
+        self.attempts += 1
+        if self.always_fail or self.attempts <= self.fail_first:
+            raise DispatchError("injected dispatch failure")
+        return self.inner.dispatch(**kw)
+
+
+class GitHubDispatch:
+    """workflow_dispatch via the GitHub API with the job's
+    GITHUB_TOKEN (env GH_TOKEN/GITHUB_TOKEN). Used only inside Actions
+    jobs (rehearsal/production); never from the lab."""
+
+    def __init__(self, repo, workflow_file, ref="main"):
+        self.repo = repo                # "owner/name"
+        self.workflow_file = workflow_file
+        self.ref = ref
+
+    def dispatch(self, *, segment_index, manifest_sha256, role="segment"):
+        token = os.environ.get("GH_TOKEN") or os.environ.get(
+            "GITHUB_TOKEN")
+        if not token:
+            raise DispatchError("no GITHUB_TOKEN in environment")
+        url = ("https://api.github.com/repos/%s/actions/workflows/%s/"
+               "dispatches" % (self.repo, self.workflow_file))
+        body = json.dumps({"ref": self.ref, "inputs": {
+            "segment_index": str(segment_index),
+            "manifest_sha256": manifest_sha256, "role": role}})
+        p = subprocess.run(
+            ["curl", "-sS", "-X", "POST", url,
+             "-H", "Authorization: Bearer %s" % token,
+             "-H", "Accept: application/vnd.github+json",
+             "-H", "X-GitHub-Api-Version: 2022-11-28",
+             "-d", body, "-w", "\n%{http_code}"],
+            capture_output=True, text=True, timeout=30)
+        code = p.stdout.strip().splitlines()[-1] if p.stdout.strip() \
+            else "000"
+        if code != "204":
+            raise DispatchError("workflow_dispatch HTTP %s: %s"
+                                % (code, p.stdout.strip()[:200]))
+        return {"dispatched": True, "via": "github-api"}
