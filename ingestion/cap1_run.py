@@ -1,1 +1,331 @@
-IiIiQ0FQLTEgdGljayBjb2xsZWN0b3IgKEctQ09MTC1GV0QgUmV2IDMpIOKAlCBDT1JSRUNURUQgKHBhdGNoIGNhbmRpZGF0ZSwKTk9UIEFQUExJRUQgdG8gdGhlIGxhYiB0cmVlOyBzZWUgUEFUQ0hfTk9URVMubWQpLgoKU3RhdGUtZHJpdmVuOiBlYWNoIGludm9jYXRpb24gaXMgb25lIHRpY2sg4oCUIGRpc2NvdmVyIChzZWdtZW50IGNhZGVuY2UpLApjYXB0dXJlIGR1ZSBzbG90cyBpbnRvIHRoZSBzZWdyZWdhdGVkIGNvaG9ydCAvIG9wcyBjaGFpbnMsIGVuZm9yY2UKc3RvcHMsIGV4aXQuIEFDVElWQVRJT04gR1VBUkQ6IHdpdGhvdXQgYSB3aW5kb3ctZnJlZXplIHJlY29yZCB3aG9zZQpUViBQQVNTLCBjbG9jay1yZWFkaW5lc3MgUEFTUywgYW5kIGNvZGUvY29uZmlnIGhhc2hlcyBtYXRjaCB0aGUgZmlsZXMKb24gZGlzaywgZXhpdHMgNCBiZWZvcmUgYW55IEkvTy4gQSBTVE9QLCBvbmNlIHJlY29yZGVkLCBpcyB0ZXJtaW5hbDoKbGF0ZXIgdGlja3MgZXhpdCA1IChubyBhdXRvLXJlc3RhcnQpLgoKQ29ycmVjdGlvbnMgdnMgNTkwY2Y2N2IgKGFsbCBjb25maW5lZCB0byB0aGUgQ2FwdHVyZUVuZ2luZSBzZWFtKToKQzEgRW5naW5lIGNvbnN0cnVjdGVkIHdpdGggaXRzIHJlYWwgc2lnbmF0dXJlIChjaGFpbiwgcmF3LCB0cmFuc3BvcnQsCiAgIGNsb2NrLCBjbG9ja19zdGF0dXNfZm4sIGJvdW5kX21zKTsgY2xvY2sgaXMgYSBub3dfbXMoKSBvYmplY3QuCkMyIGNhcHR1cmUobWFya2V0LCBzbG90LCBhdF9tcykgcmVwbGFjZXMgdGhlIG5vbmV4aXN0ZW50IGNhcHR1cmVfc2xvdDsKICAgdGhlIGZ1bGwgbWFya2V0IGRpY3QgaXMgcGFzc2VkLgpDMyBEaXNjb3ZlcnkgcmVjb3JkcyBjYXJyeSBzZXJpZXNfdGlja2VyICh0aGUgZW5naW5lIHJlcXVpcmVzIGl0KS4KQzQgVHJhbnNwb3J0IGFkYXB0ZXIgaW1wbGVtZW50cyB0aGUgZW5naW5lJ3MgY29udHJhY3QKICAgdHJhbnNwb3J0KCIvbWFya2V0cyIsIHsidGlja2VyIjogLi4ufSkgLT4gKHN0YXR1cywgcmF3KSBvdmVyIHRoZQogICBnb3Zlcm5vciArIGFsbG93bGlzdGVkIEhUVFAgdHJhbnNwb3J0LCB3aXRoIHRoZSBzbG90IGRlYWRsaW5lLgpDNSBHb3Zlcm5vciBTdG9wQ29uZGl0aW9ucyBlc2NhcGUgdGhlIGVuZ2luZSdzIGJyb2FkIEV4Y2VwdGlvbiBoYW5kbGVyCiAgIHZpYSBhIEJhc2VFeGNlcHRpb24gc2hpbSBhbmQgYmVjb21lIHRlcm1pbmFsIFNUT1BzIChuZXZlciBHQVBzKS4KQzYgQ2xvY2sgc3RhdHVzIGlzIHByb2JlZCBwZXIgY2FwdHVyZSAoY2xvY2tfc3RhdHVzX2ZuKSwgbm90IG9uY2UvdGljay4KQzcgVGljayBhY2NlcHRzIGluamVjdGVkIHRyYW5zcG9ydC9wcm9iZS90aW1lIGZvciBvZmZsaW5lIEUyRSB0ZXN0aW5nLgpDOCBDaGFpbiB2ZXJpZmljYXRpb24gaXMgY29uc3RydWN0aW9uLXRpbWUgaW4gY2FwMS5weSAobm8gdmVyaWZ5KCkKICAgbWV0aG9kKTogY29ycnVwdCBzdG9yZXMgYXJlIGNvbnN0cnVjdGlvbiBlcnJvcnMgLT4gdGVybWluYWwKICAgc3RhdGUtb25seSBTVE9QOyBzZWFsIHJlLXZlcmlmaWVzIGJ5IGZyZXNoIGNvbnN0cnVjdGlvbi4KIiIiCmltcG9ydCBoYXNobGliCmltcG9ydCBqc29uCmltcG9ydCBvcwppbXBvcnQgc3VicHJvY2VzcwppbXBvcnQgc3lzCmltcG9ydCB0aW1lCmZyb20gZGF0ZXRpbWUgaW1wb3J0IGRhdGV0aW1lLCB0aW1lem9uZQoKc3lzLnBhdGguaW5zZXJ0KDAsIG9zLnBhdGguZGlybmFtZShvcy5wYXRoLmRpcm5hbWUob3MucGF0aC5hYnNwYXRoKF9fZmlsZV9fKSkpKQpmcm9tIGluZ2VzdGlvbiBpbXBvcnQgY2FwMSwgY2FwMV90cmFuc3BvcnQgYXMgY3QsIGNhcDFfdmVyZGljdAoKTEFCID0gb3MucGF0aC5kaXJuYW1lKG9zLnBhdGguZGlybmFtZShvcy5wYXRoLmFic3BhdGgoX19maWxlX18pKSkKSU5HID0gb3MucGF0aC5qb2luKExBQiwgImluZ2VzdGlvbiIpCldJTkRPV19ESVIgPSBvcy5wYXRoLmpvaW4oTEFCLCAiY2FwMV93aW5kb3ciKQpGUkVFWkVfUEFUSCA9IG9zLnBhdGguam9pbihXSU5ET1dfRElSLCAiRlJFRVpFLmpzb24iKQpTVEFURV9QQVRIID0gb3MucGF0aC5qb2luKFdJTkRPV19ESVIsICJzdGF0ZS5qc29uIikKU1RPUkVTID0geyJjb2hvcnQiOiBvcy5wYXRoLmpvaW4oV0lORE9XX0RJUiwgImNvaG9ydF9jaGFpbi5qc29uIiksCiAgICAgICAgICAib3BzIjogb3MucGF0aC5qb2luKFdJTkRPV19ESVIsICJvcHNfY2hhaW4uanNvbiIpfQpSQVdfRElSUyA9IHsiY29ob3J0Ijogb3MucGF0aC5qb2luKFdJTkRPV19ESVIsICJyYXdfY29ob3J0IiksCiAgICAgICAgICAgICJvcHMiOiBvcy5wYXRoLmpvaW4oV0lORE9XX0RJUiwgInJhd19vcHMiKX0KU0VSSUVTID0gKCJLWEJUQzE1TSIsICJLWEVUSDE1TSIsICJLWFNPTDE1TSIpCkNPSE9SVF9MTywgQ09IT1JUX0hJID0gIjIwMjYtMTAtMjhUMDA6MDA6MDBaIiwgIjIwMjYtMTAtMzBUMDA6MDA6MDBaIgpIQVJEX0VORCA9ICIyMDI2LTEwLTI5VDIzOjU5OjU5WiIKU1RPUkFHRV9DQVAgPSA1MDAgKiAxMDI0ICogMTAyNApMQVRFTkVTU19NUyA9IDE4MF8wMDAKQ09IT1JUX1NMT1RTID0gKCJPUEVOIiwgIlQtNjAwIiwgIlQtMzMwIiwgIlQtOTAiLCAiUE9TVC1DTE9TRSIpCk9QU19TTE9UUyA9ICgiT1BFTiIsICJULTMzMCIsICJULTkwIikKU0xPVF9PRkZTRVRTID0geyJPUEVOIjogNV8wMDAsICJULTYwMCI6IC02MDBfMDAwLCAiVC0zMzAiOiAtMzMwXzAwMCwKICAgICAgICAgICAgICAgICJULTkwIjogLTkwXzAwMCwgIlBPU1QtQ0xPU0UiOiA2MF8wMDB9CgoKZGVmIHNoYShwKToKICAgIHJldHVybiBoYXNobGliLnNoYTI1NihvcGVuKHAsICJyYiIpLnJlYWQoKSkuaGV4ZGlnZXN0KCkKCgpkZWYgbXNfb2Yocyk6CiAgICByZXR1cm4gaW50KGRhdGV0aW1lLnN0cnB0aW1lKHMsICIlWS0lbS0lZFQlSDolTTolU1oiKS5yZXBsYWNlKAogICAgICAgIHR6aW5mbz10aW1lem9uZS51dGMpLnRpbWVzdGFtcCgpICogMTAwMCkKCgpkZWYgaXNvX29mKG1zKToKICAgIHJldHVybiBkYXRldGltZS5mcm9tdGltZXN0YW1wKG1zIC8gMTAwMCwgdGltZXpvbmUudXRjKS5zdHJmdGltZSgKICAgICAgICAiJVktJW0tJWRUJUg6JU06JVNaIikKCgpkZWYgbG9hZF9mcmVlemUoKToKICAgIGlmIG5vdCBvcy5wYXRoLmV4aXN0cyhGUkVFWkVfUEFUSCk6CiAgICAgICAgcmV0dXJuIE5vbmUsICJubyBmcmVlemUgcmVjb3JkIgogICAgZnogPSBqc29uLmxvYWQob3BlbihGUkVFWkVfUEFUSCkpCiAgICBjaGVja3MgPSB7InR2X3Bhc3MiOiBmei5nZXQoInR2X3Bhc3MiKSBpcyBUcnVlLAogICAgICAgICAgICAgICJjbG9ja19wYXNzIjogZnouZ2V0KCJjbG9ja19wYXNzIikgaXMgVHJ1ZSwKICAgICAgICAgICAgICAidHJhbnNwb3J0X2hhc2giOiBmei5nZXQoInRyYW5zcG9ydF9zaGEyNTYiKSA9PSBzaGEoCiAgICAgICAgICAgICAgICAgIG9zLnBhdGguam9pbihJTkcsICJjYXAxX3RyYW5zcG9ydC5weSIpKSwKICAgICAgICAgICAgICAiY2FwMV9oYXNoIjogZnouZ2V0KCJjYXAxX3NoYTI1NiIpID09IHNoYSgKICAgICAgICAgICAgICAgICAgb3MucGF0aC5qb2luKElORywgImNhcDEucHkiKSksCiAgICAgICAgICAgICAgImNvbmZpZ19oYXNoIjogZnouZ2V0KCJjb25maWdfc2hhMjU2IikgPT0gc2hhKAogICAgICAgICAgICAgICAgICBvcy5wYXRoLmpvaW4oSU5HLCAiY2FwMV9jb25maWdfdjEuanNvbiIpKX0KICAgIGJhZCA9IFtrIGZvciBrLCB2IGluIGNoZWNrcy5pdGVtcygpIGlmIG5vdCB2XQogICAgcmV0dXJuIChmeiwgTm9uZSkgaWYgbm90IGJhZCBlbHNlIChOb25lLCBmImZyZWV6ZSBmYWlsZWQ6IHtiYWR9IikKCgpkZWYgY2xvY2tfcHJvYmUoKToKICAgICIiIlBlci1vYnNlcnZhdGlvbiB1bmNlcnRhaW50eSBmcm9tIGxpdmUgY2hyb255IHRyYWNraW5nOgogICAgfHN5c3RlbSBvZmZzZXR8ICsgcm9vdCBkaXNwZXJzaW9uICsgcm9vdCBkZWxheS8yLCBjZWlsaW5nIHRvIG1zLgogICAgVU5LTk9XTiAoZmFpbCBjbG9zZWQpIHVubGVzcyBjaHJvbnkgcmVwb3J0cyBhIG5vcm1hbCBsZWFwIHN0YXR1cy4iIiIKICAgIGltcG9ydCBtYXRoCiAgICB0cnk6CiAgICAgICAgb3V0ID0gc3VicHJvY2Vzcy5ydW4oWyJjaHJvbnljIiwgIi1jIiwgInRyYWNraW5nIl0sCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY2FwdHVyZV9vdXRwdXQ9VHJ1ZSwgdGV4dD1UcnVlLCB0aW1lb3V0PTUpCiAgICAgICAgaWYgb3V0LnJldHVybmNvZGUgIT0gMDoKICAgICAgICAgICAgcmFpc2UgVmFsdWVFcnJvcigiY2hyb255YyBmYWlsZWQiKQogICAgICAgIGYgPSBvdXQuc3Rkb3V0LnN0cmlwKCkuc3BsaXQoIiwiKQogICAgICAgIGlmIGZbMTNdLnN0cmlwKCkgIT0gIk5vcm1hbCI6CiAgICAgICAgICAgIHJhaXNlIFZhbHVlRXJyb3IoZiJsZWFwIHN0YXR1cyB7ZlsxM119IikKICAgICAgICBib3VuZF9zID0gYWJzKGZsb2F0KGZbNF0pKSArIGZsb2F0KGZbMTFdKSArIGZsb2F0KGZbMTBdKSAvIDIuMAogICAgICAgIHJldHVybiB7InN0YXRlIjogIlNZTkNFRCIsCiAgICAgICAgICAgICAgICAidW5jZXJ0YWludHlfbXMiOiBtYXgoMSwgbWF0aC5jZWlsKGJvdW5kX3MgKiAxMDAwKSksCiAgICAgICAgICAgICAgICAic291cmNlIjogImNocm9ueSJ9CiAgICBleGNlcHQgRXhjZXB0aW9uOgogICAgICAgIHJldHVybiB7InN0YXRlIjogIlVOS05PV04iLCAidW5jZXJ0YWludHlfbXMiOiBOb25lLAogICAgICAgICAgICAgICAgInNvdXJjZSI6ICJub25lIn0KCgpkZWYgZGlyX2J5dGVzKHBhdGgpOgogICAgdG90YWwgPSAwCiAgICBmb3Igcm9vdCwgX2RpcnMsIGZpbGVzIGluIG9zLndhbGsocGF0aCk6CiAgICAgICAgdG90YWwgKz0gc3VtKG9zLnBhdGguZ2V0c2l6ZShvcy5wYXRoLmpvaW4ocm9vdCwgZikpIGZvciBmIGluIGZpbGVzKQogICAgcmV0dXJuIHRvdGFsCgoKY2xhc3MgU3RvcFNpZ25hbChCYXNlRXhjZXB0aW9uKToKICAgICIiIkM1OiBjYXJyaWVzIGEgZ292ZXJub3IgU3RvcENvbmRpdGlvbiBhY3Jvc3MgdGhlIGVuZ2luZSdzIGJyb2FkCiAgICBgZXhjZXB0IEV4Y2VwdGlvbmAgc28gYSBtYW5kYXRvcnkgc3RvcCBjYW4gbmV2ZXIgYmVjb21lIGEgR0FQLiIiIgoKICAgIGRlZiBfX2luaXRfXyhzZWxmLCBjb25kKToKICAgICAgICBzdXBlcigpLl9faW5pdF9fKGNvbmQuY29kZSkKICAgICAgICBzZWxmLmNvbmQgPSBjb25kCgoKY2xhc3MgRW5naW5lQ2xvY2s6CiAgICAiIiJDMTogdGhlIGVuZ2luZSdzIGNsb2NrIHJvbGUg4oCUIHN1Y2Nlc3NpdmUgbm93X21zKCkgcmVhZGluZ3MuIiIiCgogICAgZGVmIF9faW5pdF9fKHNlbGYsIG5vd19mbik6CiAgICAgICAgc2VsZi5fbm93X2ZuID0gbm93X2ZuCgogICAgZGVmIG5vd19tcyhzZWxmKToKICAgICAgICByZXR1cm4gaW50KHNlbGYuX25vd19mbigpICogMTAwMCkKCgpjbGFzcyBUaWNrOgogICAgZGVmIF9faW5pdF9fKHNlbGYsIGZ6LCB0cmFuc3BvcnQ9Tm9uZSwgcHJvYmVfZm49Tm9uZSwKICAgICAgICAgICAgICAgICBub3dfZm49dGltZS50aW1lLCBzbGVlcF9mbj10aW1lLnNsZWVwKToKICAgICAgICBzZWxmLmZ6ID0gZnoKICAgICAgICBzZWxmLl9ub3dfZm4sIHNlbGYuX3NsZWVwX2ZuID0gbm93X2ZuLCBzbGVlcF9mbgogICAgICAgIHNlbGYuc3RhdGUgPSBqc29uLmxvYWQob3BlbihTVEFURV9QQVRIKSkgaWYgb3MucGF0aC5leGlzdHMoCiAgICAgICAgICAgIFNUQVRFX1BBVEgpIGVsc2UgeyJnb3YiOiBOb25lLCAibGFzdF9kaXNjb3ZlcnlfbXMiOiAwLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAicmVzdGFydHMiOiB7fSwgInN0b3BwZWQiOiBOb25lLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAic2VhbGVkIjogRmFsc2UsICJsYXN0X3RpY2tfc3RhdHVzIjogIm9rIn0KICAgICAgICAjIEM4OiBDaGFpblN0b3JlL1Jhd1N0b3JlIHZlcmlmeSBBVCBDT05TVFJVQ1RJT04gKG5vIHZlcmlmeSgpCiAgICAgICAgIyBtZXRob2QgZXhpc3RzKTsgYSBjb3JydXB0IHN0b3JlIHJhaXNlcyBWYWx1ZUVycm9yIGhlcmUgYW5kIGlzCiAgICAgICAgIyBjYXJyaWVkIGFzIGEgY29uc3RydWN0aW9uIGVycm9yIC0+IHRlcm1pbmFsIHN0YXRlLW9ubHkgU1RPUC4KICAgICAgICBzZWxmLmNoYWlucywgc2VsZi5yYXcsIHNlbGYuY2hhaW5fZXJyb3JzID0ge30sIHt9LCBbXQogICAgICAgIGZvciBrLCBwIGluIFNUT1JFUy5pdGVtcygpOgogICAgICAgICAgICB0cnk6CiAgICAgICAgICAgICAgICBzZWxmLmNoYWluc1trXSA9IGNhcDEuQ2hhaW5TdG9yZShwKQogICAgICAgICAgICBleGNlcHQgRXhjZXB0aW9uIGFzIGU6CiAgICAgICAgICAgICAgICBzZWxmLmNoYWluX2Vycm9ycy5hcHBlbmQoZiJ7a306IHtlfSIpCiAgICAgICAgZm9yIGssIGQgaW4gUkFXX0RJUlMuaXRlbXMoKToKICAgICAgICAgICAgdHJ5OgogICAgICAgICAgICAgICAgc2VsZi5yYXdba10gPSBjYXAxLlJhd1N0b3JlKGQpCiAgICAgICAgICAgIGV4Y2VwdCBFeGNlcHRpb24gYXMgZToKICAgICAgICAgICAgICAgIHNlbGYuY2hhaW5fZXJyb3JzLmFwcGVuZChmInJhdy17a306IHtlfSIpCiAgICAgICAgc2VsZi5nb3YgPSBjdC5Hb3Zlcm5vcihub3dfZm4sIHNsZWVwX2ZuLCBzdGF0ZT1zZWxmLnN0YXRlWyJnb3YiXSkKICAgICAgICBzZWxmLnRyYW5zcG9ydCA9IHRyYW5zcG9ydCBpZiB0cmFuc3BvcnQgaXMgbm90IE5vbmUgXAogICAgICAgICAgICBlbHNlIGN0Lkh0dHBUcmFuc3BvcnQoKQogICAgICAgIHNlbGYucHJvYmVfZm4gPSBwcm9iZV9mbiBpZiBwcm9iZV9mbiBpcyBub3QgTm9uZSBlbHNlIGNsb2NrX3Byb2JlCiAgICAgICAgc2VsZi5ib3VuZF9tcyA9IGNhcDEubG9hZF9jb25maWcoKVswXVsibWF4X2Nsb2NrX3VuY2VydGFpbnR5X21zIl0KICAgICAgICBzZWxmLl9kZWFkbGluZV9zID0gTm9uZQogICAgICAgIHNlbGYuZXJyb3JzID0gW10KCiAgICBkZWYgX25vd19tcyhzZWxmKToKICAgICAgICByZXR1cm4gaW50KHNlbGYuX25vd19mbigpICogMTAwMCkKCiAgICBkZWYgc2F2ZShzZWxmKToKICAgICAgICBzZWxmLnN0YXRlWyJnb3YiXSA9IHNlbGYuZ292LnN0YXRlCiAgICAgICAgdG1wID0gU1RBVEVfUEFUSCArICIudG1wIgogICAgICAgIHdpdGggb3Blbih0bXAsICJ3IikgYXMgZjoKICAgICAgICAgICAganNvbi5kdW1wKHNlbGYuc3RhdGUsIGYpCiAgICAgICAgb3MucmVwbGFjZSh0bXAsIFNUQVRFX1BBVEgpCgogICAgZGVmIHNlZ21lbnQoc2VsZiwgbWFya2V0KToKICAgICAgICBjID0gbXNfb2YobWFya2V0WyJjbG9zZV90aW1lIl0pCiAgICAgICAgcmV0dXJuICJjb2hvcnQiIGlmIG1zX29mKENPSE9SVF9MTykgPD0gYyA8IG1zX29mKENPSE9SVF9ISSkgZWxzZSAib3BzIgoKICAgIGRlZiBzdG9wKHNlbGYsIGNvZGUsIG1zZyk6CiAgICAgICAgc2VsZi5zdGF0ZVsic3RvcHBlZCJdID0geyJjb2RlIjogY29kZSwgIm1zZyI6IG1zZywKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgImF0IjogaXNvX29mKHNlbGYuX25vd19tcygpKX0KICAgICAgICBpZiAib3BzIiBpbiBzZWxmLmNoYWluczogICMgYSBjb3JydXB0IGNoYWluIGlzIG5ldmVyIGFwcGVuZGVkIHRvCiAgICAgICAgICAgIHNlbGYuY2hhaW5zWyJvcHMiXS5hcHBlbmQoeyJraW5kIjogIlNUT1AiLCAiY29kZSI6IGNvZGUsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICJtc2ciOiBtc2csCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICJyZWNvcmRlZF9hdF9sb2NhbCI6IGlzb19vZigKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHNlbGYuX25vd19tcygpKX0pCiAgICAgICAgc2VsZi5zYXZlKCkKCiAgICBkZWYgZGlzY292ZXIoc2VsZiwgbm93KToKICAgICAgICBjYWRlbmNlID0gOTAwXzAwMCBpZiBtc19vZihDT0hPUlRfTE8pIC0gOTAwXzAwMCA8PSBub3cgPCBtc19vZigKICAgICAgICAgICAgQ09IT1JUX0hJKSBlbHNlIDFfODAwXzAwMAogICAgICAgIGlmIG5vdyAtIHNlbGYuc3RhdGVbImxhc3RfZGlzY292ZXJ5X21zIl0gPCBjYWRlbmNlOgogICAgICAgICAgICByZXR1cm4KICAgICAgICBmb3VuZCA9IHsiY29ob3J0IjogW10sICJvcHMiOiBbXX0KICAgICAgICBmb3Igc2VyaWVzIGluIFNFUklFUzoKICAgICAgICAgICAgcGFnZXMgPSBzZWxmLmdvdi5nZXRfYWxsX3BhZ2VzKAogICAgICAgICAgICAgICAgc2VsZi50cmFuc3BvcnQsICIvdHJhZGUtYXBpL3YyL21hcmtldHMiLAogICAgICAgICAgICAgICAgeyJzZXJpZXNfdGlja2VyIjogc2VyaWVzLCAic3RhdHVzIjogIm9wZW4ifSkKICAgICAgICAgICAgaWYgcGFnZXMgYW5kIHBhZ2VzWzBdID09ICJHQVAiOgogICAgICAgICAgICAgICAgc2VsZi5lcnJvcnMuYXBwZW5kKGYiZGlzY292ZXJ5IEdBUCB7c2VyaWVzfToge3BhZ2VzWzFdfSIpCiAgICAgICAgICAgICAgICBjb250aW51ZQogICAgICAgICAgICBmb3IgcmF3IGluIHBhZ2VzOgogICAgICAgICAgICAgICAgZm9yIG0gaW4ganNvbi5sb2FkcyhyYXcuZGVjb2RlKCkpWyJtYXJrZXRzIl06CiAgICAgICAgICAgICAgICAgICAgbWsgPSB7InRpY2tlciI6IG1bInRpY2tlciJdLAogICAgICAgICAgICAgICAgICAgICAgICAgICJzZXJpZXNfdGlja2VyIjogc2VyaWVzLAogICAgICAgICAgICAgICAgICAgICAgICAgICJvcGVuX3RpbWUiOiBtWyJvcGVuX3RpbWUiXSwKICAgICAgICAgICAgICAgICAgICAgICAgICAiY2xvc2VfdGltZSI6IG1bImNsb3NlX3RpbWUiXX0KICAgICAgICAgICAgICAgICAgICBmb3VuZFtzZWxmLnNlZ21lbnQobWspXS5hcHBlbmQobWspCiAgICAgICAgZm9yIHNlZywgbWt0cyBpbiBmb3VuZC5pdGVtcygpOgogICAgICAgICAgICBpZiBta3RzOgogICAgICAgICAgICAgICAgc2VsZi5jaGFpbnNbc2VnXS5hcHBlbmQoewogICAgICAgICAgICAgICAgICAgICJraW5kIjogIkRJU0NPVkVSWSIsICJtYXJrZXRzIjogbWt0cywKICAgICAgICAgICAgICAgICAgICAicmVjb3JkZWRfYXRfbG9jYWwiOiBpc29fb2Yobm93KX0pCiAgICAgICAgc2VsZi5zdGF0ZVsibGFzdF9kaXNjb3ZlcnlfbXMiXSA9IG5vdwoKICAgIGRlZiBrbm93bl9tYXJrZXRzKHNlbGYpOgogICAgICAgIG91dCA9IHt9CiAgICAgICAgZm9yIHNlZywgY2hhaW4gaW4gc2VsZi5jaGFpbnMuaXRlbXMoKToKICAgICAgICAgICAgZm9yIHIgaW4gY2hhaW4ucmVjb3JkczoKICAgICAgICAgICAgICAgIGlmIHIuZ2V0KCJraW5kIikgPT0gIkRJU0NPVkVSWSI6CiAgICAgICAgICAgICAgICAgICAgZm9yIG0gaW4gclsibWFya2V0cyJdOgogICAgICAgICAgICAgICAgICAgICAgICBvdXRbbVsidGlja2VyIl1dID0gKHNlZywgbSkKICAgICAgICByZXR1cm4gb3V0CgogICAgZGVmIGNhcHR1cmVkKHNlbGYsIGNoYWluLCB0aWNrZXIpOgogICAgICAgIGRvbmUgPSBzZXQoKQogICAgICAgIGZvciByIGluIGNoYWluLnJlY29yZHM6CiAgICAgICAgICAgIGlmIHIuZ2V0KCJraW5kIikgPT0gIk9CU0VSVkFUSU9OIiBhbmQgclsidGlja2VyIl0gPT0gdGlja2VyOgogICAgICAgICAgICAgICAgZG9uZS5hZGQoclsic2xvdCJdKQogICAgICAgICAgICBpZiByLmdldCgia2luZCIpID09ICJHQVAiIGFuZCByWyJ0aWNrZXIiXSA9PSB0aWNrZXI6CiAgICAgICAgICAgICAgICBkb25lLmFkZChyWyJzbG90Il0pCiAgICAgICAgcmV0dXJuIGRvbmUKCiAgICBkZWYgX2VuZ2luZV90cmFuc3BvcnQoc2VsZiwgZW5kcG9pbnQsIHBhcmFtcyk6CiAgICAgICAgIiIiQzQ6IHRoZSBlbmdpbmUncyB0cmFuc3BvcnQgY29udHJhY3Qgb3ZlciBnb3Zlcm5vciArIEhUVFAuIiIiCiAgICAgICAgaWYgZW5kcG9pbnQgIT0gIi9tYXJrZXRzIjoKICAgICAgICAgICAgcmFpc2UgUnVudGltZUVycm9yKGYidW5leHBlY3RlZCBlbmdpbmUgZW5kcG9pbnQge2VuZHBvaW50fSIpCiAgICAgICAgdHJ5OgogICAgICAgICAgICByZXMgPSBzZWxmLmdvdi5mZXRjaChzZWxmLnRyYW5zcG9ydCwgIi90cmFkZS1hcGkvdjIvbWFya2V0cyIsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHBhcmFtcywgZGVhZGxpbmVfcz1zZWxmLl9kZWFkbGluZV9zKQogICAgICAgIGV4Y2VwdCBjdC5TdG9wQ29uZGl0aW9uIGFzIGU6CiAgICAgICAgICAgIHJhaXNlIFN0b3BTaWduYWwoZSkKICAgICAgICBpZiByZXNbMF0gPT0gIkdBUCI6CiAgICAgICAgICAgIHJhaXNlIFJ1bnRpbWVFcnJvcihyZXNbMV0pCiAgICAgICAgcmV0dXJuIHJlcwoKICAgIGRlZiBjYXB0dXJlX2R1ZShzZWxmLCBub3cpOgogICAgICAgIGVuZ2luZXMgPSB7fQogICAgICAgIGZvciB0aWNrZXIsIChzZWcsIG0pIGluIHNvcnRlZChzZWxmLmtub3duX21hcmtldHMoKS5pdGVtcygpKToKICAgICAgICAgICAgY2hhaW4sIHJhdyA9IHNlbGYuY2hhaW5zW3NlZ10sIHNlbGYucmF3W3NlZ10KICAgICAgICAgICAgb3Blbl9tcywgY2xvc2VfbXMgPSBtc19vZihtWyJvcGVuX3RpbWUiXSksIG1zX29mKG1bImNsb3NlX3RpbWUiXSkKICAgICAgICAgICAgc2xvdHMgPSBDT0hPUlRfU0xPVFMgaWYgc2VnID09ICJjb2hvcnQiIGVsc2UgT1BTX1NMT1RTCiAgICAgICAgICAgIGRvbmUgPSBzZWxmLmNhcHR1cmVkKGNoYWluLCB0aWNrZXIpCiAgICAgICAgICAgIGZvciBzbG90IGluIHNsb3RzOgogICAgICAgICAgICAgICAgaWYgc2xvdCBpbiBkb25lOgogICAgICAgICAgICAgICAgICAgIGNvbnRpbnVlCiAgICAgICAgICAgICAgICBiYXNlID0gb3Blbl9tcyBpZiBzbG90ID09ICJPUEVOIiBlbHNlIGNsb3NlX21zCiAgICAgICAgICAgICAgICBkdWUgPSBiYXNlICsgU0xPVF9PRkZTRVRTW3Nsb3RdCiAgICAgICAgICAgICAgICBpZiBub3cgPCBkdWU6CiAgICAgICAgICAgICAgICAgICAgY29udGludWUKICAgICAgICAgICAgICAgIGlmIG5vdyA+IGR1ZSArIExBVEVORVNTX01TOgogICAgICAgICAgICAgICAgICAgIGNoYWluLmFwcGVuZCh7ImtpbmQiOiAiR0FQIiwgInRpY2tlciI6IHRpY2tlciwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICJzbG90Ijogc2xvdCwgInJlYXNvbiI6ICJNSVNTRURfU0xPVCIsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAicmVjb3JkZWRfYXRfbG9jYWwiOiBpc29fb2Yobm93KX0pCiAgICAgICAgICAgICAgICAgICAgY29udGludWUKICAgICAgICAgICAgICAgIGlmIHNlZyBub3QgaW4gZW5naW5lczoKICAgICAgICAgICAgICAgICAgICBlbmdpbmVzW3NlZ10gPSBjYXAxLkNhcHR1cmVFbmdpbmUoCiAgICAgICAgICAgICAgICAgICAgICAgIGNoYWluLCByYXcsIHNlbGYuX2VuZ2luZV90cmFuc3BvcnQsCiAgICAgICAgICAgICAgICAgICAgICAgIEVuZ2luZUNsb2NrKHNlbGYuX25vd19mbiksIHNlbGYucHJvYmVfZm4sCiAgICAgICAgICAgICAgICAgICAgICAgIHNlbGYuYm91bmRfbXMpCiAgICAgICAgICAgICAgICBzZWxmLl9kZWFkbGluZV9zID0gKGR1ZSArIExBVEVORVNTX01TKSAvIDEwMDAuMAogICAgICAgICAgICAgICAgZW5naW5lc1tzZWddLmNhcHR1cmUobSwgc2xvdCwgZHVlKQoKICAgIGRlZiBydW4oc2VsZik6CiAgICAgICAgbm93ID0gc2VsZi5fbm93X21zKCkKICAgICAgICBpZiBzZWxmLnN0YXRlLmdldCgic3RvcHBlZCIpOgogICAgICAgICAgICByZXR1cm4gNQogICAgICAgIGlmIHNlbGYuc3RhdGUuZ2V0KCJzZWFsZWQiKToKICAgICAgICAgICAgcmV0dXJuIDAKICAgICAgICBpZiBub3cgPiBtc19vZihIQVJEX0VORCk6CiAgICAgICAgICAgIHJldHVybiBzZWxmLnNlYWwoKQogICAgICAgIGlmIHNlbGYuY2hhaW5fZXJyb3JzOgogICAgICAgICAgICBzZWxmLnN0b3AoIkNIQUlOX0JSRUFLIiwgIjsgIi5qb2luKHNlbGYuY2hhaW5fZXJyb3JzKSkKICAgICAgICAgICAgcmV0dXJuIDUKICAgICAgICBpZiBkaXJfYnl0ZXMoV0lORE9XX0RJUikgPiBTVE9SQUdFX0NBUDoKICAgICAgICAgICAgc2VsZi5zdG9wKCJCVURHRVRfQlJFQUNIIiwgInN0b3JhZ2UgY2FwIikKICAgICAgICAgICAgcmV0dXJuIDUKICAgICAgICB0cnk6CiAgICAgICAgICAgIHNlbGYuZGlzY292ZXIobm93KQogICAgICAgICAgICBzZWxmLmNhcHR1cmVfZHVlKG5vdykKICAgICAgICBleGNlcHQgU3RvcFNpZ25hbCBhcyBlOgogICAgICAgICAgICBzZWxmLnN0b3AoZS5jb25kLmNvZGUsIHN0cihlLmNvbmQpKQogICAgICAgICAgICByZXR1cm4gNQogICAgICAgIGV4Y2VwdCBjdC5TdG9wQ29uZGl0aW9uIGFzIGU6CiAgICAgICAgICAgIHNlbGYuc3RvcChlLmNvZGUsIHN0cihlKSkKICAgICAgICAgICAgcmV0dXJuIDUKICAgICAgICBzZWxmLnN0YXRlWyJsYXN0X3RpY2tfc3RhdHVzIl0gPSAiZXJyb3IiIGlmIHNlbGYuZXJyb3JzIGVsc2UgIm9rIgogICAgICAgIHNlbGYuc2F2ZSgpCiAgICAgICAgcmV0dXJuIDAKCiAgICBkZWYgc2VhbChzZWxmKToKICAgICAgICB0aXBzID0ge30KICAgICAgICBmb3Igc2VnLCBwIGluIFNUT1JFUy5pdGVtcygpOgogICAgICAgICAgICB0cnk6ICAjIGZyZXNoIGNvbnN0cnVjdGlvbiA9IGluZGVwZW5kZW50IHJlLXZlcmlmaWNhdGlvbgogICAgICAgICAgICAgICAgdGlwc1tzZWddID0geyJvayI6IFRydWUsICJ0aXAiOiBjYXAxLkNoYWluU3RvcmUocCkudGlwfQogICAgICAgICAgICBleGNlcHQgRXhjZXB0aW9uIGFzIGU6CiAgICAgICAgICAgICAgICB0aXBzW3NlZ10gPSB7Im9rIjogRmFsc2UsICJ0aXAiOiBmIlVOVkVSSUZJQUJMRToge2V9In0KICAgICAgICB2ID0gY2FwMV92ZXJkaWN0LnZlcmRpY3QoU1RPUkVTWyJjb2hvcnQiXSwgQ09IT1JUX0xPLCBDT0hPUlRfSEkpCiAgICAgICAgc2VhbCA9IHsic2VhbGVkX2F0IjogaXNvX29mKHNlbGYuX25vd19tcygpKSwKICAgICAgICAgICAgICAgICJ0aXBzIjogdGlwcywgInB0MWwiOiB2fQogICAgICAgIHdpdGggb3Blbihvcy5wYXRoLmpvaW4oV0lORE9XX0RJUiwgIlNFQUwuanNvbiIpLCAidyIpIGFzIGY6CiAgICAgICAgICAgIGpzb24uZHVtcChzZWFsLCBmLCBpbmRlbnQ9MSwgc29ydF9rZXlzPVRydWUpCiAgICAgICAgc2VsZi5zdGF0ZVsic2VhbGVkIl0gPSBUcnVlCiAgICAgICAgc2VsZi5zYXZlKCkKICAgICAgICBwcmludChqc29uLmR1bXBzKHsic2VhbGVkIjogVHJ1ZSwgInB0MWxfdmVyZGljdCI6IHZbInZlcmRpY3QiXX0pKQogICAgICAgIHJldHVybiAwCgoKZGVmIG1haW4oKToKICAgIGZ6LCBlcnIgPSBsb2FkX2ZyZWV6ZSgpCiAgICBpZiBmeiBpcyBOb25lOgogICAgICAgIHByaW50KGpzb24uZHVtcHMoeyJhY3RpdmF0aW9uIjogIkJMT0NLRUQiLCAicmVhc29uIjogZXJyfSkpCiAgICAgICAgcmV0dXJuIDQKICAgIHJldHVybiBUaWNrKGZ6KS5ydW4oKQoKCmlmIF9fbmFtZV9fID09ICJfX21haW5fXyI6CiAgICBzeXMuZXhpdChtYWluKCkpCg==
+"""CAP-1 tick collector (G-COLL-FWD Rev 3) — CORRECTED (patch candidate,
+NOT APPLIED to the lab tree; see PATCH_NOTES.md).
+
+State-driven: each invocation is one tick — discover (segment cadence),
+capture due slots into the segregated cohort / ops chains, enforce
+stops, exit. ACTIVATION GUARD: without a window-freeze record whose
+TV PASS, clock-readiness PASS, and code/config hashes match the files
+on disk, exits 4 before any I/O. A STOP, once recorded, is terminal:
+later ticks exit 5 (no auto-restart).
+
+Corrections vs 590cf67b (all confined to the CaptureEngine seam):
+C1 Engine constructed with its real signature (chain, raw, transport,
+   clock, clock_status_fn, bound_ms); clock is a now_ms() object.
+C2 capture(market, slot, at_ms) replaces the nonexistent capture_slot;
+   the full market dict is passed.
+C3 Discovery records carry series_ticker (the engine requires it).
+C4 Transport adapter implements the engine's contract
+   transport("/markets", {"ticker": ...}) -> (status, raw) over the
+   governor + allowlisted HTTP transport, with the slot deadline.
+C5 Governor StopConditions escape the engine's broad Exception handler
+   via a BaseException shim and become terminal STOPs (never GAPs).
+C6 Clock status is probed per capture (clock_status_fn), not once/tick.
+C7 Tick accepts injected transport/probe/time for offline E2E testing.
+C8 Chain verification is construction-time in cap1.py (no verify()
+   method): corrupt stores are construction errors -> terminal
+   state-only STOP; seal re-verifies by fresh construction.
+"""
+import hashlib
+import json
+import os
+import subprocess
+import sys
+import time
+from datetime import datetime, timezone
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from ingestion import cap1, cap1_transport as ct, cap1_verdict
+
+LAB = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ING = os.path.join(LAB, "ingestion")
+WINDOW_DIR = os.path.join(LAB, "cap1_window")
+FREEZE_PATH = os.path.join(WINDOW_DIR, "FREEZE.json")
+STATE_PATH = os.path.join(WINDOW_DIR, "state.json")
+STORES = {"cohort": os.path.join(WINDOW_DIR, "cohort_chain.json"),
+          "ops": os.path.join(WINDOW_DIR, "ops_chain.json")}
+RAW_DIRS = {"cohort": os.path.join(WINDOW_DIR, "raw_cohort"),
+            "ops": os.path.join(WINDOW_DIR, "raw_ops")}
+SERIES = ("KXBTC15M", "KXETH15M", "KXSOL15M")
+COHORT_LO, COHORT_HI = "2026-10-28T00:00:00Z", "2026-10-30T00:00:00Z"
+HARD_END = "2026-10-29T23:59:59Z"
+STORAGE_CAP = 500 * 1024 * 1024
+LATENESS_MS = 180_000
+COHORT_SLOTS = ("OPEN", "T-600", "T-330", "T-90", "POST-CLOSE")
+OPS_SLOTS = ("OPEN", "T-330", "T-90")
+SLOT_OFFSETS = {"OPEN": 5_000, "T-600": -600_000, "T-330": -330_000,
+                "T-90": -90_000, "POST-CLOSE": 60_000}
+
+
+def sha(p):
+    return hashlib.sha256(open(p, "rb").read()).hexdigest()
+
+
+def ms_of(s):
+    return int(datetime.strptime(s, "%Y-%m-%dT%H:%M:%SZ").replace(
+        tzinfo=timezone.utc).timestamp() * 1000)
+
+
+def iso_of(ms):
+    return datetime.fromtimestamp(ms / 1000, timezone.utc).strftime(
+        "%Y-%m-%dT%H:%M:%SZ")
+
+
+def load_freeze():
+    if not os.path.exists(FREEZE_PATH):
+        return None, "no freeze record"
+    fz = json.load(open(FREEZE_PATH))
+    checks = {"tv_pass": fz.get("tv_pass") is True,
+              "clock_pass": fz.get("clock_pass") is True,
+              "transport_hash": fz.get("transport_sha256") == sha(
+                  os.path.join(ING, "cap1_transport.py")),
+              "cap1_hash": fz.get("cap1_sha256") == sha(
+                  os.path.join(ING, "cap1.py")),
+              "config_hash": fz.get("config_sha256") == sha(
+                  os.path.join(ING, "cap1_config_v1.json"))}
+    bad = [k for k, v in checks.items() if not v]
+    return (fz, None) if not bad else (None, f"freeze failed: {bad}")
+
+
+def clock_probe():
+    """Per-observation uncertainty from live chrony tracking:
+    |system offset| + root dispersion + root delay/2, ceiling to ms.
+    UNKNOWN (fail closed) unless chrony reports a normal leap status."""
+    import math
+    try:
+        out = subprocess.run(["chronyc", "-c", "tracking"],
+                             capture_output=True, text=True, timeout=5)
+        if out.returncode != 0:
+            raise ValueError("chronyc failed")
+        f = out.stdout.strip().split(",")
+        if f[13].strip() != "Normal":
+            raise ValueError(f"leap status {f[13]}")
+        bound_s = abs(float(f[4])) + float(f[11]) + float(f[10]) / 2.0
+        return {"state": "SYNCED",
+                "uncertainty_ms": max(1, math.ceil(bound_s * 1000)),
+                "source": "chrony"}
+    except Exception:
+        return {"state": "UNKNOWN", "uncertainty_ms": None,
+                "source": "none"}
+
+
+def dir_bytes(path):
+    total = 0
+    for root, _dirs, files in os.walk(path):
+        total += sum(os.path.getsize(os.path.join(root, f)) for f in files)
+    return total
+
+
+class StopSignal(BaseException):
+    """C5: carries a governor StopCondition across the engine's broad
+    `except Exception` so a mandatory stop can never become a GAP."""
+
+    def __init__(self, cond):
+        super().__init__(cond.code)
+        self.cond = cond
+
+
+class EngineClock:
+    """C1: the engine's clock role — successive now_ms() readings."""
+
+    def __init__(self, now_fn):
+        self._now_fn = now_fn
+
+    def now_ms(self):
+        return int(self._now_fn() * 1000)
+
+
+class Tick:
+    def __init__(self, fz, transport=None, probe_fn=None,
+                 now_fn=time.time, sleep_fn=time.sleep):
+        self.fz = fz
+        self._now_fn, self._sleep_fn = now_fn, sleep_fn
+        self.state = json.load(open(STATE_PATH)) if os.path.exists(
+            STATE_PATH) else {"gov": None, "last_discovery_ms": 0,
+                              "restarts": {}, "stopped": None,
+                              "sealed": False, "last_tick_status": "ok"}
+        # C8: ChainStore/RawStore verify AT CONSTRUCTION (no verify()
+        # method exists); a corrupt store raises ValueError here and is
+        # carried as a construction error -> terminal state-only STOP.
+        self.chains, self.raw, self.chain_errors = {}, {}, []
+        for k, p in STORES.items():
+            try:
+                self.chains[k] = cap1.ChainStore(p)
+            except Exception as e:
+                self.chain_errors.append(f"{k}: {e}")
+        for k, d in RAW_DIRS.items():
+            try:
+                self.raw[k] = cap1.RawStore(d)
+            except Exception as e:
+                self.chain_errors.append(f"raw-{k}: {e}")
+        self.gov = ct.Governor(now_fn, sleep_fn, state=self.state["gov"])
+        self.transport = transport if transport is not None \
+            else ct.HttpTransport()
+        self.probe_fn = probe_fn if probe_fn is not None else clock_probe
+        self.bound_ms = cap1.load_config()[0]["max_clock_uncertainty_ms"]
+        self._deadline_s = None
+        self.errors = []
+
+    def _now_ms(self):
+        return int(self._now_fn() * 1000)
+
+    def save(self):
+        self.state["gov"] = self.gov.state
+        tmp = STATE_PATH + ".tmp"
+        with open(tmp, "w") as f:
+            json.dump(self.state, f)
+        os.replace(tmp, STATE_PATH)
+
+    def segment(self, market):
+        c = ms_of(market["close_time"])
+        return "cohort" if ms_of(COHORT_LO) <= c < ms_of(COHORT_HI) else "ops"
+
+    def stop(self, code, msg):
+        self.state["stopped"] = {"code": code, "msg": msg,
+                                 "at": iso_of(self._now_ms())}
+        if "ops" in self.chains:  # a corrupt chain is never appended to
+            self.chains["ops"].append({"kind": "STOP", "code": code,
+                                       "msg": msg,
+                                       "recorded_at_local": iso_of(
+                                           self._now_ms())})
+        self.save()
+
+    def discover(self, now):
+        cadence = 900_000 if ms_of(COHORT_LO) - 900_000 <= now < ms_of(
+            COHORT_HI) else 1_800_000
+        if now - self.state["last_discovery_ms"] < cadence:
+            return
+        found = {"cohort": [], "ops": []}
+        for series in SERIES:
+            pages = self.gov.get_all_pages(
+                self.transport, "/trade-api/v2/markets",
+                {"series_ticker": series, "status": "open"})
+            if pages and pages[0] == "GAP":
+                self.errors.append(f"discovery GAP {series}: {pages[1]}")
+                continue
+            for raw in pages:
+                for m in json.loads(raw.decode())["markets"]:
+                    mk = {"ticker": m["ticker"],
+                          "series_ticker": series,
+                          "open_time": m["open_time"],
+                          "close_time": m["close_time"]}
+                    found[self.segment(mk)].append(mk)
+        for seg, mkts in found.items():
+            if mkts:
+                self.chains[seg].append({
+                    "kind": "DISCOVERY", "markets": mkts,
+                    "recorded_at_local": iso_of(now)})
+        self.state["last_discovery_ms"] = now
+
+    def known_markets(self):
+        out = {}
+        for seg, chain in self.chains.items():
+            for r in chain.records:
+                if r.get("kind") == "DISCOVERY":
+                    for m in r["markets"]:
+                        out[m["ticker"]] = (seg, m)
+        return out
+
+    def captured(self, chain, ticker):
+        done = set()
+        for r in chain.records:
+            if r.get("kind") == "OBSERVATION" and r["ticker"] == ticker:
+                done.add(r["slot"])
+            if r.get("kind") == "GAP" and r["ticker"] == ticker:
+                done.add(r["slot"])
+        return done
+
+    def _engine_transport(self, endpoint, params):
+        """C4: the engine's transport contract over governor + HTTP."""
+        if endpoint != "/markets":
+            raise RuntimeError(f"unexpected engine endpoint {endpoint}")
+        try:
+            res = self.gov.fetch(self.transport, "/trade-api/v2/markets",
+                                 params, deadline_s=self._deadline_s)
+        except ct.StopCondition as e:
+            raise StopSignal(e)
+        if res[0] == "GAP":
+            raise RuntimeError(res[1])
+        return res
+
+    def capture_due(self, now):
+        engines = {}
+        for ticker, (seg, m) in sorted(self.known_markets().items()):
+            chain, raw = self.chains[seg], self.raw[seg]
+            open_ms, close_ms = ms_of(m["open_time"]), ms_of(m["close_time"])
+            slots = COHORT_SLOTS if seg == "cohort" else OPS_SLOTS
+            done = self.captured(chain, ticker)
+            for slot in slots:
+                if slot in done:
+                    continue
+                base = open_ms if slot == "OPEN" else close_ms
+                due = base + SLOT_OFFSETS[slot]
+                if now < due:
+                    continue
+                if now > due + LATENESS_MS:
+                    chain.append({"kind": "GAP", "ticker": ticker,
+                                  "slot": slot, "reason": "MISSED_SLOT",
+                                  "recorded_at_local": iso_of(now)})
+                    continue
+                if seg not in engines:
+                    engines[seg] = cap1.CaptureEngine(
+                        chain, raw, self._engine_transport,
+                        EngineClock(self._now_fn), self.probe_fn,
+                        self.bound_ms)
+                self._deadline_s = (due + LATENESS_MS) / 1000.0
+                engines[seg].capture(m, slot, due)
+
+    def run(self):
+        now = self._now_ms()
+        if self.state.get("stopped"):
+            return 5
+        if self.state.get("sealed"):
+            return 0
+        if now > ms_of(HARD_END):
+            return self.seal()
+        if self.chain_errors:
+            self.stop("CHAIN_BREAK", "; ".join(self.chain_errors))
+            return 5
+        if dir_bytes(WINDOW_DIR) > STORAGE_CAP:
+            self.stop("BUDGET_BREACH", "storage cap")
+            return 5
+        try:
+            self.discover(now)
+            self.capture_due(now)
+        except StopSignal as e:
+            self.stop(e.cond.code, str(e.cond))
+            return 5
+        except ct.StopCondition as e:
+            self.stop(e.code, str(e))
+            return 5
+        self.state["last_tick_status"] = "error" if self.errors else "ok"
+        self.save()
+        return 0
+
+    def seal(self):
+        tips = {}
+        for seg, p in STORES.items():
+            try:  # fresh construction = independent re-verification
+                tips[seg] = {"ok": True, "tip": cap1.ChainStore(p).tip}
+            except Exception as e:
+                tips[seg] = {"ok": False, "tip": f"UNVERIFIABLE: {e}"}
+        v = cap1_verdict.verdict(STORES["cohort"], COHORT_LO, COHORT_HI)
+        seal = {"sealed_at": iso_of(self._now_ms()),
+                "tips": tips, "pt1l": v}
+        with open(os.path.join(WINDOW_DIR, "SEAL.json"), "w") as f:
+            json.dump(seal, f, indent=1, sort_keys=True)
+        self.state["sealed"] = True
+        self.save()
+        print(json.dumps({"sealed": True, "pt1l_verdict": v["verdict"]}))
+        return 0
+
+
+def main():
+    fz, err = load_freeze()
+    if fz is None:
+        print(json.dumps({"activation": "BLOCKED", "reason": err}))
+        return 4
+    return Tick(fz).run()
+
+
+if __name__ == "__main__":
+    sys.exit(main())
