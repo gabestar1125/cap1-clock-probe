@@ -1,0 +1,198 @@
+{
+  "captures_end": {
+    "chronyc_tracking": {
+      "argv": [
+        "chronyc",
+        "tracking"
+      ],
+      "captured_at_local": "2026-10-28T16:27:02.350Z",
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "Reference ID    : 50484330 (PHC0)\nStratum         : 1\nRef time (UTC)  : Wed Oct 28 16:26:50 2026\nSystem time     : 0.000002237 seconds fast of NTP time\nLast offset     : +0.000001105 seconds\nRMS offset      : 0.000078158 seconds\nFrequency       : 57.553 ppm fast\nResidual freq   : +0.003 ppm\nSkew            : 0.269 ppm\nRoot delay      : 0.000000001 seconds\nRoot dispersion : 0.000043500 seconds\nUpdate interval : 8.0 seconds\nLeap status     : Normal\n"
+    },
+    "timedatectl_status": {
+      "argv": [
+        "timedatectl",
+        "status"
+      ],
+      "captured_at_local": "2026-10-28T16:27:02.309Z",
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "               Local time: Wed 2026-10-28 16:27:02 UTC\n           Universal time: Wed 2026-10-28 16:27:02 UTC\n                 RTC time: Wed 2026-10-28 16:27:02\n                Time zone: Etc/UTC (UTC, +0000)\nSystem clock synchronized: yes\n              NTP service: active\n          RTC in local TZ: no\n"
+    },
+    "timedatectl_timesync_status": {
+      "argv": [
+        "timedatectl",
+        "timesync-status"
+      ],
+      "captured_at_local": "2026-10-28T16:27:02.346Z",
+      "exit_code": 1,
+      "stderr": "Failed to query server: The name org.freedesktop.timesync1 was not provided by any .service files\n",
+      "stdout": ""
+    }
+  },
+  "captures_start": {
+    "chronyc_sources": {
+      "argv": [
+        "chronyc",
+        "sources",
+        "-v"
+      ],
+      "captured_at_local": "2026-10-28T16:26:32.251Z",
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "\n  .-- Source mode  '^' = server, '=' = peer, '#' = local clock.\n / .- Source state '*' = current best, '+' = combined, '-' = not combined,\n| /             'x' = may be in error, '~' = too variable, '?' = unusable.\n||                                                 .- xxxx [ yyyy ] +/- zzzz\n||      Reachability register (octal) -.           |  xxxx = adjusted offset,\n||      Log2(Polling interval) --.      |          |  yyyy = measured offset,\n||                                \\     |          |  zzzz = estimated error.\n||                                 |    |           \\\nMS Name/IP address         Stratum Poll Reach LastRx Last sample               \n===============================================================================\n#* PHC0                          0   3   377     3    -12us[  -13us] +/-   21us\n"
+    },
+    "chronyc_tracking": {
+      "argv": [
+        "chronyc",
+        "tracking"
+      ],
+      "captured_at_local": "2026-10-28T16:26:32.249Z",
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "Reference ID    : 50484330 (PHC0)\nStratum         : 1\nRef time (UTC)  : Wed Oct 28 16:26:28 2026\nSystem time     : 0.000005030 seconds slow of NTP time\nLast offset     : -0.000001218 seconds\nRMS offset      : 0.000091517 seconds\nFrequency       : 57.534 ppm fast\nResidual freq   : -0.004 ppm\nSkew            : 0.308 ppm\nRoot delay      : 0.000000001 seconds\nRoot dispersion : 0.000034863 seconds\nUpdate interval : 8.0 seconds\nLeap status     : Normal\n"
+    },
+    "os_release": {
+      "argv": [
+        "cat",
+        "/etc/os-release"
+      ],
+      "captured_at_local": "2026-10-28T16:26:32.151Z",
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "PRETTY_NAME=\"Ubuntu 24.04.5 LTS\"\nNAME=\"Ubuntu\"\nVERSION_ID=\"24.04\"\nVERSION=\"24.04.5 LTS (Noble Numbat)\"\nVERSION_CODENAME=noble\nID=ubuntu\nID_LIKE=debian\nHOME_URL=\"https://www.ubuntu.com/\"\nSUPPORT_URL=\"https://help.ubuntu.com/\"\nBUG_REPORT_URL=\"https://bugs.launchpad.net/ubuntu/\"\nPRIVACY_POLICY_URL=\"https://www.ubuntu.com/legal/terms-and-policies/privacy-policy\"\nUBUNTU_CODENAME=noble\nLOGO=ubuntu-logo\n"
+    },
+    "systemctl_chrony": {
+      "argv": [
+        "systemctl",
+        "status",
+        "chrony",
+        "--no-pager"
+      ],
+      "captured_at_local": "2026-10-28T16:26:32.252Z",
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "\u25cf chrony.service - chrony, an NTP client/server\n     Loaded: loaded (/usr/lib/systemd/system/chrony.service; enabled; preset: enabled)\n     Active: active (running) since Wed 2026-10-28 16:21:19 UTC; 5min ago\n       Docs: man:chronyd(8)\n             man:chronyc(1)\n             man:chrony.conf(5)\n   Main PID: 1138 (chronyd)\n      Tasks: 2 (limit: 17491)\n     Memory: 2.1M (peak: 2.8M)\n        CPU: 160ms\n     CGroup: /system.slice/chrony.service\n             \u251c\u25001138 /usr/sbin/chronyd -F 1\n             \u2514\u25001151 /usr/sbin/chronyd -F 1\n\nOct 28 16:21:18 runnervm9u1px systemd[1]: Starting chrony.service - chrony, an NTP client/server...\nOct 28 16:21:19 runnervm9u1px chronyd[1138]: chronyd version 4.5 starting (+CMDMON +NTP +REFCLOCK +RTC +PRIVDROP +SCFILTER +SIGND +ASYNCDNS +NTS +SECHASH +IPV6 -DEBUG)\nOct 28 16:21:19 runnervm9u1px chronyd[1138]: Loaded 0 symmetric keys\nOct 28 16:21:19 runnervm9u1px chronyd[1138]: Frequency -1.202 +/- 0.005 ppm read from /var/lib/chrony/chrony.drift\nOct 28 16:21:19 runnervm9u1px chronyd[1138]: Using right/UTC timezone to obtain leap second data\nOct 28 16:21:19 runnervm9u1px chronyd[1138]: Loaded seccomp filter (level 1)\nOct 28 16:21:19 runnervm9u1px systemd[1]: Started chrony.service - chrony, an NTP client/server.\nOct 28 16:21:43 runnervm9u1px chronyd[1138]: Selected source PHC0\nOct 28 16:21:43 runnervm9u1px chronyd[1138]: System clock TAI offset set to 37 seconds\n"
+    },
+    "systemctl_timesyncd": {
+      "argv": [
+        "systemctl",
+        "status",
+        "systemd-timesyncd",
+        "--no-pager"
+      ],
+      "captured_at_local": "2026-10-28T16:26:32.259Z",
+      "exit_code": 4,
+      "stderr": "Unit systemd-timesyncd.service could not be found.\n",
+      "stdout": ""
+    },
+    "timedatectl_status": {
+      "argv": [
+        "timedatectl",
+        "status"
+      ],
+      "captured_at_local": "2026-10-28T16:26:32.153Z",
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "               Local time: Wed 2026-10-28 16:26:32 UTC\n           Universal time: Wed 2026-10-28 16:26:32 UTC\n                 RTC time: Wed 2026-10-28 16:26:32\n                Time zone: Etc/UTC (UTC, +0000)\nSystem clock synchronized: yes\n              NTP service: active\n          RTC in local TZ: no\n"
+    },
+    "timedatectl_timesync_status": {
+      "argv": [
+        "timedatectl",
+        "timesync-status"
+      ],
+      "captured_at_local": "2026-10-28T16:26:32.245Z",
+      "exit_code": 1,
+      "stderr": "Failed to query server: The name org.freedesktop.timesync1 was not provided by any .service files\n",
+      "stdout": ""
+    },
+    "uname": {
+      "argv": [
+        "uname",
+        "-a"
+      ],
+      "captured_at_local": "2026-10-28T16:26:32.149Z",
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "Linux runnervm9u1px 7.0.0-1017-azure #17~24.04.1-Ubuntu SMP PREEMPT Thu Sep 24 19:06:39 UTC 2026 aarch64 aarch64 aarch64 GNU/Linux\n"
+    }
+  },
+  "daemon_evidence": {
+    "kind": "chrony",
+    "offset_s": -5.03e-06,
+    "root_dispersion_s": 3.4863e-05,
+    "stratum": 1,
+    "synchronised": true,
+    "update_interval_s": 8.0
+  },
+  "derivation": {
+    "activation_threshold_ms": 100.0,
+    "bound_ms": 0.040338502110860965,
+    "drift_allowance_ms": 0.00032550211086096535,
+    "formula": "|offset| + root_dispersion + drift_allowance + granularity",
+    "granularity_ms": 0.00012,
+    "offset_ms": 0.00503,
+    "passes_activation_100ms": true,
+    "passes_per_observation_250ms": true,
+    "per_observation_max_ms": 250.0,
+    "root_dispersion_ms": 0.034863,
+    "status": "DERIVED"
+  },
+  "drift": {
+    "drift_ppm": -0.04068776385762067,
+    "ended_at_local": "2026-10-28T16:27:02.309Z",
+    "monotonic_elapsed_s": 30.00007775299997,
+    "started_at_local": null,
+    "wall_elapsed_s": 30.00007653236389,
+    "window_s": 30.0
+  },
+  "environment": {
+    "machine": "aarch64",
+    "platform": "Linux-7.0.0-1017-azure-aarch64-with-glibc2.39",
+    "python": "3.12.15 (main, Oct  1 2026, 02:36:15) [GCC 13.3.0]",
+    "runner_env": {
+      "GITHUB_RUN_ID": "40725964937",
+      "GITHUB_WORKFLOW": "cap1-clock-probe",
+      "ImageOS": "ubuntu24-arm64",
+      "ImageVersion": "20261026.166.1",
+      "RUNNER_ARCH": "ARM64",
+      "RUNNER_NAME": "GitHub Actions 1000000001",
+      "RUNNER_OS": "Linux"
+    }
+  },
+  "finished_at_local": "2026-10-28T16:27:02.352Z",
+  "granularity_ms": 0.00012,
+  "probe": "cap1-gha-clock-probe/1",
+  "started_at_local": "2026-10-28T16:26:32.147Z",
+  "timestamps": "all timestamps LOCAL host wall clock unless named",
+  "udp123_diagnostic": [
+    {
+      "checked_at_local": "2026-10-28T16:26:32.263Z",
+      "cristian_offset_ms_diagnostic_only": -0.36978721618652344,
+      "resolved_ip": "162.159.200.1",
+      "result": "RESPONSE",
+      "rtt_ms": 6.521701812744141,
+      "server": "time.cloudflare.com",
+      "stratum": 3
+    },
+    {
+      "checked_at_local": "2026-10-28T16:26:32.279Z",
+      "cristian_offset_ms_diagnostic_only": -0.17189979553222656,
+      "resolved_ip": "216.239.35.0",
+      "result": "RESPONSE",
+      "rtt_ms": 6.516456604003906,
+      "server": "time.google.com",
+      "stratum": 1
+    },
+    {
+      "checked_at_local": "2026-10-28T16:26:32.288Z",
+      "cristian_offset_ms_diagnostic_only": 0.19788742065429688,
+      "resolved_ip": "216.66.48.42",
+      "result": "RESPONSE",
+      "rtt_ms": 18.192291259765625,
+      "server": "pool.ntp.org",
+      "stratum": 1
+    }
+  ]
+}
