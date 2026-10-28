@@ -1,1 +1,69 @@
-IiIiSW5kZXBlbmRlbnQgUFQtMUwgdmVyZGljdCByZWFkZXIgKEctQ09MTC1GV0Qgc2VjLiA4KS4KClJlYWRzIE9OTFkgdGhlIHNlYWxlZCBjb2hvcnQgZXZpZGVuY2Ugc3RvcmVzIChuZXZlciB0aGUgY2FwdHVyZSB3cml0ZXIncwpzdGF0ZSkgYW5kIGFwcGxpZXMgdGhlIFJldiAzIHRocmVzaG9sZHMgZXhhY3RseToKLSA+PTk4JSBvZiBkaXNjb3ZlcmVkIGNvaG9ydCBtYXJrZXRzOiBWQUxJRCBzdHJpa2Ugb2JzZXJ2YXRpb24gd2l0aAogIHJlY2VpcHQgKyB1bmNlcnRhaW50eSA8PSBULTMwMCAoY29uc2VydmF0aXZlIHJ1bGUsIGZyb3plbiAyNTAgbXMgYm91bmQpLgotIDEwMCUgb2YgY29ob3J0IG1hcmtldHM6IFZBTElEIGV2aWRlbmNlIGZvciBCT1RIIFQtMzAwIGFuZCBULTYwLgotIFplcm8gcHJvdmVuYW5jZSBkZWZlY3RzIGFtb25nIHJlbGllZC11cG9uIG9ic2VydmF0aW9ucy4KLSBGdWxsIGFjY291bnRpbmc6IG9ic2VydmVkIC8gaW52YWxpZCAvIGdhcCAvIG5ldmVyLWNyZWF0ZWQgLyBxdWFyYW50aW5lZC4KIiIiCmltcG9ydCBqc29uCmltcG9ydCBvcwppbXBvcnQgc3lzCmZyb20gZGF0ZXRpbWUgaW1wb3J0IGRhdGV0aW1lLCB0aW1lem9uZQoKc3lzLnBhdGguaW5zZXJ0KDAsIG9zLnBhdGguZGlybmFtZShvcy5wYXRoLmRpcm5hbWUob3MucGF0aC5hYnNwYXRoKF9fZmlsZV9fKSkpKQpmcm9tIGluZ2VzdGlvbiBpbXBvcnQgY2FwMQoKUFJPVkVOQU5DRV9ERUZFQ1RTID0geyJQQVlMT0FEX0hBU0hfTUlTTUFUQ0giLCAiVElNRVNUQU1QX09SREVSIiwKICAgICAgICAgICAgICAgICAgICAgICJWRU5VRV9UU19JTkNPTlNJU1RFTlQiLCAiQ0xPQ0tfVU5LTk9XTiIsCiAgICAgICAgICAgICAgICAgICAgICAiQ0xPQ0tfVU5NRUFTVVJFRCIsICJDTE9DS19FWENFU1NJVkUifQpCT1VORF9NUyA9IDI1MAoKCmRlZiBfbXMoaXNvKToKICAgIHJldHVybiBpbnQoZGF0ZXRpbWUuc3RycHRpbWUoaXNvLCAiJVktJW0tJWRUJUg6JU06JVNaIikucmVwbGFjZSgKICAgICAgICB0emluZm89dGltZXpvbmUudXRjKS50aW1lc3RhbXAoKSAqIDEwMDApCgoKZGVmIHZlcmRpY3QoY29ob3J0X2NoYWluX3BhdGgsIGNvaG9ydF9sb19pc28sIGNvaG9ydF9oaV9pc28pOgogICAgY2hhaW4gPSBjYXAxLkNoYWluU3RvcmUoY29ob3J0X2NoYWluX3BhdGgpCiAgICBsbywgaGkgPSBfbXMoY29ob3J0X2xvX2lzbyksIF9tcyhjb2hvcnRfaGlfaXNvKQogICAgbWFya2V0cyA9IHt9CiAgICBmb3IgcmVjIGluIGNoYWluLnJlY29yZHM6CiAgICAgICAgaWYgcmVjLmdldCgia2luZCIpID09ICJESVNDT1ZFUlkiOgogICAgICAgICAgICBmb3IgbSBpbiByZWMuZ2V0KCJtYXJrZXRzIiwgW10pOgogICAgICAgICAgICAgICAgbWFya2V0c1ttWyJ0aWNrZXIiXV0gPSBtCiAgICBjb2hvcnQgPSB7dDogbSBmb3IgdCwgbSBpbiBtYXJrZXRzLml0ZW1zKCkKICAgICAgICAgICAgICBpZiBsbyA8PSBfbXMobVsiY2xvc2VfdGltZSJdKSA8IGhpfQogICAgcm93cywgZGVmZWN0cyA9IHt9LCAwCiAgICBvazMwMCA9IG9rYm90aCA9IDAKICAgIGZvciB0aWNrZXIsIG0gaW4gc29ydGVkKGNvaG9ydC5pdGVtcygpKToKICAgICAgICBjbG9zZSA9IF9tcyhtWyJjbG9zZV90aW1lIl0pCiAgICAgICAgZTMwMCA9IGNhcDEucGl0X2VsaWdpYmxlKGNoYWluLCB0aWNrZXIsIGNsb3NlIC0gMzAwXzAwMCwgQk9VTkRfTVMpCiAgICAgICAgZTYwID0gY2FwMS5waXRfZWxpZ2libGUoY2hhaW4sIHRpY2tlciwgY2xvc2UgLSA2MF8wMDAsIEJPVU5EX01TKQogICAgICAgIHJlbGllZCA9IFtyIGZvciByIGluIGNoYWluLnJlY29yZHMKICAgICAgICAgICAgICAgICAgaWYgci5nZXQoImtpbmQiKSA9PSAiT0JTRVJWQVRJT04iCiAgICAgICAgICAgICAgICAgIGFuZCByWyJ0aWNrZXIiXSA9PSB0aWNrZXIgYW5kIHJbInZhbGlkaXR5Il0gPT0gIklOVkFMSUQiCiAgICAgICAgICAgICAgICAgIGFuZCByLmdldCgiaW52YWxpZF9yZWFzb24iKSBpbiBQUk9WRU5BTkNFX0RFRkVDVFNdCiAgICAgICAgZGVmZWN0cyArPSBsZW4ocmVsaWVkKQogICAgICAgIHJvd3NbdGlja2VyXSA9IHsidDMwMCI6IGUzMDBbImVsaWdpYmxlIl0sICJ0NjAiOiBlNjBbImVsaWdpYmxlIl0sCiAgICAgICAgICAgICAgICAgICAgICAgICJxdWFyYW50aW5lZCI6IGNhcDEuaXNfcXVhcmFudGluZWQoY2hhaW4sIHRpY2tlcil9CiAgICAgICAgb2szMDAgKz0gZTMwMFsiZWxpZ2libGUiXQogICAgICAgIG9rYm90aCArPSAoZTMwMFsiZWxpZ2libGUiXSBhbmQgZTYwWyJlbGlnaWJsZSJdKQogICAgbiA9IGxlbihjb2hvcnQpCiAgICBnYXBzID0gc3VtKDEgZm9yIHIgaW4gY2hhaW4ucmVjb3JkcyBpZiByLmdldCgia2luZCIpID09ICJHQVAiKQogICAgaW52YWxpZCA9IHN1bSgxIGZvciByIGluIGNoYWluLnJlY29yZHMKICAgICAgICAgICAgICAgICAgaWYgci5nZXQoImtpbmQiKSA9PSAiT0JTRVJWQVRJT04iCiAgICAgICAgICAgICAgICAgIGFuZCByWyJ2YWxpZGl0eSJdID09ICJJTlZBTElEIikKICAgIHF1YXJhbnRpbmVkID0gc3VtKDEgZm9yIHIgaW4gY2hhaW4ucmVjb3JkcwogICAgICAgICAgICAgICAgICAgICAgaWYgci5nZXQoImtpbmQiKSA9PSAiUVVBUkFOVElORSIpCiAgICBwY3QzMDAgPSAob2szMDAgLyBuKSBpZiBuIGVsc2UgMC4wCiAgICBwYXNzZWQgPSBuID4gMCBhbmQgcGN0MzAwID49IDAuOTggYW5kIG9rYm90aCA9PSBuIGFuZCBkZWZlY3RzID09IDAKICAgIHJldHVybiB7ImNvaG9ydF9tYXJrZXRzIjogbiwgImVsaWdpYmxlX3QzMDAiOiBvazMwMCwKICAgICAgICAgICAgInBjdF90MzAwIjogcm91bmQocGN0MzAwLCA0KSwgImVsaWdpYmxlX2JvdGgiOiBva2JvdGgsCiAgICAgICAgICAgICJwcm92ZW5hbmNlX2RlZmVjdHNfcmVsaWVkIjogZGVmZWN0cywgImdhcF9yZWNvcmRzIjogZ2FwcywKICAgICAgICAgICAgImludmFsaWRfb2JzZXJ2YXRpb25zIjogaW52YWxpZCwgInF1YXJhbnRpbmVkIjogcXVhcmFudGluZWQsCiAgICAgICAgICAgICJ2ZXJkaWN0IjogIlBBU1MiIGlmIHBhc3NlZCBlbHNlICJGQUlMIiwKICAgICAgICAgICAgImNoYWluX3RpcCI6IGNoYWluLnRpcH0K
+"""Independent PT-1L verdict reader (G-COLL-FWD sec. 8).
+
+Reads ONLY the sealed cohort evidence stores (never the capture writer's
+state) and applies the Rev 3 thresholds exactly:
+- >=98% of discovered cohort markets: VALID strike observation with
+  receipt + uncertainty <= T-300 (conservative rule, frozen 250 ms bound).
+- 100% of cohort markets: VALID evidence for BOTH T-300 and T-60.
+- Zero provenance defects among relied-upon observations.
+- Full accounting: observed / invalid / gap / never-created / quarantined.
+"""
+import json
+import os
+import sys
+from datetime import datetime, timezone
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from ingestion import cap1
+
+PROVENANCE_DEFECTS = {"PAYLOAD_HASH_MISMATCH", "TIMESTAMP_ORDER",
+                      "VENUE_TS_INCONSISTENT", "CLOCK_UNKNOWN",
+                      "CLOCK_UNMEASURED", "CLOCK_EXCESSIVE"}
+BOUND_MS = 250
+
+
+def _ms(iso):
+    return int(datetime.strptime(iso, "%Y-%m-%dT%H:%M:%SZ").replace(
+        tzinfo=timezone.utc).timestamp() * 1000)
+
+
+def verdict(cohort_chain_path, cohort_lo_iso, cohort_hi_iso):
+    chain = cap1.ChainStore(cohort_chain_path)
+    lo, hi = _ms(cohort_lo_iso), _ms(cohort_hi_iso)
+    markets = {}
+    for rec in chain.records:
+        if rec.get("kind") == "DISCOVERY":
+            for m in rec.get("markets", []):
+                markets[m["ticker"]] = m
+    cohort = {t: m for t, m in markets.items()
+              if lo <= _ms(m["close_time"]) < hi}
+    rows, defects = {}, 0
+    ok300 = okboth = 0
+    for ticker, m in sorted(cohort.items()):
+        close = _ms(m["close_time"])
+        e300 = cap1.pit_eligible(chain, ticker, close - 300_000, BOUND_MS)
+        e60 = cap1.pit_eligible(chain, ticker, close - 60_000, BOUND_MS)
+        relied = [r for r in chain.records
+                  if r.get("kind") == "OBSERVATION"
+                  and r["ticker"] == ticker and r["validity"] == "INVALID"
+                  and r.get("invalid_reason") in PROVENANCE_DEFECTS]
+        defects += len(relied)
+        rows[ticker] = {"t300": e300["eligible"], "t60": e60["eligible"],
+                        "quarantined": cap1.is_quarantined(chain, ticker)}
+        ok300 += e300["eligible"]
+        okboth += (e300["eligible"] and e60["eligible"])
+    n = len(cohort)
+    gaps = sum(1 for r in chain.records if r.get("kind") == "GAP")
+    invalid = sum(1 for r in chain.records
+                  if r.get("kind") == "OBSERVATION"
+                  and r["validity"] == "INVALID")
+    quarantined = sum(1 for r in chain.records
+                      if r.get("kind") == "QUARANTINE")
+    pct300 = (ok300 / n) if n else 0.0
+    passed = n > 0 and pct300 >= 0.98 and okboth == n and defects == 0
+    return {"cohort_markets": n, "eligible_t300": ok300,
+            "pct_t300": round(pct300, 4), "eligible_both": okboth,
+            "provenance_defects_relied": defects, "gap_records": gaps,
+            "invalid_observations": invalid, "quarantined": quarantined,
+            "verdict": "PASS" if passed else "FAIL",
+            "chain_tip": chain.tip}
