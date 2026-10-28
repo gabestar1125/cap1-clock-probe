@@ -1,1 +1,205 @@
-IiIiTGFiIGNoYWluIGRyaXZlciDigJQgaW50ZXJsZWF2ZXMgU2VnbWVudEpvYnMgd2l0aCB0cnVlIG92ZXJsYXAKc2VtYW50aWNzLCBhY3RzIG9uIHJlY29yZGVkIGRpc3BhdGNoZXMgYnkgc3RhcnRpbmcgc3VjY2Vzc29yIGpvYnMsCmFuZCBzdXBwb3J0cyBraWxsL3JlY292ZXJ5IGluamVjdGlvbiBmb3IgdGhlIGZhaWx1cmUgc3VpdGVzLgoKQ2xvY2sgbW9kZWw6IGVhY2ggam9iIGdldHMgaXRzIE9XTiBWaXJ0dWFsQ2xvY2sgc2hhcmluZyBvbmUgZXBvY2gg4oCUCmV4YWN0bHkgdGhlIHByb2R1Y3Rpb24gYXNzdW1wdGlvbiAoaW5kZXBlbmRlbnQgcHJvY2Vzc2VzIHdob3NlIGNsb2NrcwphcmUgc3luY2hyb25pc2VkIHdpdGhpbiB0aGUgc2VjdGlvbi1DIGJvdW5kKS4gQSBqb2IncyBzbGVlcHMgYWR2YW5jZQpvbmx5IGl0cyBvd24gZnJhbWU7IHRoZSBzdHViIHZlbnVlIGFuZCBpbnN0cnVtZW50YXRpb24gdGltZXN0YW1wIGJ5CnRoZSBjdXJyZW50bHktc3RlcHBpbmcgam9iJ3MgZnJhbWUgKGhhcm5lc3MuY2xvY2sgaXMgYSBtdXggb3ZlciB0aGUKcGVyLWpvYiBjbG9ja3MsIHNvIHRlc3QgY29kZSBjYW4gd2lyZSB0aGUgdmVudWUgdG8gaGFybmVzcy5jbG9jaykuCkV2ZXJ5dGhpbmcgaXMgc3ludGhldGljOyBubyBuZXR3b3JrIGlzIHRvdWNoZWQuCiIiIgppbXBvcnQganNvbgppbXBvcnQgb3MKCmZyb20gLiBpbXBvcnQgZ2hfY29tbW9uIGFzIEcKZnJvbSAuIGltcG9ydCBjbGFpbXMgYXMgY2xhaW1zX21vZApmcm9tIC4gaW1wb3J0IHN1cGVydmlzb3IgYXMgc3VwCmZyb20gLmRpc3BhdGNoZXIgaW1wb3J0IFJlY29yZGluZ0Rpc3BhdGNoCmZyb20gLnB1Ymxpc2hlciBpbXBvcnQgRGlyUHVibGlzaGVyCmZyb20gLnZlbnVlX3N0dWIgaW1wb3J0IFZpcnR1YWxDbG9jawoKCmNsYXNzIF9DbG9ja011eDoKICAgICIiIm5vd19zKCkvc2xlZXBfcygpIGRlbGVnYXRpbmcgdG8gdGhlIGFjdGl2ZSBqb2IncyBjbG9jay4iIiIKCiAgICBkZWYgX19pbml0X18oc2VsZiwgaGFybmVzcyk6CiAgICAgICAgc2VsZi5oYXJuZXNzID0gaGFybmVzcwoKICAgIGRlZiBub3dfcyhzZWxmKToKICAgICAgICBhY3RpdmUgPSBzZWxmLmhhcm5lc3MuX2FjdGl2ZV9jbG9jawogICAgICAgIHJldHVybiBhY3RpdmUubm93X3MoKSBpZiBhY3RpdmUgaXMgbm90IE5vbmUgZWxzZSBcCiAgICAgICAgICAgIHNlbGYuaGFybmVzcy5zdGFydF9zCgogICAgZGVmIHNsZWVwX3Moc2VsZiwgcyk6CiAgICAgICAgYWN0aXZlID0gc2VsZi5oYXJuZXNzLl9hY3RpdmVfY2xvY2sKICAgICAgICBpZiBhY3RpdmUgaXMgbm90IE5vbmU6CiAgICAgICAgICAgIGFjdGl2ZS5zbGVlcF9zKHMpCgoKY2xhc3MgSGFybmVzc0Rpc3BhdGNoKFJlY29yZGluZ0Rpc3BhdGNoKToKICAgIGRlZiBfX2luaXRfXyhzZWxmLCBoYXJuZXNzKToKICAgICAgICBzdXBlcigpLl9faW5pdF9fKCkKICAgICAgICBzZWxmLmhhcm5lc3MgPSBoYXJuZXNzCgogICAgZGVmIGRpc3BhdGNoKHNlbGYsICosIHNlZ21lbnRfaW5kZXgsIG1hbmlmZXN0X3NoYTI1Niwgcm9sZT0ic2VnbWVudCIpOgogICAgICAgIHJlcyA9IHN1cGVyKCkuZGlzcGF0Y2goc2VnbWVudF9pbmRleD1zZWdtZW50X2luZGV4LAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgbWFuaWZlc3Rfc2hhMjU2PW1hbmlmZXN0X3NoYTI1NiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHJvbGU9cm9sZSkKICAgICAgICBzZWxmLmhhcm5lc3Mub25fZGlzcGF0Y2goc2VnbWVudF9pbmRleCwgbWFuaWZlc3Rfc2hhMjU2LCByb2xlKQogICAgICAgIHJldHVybiByZXMKCgpjbGFzcyBDaGFpbkhhcm5lc3M6CiAgICBkZWYgX19pbml0X18oc2VsZiwgKiwgZnJlZXplLCByb290LCB2ZW51ZV9jb25uZWN0b3IsCiAgICAgICAgICAgICAgICAgc2VjdGlvbl9jX3Byb3ZpZGVyLCBwcm9iZV9wcm92aWRlciwKICAgICAgICAgICAgICAgICBwdWJsaXNoZXI9Tm9uZSwgY2xhaW1fc3RvcmU9Tm9uZSwgY2xvY2tfc3RhcnRfcz1Ob25lKToKICAgICAgICBzZWxmLmZ6ID0gZnJlZXplCiAgICAgICAgc2VsZi5yb290ID0gcm9vdAogICAgICAgIG9zLm1ha2VkaXJzKHJvb3QsIGV4aXN0X29rPVRydWUpCiAgICAgICAgc2VsZi5yZW1vdGVfZGlyID0gb3MucGF0aC5qb2luKHJvb3QsICJyZW1vdGUiKQogICAgICAgIHNlbGYucHVibGlzaGVyID0gcHVibGlzaGVyIG9yIERpclB1Ymxpc2hlcihzZWxmLnJlbW90ZV9kaXIpCiAgICAgICAgc2VsZi5jbGFpbXMgPSBjbGFpbV9zdG9yZSBvciBjbGFpbXNfbW9kLkRpckNsYWltU3RvcmUoCiAgICAgICAgICAgIG9zLnBhdGguam9pbihyb290LCAiY2xhaW1zIikpCiAgICAgICAgc2VsZi5zdGFydF9zID0gY2xvY2tfc3RhcnRfcyBpZiBjbG9ja19zdGFydF9zIGlzIG5vdCBOb25lIFwKICAgICAgICAgICAgZWxzZSBmcmVlemVbIl9hX21zIl0gLyAxMDAwLjAgXAogICAgICAgICAgICAtIGZyZWV6ZVsicGhhc2UiXVsiZGlzcGF0Y2hfbGVhZF9zIl0gLSAzNjAwCiAgICAgICAgc2VsZi5jbG9jayA9IF9DbG9ja011eChzZWxmKQogICAgICAgIHNlbGYuX2FjdGl2ZV9jbG9jayA9IE5vbmUKICAgICAgICBzZWxmLmpvYl9jbG9ja3MgPSB7fQogICAgICAgIHNlbGYudmVudWVfY29ubmVjdG9yID0gdmVudWVfY29ubmVjdG9yCiAgICAgICAgc2VsZi5zZWN0aW9uX2NfcHJvdmlkZXIgPSBzZWN0aW9uX2NfcHJvdmlkZXIKICAgICAgICBzZWxmLnByb2JlX3Byb3ZpZGVyID0gcHJvYmVfcHJvdmlkZXIKICAgICAgICBzZWxmLmV2ZW50cyA9IFtdCiAgICAgICAgc2VsZi5qb2JzID0ge30KICAgICAgICBzZWxmLndha2VzID0ge30KICAgICAgICBzZWxmLnBlbmRpbmdfZGlzcGF0Y2ggPSBbXQogICAgICAgIHNlbGYuZGlzcGF0Y2hlciA9IEhhcm5lc3NEaXNwYXRjaChzZWxmKQogICAgICAgIHNlbGYucnVuX2NvdW50ZXIgPSAwCiAgICAgICAgc2VsZi5yZWNvdmVyeV9jb3VudCA9IHt9CiAgICAgICAgc2VsZi5zZWFsX2pvYiA9IE5vbmUKICAgICAgICBzZWxmLnNlYWxfcmVzdWx0ID0gTm9uZQogICAgICAgIHJhdyA9IEcuY2Fub24oe2s6IHYgZm9yIGssIHYgaW4gZnJlZXplLml0ZW1zKCkKICAgICAgICAgICAgICAgICAgICAgICBpZiBub3Qgay5zdGFydHN3aXRoKCJfIil9KS5lbmNvZGUoKQogICAgICAgIHNlbGYucHVibGlzaGVyLnB1Ymxpc2goIm1haW4iLCAiRlJFRVpFLmpzb24iLCByYXcpCgogICAgIyAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0gam9icwogICAgZGVmIF9uZXdfcnVuX2lkKHNlbGYpOgogICAgICAgIHNlbGYucnVuX2NvdW50ZXIgKz0gMQogICAgICAgIHJldHVybiAicnVuLSUwNGQiICUgc2VsZi5ydW5fY291bnRlcgoKICAgIGRlZiBzdGFydF9zZWdtZW50KHNlbGYsIGssIGRpc3BhdGNoX2lucHV0LCAqLCBydW5faWQ9Tm9uZSwKICAgICAgICAgICAgICAgICAgICAgIGRpc3BhdGNoZXI9Tm9uZSwgcmVjb3Zlcnk9RmFsc2UsIHN0YXJ0X3M9Tm9uZSk6CiAgICAgICAgY2xvY2sgPSBWaXJ0dWFsQ2xvY2soCiAgICAgICAgICAgIHN0YXJ0X3MgaWYgc3RhcnRfcyBpcyBub3QgTm9uZSBlbHNlIHNlbGYuY2xvY2subm93X3MoKSkKICAgICAgICBzZWxmLmpvYl9jbG9ja3Nba10gPSBjbG9jawogICAgICAgIHJ1bl9pZCA9IHJ1bl9pZCBvciBzZWxmLl9uZXdfcnVuX2lkKCkKICAgICAgICBqb2IgPSBzdXAuU2VnbWVudEpvYigKICAgICAgICAgICAgZnJlZXplPXNlbGYuZnosIHNlZ21lbnRfaW5kZXg9aywKICAgICAgICAgICAgcnVuX2lkPXJ1bl9pZCwKICAgICAgICAgICAgcHVibGlzaGVyPXNlbGYucHVibGlzaGVyLCBjbGFpbV9zdG9yZT1zZWxmLmNsYWltcywKICAgICAgICAgICAgZGlzcGF0Y2hlcj1kaXNwYXRjaGVyIG9yIHNlbGYuZGlzcGF0Y2hlciwKICAgICAgICAgICAgY29ubmVjdG9yPXNlbGYudmVudWVfY29ubmVjdG9yLCBjbG9jaz1jbG9jaywKICAgICAgICAgICAgIyBwcm9kdWN0aW9uLWZhaXRoZnVsOiBldmVyeSBqb2IgZ2V0cyBhIEZSRVNIIHdvcmtzcGFjZQogICAgICAgICAgICAjIChhIGtpbGxlZCBqb2IncyB3b3Jrc3BhY2UgZG9lcyBub3Qgc3Vydml2ZSk7IHJlY292ZXJ5CiAgICAgICAgICAgICMgcmVzdW1lcyBmcm9tIHB1Ymxpc2hlZCBjaHVua3MsIG5vdCBmcm9tIGxvY2FsIGZpbGVzCiAgICAgICAgICAgIHdvcmtfcm9vdD1vcy5wYXRoLmpvaW4oc2VsZi5yb290LCAid29yayIsIHJ1bl9pZCksCiAgICAgICAgICAgIHNlY3Rpb25fY19wcm92aWRlcj1zZWxmLnNlY3Rpb25fY19wcm92aWRlciwKICAgICAgICAgICAgcHJvYmVfcHJvdmlkZXI9c2VsZi5wcm9iZV9wcm92aWRlciwKICAgICAgICAgICAgZGlzcGF0Y2hfaW5wdXQ9ZGlzcGF0Y2hfaW5wdXQsIGV2ZW50cz1zZWxmLmV2ZW50cykKICAgICAgICBqb2IucmVjb3ZlcnkgPSByZWNvdmVyeQogICAgICAgIHNlbGYuam9ic1trXSA9IGpvYgogICAgICAgIHNlbGYud2FrZXNba10gPSBjbG9jay5ub3dfcygpCiAgICAgICAgcmV0dXJuIGpvYgoKICAgIGRlZiBvbl9kaXNwYXRjaChzZWxmLCBzZWdtZW50X2luZGV4LCBtYW5pZmVzdF9zaGEyNTYsIHJvbGUpOgogICAgICAgIHNlbGYucGVuZGluZ19kaXNwYXRjaC5hcHBlbmQoCiAgICAgICAgICAgIHsic2VnbWVudF9pbmRleCI6IHNlZ21lbnRfaW5kZXgsCiAgICAgICAgICAgICAibWFuaWZlc3Rfc2hhMjU2IjogbWFuaWZlc3Rfc2hhMjU2LCAicm9sZSI6IHJvbGUsCiAgICAgICAgICAgICAiYXRfcyI6IHNlbGYuY2xvY2subm93X3MoKX0pCgogICAgZGVmIF9hY3Rfb25fZGlzcGF0Y2hlcyhzZWxmKToKICAgICAgICB3aGlsZSBzZWxmLnBlbmRpbmdfZGlzcGF0Y2g6CiAgICAgICAgICAgIGQgPSBzZWxmLnBlbmRpbmdfZGlzcGF0Y2gucG9wKDApCiAgICAgICAgICAgIGlmIGRbInJvbGUiXSA9PSAic2VhbCI6CiAgICAgICAgICAgICAgICBzZWFsX3J1biA9IHNlbGYuX25ld19ydW5faWQoKQogICAgICAgICAgICAgICAgc2VsZi5zZWFsX2pvYiA9IHN1cC5TZWFsSm9iKAogICAgICAgICAgICAgICAgICAgIGZyZWV6ZT1zZWxmLmZ6LCBydW5faWQ9c2VhbF9ydW4sCiAgICAgICAgICAgICAgICAgICAgcHVibGlzaGVyPXNlbGYucHVibGlzaGVyLCBjbGFpbV9zdG9yZT1zZWxmLmNsYWltcywKICAgICAgICAgICAgICAgICAgICB3b3JrX3Jvb3Q9b3MucGF0aC5qb2luKHNlbGYucm9vdCwgIndvcmsiLCBzZWFsX3J1biksCiAgICAgICAgICAgICAgICAgICAgZXZlbnRzPXNlbGYuZXZlbnRzKQogICAgICAgICAgICAgICAgc2VsZi5zZWFsX3Jlc3VsdCA9IHNlbGYuc2VhbF9qb2IucnVuKAogICAgICAgICAgICAgICAgICAgIGRbIm1hbmlmZXN0X3NoYTI1NiJdLCBub3dfcz1kWyJhdF9zIl0pCiAgICAgICAgICAgIGVsaWYgZFsic2VnbWVudF9pbmRleCJdIG5vdCBpbiBzZWxmLmpvYnM6CiAgICAgICAgICAgICAgICBzZWxmLnN0YXJ0X3NlZ21lbnQoZFsic2VnbWVudF9pbmRleCJdLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGRbIm1hbmlmZXN0X3NoYTI1NiJdLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHN0YXJ0X3M9ZFsiYXRfcyJdKQoKICAgICMgLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSBkcml2ZXIKICAgIGRlZiBydW4oc2VsZiwgbWF4X3N0ZXBzPTJfMDAwXzAwMCk6CiAgICAgICAgc3RlcHMgPSAwCiAgICAgICAgd2hpbGUgc3RlcHMgPCBtYXhfc3RlcHM6CiAgICAgICAgICAgIHNlbGYuX2FjdF9vbl9kaXNwYXRjaGVzKCkKICAgICAgICAgICAgYWN0aXZlID0gWyhzZWxmLndha2VzW2tdLCBrKSBmb3IgaywgaiBpbiBzZWxmLmpvYnMuaXRlbXMoKQogICAgICAgICAgICAgICAgICAgICAgaWYgbm90IGouZmluaXNoZWRdCiAgICAgICAgICAgIGlmIG5vdCBhY3RpdmU6CiAgICAgICAgICAgICAgICBicmVhawogICAgICAgICAgICBfdywgayA9IG1pbihhY3RpdmUpCiAgICAgICAgICAgIGpvYiA9IHNlbGYuam9ic1trXQogICAgICAgICAgICBjbG9jayA9IHNlbGYuam9iX2Nsb2Nrc1trXQogICAgICAgICAgICBjbG9jay5hZHZhbmNlX3RvKHNlbGYud2FrZXNba10pCiAgICAgICAgICAgIHNlbGYuX2FjdGl2ZV9jbG9jayA9IGNsb2NrCiAgICAgICAgICAgIHdha2UgPSBqb2Iuc3RlcCgpCiAgICAgICAgICAgIHN0ZXBzICs9IDEKICAgICAgICAgICAgc2VsZi53YWtlc1trXSA9IHdha2UgaWYgd2FrZSBpcyBub3QgTm9uZSBcCiAgICAgICAgICAgICAgICBlbHNlIGZsb2F0KCJpbmYiKQogICAgICAgICAgICBzZWxmLl9hY3RpdmVfY2xvY2sgPSBOb25lCiAgICAgICAgc2VsZi5fYWN0X29uX2Rpc3BhdGNoZXMoKQogICAgICAgIHJldHVybiBzZWxmLnN1bW1hcnkoKQoKICAgIGRlZiBraWxsKHNlbGYsIGspOgogICAgICAgICIiIlNpbXVsYXRlIGEgcGxhdGZvcm0ga2lsbDogdGhlIGpvYiBzaW1wbHkgbmV2ZXIgc3RlcHMgYWdhaW4KICAgICAgICAobm8gZmluYWwsIGhlYXJ0YmVhdCBnb2VzIHN0YWxlIGluIGV2ZXJ5IG90aGVyIGZyYW1lKS4iIiIKICAgICAgICBqb2IgPSBzZWxmLmpvYnMucG9wKGspCiAgICAgICAgc2VsZi53YWtlcy5wb3AoaywgTm9uZSkKICAgICAgICBzZWxmLmV2ZW50cy5hcHBlbmQoeyJldmVudCI6ICJLSUxMRUQiLCAic2VnbWVudCI6IGssCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAicnVuX2lkIjogam9iLnJ1bl9pZH0pCiAgICAgICAgcmV0dXJuIGpvYgoKICAgIGRlZiByZWNvdmVyKHNlbGYsIGssIGRpc3BhdGNoX2lucHV0KToKICAgICAgICAiIiJSZWNvdmVyeSBkaXNwYXRjaCBvZiB0aGUgc2FtZSBzZWdtZW50IGluZGV4IChkZXNpZ24gc2VjLgogICAgICAgIDgpLCBjb3VudGVkIHBlciBVVEMgZGF5IGFnYWluc3QgdGhlIGZyb3plbiByZXN0YXJ0IGJ1ZGdldDsKICAgICAgICB0aGUgaGFybmVzcyByZWZ1c2VzIGJleW9uZCBpdCAodGhlIHByb2R1Y3Rpb24gY291bnQgaXMga2VwdAogICAgICAgIGJ5IHRoZSB3YXRjaGRvZy9wcmluY2lwYWwgcGF0aCwgc2VjLiA3LjQg4oCUIHRoZSBmZWFzaWJpbGl0eQogICAgICAgIHN1aXRlIGV4ZXJjaXNlcyB0aGUgbWFwcGluZyBoZXJlKS4iIiIKICAgICAgICBpbXBvcnQgZGF0ZXRpbWUKICAgICAgICBkYXkgPSBkYXRldGltZS5kYXRldGltZS5mcm9tdGltZXN0YW1wKAogICAgICAgICAgICBzZWxmLmNsb2NrLm5vd19zKCksIGRhdGV0aW1lLnRpbWV6b25lLnV0Yykuc3RyZnRpbWUoCiAgICAgICAgICAgICIlWS0lbS0lZCIpCiAgICAgICAgc2VsZi5yZWNvdmVyeV9jb3VudFtkYXldID0gc2VsZi5yZWNvdmVyeV9jb3VudC5nZXQoZGF5LCAwKSArIDEKICAgICAgICBpZiBzZWxmLnJlY292ZXJ5X2NvdW50W2RheV0gPiBcCiAgICAgICAgICAgICAgICBzZWxmLmZ6WyJidWRnZXRzIl1bIm1heF9yZWNvdmVyeV9wZXJfZGF5Il06CiAgICAgICAgICAgIHNlbGYuZXZlbnRzLmFwcGVuZCh7ImV2ZW50IjogIlJFQ09WRVJZX1JFRlVTRURfT1ZFUl9MSU1JVCIsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgInNlZ21lbnQiOiBrLCAiZGF5IjogZGF5fSkKICAgICAgICAgICAgcmV0dXJuIE5vbmUKICAgICAgICBzdGFydCA9IHNlbGYuam9iX2Nsb2Nrc1trXS5ub3dfcygpIGlmIGsgaW4gc2VsZi5qb2JfY2xvY2tzIFwKICAgICAgICAgICAgZWxzZSBOb25lCiAgICAgICAgcmV0dXJuIHNlbGYuc3RhcnRfc2VnbWVudChrLCBkaXNwYXRjaF9pbnB1dCwgcmVjb3Zlcnk9VHJ1ZSwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHN0YXJ0X3M9c3RhcnQpCgogICAgIyAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0gc3VtbWFyeQogICAgZGVmIHN1bW1hcnkoc2VsZik6CiAgICAgICAgZmluYWxzID0ge30KICAgICAgICBmb3IgayBpbiByYW5nZSgxLCBsZW4oc2VsZi5melsic2VnbWVudF9wbGFuIl1bImxlbmd0aHNfcyJdKQogICAgICAgICAgICAgICAgICAgICAgICsgMSk6CiAgICAgICAgICAgIHJhdyA9IHNlbGYucHVibGlzaGVyLnJlYWQoc3VwLnNlZ19icmFuY2goayksICJmaW5hbC5qc29uIikKICAgICAgICAgICAgZmluYWxzW2tdID0ganNvbi5sb2FkcyhyYXcpIGlmIHJhdyBlbHNlIE5vbmUKICAgICAgICByZXR1cm4geyJmaW5hbHMiOiBmaW5hbHMsCiAgICAgICAgICAgICAgICAiZXZlbnRzIjogc2VsZi5ldmVudHMsCiAgICAgICAgICAgICAgICAic2VhbF92ZXJkaWN0IjogKHNlbGYuc2VhbF9qb2IudmVyZGljdAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBpZiBzZWxmLnNlYWxfam9iIGVsc2UgTm9uZSksCiAgICAgICAgICAgICAgICAicmVjb3ZlcnlfY291bnQiOiBzZWxmLnJlY292ZXJ5X2NvdW50LAogICAgICAgICAgICAgICAgImpvYnMiOiB7azogeyJleGl0X3JlYXNvbiI6IGouZXhpdF9yZWFzb24sCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgImV4aXRfY29kZSI6IGouZXhpdF9jb2RlfQogICAgICAgICAgICAgICAgICAgICAgICAgZm9yIGssIGogaW4gc2VsZi5qb2JzLml0ZW1zKCl9fQo=
+"""Lab chain driver — interleaves SegmentJobs with true overlap
+semantics, acts on recorded dispatches by starting successor jobs,
+and supports kill/recovery injection for the failure suites.
+
+Clock model: each job gets its OWN VirtualClock sharing one epoch —
+exactly the production assumption (independent processes whose clocks
+are synchronised within the section-C bound). A job's sleeps advance
+only its own frame; the stub venue and instrumentation timestamp by
+the currently-stepping job's frame (harness.clock is a mux over the
+per-job clocks, so test code can wire the venue to harness.clock).
+Everything is synthetic; no network is touched.
+"""
+import json
+import os
+
+from . import gh_common as G
+from . import claims as claims_mod
+from . import supervisor as sup
+from .dispatcher import RecordingDispatch
+from .publisher import DirPublisher
+from .venue_stub import VirtualClock
+
+
+class _ClockMux:
+    """now_s()/sleep_s() delegating to the active job's clock."""
+
+    def __init__(self, harness):
+        self.harness = harness
+
+    def now_s(self):
+        active = self.harness._active_clock
+        return active.now_s() if active is not None else \
+            self.harness.start_s
+
+    def sleep_s(self, s):
+        active = self.harness._active_clock
+        if active is not None:
+            active.sleep_s(s)
+
+
+class HarnessDispatch(RecordingDispatch):
+    def __init__(self, harness):
+        super().__init__()
+        self.harness = harness
+
+    def dispatch(self, *, segment_index, manifest_sha256, role="segment"):
+        res = super().dispatch(segment_index=segment_index,
+                               manifest_sha256=manifest_sha256,
+                               role=role)
+        self.harness.on_dispatch(segment_index, manifest_sha256, role)
+        return res
+
+
+class ChainHarness:
+    def __init__(self, *, freeze, root, venue_connector,
+                 section_c_provider, probe_provider,
+                 publisher=None, claim_store=None, clock_start_s=None):
+        self.fz = freeze
+        self.root = root
+        os.makedirs(root, exist_ok=True)
+        self.remote_dir = os.path.join(root, "remote")
+        self.publisher = publisher or DirPublisher(self.remote_dir)
+        self.claims = claim_store or claims_mod.DirClaimStore(
+            os.path.join(root, "claims"))
+        self.start_s = clock_start_s if clock_start_s is not None \
+            else freeze["_a_ms"] / 1000.0 \
+            - freeze["phase"]["dispatch_lead_s"] - 3600
+        self.clock = _ClockMux(self)
+        self._active_clock = None
+        self.job_clocks = {}
+        self.venue_connector = venue_connector
+        self.section_c_provider = section_c_provider
+        self.probe_provider = probe_provider
+        self.events = []
+        self.jobs = {}
+        self.wakes = {}
+        self.pending_dispatch = []
+        self.dispatcher = HarnessDispatch(self)
+        self.run_counter = 0
+        self.recovery_count = {}
+        self.seal_job = None
+        self.seal_result = None
+        raw = G.canon({k: v for k, v in freeze.items()
+                       if not k.startswith("_")}).encode()
+        self.publisher.publish("main", "FREEZE.json", raw)
+
+    # ------------------------------------------------------------ jobs
+    def _new_run_id(self):
+        self.run_counter += 1
+        return "run-%04d" % self.run_counter
+
+    def start_segment(self, k, dispatch_input, *, run_id=None,
+                      dispatcher=None, recovery=False, start_s=None):
+        clock = VirtualClock(
+            start_s if start_s is not None else self.clock.now_s())
+        self.job_clocks[k] = clock
+        run_id = run_id or self._new_run_id()
+        job = sup.SegmentJob(
+            freeze=self.fz, segment_index=k,
+            run_id=run_id,
+            publisher=self.publisher, claim_store=self.claims,
+            dispatcher=dispatcher or self.dispatcher,
+            connector=self.venue_connector, clock=clock,
+            # production-faithful: every job gets a FRESH workspace
+            # (a killed job's workspace does not survive); recovery
+            # resumes from published chunks, not from local files
+            work_root=os.path.join(self.root, "work", run_id),
+            section_c_provider=self.section_c_provider,
+            probe_provider=self.probe_provider,
+            dispatch_input=dispatch_input, events=self.events)
+        job.recovery = recovery
+        self.jobs[k] = job
+        self.wakes[k] = clock.now_s()
+        return job
+
+    def on_dispatch(self, segment_index, manifest_sha256, role):
+        self.pending_dispatch.append(
+            {"segment_index": segment_index,
+             "manifest_sha256": manifest_sha256, "role": role,
+             "at_s": self.clock.now_s()})
+
+    def _act_on_dispatches(self):
+        while self.pending_dispatch:
+            d = self.pending_dispatch.pop(0)
+            if d["role"] == "seal":
+                seal_run = self._new_run_id()
+                self.seal_job = sup.SealJob(
+                    freeze=self.fz, run_id=seal_run,
+                    publisher=self.publisher, claim_store=self.claims,
+                    work_root=os.path.join(self.root, "work", seal_run),
+                    events=self.events)
+                self.seal_result = self.seal_job.run(
+                    d["manifest_sha256"], now_s=d["at_s"])
+            elif d["segment_index"] not in self.jobs:
+                self.start_segment(d["segment_index"],
+                                   d["manifest_sha256"],
+                                   start_s=d["at_s"])
+
+    # ---------------------------------------------------------- driver
+    def run(self, max_steps=2_000_000):
+        steps = 0
+        while steps < max_steps:
+            self._act_on_dispatches()
+            active = [(self.wakes[k], k) for k, j in self.jobs.items()
+                      if not j.finished]
+            if not active:
+                break
+            _w, k = min(active)
+            job = self.jobs[k]
+            clock = self.job_clocks[k]
+            clock.advance_to(self.wakes[k])
+            self._active_clock = clock
+            wake = job.step()
+            steps += 1
+            self.wakes[k] = wake if wake is not None \
+                else float("inf")
+            self._active_clock = None
+        self._act_on_dispatches()
+        return self.summary()
+
+    def kill(self, k):
+        """Simulate a platform kill: the job simply never steps again
+        (no final, heartbeat goes stale in every other frame)."""
+        job = self.jobs.pop(k)
+        self.wakes.pop(k, None)
+        self.events.append({"event": "KILLED", "segment": k,
+                            "run_id": job.run_id})
+        return job
+
+    def recover(self, k, dispatch_input):
+        """Recovery dispatch of the same segment index (design sec.
+        8), counted per UTC day against the frozen restart budget;
+        the harness refuses beyond it (the production count is kept
+        by the watchdog/principal path, sec. 7.4 — the feasibility
+        suite exercises the mapping here)."""
+        import datetime
+        day = datetime.datetime.fromtimestamp(
+            self.clock.now_s(), datetime.timezone.utc).strftime(
+            "%Y-%m-%d")
+        self.recovery_count[day] = self.recovery_count.get(day, 0) + 1
+        if self.recovery_count[day] > \
+                self.fz["budgets"]["max_recovery_per_day"]:
+            self.events.append({"event": "RECOVERY_REFUSED_OVER_LIMIT",
+                                "segment": k, "day": day})
+            return None
+        start = self.job_clocks[k].now_s() if k in self.job_clocks \
+            else None
+        return self.start_segment(k, dispatch_input, recovery=True,
+                                  start_s=start)
+
+    # --------------------------------------------------------- summary
+    def summary(self):
+        finals = {}
+        for k in range(1, len(self.fz["segment_plan"]["lengths_s"])
+                       + 1):
+            raw = self.publisher.read(sup.seg_branch(k), "final.json")
+            finals[k] = json.loads(raw) if raw else None
+        return {"finals": finals,
+                "events": self.events,
+                "seal_verdict": (self.seal_job.verdict
+                                 if self.seal_job else None),
+                "recovery_count": self.recovery_count,
+                "jobs": {k: {"exit_reason": j.exit_reason,
+                             "exit_code": j.exit_code}
+                         for k, j in self.jobs.items()}}
