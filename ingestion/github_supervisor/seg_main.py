@@ -1,1 +1,139 @@
-IiIiU2VnbWVudC9zZWFsIGVudHJ5IHBvaW50IOKAlCB0aGUgcHJvY2VzcyBhIEdpdEh1YiBBY3Rpb25zIGpvYiBydW5zCihhbmQgdGhlIGVtcGlyaWNhbCBzdWl0ZSBydW5zIGFzIGEgc3VicHJvY2VzcykuCgpNb2RlczoKLSAtLWJhY2tlbmQgZGlyIChkZWZhdWx0KTogRGlyUHVibGlzaGVyICsgRGlyQ2xhaW1TdG9yZSAobGFiKS4KLSAtLWJhY2tlbmQgZ2l0IC0tcmVwby1kaXIgRElSIC0tb3JpZ2luIFVSTDogR2l0UHVibGlzaGVyIChkZWRpY2F0ZWQKICBjbG9uZSkgKyBHaXRDbGFpbVN0b3JlICh0aGUgcmVoZWFyc2FsL3Byb2R1Y3Rpb24gZm9ybSkuCi0gLS1kaXNwYXRjaCByZWNvcmRpbmcgKGRlZmF1bHQ7IHByaW50cyBkaXNwYXRjaCByZXF1ZXN0cyBhcyBKU09OCiAgbGluZXMpIG9yIC0tZGlzcGF0Y2ggZ2l0aHViICh3b3JrZmxvd19kaXNwYXRjaCB2aWEgR0lUSFVCX1RPS0VOOwogIFBWLTEgdGVycml0b3J5LCByZWhlYXJzYWwgb25seSBpbiB0aGlzIGJ1aWxkKS4KLSBDbG9jazogLS13YWxsIChkZWZhdWx0KSBvciAtLXZpcnR1YWwtc3RhcnQgRVBPQ0hfUyAoYWNjZWxlcmF0ZWQKICBzeW50aGV0aWMgc2NoZWR1bGU7IHNsZWVwcyBhZHZhbmNlIHRoZSB2aXJ0dWFsIGNsb2NrIGluc3RhbnRseSkuCi0gQ2xvY2sgZXZpZGVuY2U6IC0tc2VjdGlvbi1jIHN5bnRoZXRpYzo8Ym91bmRfbXM+IG9yIGNocm9ueTsKICAtLXByb2JlIHN5bnRoZXRpYzo8dW5jZXJ0YWludHlfbXM+IG9yIGNocm9ueS4gU3ludGhldGljIHByb3ZpZGVycwogIGFyZSBsYWJlbGxlZCBzeW50aGV0aWMgaW4gZXZlcnkgcmVjb3JkIHRoZXkgdG91Y2guCiIiIgppbXBvcnQgYXJncGFyc2UKaW1wb3J0IGpzb24KaW1wb3J0IG9zCmltcG9ydCBzeXMKaW1wb3J0IHRpbWUKCl9IRVJFID0gb3MucGF0aC5kaXJuYW1lKG9zLnBhdGguYWJzcGF0aChfX2ZpbGVfXykpCl9MQUIgPSBvcy5wYXRoLmRpcm5hbWUob3MucGF0aC5kaXJuYW1lKF9IRVJFKSkKaWYgX0xBQiBub3QgaW4gc3lzLnBhdGg6CiAgICBzeXMucGF0aC5pbnNlcnQoMCwgX0xBQikKCmZyb20gaW5nZXN0aW9uLmdpdGh1Yl9zdXBlcnZpc29yIGltcG9ydCBnaF9jb21tb24gYXMgRyAgIyBub3FhOiBFNDAyCmZyb20gaW5nZXN0aW9uLmdpdGh1Yl9zdXBlcnZpc29yIGltcG9ydCBjbGFpbXMgYXMgY2xhaW1zX21vZCAgIyBub3FhCmZyb20gaW5nZXN0aW9uLmdpdGh1Yl9zdXBlcnZpc29yIGltcG9ydCBzdXBlcnZpc29yIGFzIHN1cCAgIyBub3FhCmZyb20gaW5nZXN0aW9uLmdpdGh1Yl9zdXBlcnZpc29yIGltcG9ydCBjbG9ja19ldmlkZW5jZSBhcyBjZSAgIyBub3FhCmZyb20gaW5nZXN0aW9uLmdpdGh1Yl9zdXBlcnZpc29yLmRpc3BhdGNoZXIgaW1wb3J0ICggICMgbm9xYTogRTQwMgogICAgUmVjb3JkaW5nRGlzcGF0Y2gsIEdpdEh1YkRpc3BhdGNoKQpmcm9tIGluZ2VzdGlvbi5naXRodWJfc3VwZXJ2aXNvci5wdWJsaXNoZXIgaW1wb3J0ICggICMgbm9xYTogRTQwMgogICAgRGlyUHVibGlzaGVyLCBHaXRQdWJsaXNoZXIpCmZyb20gaW5nZXN0aW9uLmdpdGh1Yl9zdXBlcnZpc29yLnZlbnVlX3N0dWIgaW1wb3J0ICggICMgbm9xYTogRTQwMgogICAgVmlydHVhbENsb2NrLCBXYWxsQ2xvY2spCgoKY2xhc3MgUHJpbnREaXNwYXRjaChSZWNvcmRpbmdEaXNwYXRjaCk6CiAgICBkZWYgZGlzcGF0Y2goc2VsZiwgKiprdyk6CiAgICAgICAgcHJpbnQoanNvbi5kdW1wcyh7ImRpc3BhdGNoIjoga3d9KSwgZmx1c2g9VHJ1ZSkKICAgICAgICByZXR1cm4gc3VwZXIoKS5kaXNwYXRjaCgqKmt3KQoKCmRlZiBtYWluKGFyZ3Y9Tm9uZSk6CiAgICBhcCA9IGFyZ3BhcnNlLkFyZ3VtZW50UGFyc2VyKCkKICAgIGFwLmFkZF9hcmd1bWVudCgiLS1mcmVlemUiLCByZXF1aXJlZD1UcnVlKQogICAgYXAuYWRkX2FyZ3VtZW50KCItLXJvbGUiLCBkZWZhdWx0PSJzZWdtZW50IikKICAgIGFwLmFkZF9hcmd1bWVudCgiLS1zZWdtZW50IiwgdHlwZT1pbnQsIGRlZmF1bHQ9MSkKICAgIGFwLmFkZF9hcmd1bWVudCgiLS1ydW4taWQiLCByZXF1aXJlZD1UcnVlKQogICAgYXAuYWRkX2FyZ3VtZW50KCItLWRpc3BhdGNoLWlucHV0IiwgcmVxdWlyZWQ9VHJ1ZSkKICAgIGFwLmFkZF9hcmd1bWVudCgiLS13b3JrLXJvb3QiLCByZXF1aXJlZD1UcnVlKQogICAgYXAuYWRkX2FyZ3VtZW50KCItLWJhY2tlbmQiLCBkZWZhdWx0PSJkaXIiKQogICAgYXAuYWRkX2FyZ3VtZW50KCItLXJlbW90ZS1kaXIiKQogICAgYXAuYWRkX2FyZ3VtZW50KCItLWNsYWltcy1kaXIiKQogICAgYXAuYWRkX2FyZ3VtZW50KCItLXJlcG8tZGlyIikKICAgIGFwLmFkZF9hcmd1bWVudCgiLS1vcmlnaW4iKQogICAgYXAuYWRkX2FyZ3VtZW50KCItLWRpc3BhdGNoIiwgZGVmYXVsdD0icmVjb3JkaW5nIikKICAgIGFwLmFkZF9hcmd1bWVudCgiLS1naXRodWItcmVwbyIpCiAgICBhcC5hZGRfYXJndW1lbnQoIi0td29ya2Zsb3ctZmlsZSIsCiAgICAgICAgICAgICAgICAgICAgZGVmYXVsdD0iY2FwMS1zdXBlcnZpc29yLXJlaGVhcnNhbC55bWwiKQogICAgYXAuYWRkX2FyZ3VtZW50KCItLXZpcnR1YWwtc3RhcnQiLCB0eXBlPWZsb2F0KQogICAgYXAuYWRkX2FyZ3VtZW50KCItLXNlY3Rpb24tYyIsIGRlZmF1bHQ9InN5bnRoZXRpYzoxLjAiKQogICAgYXAuYWRkX2FyZ3VtZW50KCItLXByb2JlIiwgZGVmYXVsdD0ic3ludGhldGljOjUiKQogICAgYXAuYWRkX2FyZ3VtZW50KCItLWltYWdlLXZlcnNpb24iLCBkZWZhdWx0PSJ1bmtub3duIikKICAgIGFyZ3MgPSBhcC5wYXJzZV9hcmdzKGFyZ3YpCgogICAgaW5nX2RpciA9IG9zLnBhdGguam9pbihfTEFCLCAiaW5nZXN0aW9uIikKICAgIGZyZWV6ZSA9IEcubG9hZF9mcmVlemUoYXJncy5mcmVlemUsIGluZ19kaXIpCgogICAgaWYgYXJncy5iYWNrZW5kID09ICJnaXQiOgogICAgICAgIHB1Ymxpc2hlciA9IEdpdFB1Ymxpc2hlci5jbG9uZShhcmdzLm9yaWdpbiwgYXJncy5yZXBvX2RpcikgXAogICAgICAgICAgICBpZiBub3Qgb3MucGF0aC5leGlzdHMob3MucGF0aC5qb2luKGFyZ3MucmVwb19kaXIsICIuZ2l0IikpIFwKICAgICAgICAgICAgZWxzZSBHaXRQdWJsaXNoZXIoYXJncy5yZXBvX2RpcikKICAgICAgICBjbGFpbV9zdG9yZSA9IGNsYWltc19tb2QuR2l0Q2xhaW1TdG9yZShhcmdzLnJlcG9fZGlyKQogICAgZWxzZToKICAgICAgICBwdWJsaXNoZXIgPSBEaXJQdWJsaXNoZXIoYXJncy5yZW1vdGVfZGlyKQogICAgICAgIGNsYWltX3N0b3JlID0gY2xhaW1zX21vZC5EaXJDbGFpbVN0b3JlKGFyZ3MuY2xhaW1zX2RpcikKCiAgICBpZiBhcmdzLmRpc3BhdGNoID09ICJnaXRodWIiOgogICAgICAgIGRpc3BhdGNoZXIgPSBHaXRIdWJEaXNwYXRjaChhcmdzLmdpdGh1Yl9yZXBvLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBhcmdzLndvcmtmbG93X2ZpbGUpCiAgICBlbHNlOgogICAgICAgIGRpc3BhdGNoZXIgPSBQcmludERpc3BhdGNoKCkKCiAgICBjbG9jayA9IFZpcnR1YWxDbG9jayhhcmdzLnZpcnR1YWxfc3RhcnQpIFwKICAgICAgICBpZiBhcmdzLnZpcnR1YWxfc3RhcnQgaXMgbm90IE5vbmUgZWxzZSBXYWxsQ2xvY2soKQoKICAgIGlmIGFyZ3Muc2VjdGlvbl9jLnN0YXJ0c3dpdGgoInN5bnRoZXRpYzoiKToKICAgICAgICBib3VuZCA9IGZsb2F0KGFyZ3Muc2VjdGlvbl9jLnNwbGl0KCI6IiwgMSlbMV0pCiAgICAgICAgc2VjdGlvbl9jX3Byb3ZpZGVyID0gbGFtYmRhOiBjZS5zeW50aGV0aWNfc2VjdGlvbl9jKGJvdW5kKSAgIyBub3FhCiAgICBlbHNlOgogICAgICAgIHNlY3Rpb25fY19wcm92aWRlciA9IGxhbWJkYTogY2UuY2FwdHVyZV9zZWN0aW9uX2MoMzAuMCkgICMgbm9xYQogICAgaWYgYXJncy5wcm9iZS5zdGFydHN3aXRoKCJzeW50aGV0aWM6Iik6CiAgICAgICAgdW5jID0gaW50KGFyZ3MucHJvYmUuc3BsaXQoIjoiLCAxKVsxXSkKICAgICAgICBwcm9iZV9wcm92aWRlciA9IGNlLlNjcmlwdGVkUHJvYmVQcm92aWRlcigKICAgICAgICAgICAgeyJzdGF0ZSI6ICJTWU5DRUQiLCAidW5jZXJ0YWludHlfbXMiOiB1bmMsCiAgICAgICAgICAgICAic291cmNlIjogInN5bnRoZXRpYyJ9KQogICAgZWxzZToKICAgICAgICBwcm9iZV9wcm92aWRlciA9IGNlLkNocm9ueVByb2JlUHJvdmlkZXIoKQoKICAgIGlmIGFyZ3Mucm9sZSA9PSAic2VhbCI6CiAgICAgICAgam9iID0gc3VwLlNlYWxKb2IoZnJlZXplPWZyZWV6ZSwgcnVuX2lkPWFyZ3MucnVuX2lkLAogICAgICAgICAgICAgICAgICAgICAgICAgIHB1Ymxpc2hlcj1wdWJsaXNoZXIsIGNsYWltX3N0b3JlPWNsYWltX3N0b3JlLAogICAgICAgICAgICAgICAgICAgICAgICAgIHdvcmtfcm9vdD1hcmdzLndvcmtfcm9vdCwgZXZlbnRzPVtdKQogICAgICAgIHJldHVybiBqb2IucnVuKGFyZ3MuZGlzcGF0Y2hfaW5wdXQsIG5vd19zPWNsb2NrLm5vd19zKCkpCgogICAgIyBUaGUgY29ubmVjdG9yIGlzIHN1cHBsaWVkIGJ5IHRoZSBjYWxsZXIncyBlbnZpcm9ubWVudDogaW4gdGhlCiAgICAjIHJlaGVhcnNhbCBpdCBpcyBBTFdBWVMgdGhlIHN5bnRoZXRpYyBzdHViICh6ZXJvIHZlbnVlIHJlcXVlc3RzKTsKICAgICMgdGhlIGxpdmUgY29ubmVjdG9yIGlzIHdpcmVkIG9ubHkgYnkgdGhlIGZ1dHVyZSBhY3RpdmF0aW9uIHN0ZXAsCiAgICAjIHdoaWNoIGlzIG91dHNpZGUgdGhpcyBidWlsZC4KICAgIGZyb20gaW5nZXN0aW9uLmdpdGh1Yl9zdXBlcnZpc29yLnJlaGVhcnNhbF9zdXBwb3J0IGltcG9ydCAoCiAgICAgICAgc3ludGhldGljX2Nvbm5lY3RvcikKICAgIGNvbm5lY3RvciA9IHN5bnRoZXRpY19jb25uZWN0b3IoZnJlZXplLCBjbG9jaykKICAgIGpvYiA9IHN1cC5TZWdtZW50Sm9iKAogICAgICAgIGZyZWV6ZT1mcmVlemUsIHNlZ21lbnRfaW5kZXg9YXJncy5zZWdtZW50LCBydW5faWQ9YXJncy5ydW5faWQsCiAgICAgICAgcHVibGlzaGVyPXB1Ymxpc2hlciwgY2xhaW1fc3RvcmU9Y2xhaW1fc3RvcmUsCiAgICAgICAgZGlzcGF0Y2hlcj1kaXNwYXRjaGVyLCBjb25uZWN0b3I9Y29ubmVjdG9yLCBjbG9jaz1jbG9jaywKICAgICAgICB3b3JrX3Jvb3Q9YXJncy53b3JrX3Jvb3QsCiAgICAgICAgc2VjdGlvbl9jX3Byb3ZpZGVyPXNlY3Rpb25fY19wcm92aWRlciwKICAgICAgICBwcm9iZV9wcm92aWRlcj1wcm9iZV9wcm92aWRlciwKICAgICAgICBkaXNwYXRjaF9pbnB1dD1hcmdzLmRpc3BhdGNoX2lucHV0LAogICAgICAgIGltYWdlX3ZlcnNpb249YXJncy5pbWFnZV92ZXJzaW9uLCBldmVudHM9W10pCiAgICB3aGlsZSBub3Qgam9iLmZpbmlzaGVkOgogICAgICAgIHdha2UgPSBqb2Iuc3RlcCgpCiAgICAgICAgaWYgd2FrZSBpcyBOb25lOgogICAgICAgICAgICBicmVhawogICAgICAgIGRlbGF5ID0gd2FrZSAtIGNsb2NrLm5vd19zKCkKICAgICAgICBpZiBkZWxheSA+IDA6CiAgICAgICAgICAgIGNsb2NrLnNsZWVwX3MobWluKGRlbGF5LCAzNjAwKSkKICAgIHByaW50KGpzb24uZHVtcHMoeyJzZWdtZW50IjogYXJncy5zZWdtZW50LAogICAgICAgICAgICAgICAgICAgICAgImV4aXRfcmVhc29uIjogam9iLmV4aXRfcmVhc29uLAogICAgICAgICAgICAgICAgICAgICAgImV4aXRfY29kZSI6IGpvYi5leGl0X2NvZGV9KSkKICAgIHJldHVybiBqb2IuZXhpdF9jb2RlCgoKaWYgX19uYW1lX18gPT0gIl9fbWFpbl9fIjoKICAgIHN5cy5leGl0KG1haW4oKSkK
+"""Segment/seal entry point — the process a GitHub Actions job runs
+(and the empirical suite runs as a subprocess).
+
+Modes:
+- --backend dir (default): DirPublisher + DirClaimStore (lab).
+- --backend git --repo-dir DIR --origin URL: GitPublisher (dedicated
+  clone) + GitClaimStore (the rehearsal/production form).
+- --dispatch recording (default; prints dispatch requests as JSON
+  lines) or --dispatch github (workflow_dispatch via GITHUB_TOKEN;
+  PV-1 territory, rehearsal only in this build).
+- Clock: --wall (default) or --virtual-start EPOCH_S (accelerated
+  synthetic schedule; sleeps advance the virtual clock instantly).
+- Clock evidence: --section-c synthetic:<bound_ms> or chrony;
+  --probe synthetic:<uncertainty_ms> or chrony. Synthetic providers
+  are labelled synthetic in every record they touch.
+"""
+import argparse
+import json
+import os
+import sys
+import time
+
+_HERE = os.path.dirname(os.path.abspath(__file__))
+_LAB = os.path.dirname(os.path.dirname(_HERE))
+if _LAB not in sys.path:
+    sys.path.insert(0, _LAB)
+
+from ingestion.github_supervisor import gh_common as G  # noqa: E402
+from ingestion.github_supervisor import claims as claims_mod  # noqa
+from ingestion.github_supervisor import supervisor as sup  # noqa
+from ingestion.github_supervisor import clock_evidence as ce  # noqa
+from ingestion.github_supervisor.dispatcher import (  # noqa: E402
+    RecordingDispatch, GitHubDispatch)
+from ingestion.github_supervisor.publisher import (  # noqa: E402
+    DirPublisher, GitPublisher)
+from ingestion.github_supervisor.venue_stub import (  # noqa: E402
+    VirtualClock, WallClock)
+
+
+class PrintDispatch(RecordingDispatch):
+    def dispatch(self, **kw):
+        print(json.dumps({"dispatch": kw}), flush=True)
+        return super().dispatch(**kw)
+
+
+def main(argv=None):
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--freeze", required=True)
+    ap.add_argument("--role", default="segment")
+    ap.add_argument("--segment", type=int, default=1)
+    ap.add_argument("--run-id", required=True)
+    ap.add_argument("--dispatch-input", required=True)
+    ap.add_argument("--work-root", required=True)
+    ap.add_argument("--backend", default="dir")
+    ap.add_argument("--remote-dir")
+    ap.add_argument("--claims-dir")
+    ap.add_argument("--repo-dir")
+    ap.add_argument("--origin")
+    ap.add_argument("--dispatch", default="recording")
+    ap.add_argument("--github-repo")
+    ap.add_argument("--workflow-file",
+                    default="cap1-supervisor-rehearsal.yml")
+    ap.add_argument("--virtual-start", type=float)
+    ap.add_argument("--section-c", default="synthetic:1.0")
+    ap.add_argument("--probe", default="synthetic:5")
+    ap.add_argument("--image-version", default="unknown")
+    args = ap.parse_args(argv)
+
+    ing_dir = os.path.join(_LAB, "ingestion")
+    freeze = G.load_freeze(args.freeze, ing_dir)
+
+    if args.backend == "git":
+        publisher = GitPublisher.clone(args.origin, args.repo_dir) \
+            if not os.path.exists(os.path.join(args.repo_dir, ".git")) \
+            else GitPublisher(args.repo_dir)
+        claim_store = claims_mod.GitClaimStore(args.repo_dir)
+    else:
+        publisher = DirPublisher(args.remote_dir)
+        claim_store = claims_mod.DirClaimStore(args.claims_dir)
+
+    if args.dispatch == "github":
+        dispatcher = GitHubDispatch(args.github_repo,
+                                    args.workflow_file)
+    else:
+        dispatcher = PrintDispatch()
+
+    clock = VirtualClock(args.virtual_start) \
+        if args.virtual_start is not None else WallClock()
+
+    if args.section_c.startswith("synthetic:"):
+        bound = float(args.section_c.split(":", 1)[1])
+        section_c_provider = lambda: ce.synthetic_section_c(bound)  # noqa
+    else:
+        section_c_provider = lambda: ce.capture_section_c(30.0)  # noqa
+    if args.probe.startswith("synthetic:"):
+        unc = int(args.probe.split(":", 1)[1])
+        probe_provider = ce.ScriptedProbeProvider(
+            {"state": "SYNCED", "uncertainty_ms": unc,
+             "source": "synthetic"})
+    else:
+        probe_provider = ce.ChronyProbeProvider()
+
+    if args.role == "seal":
+        job = sup.SealJob(freeze=freeze, run_id=args.run_id,
+                          publisher=publisher, claim_store=claim_store,
+                          work_root=args.work_root, events=[])
+        return job.run(args.dispatch_input, now_s=clock.now_s())
+
+    # The connector is supplied by the caller's environment: in the
+    # rehearsal it is ALWAYS the synthetic stub (zero venue requests);
+    # the live connector is wired only by the future activation step,
+    # which is outside this build.
+    from ingestion.github_supervisor.rehearsal_support import (
+        synthetic_connector)
+    connector = synthetic_connector(freeze, clock)
+    job = sup.SegmentJob(
+        freeze=freeze, segment_index=args.segment, run_id=args.run_id,
+        publisher=publisher, claim_store=claim_store,
+        dispatcher=dispatcher, connector=connector, clock=clock,
+        work_root=args.work_root,
+        section_c_provider=section_c_provider,
+        probe_provider=probe_provider,
+        dispatch_input=args.dispatch_input,
+        image_version=args.image_version, events=[])
+    while not job.finished:
+        wake = job.step()
+        if wake is None:
+            break
+        delay = wake - clock.now_s()
+        if delay > 0:
+            clock.sleep_s(min(delay, 3600))
+    print(json.dumps({"segment": args.segment,
+                      "exit_reason": job.exit_reason,
+                      "exit_code": job.exit_code}))
+    return job.exit_code
+
+
+if __name__ == "__main__":
+    sys.exit(main())
