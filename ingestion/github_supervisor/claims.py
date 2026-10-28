@@ -1,1 +1,289 @@
-IiIiQXRvbWljIHNlZ21lbnQgY2xhaW1zIOKAlCBwcmluY2lwYWwgcmVmaW5lbWVudCAoaSkuCgpUaGUgZGVzaWduJ3Mgc2VjdGlvbiA0LjMgY2hlY2sgNCB3YXMgYSBjaGVjay10aGVuLXdyaXRlIG9uIHN0YXJ0ZWQuanNvbjoKcmVhZCAoYWJzZW50PykgdGhlbiB3cml0ZS4gVHdvIHJhY2luZyBqb2JzIGNhbiBib3RoIHBhc3MgdGhlIHJlYWQgYmVmb3JlCmVpdGhlciB3cml0ZXMg4oCUIGEgY2xhc3NpYyBUT0NUT1Ugd2luZG93LiBUaGUgY2xhaW0gcHJpbWl0aXZlIGhlcmUKcmVwbGFjZXMgaXQgd2l0aCBhIHNpbmdsZSBhdG9taWMgdGVzdC1hbmQtc2V0IGF0IGFuIGF1dGhvcml0eToKCi0gR2l0Q2xhaW1TdG9yZTogY3JlYXRpbmcgYSBnaXQgcmVmIGlzIG9uZSBzZXJ2ZXItc2lkZSByZWYgdHJhbnNhY3Rpb24uCiAgQ3JlYXRpbmcgcmVmcy9oZWFkcy9jYXAxLWNsYWltcy9zZWctTk4gd2l0aCBhIHB1c2ggb2YgYSB1bmlxdWUgY2xhaW0KICBjb21taXQgc3VjY2VlZHMgZm9yIGV4YWN0bHkgb25lIHJhY2VyOyB0aGUgbG9zZXIncyBwdXNoIGlzIHJlamVjdGVkCiAgKHRoZSByZWYgbm93IGV4aXN0cyBwb2ludGluZyBhdCBhIGNvbW1pdCB0aGUgbG9zZXIncyBjb21taXQgZG9lcyBub3QKICBkZXNjZW5kIGZyb20pLiBUYWtlb3ZlciBvZiBhIFNUQUxFIGNsYWltIGlzIGEgY29tcGFyZS1hbmQtc3dhcDoKICBgZ2l0IHB1c2ggLS1mb3JjZS13aXRoLWxlYXNlPTxyZWY+OjxvYnNlcnZlZC1vbGQtc2hhPmAg4oCUIHRoZSB1cGRhdGUKICBsYW5kcyBvbmx5IGlmIHRoZSByZWYgc3RpbGwgaG9sZHMgdGhlIGV4YWN0IHZhbHVlIHRoZSByZWNvdmVyeSBqb2IKICBiYXNlZCBpdHMgc3RhbGVuZXNzIGp1ZGdlbWVudCBvbi4KLSBEaXJDbGFpbVN0b3JlIChvZmZsaW5lL2xhYiBtaXJyb3Igb2YgdGhlIHNhbWUgc2VtYW50aWNzKToKICBvcy5vcGVuKE9fQ1JFQVR8T19FWENMKSBpcyBhIHNpbmdsZSBhdG9taWMgdGVzdC1hbmQtc2V0IGluIHRoZQogIGZpbGVzeXN0ZW0uIFRha2VvdmVyIGlzIHBlcmZvcm1lZCB1bmRlciBhbiBhdG9taWMgbWtkaXIgbXV0ZXggd2l0aAogIHN0YWxlbmVzcyByZS12ZXJpZmllZCBpbnNpZGUgdGhlIG11dGV4LCB0aGVuIGFuIGF0b21pYyByZW5hbWUg4oCUIHRoZQogIHNlY29uZCByYWNlciwgZW50ZXJpbmcgdGhlIG11dGV4IGFmdGVyIHRoZSBmaXJzdCwgc2VlcyBhIEZSRVNIIGNsYWltCiAgYW5kIHJlZnVzZXMuCgpBIGNsYWltIHJlY29yZCBiaW5kczogc2VnbWVudCBpbmRleCwgcnVuIElELCBtYW5pZmVzdCAob3IgZnJlZXplKSBoYXNoCml0IHdhcyBkaXNwYXRjaGVkIGFnYWluc3QsIGFuZCB0aGUgY2xhaW0gdGltZS4gSG9sZGluZyBzb21lb25lIGVsc2UncwpsaXZlIGNsYWltIGlzIG5ldmVyIG92ZXJyaWRkZW46IHRha2VvdmVyIHJlcXVpcmVzIHN0YWxlbmVzcyBldmlkZW5jZQooaGVhcnRiZWF0IGFnZSkgYW5kIGlzIGl0c2VsZiBhIGNoYWluZWQsIGV2aWRlbmNlZCByZWNvcmQuCiIiIgppbXBvcnQganNvbgppbXBvcnQgb3MKaW1wb3J0IHN1YnByb2Nlc3MKaW1wb3J0IHRpbWUKCmZyb20gLiBpbXBvcnQgZ2hfY29tbW9uIGFzIEcKCgpjbGFzcyBDbGFpbUxvc3QoRXhjZXB0aW9uKToKICAgICIiIkFub3RoZXIgcnVuIGhvbGRzIChvciB3b24pIHRoaXMgc2VnbWVudCdzIGNsYWltLiIiIgoKCmNsYXNzIENsYWltSGVsZChFeGNlcHRpb24pOgogICAgIiIiVGhpcyBydW4gYWxyZWFkeSBob2xkcyB0aGUgY2xhaW0gKGlkZW1wb3RlbnQgc2VsZi1jbGFpbSkuIiIiCgoKZGVmIGNsYWltX2RvYyhzZWdtZW50X2luZGV4LCBydW5faWQsIGFnYWluc3Rfc2hhMjU2LCBub3dfcywKICAgICAgICAgICAgICB0YWtlb3Zlcl9vZj1Ob25lKToKICAgIGRvYyA9IHsic2NoZW1hIjogImNhcDEtY2xhaW0vMSIsICJzZWdtZW50X2luZGV4Ijogc2VnbWVudF9pbmRleCwKICAgICAgICAgICAicnVuX2lkIjogcnVuX2lkLCAiYWdhaW5zdF9zaGEyNTYiOiBhZ2FpbnN0X3NoYTI1NiwKICAgICAgICAgICAiY2xhaW1lZF9hdF9sb2NhbCI6IEcuaXNvX2xvY2FsX2xhYmVsKG5vd19zKX0KICAgIGlmIHRha2VvdmVyX29mIGlzIG5vdCBOb25lOgogICAgICAgIGRvY1sidGFrZW92ZXJfb2YiXSA9IHRha2VvdmVyX29mCiAgICByZXR1cm4gZG9jCgoKY2xhc3MgRGlyQ2xhaW1TdG9yZToKICAgICIiIkZpbGVzeXN0ZW0gY2xhaW0gc3RvcmUgKGxhYikuIFJvb3QgbGF5b3V0IG1pcnJvcnMgYnJhbmNoIG5hbWVzOgogICAgPHJvb3Q+L2NhcDEtY2xhaW1zL3NlZy1OTi5qc29uIGlzIHRoZSBsaXZlIGNsYWltOyB0YWtlb3ZlciBoaXN0b3J5CiAgICBpcyBhcHBlbmRlZCB0byBzZWctTk4udGFrZW92ZXJzLmpzb25sLiIiIgoKICAgIGRlZiBfX2luaXRfXyhzZWxmLCByb290KToKICAgICAgICBzZWxmLmRpciA9IG9zLnBhdGguam9pbihyb290LCAiY2FwMS1jbGFpbXMiKQogICAgICAgIG9zLm1ha2VkaXJzKHNlbGYuZGlyLCBleGlzdF9vaz1UcnVlKQoKICAgIGRlZiBfcGF0aChzZWxmLCBzZWdtZW50X2luZGV4KToKICAgICAgICByZXR1cm4gb3MucGF0aC5qb2luKHNlbGYuZGlyLCAic2VnLSUwMmQuanNvbiIgJSBzZWdtZW50X2luZGV4KQoKICAgIGRlZiByZWFkKHNlbGYsIHNlZ21lbnRfaW5kZXgpOgogICAgICAgIHAgPSBzZWxmLl9wYXRoKHNlZ21lbnRfaW5kZXgpCiAgICAgICAgaWYgbm90IG9zLnBhdGguZXhpc3RzKHApOgogICAgICAgICAgICByZXR1cm4gTm9uZQogICAgICAgIHJldHVybiBHLnJlYWRfanNvbihwKQoKICAgIGRlZiBjbGFpbShzZWxmLCBzZWdtZW50X2luZGV4LCBydW5faWQsIGFnYWluc3Rfc2hhMjU2LCBub3dfcyk6CiAgICAgICAgIiIiQXRvbWljIHRlc3QtYW5kLXNldC4gUmV0dXJucyB0aGUgY2xhaW0gZG9jIG9uIHN1Y2Nlc3M7CiAgICAgICAgcmFpc2VzIENsYWltSGVsZCBpZiBydW5faWQgYWxyZWFkeSBob2xkcyBpdCwgQ2xhaW1Mb3N0IGlmCiAgICAgICAgYW5vdGhlciBydW4gZG9lcy4iIiIKICAgICAgICBkb2MgPSBjbGFpbV9kb2Moc2VnbWVudF9pbmRleCwgcnVuX2lkLCBhZ2FpbnN0X3NoYTI1Niwgbm93X3MpCiAgICAgICAgcCA9IHNlbGYuX3BhdGgoc2VnbWVudF9pbmRleCkKICAgICAgICAjIEF0b21pYyB0ZXN0LWFuZC1zZXQgV0lUSCBhdG9taWMgY29udGVudCBwdWJsaWNhdGlvbjogdGhlCiAgICAgICAgIyBkb2MgaXMgd3JpdHRlbitmc3luY2VkIHVuZGVyIGEgcnVuLXVuaXF1ZSB0ZW1wIG5hbWUsIHRoZW4KICAgICAgICAjIG9zLmxpbmsoKSBwdWJsaXNoZXMgaXQg4oCUIGxpbmsgZmFpbHMgaWZmIHRoZSBjbGFpbSBhbHJlYWR5CiAgICAgICAgIyBleGlzdHMsIGFuZCBhbnkgcmVhZGVyIG9mIGFuIGV4aXN0aW5nIGNsYWltIGFsd2F5cyBzZWVzCiAgICAgICAgIyBjb21wbGV0ZSBjb250ZW50LiAoVGhlIHByZXZpb3VzIE9fRVhDTC1jcmVhdGUtdGhlbi13cml0ZQogICAgICAgICMgbGVmdCBhIHdpbmRvdyBpbiB3aGljaCBhIGNvbmN1cnJlbnQgbG9zZXIgcmVhZCBhbiBlbXB0eQogICAgICAgICMgZmlsZSBhbmQgY3Jhc2hlZCBpbnN0ZWFkIG9mIGxvc2luZyBjbGVhbmx5IOKAlCBmb3VuZCBieSB0aGUKICAgICAgICAjIG11bHRpLXByb2Nlc3MgcmFjZSBzdWl0ZS4pCiAgICAgICAgdG1wID0gcCArICIudG1wLSVzLSVkIiAlIChydW5faWQsIG9zLmdldHBpZCgpKQogICAgICAgIHdpdGggb3Blbih0bXAsICJ3IiwgZW5jb2Rpbmc9InV0Zi04IikgYXMgZjoKICAgICAgICAgICAganNvbi5kdW1wKGRvYywgZiwgaW5kZW50PTEsIHNvcnRfa2V5cz1UcnVlKQogICAgICAgICAgICBmLmZsdXNoKCkKICAgICAgICAgICAgb3MuZnN5bmMoZi5maWxlbm8oKSkKICAgICAgICB0cnk6CiAgICAgICAgICAgIG9zLmxpbmsodG1wLCBwKQogICAgICAgIGV4Y2VwdCBGaWxlRXhpc3RzRXJyb3I6CiAgICAgICAgICAgIGV4aXN0aW5nID0gc2VsZi5yZWFkKHNlZ21lbnRfaW5kZXgpCiAgICAgICAgICAgIGlmIGV4aXN0aW5nIGFuZCBleGlzdGluZy5nZXQoInJ1bl9pZCIpID09IHJ1bl9pZDoKICAgICAgICAgICAgICAgIHJhaXNlIENsYWltSGVsZChzZWdtZW50X2luZGV4KQogICAgICAgICAgICByYWlzZSBDbGFpbUxvc3QoCiAgICAgICAgICAgICAgICBmInNlZyB7c2VnbWVudF9pbmRleH0gaGVsZCBieSAiCiAgICAgICAgICAgICAgICBmIntleGlzdGluZy5nZXQoJ3J1bl9pZCcpIGlmIGV4aXN0aW5nIGVsc2UgJz8nfSIpCiAgICAgICAgZmluYWxseToKICAgICAgICAgICAgdHJ5OgogICAgICAgICAgICAgICAgb3MudW5saW5rKHRtcCkKICAgICAgICAgICAgZXhjZXB0IE9TRXJyb3I6CiAgICAgICAgICAgICAgICBwYXNzCiAgICAgICAgcmV0dXJuIGRvYwoKICAgIGRlZiB0YWtlb3ZlcihzZWxmLCBzZWdtZW50X2luZGV4LCBydW5faWQsIGFnYWluc3Rfc2hhMjU2LCBub3dfcywKICAgICAgICAgICAgICAgICBzdGFsZV9hZnRlcl9zLCBoZWFydGJlYXRfYWdlX3MpOgogICAgICAgICIiIkNBUyB0YWtlb3ZlciBvZiBhIHN0YWxlIGNsYWltLiBoZWFydGJlYXRfYWdlX3MgaXMgdGhlCiAgICAgICAgY2FsbGVyJ3MgbWVhc3VyZWQgZXZpZGVuY2U7IHN0YWxlbmVzcyBpcyByZS12ZXJpZmllZCB1bmRlciB0aGUKICAgICAgICBtdXRleCBhZ2FpbnN0IHRoZSBzYW1lIGZpZ3VyZSB0aGUgY2FsbGVyIHN1cHBsaWVzIHZpYSB0aGUKICAgICAgICBjbGFpbSdzIG93biBoZWFydGJlYXQgc2lkZWNhciAoc2VnLU5OLmhlYXJ0YmVhdF9lcG9jaCkuIiIiCiAgICAgICAgaWYgaGVhcnRiZWF0X2FnZV9zIGlzIE5vbmUgb3IgaGVhcnRiZWF0X2FnZV9zIDw9IHN0YWxlX2FmdGVyX3M6CiAgICAgICAgICAgIHJhaXNlIENsYWltTG9zdCgiY2xhaW0gaXMgbm90IHN0YWxlOyB0YWtlb3ZlciByZWZ1c2VkIikKICAgICAgICBtdXRleCA9IHNlbGYuX3BhdGgoc2VnbWVudF9pbmRleCkgKyAiLnRha2VvdmVyLW11dGV4IgogICAgICAgIHRyeToKICAgICAgICAgICAgb3MubWtkaXIobXV0ZXgpICAjIGF0b21pYzsgZXhhY3RseSBvbmUgcmVjb3ZlcnkgcHJvY2VlZHMKICAgICAgICBleGNlcHQgRmlsZUV4aXN0c0Vycm9yOgogICAgICAgICAgICByYWlzZSBDbGFpbUxvc3QoImFub3RoZXIgdGFrZW92ZXIgaXMgaW4gcHJvZ3Jlc3MiKQogICAgICAgIHRyeToKICAgICAgICAgICAgY3VycmVudCA9IHNlbGYucmVhZChzZWdtZW50X2luZGV4KQogICAgICAgICAgICBpZiBjdXJyZW50IGlzIE5vbmU6CiAgICAgICAgICAgICAgICByZXR1cm4gc2VsZi5jbGFpbShzZWdtZW50X2luZGV4LCBydW5faWQsIGFnYWluc3Rfc2hhMjU2LAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgbm93X3MpCiAgICAgICAgICAgIGlmIGN1cnJlbnQuZ2V0KCJydW5faWQiKSA9PSBydW5faWQ6CiAgICAgICAgICAgICAgICByYWlzZSBDbGFpbUhlbGQoc2VnbWVudF9pbmRleCkKICAgICAgICAgICAgbGFzdF9oYiA9IHNlbGYuX2xhc3Rfc2lnbl9vZl9saWZlKHNlZ21lbnRfaW5kZXgsIGN1cnJlbnQpCiAgICAgICAgICAgIGFnZSA9IChub3dfcyAtIGxhc3RfaGIpIGlmIGxhc3RfaGIgaXMgbm90IE5vbmUgZWxzZSBOb25lCiAgICAgICAgICAgIGlmIGFnZSBpcyBOb25lIG9yIGFnZSA8PSBzdGFsZV9hZnRlcl9zOgogICAgICAgICAgICAgICAgcmFpc2UgQ2xhaW1Mb3N0KAogICAgICAgICAgICAgICAgICAgICJjbGFpbSByZWZyZXNoZWQgaW5zaWRlIG11dGV4OyB0YWtlb3ZlciByZWZ1c2VkIikKICAgICAgICAgICAgZG9jID0gY2xhaW1fZG9jKHNlZ21lbnRfaW5kZXgsIHJ1bl9pZCwgYWdhaW5zdF9zaGEyNTYsIG5vd19zLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgdGFrZW92ZXJfb2Y9eyJydW5faWQiOiBjdXJyZW50WyJydW5faWQiXSwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAiY2xhaW1fc2hhMjU2IjogRy5kb2NfaGFzaCgKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY3VycmVudCksCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgImhlYXJ0YmVhdF9hZ2VfcyI6IGFnZX0pCiAgICAgICAgICAgIHRtcCA9IHNlbGYuX3BhdGgoc2VnbWVudF9pbmRleCkgKyAiLnRtcC0lcyIgJSBydW5faWQKICAgICAgICAgICAgd2l0aCBvcGVuKHRtcCwgInciLCBlbmNvZGluZz0idXRmLTgiKSBhcyBmOgogICAgICAgICAgICAgICAganNvbi5kdW1wKGRvYywgZiwgaW5kZW50PTEsIHNvcnRfa2V5cz1UcnVlKQogICAgICAgICAgICAgICAgZi5mbHVzaCgpCiAgICAgICAgICAgICAgICBvcy5mc3luYyhmLmZpbGVubygpKQogICAgICAgICAgICBvcy5yZXBsYWNlKHRtcCwgc2VsZi5fcGF0aChzZWdtZW50X2luZGV4KSkgICMgYXRvbWljIHJlbmFtZQogICAgICAgICAgICB3aXRoIG9wZW4oc2VsZi5fcGF0aChzZWdtZW50X2luZGV4KSArICIudGFrZW92ZXJzLmpzb25sIiwKICAgICAgICAgICAgICAgICAgICAgICJhIiwgZW5jb2Rpbmc9InV0Zi04IikgYXMgZjoKICAgICAgICAgICAgICAgIGYud3JpdGUoRy5jYW5vbihkb2MpICsgIlxuIikKICAgICAgICAgICAgcmV0dXJuIGRvYwogICAgICAgIGZpbmFsbHk6CiAgICAgICAgICAgIG9zLnJtZGlyKG11dGV4KQoKICAgIGRlZiBoZWFydGJlYXQoc2VsZiwgc2VnbWVudF9pbmRleCwgbm93X3MpOgogICAgICAgIHAgPSBzZWxmLl9wYXRoKHNlZ21lbnRfaW5kZXgpICsgIi5oZWFydGJlYXRfZXBvY2giCiAgICAgICAgdG1wID0gcCArICIudG1wIgogICAgICAgIHdpdGggb3Blbih0bXAsICJ3IikgYXMgZjoKICAgICAgICAgICAgZi53cml0ZShyZXByKGZsb2F0KG5vd19zKSkpCiAgICAgICAgb3MucmVwbGFjZSh0bXAsIHApCgogICAgZGVmIF9sYXN0X3NpZ25fb2ZfbGlmZShzZWxmLCBzZWdtZW50X2luZGV4LCBkb2M9Tm9uZSk6CiAgICAgICAgIiIiRXBvY2ggc2Vjb25kcyBvZiB0aGUgY2xhaW0gaG9sZGVyJ3MgbGFzdCBzaWduIG9mIGxpZmU6CiAgICAgICAgdGhlIGhlYXJ0YmVhdCBzaWRlY2FyLCBlbHNlIHRoZSBjbGFpbSdzIG93biB0aW1lc3RhbXAgKGEKICAgICAgICBqb2Iga2lsbGVkIGJlZm9yZSBpdHMgZmlyc3QgaGVhcnRiZWF0IG11c3Qgc3RpbGwgYmVjb21lCiAgICAgICAgcmVjb3ZlcmFibGUgb25jZSB0aGUgY2xhaW0gaXMgb2xkIGVub3VnaCDigJQgb3RoZXJ3aXNlIGFuCiAgICAgICAgZWFybHkga2lsbCB3b3VsZCBicmljayB0aGUgc2VnbWVudCBmb3JldmVyKS4iIiIKICAgICAgICBwID0gc2VsZi5fcGF0aChzZWdtZW50X2luZGV4KSArICIuaGVhcnRiZWF0X2Vwb2NoIgogICAgICAgIHRyeToKICAgICAgICAgICAgcmV0dXJuIGZsb2F0KG9wZW4ocCkucmVhZCgpLnN0cmlwKCkpCiAgICAgICAgZXhjZXB0IEV4Y2VwdGlvbjoKICAgICAgICAgICAgcGFzcwogICAgICAgIGlmIGRvYyBpcyBOb25lOgogICAgICAgICAgICBkb2MgPSBzZWxmLnJlYWQoc2VnbWVudF9pbmRleCkKICAgICAgICBpZiBkb2MgYW5kIGRvYy5nZXQoImNsYWltZWRfYXRfbG9jYWwiKToKICAgICAgICAgICAgdHJ5OgogICAgICAgICAgICAgICAgcmV0dXJuIEcucGFyc2VfaXNvKAogICAgICAgICAgICAgICAgICAgIGRvY1siY2xhaW1lZF9hdF9sb2NhbCJdWzoxOV0gKyAiWiIpIC8gMTAwMC4wCiAgICAgICAgICAgIGV4Y2VwdCBFeGNlcHRpb246CiAgICAgICAgICAgICAgICByZXR1cm4gTm9uZQogICAgICAgIHJldHVybiBOb25lCgogICAgZGVmIGhlYXJ0YmVhdF9hZ2Uoc2VsZiwgc2VnbWVudF9pbmRleCwgbm93X3MpOgogICAgICAgIGxhc3QgPSBzZWxmLl9sYXN0X3NpZ25fb2ZfbGlmZShzZWdtZW50X2luZGV4KQogICAgICAgIHJldHVybiBOb25lIGlmIGxhc3QgaXMgTm9uZSBlbHNlIG5vd19zIC0gbGFzdAoKCmNsYXNzIEdpdENsYWltU3RvcmU6CiAgICAiIiJHaXQtYmFja2VkIGNsYWltIHN0b3JlOiB0aGUgY2xhaW0gZm9yIHNlZ21lbnQgTk4gaXMgdGhlIHJlZgogICAgcmVmcy9oZWFkcy9jYXAxLWNsYWltcy9zZWctTk4gcG9pbnRpbmcgYXQgYSBjbGFpbSBjb21taXQgd2hvc2UgdHJlZQogICAgY29udGFpbnMgY2xhaW0uanNvbi4gQWxsIG9wZXJhdGlvbnMgZ28gdGhyb3VnaCBhIGxvY2FsIGNsb25lIG9mIHRoZQogICAgKGJhcmUgb3Igbm9ybWFsKSByZXBvc2l0b3J5IGF0IHJlcG9fZGlyOyBjb3JyZWN0bmVzcyByZXN0cyBvbiB0aGUKICAgIHNlcnZlci1zaWRlIGF0b21pY2l0eSBvZiBhIHNpbmdsZSByZWYgdXBkYXRlLCBpZGVudGljYWwgZm9yIGEgbG9jYWwKICAgIGJhcmUgcmVwb3NpdG9yeSBhbmQgZm9yIEdpdEh1Yi4iIiIKCiAgICBkZWYgX19pbml0X18oc2VsZiwgcmVwb19kaXIpOgogICAgICAgIHNlbGYucmVwbyA9IHJlcG9fZGlyCgogICAgZGVmIF9naXQoc2VsZiwgKmFyZ3MsIGNoZWNrPVRydWUpOgogICAgICAgIHAgPSBzdWJwcm9jZXNzLnJ1bihbImdpdCIsICItQyIsIHNlbGYucmVwb10gKyBsaXN0KGFyZ3MpLAogICAgICAgICAgICAgICAgICAgICAgICAgICBjYXB0dXJlX291dHB1dD1UcnVlLCB0ZXh0PVRydWUsIHRpbWVvdXQ9NjApCiAgICAgICAgaWYgY2hlY2sgYW5kIHAucmV0dXJuY29kZSAhPSAwOgogICAgICAgICAgICByYWlzZSBSdW50aW1lRXJyb3IoImdpdCAlcyBmYWlsZWQ6ICVzIiAlIChhcmdzWzBdLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBwLnN0ZGVyci5zdHJpcCgpKSkKICAgICAgICByZXR1cm4gcAoKICAgIGRlZiBfcmVmKHNlbGYsIHNlZ21lbnRfaW5kZXgpOgogICAgICAgIHJldHVybiAicmVmcy9oZWFkcy9jYXAxLWNsYWltcy9zZWctJTAyZCIgJSBzZWdtZW50X2luZGV4CgogICAgZGVmIF9yZW1vdGVfcmVmX3NoYShzZWxmLCBzZWdtZW50X2luZGV4KToKICAgICAgICBwID0gc2VsZi5fZ2l0KCJscy1yZW1vdGUiLCAib3JpZ2luIiwgc2VsZi5fcmVmKHNlZ21lbnRfaW5kZXgpLAogICAgICAgICAgICAgICAgICAgICAgY2hlY2s9RmFsc2UpCiAgICAgICAgb3V0ID0gcC5zdGRvdXQuc3RyaXAoKQogICAgICAgIHJldHVybiBvdXQuc3BsaXQoKVswXSBpZiBvdXQgZWxzZSBOb25lCgogICAgZGVmIHJlYWQoc2VsZiwgc2VnbWVudF9pbmRleCk6CiAgICAgICAgc2hhID0gc2VsZi5fcmVtb3RlX3JlZl9zaGEoc2VnbWVudF9pbmRleCkKICAgICAgICBpZiBzaGEgaXMgTm9uZToKICAgICAgICAgICAgcmV0dXJuIE5vbmUKICAgICAgICBwID0gc2VsZi5fZ2l0KCJmZXRjaCIsICJvcmlnaW4iLCBzZWxmLl9yZWYoc2VnbWVudF9pbmRleCksCiAgICAgICAgICAgICAgICAgICAgICBjaGVjaz1GYWxzZSkKICAgICAgICBzaG93ID0gc2VsZi5fZ2l0KCJzaG93IiwgIiVzOmNsYWltLmpzb24iICUgc2hhLCBjaGVjaz1GYWxzZSkKICAgICAgICBpZiBzaG93LnJldHVybmNvZGUgIT0gMDoKICAgICAgICAgICAgcmV0dXJuIHsiX3VucmVhZGFibGVfY2xhaW1fc2hhIjogc2hhfQogICAgICAgIHJldHVybiBqc29uLmxvYWRzKHNob3cuc3Rkb3V0KQoKICAgIGRlZiBfY2xhaW1fY29tbWl0KHNlbGYsIGRvYyk6CiAgICAgICAgIiIiQ3JlYXRlIGEgY29tbWl0IG9iamVjdCBjYXJyeWluZyBjbGFpbS5qc29uIChubyBjaGVja291dCkuIiIiCiAgICAgICAgZW52ID0gZGljdChvcy5lbnZpcm9uLCBHSVRfQVVUSE9SX05BTUU9ImNhcDEtc3VwZXJ2aXNvciIsCiAgICAgICAgICAgICAgICAgICBHSVRfQVVUSE9SX0VNQUlMPSJjYXAxQGxvY2FsaG9zdCIsCiAgICAgICAgICAgICAgICAgICBHSVRfQ09NTUlUVEVSX05BTUU9ImNhcDEtc3VwZXJ2aXNvciIsCiAgICAgICAgICAgICAgICAgICBHSVRfQ09NTUlUVEVSX0VNQUlMPSJjYXAxQGxvY2FsaG9zdCIpCiAgICAgICAgYmxvYiA9IHN1YnByb2Nlc3MucnVuKAogICAgICAgICAgICBbImdpdCIsICItQyIsIHNlbGYucmVwbywgImhhc2gtb2JqZWN0IiwgIi13IiwgIi0tc3RkaW4iXSwKICAgICAgICAgICAgaW5wdXQ9Ry5jYW5vbihkb2MpLCBjYXB0dXJlX291dHB1dD1UcnVlLCB0ZXh0PVRydWUsCiAgICAgICAgICAgIGVudj1lbnYsIHRpbWVvdXQ9MzApCiAgICAgICAgYmxvYl9zaGEgPSBibG9iLnN0ZG91dC5zdHJpcCgpCiAgICAgICAgdHJlZSA9IHN1YnByb2Nlc3MucnVuKAogICAgICAgICAgICBbImdpdCIsICItQyIsIHNlbGYucmVwbywgIm1rdHJlZSJdLAogICAgICAgICAgICBpbnB1dD0iMTAwNjQ0IGJsb2IgJXNcdGNsYWltLmpzb25cbiIgJSBibG9iX3NoYSwKICAgICAgICAgICAgY2FwdHVyZV9vdXRwdXQ9VHJ1ZSwgdGV4dD1UcnVlLCBlbnY9ZW52LCB0aW1lb3V0PTMwKQogICAgICAgIHRyZWVfc2hhID0gdHJlZS5zdGRvdXQuc3RyaXAoKQogICAgICAgIGNvbW1pdCA9IHN1YnByb2Nlc3MucnVuKAogICAgICAgICAgICBbImdpdCIsICItQyIsIHNlbGYucmVwbywgImNvbW1pdC10cmVlIiwgdHJlZV9zaGEsICItbSIsCiAgICAgICAgICAgICAiY2FwMSBjbGFpbSBzZWctJTAyZCAlcyIgJSAoZG9jWyJzZWdtZW50X2luZGV4Il0sCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgZG9jWyJydW5faWQiXSldLAogICAgICAgICAgICBjYXB0dXJlX291dHB1dD1UcnVlLCB0ZXh0PVRydWUsIGVudj1lbnYsIHRpbWVvdXQ9MzApCiAgICAgICAgcmV0dXJuIGNvbW1pdC5zdGRvdXQuc3RyaXAoKQoKICAgIGRlZiBjbGFpbShzZWxmLCBzZWdtZW50X2luZGV4LCBydW5faWQsIGFnYWluc3Rfc2hhMjU2LCBub3dfcyk6CiAgICAgICAgZG9jID0gY2xhaW1fZG9jKHNlZ21lbnRfaW5kZXgsIHJ1bl9pZCwgYWdhaW5zdF9zaGEyNTYsIG5vd19zKQogICAgICAgIGNvbW1pdCA9IHNlbGYuX2NsYWltX2NvbW1pdChkb2MpCiAgICAgICAgcmVmID0gc2VsZi5fcmVmKHNlZ21lbnRfaW5kZXgpCiAgICAgICAgcCA9IHNlbGYuX2dpdCgicHVzaCIsICJvcmlnaW4iLCAiJXM6JXMiICUgKGNvbW1pdCwgcmVmKSwKICAgICAgICAgICAgICAgICAgICAgIGNoZWNrPUZhbHNlKQogICAgICAgIGlmIHAucmV0dXJuY29kZSA9PSAwOgogICAgICAgICAgICByZXR1cm4gZG9jCiAgICAgICAgZXhpc3RpbmcgPSBzZWxmLnJlYWQoc2VnbWVudF9pbmRleCkKICAgICAgICBpZiBleGlzdGluZyBhbmQgZXhpc3RpbmcuZ2V0KCJydW5faWQiKSA9PSBydW5faWQ6CiAgICAgICAgICAgIHJhaXNlIENsYWltSGVsZChzZWdtZW50X2luZGV4KQogICAgICAgIHJhaXNlIENsYWltTG9zdCgicmVmIGNyZWF0aW9uIHJlamVjdGVkOiAlcyIKICAgICAgICAgICAgICAgICAgICAgICAgJSBwLnN0ZGVyci5zdHJpcCgpLnNwbGl0bGluZXMoKVstMV0KICAgICAgICAgICAgICAgICAgICAgICAgaWYgcC5zdGRlcnIuc3RyaXAoKSBlbHNlICJwdXNoIHJlamVjdGVkIikKCiAgICBkZWYgdGFrZW92ZXIoc2VsZiwgc2VnbWVudF9pbmRleCwgcnVuX2lkLCBhZ2FpbnN0X3NoYTI1Niwgbm93X3MsCiAgICAgICAgICAgICAgICAgc3RhbGVfYWZ0ZXJfcywgaGVhcnRiZWF0X2FnZV9zKToKICAgICAgICBpZiBoZWFydGJlYXRfYWdlX3MgaXMgTm9uZSBvciBoZWFydGJlYXRfYWdlX3MgPD0gc3RhbGVfYWZ0ZXJfczoKICAgICAgICAgICAgcmFpc2UgQ2xhaW1Mb3N0KCJjbGFpbSBpcyBub3Qgc3RhbGU7IHRha2VvdmVyIHJlZnVzZWQiKQogICAgICAgIG9sZF9zaGEgPSBzZWxmLl9yZW1vdGVfcmVmX3NoYShzZWdtZW50X2luZGV4KQogICAgICAgIGlmIG9sZF9zaGEgaXMgTm9uZToKICAgICAgICAgICAgcmV0dXJuIHNlbGYuY2xhaW0oc2VnbWVudF9pbmRleCwgcnVuX2lkLCBhZ2FpbnN0X3NoYTI1NiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgbm93X3MpCiAgICAgICAgY3VycmVudCA9IHNlbGYucmVhZChzZWdtZW50X2luZGV4KQogICAgICAgIGRvYyA9IGNsYWltX2RvYyhzZWdtZW50X2luZGV4LCBydW5faWQsIGFnYWluc3Rfc2hhMjU2LCBub3dfcywKICAgICAgICAgICAgICAgICAgICAgICAgdGFrZW92ZXJfb2Y9eyJydW5faWQiOiAoY3VycmVudCBvciB7fSkuZ2V0KAogICAgICAgICAgICAgICAgICAgICAgICAgICAgInJ1bl9pZCIpLCAiY2xhaW1fY29tbWl0Ijogb2xkX3NoYSwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICJoZWFydGJlYXRfYWdlX3MiOiBoZWFydGJlYXRfYWdlX3N9KQogICAgICAgIGNvbW1pdCA9IHNlbGYuX2NsYWltX2NvbW1pdChkb2MpCiAgICAgICAgcmVmID0gc2VsZi5fcmVmKHNlZ21lbnRfaW5kZXgpCiAgICAgICAgIyBDb21wYXJlLWFuZC1zd2FwOiBsYW5kcyBvbmx5IGlmIHRoZSByZWYgc3RpbGwgaG9sZHMgb2xkX3NoYS4KICAgICAgICBwID0gc2VsZi5fZ2l0KCJwdXNoIiwKICAgICAgICAgICAgICAgICAgICAgICItLWZvcmNlLXdpdGgtbGVhc2U9JXM6JXMiICUgKHJlZiwgb2xkX3NoYSksCiAgICAgICAgICAgICAgICAgICAgICAib3JpZ2luIiwgIiVzOiVzIiAlIChjb21taXQsIHJlZiksIGNoZWNrPUZhbHNlKQogICAgICAgIGlmIHAucmV0dXJuY29kZSA9PSAwOgogICAgICAgICAgICByZXR1cm4gZG9jCiAgICAgICAgcmFpc2UgQ2xhaW1Mb3N0KCJ0YWtlb3ZlciBDQVMgcmVqZWN0ZWQgKHJlZiBtb3ZlZCk6ICVzIgogICAgICAgICAgICAgICAgICAgICAgICAlIHAuc3RkZXJyLnN0cmlwKCkuc3BsaXRsaW5lcygpWy0xXQogICAgICAgICAgICAgICAgICAgICAgICBpZiBwLnN0ZGVyci5zdHJpcCgpIGVsc2UgInB1c2ggcmVqZWN0ZWQiKQoKICAgIGRlZiBoZWFydGJlYXQoc2VsZiwgc2VnbWVudF9pbmRleCwgbm93X3MpOgogICAgICAgICIiIkdpdCBjbGFpbXMgY2FycnkgbGl2ZW5lc3MgaW4gdGhlIHNlZ21lbnQgYnJhbmNoJ3MKICAgICAgICBoZWFydGJlYXQuanNvbiAocHVibGlzaGVyJ3Mgam9iKTsgdGhpcyBzdG9yZSdzIHN0YWxlbmVzcyBpbnB1dAogICAgICAgIGlzIHRoZSBjYWxsZXItbWVhc3VyZWQgYWdlIG9mIHRoYXQgcmVjb3JkLiBOby1vcCBieSBkZXNpZ24uIiIiCiAgICAgICAgcmV0dXJuIE5vbmUK
+"""Atomic segment claims — principal refinement (i).
+
+The design's section 4.3 check 4 was a check-then-write on started.json:
+read (absent?) then write. Two racing jobs can both pass the read before
+either writes — a classic TOCTOU window. The claim primitive here
+replaces it with a single atomic test-and-set at an authority:
+
+- GitClaimStore: creating a git ref is one server-side ref transaction.
+  Creating refs/heads/cap1-claims/seg-NN with a push of a unique claim
+  commit succeeds for exactly one racer; the loser's push is rejected
+  (the ref now exists pointing at a commit the loser's commit does not
+  descend from). Takeover of a STALE claim is a compare-and-swap:
+  `git push --force-with-lease=<ref>:<observed-old-sha>` — the update
+  lands only if the ref still holds the exact value the recovery job
+  based its staleness judgement on.
+- DirClaimStore (offline/lab mirror of the same semantics):
+  os.open(O_CREAT|O_EXCL) is a single atomic test-and-set in the
+  filesystem. Takeover is performed under an atomic mkdir mutex with
+  staleness re-verified inside the mutex, then an atomic rename — the
+  second racer, entering the mutex after the first, sees a FRESH claim
+  and refuses.
+
+A claim record binds: segment index, run ID, manifest (or freeze) hash
+it was dispatched against, and the claim time. Holding someone else's
+live claim is never overridden: takeover requires staleness evidence
+(heartbeat age) and is itself a chained, evidenced record.
+"""
+import json
+import os
+import subprocess
+import time
+
+from . import gh_common as G
+
+
+class ClaimLost(Exception):
+    """Another run holds (or won) this segment's claim."""
+
+
+class ClaimHeld(Exception):
+    """This run already holds the claim (idempotent self-claim)."""
+
+
+def claim_doc(segment_index, run_id, against_sha256, now_s,
+              takeover_of=None):
+    doc = {"schema": "cap1-claim/1", "segment_index": segment_index,
+           "run_id": run_id, "against_sha256": against_sha256,
+           "claimed_at_local": G.iso_local_label(now_s)}
+    if takeover_of is not None:
+        doc["takeover_of"] = takeover_of
+    return doc
+
+
+class DirClaimStore:
+    """Filesystem claim store (lab). Root layout mirrors branch names:
+    <root>/cap1-claims/seg-NN.json is the live claim; takeover history
+    is appended to seg-NN.takeovers.jsonl."""
+
+    def __init__(self, root):
+        self.dir = os.path.join(root, "cap1-claims")
+        os.makedirs(self.dir, exist_ok=True)
+
+    def _path(self, segment_index):
+        return os.path.join(self.dir, "seg-%02d.json" % segment_index)
+
+    def read(self, segment_index):
+        p = self._path(segment_index)
+        if not os.path.exists(p):
+            return None
+        return G.read_json(p)
+
+    def claim(self, segment_index, run_id, against_sha256, now_s):
+        """Atomic test-and-set. Returns the claim doc on success;
+        raises ClaimHeld if run_id already holds it, ClaimLost if
+        another run does."""
+        doc = claim_doc(segment_index, run_id, against_sha256, now_s)
+        p = self._path(segment_index)
+        # Atomic test-and-set WITH atomic content publication: the
+        # doc is written+fsynced under a run-unique temp name, then
+        # os.link() publishes it — link fails iff the claim already
+        # exists, and any reader of an existing claim always sees
+        # complete content. (The previous O_EXCL-create-then-write
+        # left a window in which a concurrent loser read an empty
+        # file and crashed instead of losing cleanly — found by the
+        # multi-process race suite.)
+        tmp = p + ".tmp-%s-%d" % (run_id, os.getpid())
+        with open(tmp, "w", encoding="utf-8") as f:
+            json.dump(doc, f, indent=1, sort_keys=True)
+            f.flush()
+            os.fsync(f.fileno())
+        try:
+            os.link(tmp, p)
+        except FileExistsError:
+            existing = self.read(segment_index)
+            if existing and existing.get("run_id") == run_id:
+                raise ClaimHeld(segment_index)
+            raise ClaimLost(
+                f"seg {segment_index} held by "
+                f"{existing.get('run_id') if existing else '?'}")
+        finally:
+            try:
+                os.unlink(tmp)
+            except OSError:
+                pass
+        return doc
+
+    def takeover(self, segment_index, run_id, against_sha256, now_s,
+                 stale_after_s, heartbeat_age_s):
+        """CAS takeover of a stale claim. heartbeat_age_s is the
+        caller's measured evidence; staleness is re-verified under the
+        mutex against the same figure the caller supplies via the
+        claim's own heartbeat sidecar (seg-NN.heartbeat_epoch)."""
+        if heartbeat_age_s is None or heartbeat_age_s <= stale_after_s:
+            raise ClaimLost("claim is not stale; takeover refused")
+        mutex = self._path(segment_index) + ".takeover-mutex"
+        try:
+            os.mkdir(mutex)  # atomic; exactly one recovery proceeds
+        except FileExistsError:
+            raise ClaimLost("another takeover is in progress")
+        try:
+            current = self.read(segment_index)
+            if current is None:
+                return self.claim(segment_index, run_id, against_sha256,
+                                  now_s)
+            if current.get("run_id") == run_id:
+                raise ClaimHeld(segment_index)
+            last_hb = self._last_sign_of_life(segment_index, current)
+            age = (now_s - last_hb) if last_hb is not None else None
+            if age is None or age <= stale_after_s:
+                raise ClaimLost(
+                    "claim refreshed inside mutex; takeover refused")
+            doc = claim_doc(segment_index, run_id, against_sha256, now_s,
+                            takeover_of={"run_id": current["run_id"],
+                                         "claim_sha256": G.doc_hash(
+                                             current),
+                                         "heartbeat_age_s": age})
+            tmp = self._path(segment_index) + ".tmp-%s" % run_id
+            with open(tmp, "w", encoding="utf-8") as f:
+                json.dump(doc, f, indent=1, sort_keys=True)
+                f.flush()
+                os.fsync(f.fileno())
+            os.replace(tmp, self._path(segment_index))  # atomic rename
+            with open(self._path(segment_index) + ".takeovers.jsonl",
+                      "a", encoding="utf-8") as f:
+                f.write(G.canon(doc) + "\n")
+            return doc
+        finally:
+            os.rmdir(mutex)
+
+    def heartbeat(self, segment_index, now_s):
+        p = self._path(segment_index) + ".heartbeat_epoch"
+        tmp = p + ".tmp"
+        with open(tmp, "w") as f:
+            f.write(repr(float(now_s)))
+        os.replace(tmp, p)
+
+    def _last_sign_of_life(self, segment_index, doc=None):
+        """Epoch seconds of the claim holder's last sign of life:
+        the heartbeat sidecar, else the claim's own timestamp (a
+        job killed before its first heartbeat must still become
+        recoverable once the claim is old enough — otherwise an
+        early kill would brick the segment forever)."""
+        p = self._path(segment_index) + ".heartbeat_epoch"
+        try:
+            return float(open(p).read().strip())
+        except Exception:
+            pass
+        if doc is None:
+            doc = self.read(segment_index)
+        if doc and doc.get("claimed_at_local"):
+            try:
+                return G.parse_iso(
+                    doc["claimed_at_local"][:19] + "Z") / 1000.0
+            except Exception:
+                return None
+        return None
+
+    def heartbeat_age(self, segment_index, now_s):
+        last = self._last_sign_of_life(segment_index)
+        return None if last is None else now_s - last
+
+
+class GitClaimStore:
+    """Git-backed claim store: the claim for segment NN is the ref
+    refs/heads/cap1-claims/seg-NN pointing at a claim commit whose tree
+    contains claim.json. All operations go through a local clone of the
+    (bare or normal) repository at repo_dir; correctness rests on the
+    server-side atomicity of a single ref update, identical for a local
+    bare repository and for GitHub."""
+
+    def __init__(self, repo_dir):
+        self.repo = repo_dir
+
+    def _git(self, *args, check=True):
+        p = subprocess.run(["git", "-C", self.repo] + list(args),
+                           capture_output=True, text=True, timeout=60)
+        if check and p.returncode != 0:
+            raise RuntimeError("git %s failed: %s" % (args[0],
+                                                      p.stderr.strip()))
+        return p
+
+    def _ref(self, segment_index):
+        return "refs/heads/cap1-claims/seg-%02d" % segment_index
+
+    def _remote_ref_sha(self, segment_index):
+        p = self._git("ls-remote", "origin", self._ref(segment_index),
+                      check=False)
+        out = p.stdout.strip()
+        return out.split()[0] if out else None
+
+    def read(self, segment_index):
+        sha = self._remote_ref_sha(segment_index)
+        if sha is None:
+            return None
+        p = self._git("fetch", "origin", self._ref(segment_index),
+                      check=False)
+        show = self._git("show", "%s:claim.json" % sha, check=False)
+        if show.returncode != 0:
+            return {"_unreadable_claim_sha": sha}
+        return json.loads(show.stdout)
+
+    def _claim_commit(self, doc):
+        """Create a commit object carrying claim.json (no checkout)."""
+        env = dict(os.environ, GIT_AUTHOR_NAME="cap1-supervisor",
+                   GIT_AUTHOR_EMAIL="cap1@localhost",
+                   GIT_COMMITTER_NAME="cap1-supervisor",
+                   GIT_COMMITTER_EMAIL="cap1@localhost")
+        blob = subprocess.run(
+            ["git", "-C", self.repo, "hash-object", "-w", "--stdin"],
+            input=G.canon(doc), capture_output=True, text=True,
+            env=env, timeout=30)
+        blob_sha = blob.stdout.strip()
+        tree = subprocess.run(
+            ["git", "-C", self.repo, "mktree"],
+            input="100644 blob %s\tclaim.json\n" % blob_sha,
+            capture_output=True, text=True, env=env, timeout=30)
+        tree_sha = tree.stdout.strip()
+        commit = subprocess.run(
+            ["git", "-C", self.repo, "commit-tree", tree_sha, "-m",
+             "cap1 claim seg-%02d %s" % (doc["segment_index"],
+                                         doc["run_id"])],
+            capture_output=True, text=True, env=env, timeout=30)
+        return commit.stdout.strip()
+
+    def claim(self, segment_index, run_id, against_sha256, now_s):
+        doc = claim_doc(segment_index, run_id, against_sha256, now_s)
+        commit = self._claim_commit(doc)
+        ref = self._ref(segment_index)
+        p = self._git("push", "origin", "%s:%s" % (commit, ref),
+                      check=False)
+        if p.returncode == 0:
+            return doc
+        existing = self.read(segment_index)
+        if existing and existing.get("run_id") == run_id:
+            raise ClaimHeld(segment_index)
+        raise ClaimLost("ref creation rejected: %s"
+                        % p.stderr.strip().splitlines()[-1]
+                        if p.stderr.strip() else "push rejected")
+
+    def takeover(self, segment_index, run_id, against_sha256, now_s,
+                 stale_after_s, heartbeat_age_s):
+        if heartbeat_age_s is None or heartbeat_age_s <= stale_after_s:
+            raise ClaimLost("claim is not stale; takeover refused")
+        old_sha = self._remote_ref_sha(segment_index)
+        if old_sha is None:
+            return self.claim(segment_index, run_id, against_sha256,
+                              now_s)
+        current = self.read(segment_index)
+        doc = claim_doc(segment_index, run_id, against_sha256, now_s,
+                        takeover_of={"run_id": (current or {}).get(
+                            "run_id"), "claim_commit": old_sha,
+                            "heartbeat_age_s": heartbeat_age_s})
+        commit = self._claim_commit(doc)
+        ref = self._ref(segment_index)
+        # Compare-and-swap: lands only if the ref still holds old_sha.
+        p = self._git("push",
+                      "--force-with-lease=%s:%s" % (ref, old_sha),
+                      "origin", "%s:%s" % (commit, ref), check=False)
+        if p.returncode == 0:
+            return doc
+        raise ClaimLost("takeover CAS rejected (ref moved): %s"
+                        % p.stderr.strip().splitlines()[-1]
+                        if p.stderr.strip() else "push rejected")
+
+    def heartbeat(self, segment_index, now_s):
+        """Git claims carry liveness in the segment branch's
+        heartbeat.json (publisher's job); this store's staleness input
+        is the caller-measured age of that record. No-op by design."""
+        return None
