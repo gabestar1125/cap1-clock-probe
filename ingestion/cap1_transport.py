@@ -1,1 +1,162 @@
-IiIiQ0FQLTEgbGl2ZSB0cmFuc3BvcnQgKEctQ09MTC1GV0QpIOKAlCBwdWJsaWMtcmVhZC1vbmx5LCBhbGxvd2xpc3RlZC4KCkdFVC1vbmx5IGJ5IGNvbnN0cnVjdGlvbiAobm8gbWV0aG9kIHBhcmFtZXRlciBleGlzdHMpLCBmaXhlZCBoZWFkZXIgc2V0CihubyBhdXRoIG1hdGVyaWFsIGNhbiBiZSBhdHRhY2hlZCDigJQgdGhlcmUgaXMgbm8gQVBJIGZvciBpdCksIHJlZGlyZWN0cwpyZWZ1c2VkLCBob3N0cy9wYXRocyBhbGxvd2xpc3RlZCBiZWZvcmUgYW55IEkvTy4gVGhlIEhUVFAgY29ubmVjdG9yIGlzCmluamVjdGVkOiBvZmZsaW5lIHZlcmlmaWNhdGlvbiBydW5zIGVudGlyZWx5IG9uIGZpeHR1cmVzLgpHb3Zlcm5vcjogMTAgcmVxdWVzdHMvbWludXRlIHJvbGxpbmcsIHRvdGFsLWNhcCBlbmZvcmNlbWVudCwgYm91bmRlZApyZXRyaWVzLCA0Mjkgc3RvcCB0cmFja2luZywgZGVhZGxpbmUtYXdhcmUgZGVmZXJyYWwuCiIiIgppbXBvcnQgaHR0cC5jbGllbnQKaW1wb3J0IGpzb24KaW1wb3J0IHRpbWUKaW1wb3J0IHVybGxpYi5wYXJzZQoKQUxMT1dFRF9IT1NUUyA9IHsiYXBpLmVsZWN0aW9ucy5rYWxzaGkuY29tIn0KQUxMT1dFRF9QQVRIX1BSRUZJWEVTID0gKCIvdHJhZGUtYXBpL3YyL21hcmtldHMiLCkKQkFTRV9IT1NUID0gImFwaS5lbGVjdGlvbnMua2Fsc2hpLmNvbSIKQkFTRV9QQVRIID0gIi90cmFkZS1hcGkvdjIiCkZJWEVEX0hFQURFUlMgPSB7IkFjY2VwdCI6ICJhcHBsaWNhdGlvbi9qc29uIiwKICAgICAgICAgICAgICAgICAiVXNlci1BZ2VudCI6ICJjYXAxLW9ic2VydmVyLzEuMCJ9CgoKY2xhc3MgVHJhbnNwb3J0UmVmdXNhbChFeGNlcHRpb24pOgogICAgZGVmIF9faW5pdF9fKHNlbGYsIGNvZGUsIG1zZz0iIik6CiAgICAgICAgc3VwZXIoKS5fX2luaXRfXyhmIntjb2RlfToge21zZ30iKQogICAgICAgIHNlbGYuY29kZSA9IGNvZGUKCgpjbGFzcyBUcmFuc3BvcnRFcnJvcihFeGNlcHRpb24pOgogICAgcGFzcwoKCmNsYXNzIFN0b3BDb25kaXRpb24oRXhjZXB0aW9uKToKICAgIGRlZiBfX2luaXRfXyhzZWxmLCBjb2RlLCBtc2c9IiIpOgogICAgICAgIHN1cGVyKCkuX19pbml0X18oZiJ7Y29kZX06IHttc2d9IikKICAgICAgICBzZWxmLmNvZGUgPSBjb2RlCgoKZGVmIF9kZWZhdWx0X2Nvbm5lY3RvcihtZXRob2QsIGhvc3QsIHBhdGhfd2l0aF9xdWVyeSwgaGVhZGVycywgdGltZW91dCk6CiAgICBjb25uID0gaHR0cC5jbGllbnQuSFRUUFNDb25uZWN0aW9uKGhvc3QsIHRpbWVvdXQ9dGltZW91dCkKICAgIHRyeToKICAgICAgICBjb25uLnJlcXVlc3QobWV0aG9kLCBwYXRoX3dpdGhfcXVlcnksIGhlYWRlcnM9aGVhZGVycykKICAgICAgICByZXNwID0gY29ubi5nZXRyZXNwb25zZSgpCiAgICAgICAgcmV0dXJuIHJlc3Auc3RhdHVzLCBkaWN0KHJlc3AuZ2V0aGVhZGVycygpKSwgcmVzcC5yZWFkKCkKICAgIGZpbmFsbHk6CiAgICAgICAgY29ubi5jbG9zZSgpCgoKY2xhc3MgSHR0cFRyYW5zcG9ydDoKICAgIGRlZiBfX2luaXRfXyhzZWxmLCBjb25uZWN0b3I9Tm9uZSwgdGltZW91dD0xMCk6CiAgICAgICAgc2VsZi5fY29ubmVjdG9yID0gY29ubmVjdG9yIG9yIF9kZWZhdWx0X2Nvbm5lY3RvcgogICAgICAgIHNlbGYuX3RpbWVvdXQgPSB0aW1lb3V0CgogICAgZGVmIGdldChzZWxmLCBwYXRoLCBwYXJhbXM9Tm9uZSk6CiAgICAgICAgIiIiVGhlIG9ubHkgb3BlcmF0aW9uLiBgcGF0aGAgaXMgYSBmdWxsIEFQSSBwYXRoOyBhbGxvd2xpc3QgaXMKICAgICAgICBlbmZvcmNlZCBiZWZvcmUgdGhlIGNvbm5lY3RvciBpcyBpbnZva2VkLiIiIgogICAgICAgIGlmIG5vdCBhbnkocGF0aCA9PSBwIG9yIHBhdGguc3RhcnRzd2l0aChwICsgIi8iKSBvcgogICAgICAgICAgICAgICAgICAgcGF0aC5zdGFydHN3aXRoKHAgKyAiPyIpIGZvciBwIGluIEFMTE9XRURfUEFUSF9QUkVGSVhFUyk6CiAgICAgICAgICAgIHJhaXNlIFRyYW5zcG9ydFJlZnVzYWwoIlBBVEhfTk9UX0FMTE9XTElTVEVEIiwgcGF0aCkKICAgICAgICBxdWVyeSA9IHVybGxpYi5wYXJzZS51cmxlbmNvZGUocGFyYW1zIG9yIHt9KQogICAgICAgIGZ1bGwgPSBwYXRoICsgKCgiPyIgKyBxdWVyeSkgaWYgcXVlcnkgZWxzZSAiIikKICAgICAgICBzdGF0dXMsIGhlYWRlcnMsIHJhdyA9IHNlbGYuX2Nvbm5lY3RvcigKICAgICAgICAgICAgIkdFVCIsIEJBU0VfSE9TVCwgZnVsbCwgZGljdChGSVhFRF9IRUFERVJTKSwgc2VsZi5fdGltZW91dCkKICAgICAgICBpZiAzMDAgPD0gc3RhdHVzIDwgNDAwOgogICAgICAgICAgICByYWlzZSBUcmFuc3BvcnRSZWZ1c2FsKCJSRURJUkVDVF9SRUZVU0VEIiwgZiJ7c3RhdHVzfSAtPiAiCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgZiJ7aGVhZGVycy5nZXQoJ0xvY2F0aW9uJywgJz8nKX0iKQogICAgICAgIHJldHVybiBzdGF0dXMsIHJhdwoKCmNsYXNzIEdvdmVybm9yOgogICAgIiIiUm9sbGluZy1taW51dGUgcmF0ZSBsaW1pdCArIHRvdGFsIGNhcCArIHJldHJ5LzQyOSBkaXNjaXBsaW5lLgogICAgbm93X3Mvc2xlZXBfcyBhcmUgaW5qZWN0ZWQgKGxpdmU6IHRpbWUudGltZS90aW1lLnNsZWVwKS4iIiIKCiAgICBkZWYgX19pbml0X18oc2VsZiwgbm93X3MsIHNsZWVwX3MsIHBlcl9taW51dGU9MTAsIHRvdGFsX2NhcD01MDAwLAogICAgICAgICAgICAgICAgIHN0YXRlPU5vbmUpOgogICAgICAgIHNlbGYuX25vdywgc2VsZi5fc2xlZXAgPSBub3dfcywgc2xlZXBfcwogICAgICAgIHNlbGYucGVyX21pbnV0ZSwgc2VsZi50b3RhbF9jYXAgPSBwZXJfbWludXRlLCB0b3RhbF9jYXAKICAgICAgICBzZWxmLnN0YXRlID0gc3RhdGUgaWYgc3RhdGUgaXMgbm90IE5vbmUgZWxzZSB7CiAgICAgICAgICAgICJ0b3RhbF9yZXF1ZXN0cyI6IDAsICJyZXF1ZXN0X3RpbWVzIjogW10sICJyYXRlX2xpbWl0X2V2ZW50cyI6IFtdfQoKICAgIGRlZiBfcHJ1bmUoc2VsZik6CiAgICAgICAgY3V0b2ZmID0gc2VsZi5fbm93KCkgLSA2MC4wCiAgICAgICAgc2VsZi5zdGF0ZVsicmVxdWVzdF90aW1lcyJdID0gWwogICAgICAgICAgICB0IGZvciB0IGluIHNlbGYuc3RhdGVbInJlcXVlc3RfdGltZXMiXSBpZiB0ID4gY3V0b2ZmXQoKICAgIGRlZiBhY3F1aXJlKHNlbGYsIGRlYWRsaW5lX3M9Tm9uZSk6CiAgICAgICAgIiIiV2FpdCAob3IgcmVmdXNlKSB1bnRpbCBhIHJlcXVlc3Qgc2xvdCBpcyBhdmFpbGFibGUuIFJldHVybnMKICAgICAgICBUcnVlIHdoZW4gdGhlIGNhbGxlciBtYXkgZmlyZTsgcmFpc2VzIFN0b3BDb25kaXRpb24gYXQgdGhlIHRvdGFsCiAgICAgICAgY2FwOyByZXR1cm5zIEZhbHNlIHdoZW4gdGhlIGRlYWRsaW5lIGNhbm5vdCBiZSBtZXQgKGNhbGxlciBHQVBzKS4iIiIKICAgICAgICBpZiBzZWxmLnN0YXRlWyJ0b3RhbF9yZXF1ZXN0cyJdID49IHNlbGYudG90YWxfY2FwOgogICAgICAgICAgICByYWlzZSBTdG9wQ29uZGl0aW9uKCJSRVFVRVNUX0NBUCIsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgZiJ0b3RhbCB7c2VsZi5zdGF0ZVsndG90YWxfcmVxdWVzdHMnXX0iKQogICAgICAgIHNlbGYuX3BydW5lKCkKICAgICAgICBpZiBsZW4oc2VsZi5zdGF0ZVsicmVxdWVzdF90aW1lcyJdKSA+PSBzZWxmLnBlcl9taW51dGU6CiAgICAgICAgICAgIHdhaXQgPSBzZWxmLnN0YXRlWyJyZXF1ZXN0X3RpbWVzIl1bMF0gKyA2MC4wIC0gc2VsZi5fbm93KCkKICAgICAgICAgICAgaWYgZGVhZGxpbmVfcyBpcyBub3QgTm9uZSBhbmQgc2VsZi5fbm93KCkgKyB3YWl0ID4gZGVhZGxpbmVfczoKICAgICAgICAgICAgICAgIHJldHVybiBGYWxzZQogICAgICAgICAgICBzZWxmLl9zbGVlcChtYXgod2FpdCwgMC4wKSkKICAgICAgICAgICAgc2VsZi5fcHJ1bmUoKQogICAgICAgIHNlbGYuc3RhdGVbInJlcXVlc3RfdGltZXMiXS5hcHBlbmQoc2VsZi5fbm93KCkpCiAgICAgICAgc2VsZi5zdGF0ZVsidG90YWxfcmVxdWVzdHMiXSArPSAxCiAgICAgICAgcmV0dXJuIFRydWUKCiAgICBkZWYgbm90ZV9yZXNwb25zZShzZWxmLCBzdGF0dXMpOgogICAgICAgIGlmIHN0YXR1cyA9PSA0Mjk6CiAgICAgICAgICAgIG5vdyA9IHNlbGYuX25vdygpCiAgICAgICAgICAgIHJlY2VudCA9IFt0IGZvciB0IGluIHNlbGYuc3RhdGVbInJhdGVfbGltaXRfZXZlbnRzIl0KICAgICAgICAgICAgICAgICAgICAgIGlmIG5vdyAtIHQgPD0gNjAwLjBdCiAgICAgICAgICAgIHJlY2VudC5hcHBlbmQobm93KQogICAgICAgICAgICBzZWxmLnN0YXRlWyJyYXRlX2xpbWl0X2V2ZW50cyJdID0gcmVjZW50CiAgICAgICAgICAgIGlmIGxlbihyZWNlbnQpID49IDI6CiAgICAgICAgICAgICAgICByYWlzZSBTdG9wQ29uZGl0aW9uKCJSQVRFX0xJTUlURUQiLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAic2Vjb25kIDQyOSB3aXRoaW4gMTAgbWludXRlcyIpCgogICAgZGVmIGZldGNoKHNlbGYsIHRyYW5zcG9ydCwgcGF0aCwgcGFyYW1zPU5vbmUsIGRlYWRsaW5lX3M9Tm9uZSwKICAgICAgICAgICAgICBiYWNrb2ZmPSg1LjAsIDE1LjApKToKICAgICAgICAiIiJPbmUgbG9naWNhbCBmZXRjaDogZ292ZXJuZWQsIOKJpDIgcmV0cmllcyBvbiB0cmFuc3BvcnQgZXJyb3JzIC8KICAgICAgICA1eHggb25seS4gNHh4IHJldHVybnMgYXMgYSByZXNwb25zZSAocHJlc2VydmVkIHJhdyBieSBjYWxsZXIpLgogICAgICAgIFJldHVybnMgKHN0YXR1cywgcmF3KSBvciAoJ0dBUCcsIHJlYXNvbikuIiIiCiAgICAgICAgYXR0ZW1wdHMgPSAwCiAgICAgICAgd2hpbGUgVHJ1ZToKICAgICAgICAgICAgaWYgbm90IHNlbGYuYWNxdWlyZShkZWFkbGluZV9zPWRlYWRsaW5lX3MpOgogICAgICAgICAgICAgICAgcmV0dXJuICgiR0FQIiwgIkRFQURMSU5FX1VOTUVUIikKICAgICAgICAgICAgdHJ5OgogICAgICAgICAgICAgICAgc3RhdHVzLCByYXcgPSB0cmFuc3BvcnQuZ2V0KHBhdGgsIHBhcmFtcykKICAgICAgICAgICAgZXhjZXB0IFRyYW5zcG9ydFJlZnVzYWw6CiAgICAgICAgICAgICAgICByYWlzZQogICAgICAgICAgICBleGNlcHQgRXhjZXB0aW9uIGFzIGU6CiAgICAgICAgICAgICAgICBzdGF0dXMsIHJhdyA9IE5vbmUsIHN0cihlKS5lbmNvZGUoKQogICAgICAgICAgICAgICAgZXJyID0gVHJhbnNwb3J0RXJyb3Ioc3RyKGUpKQogICAgICAgICAgICBpZiBzdGF0dXMgaXMgbm90IE5vbmU6CiAgICAgICAgICAgICAgICBzZWxmLm5vdGVfcmVzcG9uc2Uoc3RhdHVzKQogICAgICAgICAgICAgICAgaWYgc3RhdHVzIDwgNTAwOgogICAgICAgICAgICAgICAgICAgIHJldHVybiAoc3RhdHVzLCByYXcpCiAgICAgICAgICAgICAgICBlcnIgPSBUcmFuc3BvcnRFcnJvcihmIkhUVFAge3N0YXR1c30iKQogICAgICAgICAgICBhdHRlbXB0cyArPSAxCiAgICAgICAgICAgIGlmIGF0dGVtcHRzID4gbGVuKGJhY2tvZmYpOgogICAgICAgICAgICAgICAgcmV0dXJuICgiR0FQIiwgZiJSRVRSSUVTX0VYSEFVU1RFRDp7ZXJyfSIpCiAgICAgICAgICAgIGlmIGRlYWRsaW5lX3MgaXMgbm90IE5vbmUgYW5kIFwKICAgICAgICAgICAgICAgICAgICBzZWxmLl9ub3coKSArIGJhY2tvZmZbYXR0ZW1wdHMgLSAxXSA+IGRlYWRsaW5lX3M6CiAgICAgICAgICAgICAgICByZXR1cm4gKCJHQVAiLCAiREVBRExJTkVfVU5NRVQiKQogICAgICAgICAgICBzZWxmLl9zbGVlcChiYWNrb2ZmW2F0dGVtcHRzIC0gMV0pCgogICAgZGVmIGdldF9hbGxfcGFnZXMoc2VsZiwgdHJhbnNwb3J0LCBwYXRoLCBwYXJhbXM9Tm9uZSwgZGVhZGxpbmVfcz1Ob25lKToKICAgICAgICAiIiJDdXJzb3IgcGFnaW5hdGlvbjsgZXZlcnkgcGFnZSBpcyBhIGdvdmVybmVkLCBjb3VudGVkIGZldGNoLiIiIgogICAgICAgIHBhZ2VzLCBjdXJzb3IgPSBbXSwgTm9uZQogICAgICAgIHdoaWxlIFRydWU6CiAgICAgICAgICAgIHAgPSBkaWN0KHBhcmFtcyBvciB7fSkKICAgICAgICAgICAgaWYgY3Vyc29yOgogICAgICAgICAgICAgICAgcFsiY3Vyc29yIl0gPSBjdXJzb3IKICAgICAgICAgICAgcmVzID0gc2VsZi5mZXRjaCh0cmFuc3BvcnQsIHBhdGgsIHAsIGRlYWRsaW5lX3M9ZGVhZGxpbmVfcykKICAgICAgICAgICAgaWYgcmVzWzBdID09ICJHQVAiOgogICAgICAgICAgICAgICAgcmV0dXJuICgiR0FQIiwgcmVzWzFdKQogICAgICAgICAgICBzdGF0dXMsIHJhdyA9IHJlcwogICAgICAgICAgICBwYWdlcy5hcHBlbmQocmF3KQogICAgICAgICAgICB0cnk6CiAgICAgICAgICAgICAgICBib2R5ID0ganNvbi5sb2FkcyhyYXcuZGVjb2RlKCJ1dGYtOCIpKQogICAgICAgICAgICBleGNlcHQgRXhjZXB0aW9uOgogICAgICAgICAgICAgICAgcmV0dXJuIHBhZ2VzCiAgICAgICAgICAgIGN1cnNvciA9IGJvZHkuZ2V0KCJjdXJzb3IiKQogICAgICAgICAgICBpZiBub3QgY3Vyc29yOgogICAgICAgICAgICAgICAgcmV0dXJuIHBhZ2VzCg==
+"""CAP-1 live transport (G-COLL-FWD) — public-read-only, allowlisted.
+
+GET-only by construction (no method parameter exists), fixed header set
+(no auth material can be attached — there is no API for it), redirects
+refused, hosts/paths allowlisted before any I/O. The HTTP connector is
+injected: offline verification runs entirely on fixtures.
+Governor: 10 requests/minute rolling, total-cap enforcement, bounded
+retries, 429 stop tracking, deadline-aware deferral.
+"""
+import http.client
+import json
+import time
+import urllib.parse
+
+ALLOWED_HOSTS = {"api.elections.kalshi.com"}
+ALLOWED_PATH_PREFIXES = ("/trade-api/v2/markets",)
+BASE_HOST = "api.elections.kalshi.com"
+BASE_PATH = "/trade-api/v2"
+FIXED_HEADERS = {"Accept": "application/json",
+                 "User-Agent": "cap1-observer/1.0"}
+
+
+class TransportRefusal(Exception):
+    def __init__(self, code, msg=""):
+        super().__init__(f"{code}: {msg}")
+        self.code = code
+
+
+class TransportError(Exception):
+    pass
+
+
+class StopCondition(Exception):
+    def __init__(self, code, msg=""):
+        super().__init__(f"{code}: {msg}")
+        self.code = code
+
+
+def _default_connector(method, host, path_with_query, headers, timeout):
+    conn = http.client.HTTPSConnection(host, timeout=timeout)
+    try:
+        conn.request(method, path_with_query, headers=headers)
+        resp = conn.getresponse()
+        return resp.status, dict(resp.getheaders()), resp.read()
+    finally:
+        conn.close()
+
+
+class HttpTransport:
+    def __init__(self, connector=None, timeout=10):
+        self._connector = connector or _default_connector
+        self._timeout = timeout
+
+    def get(self, path, params=None):
+        """The only operation. `path` is a full API path; allowlist is
+        enforced before the connector is invoked."""
+        if not any(path == p or path.startswith(p + "/") or
+                   path.startswith(p + "?") for p in ALLOWED_PATH_PREFIXES):
+            raise TransportRefusal("PATH_NOT_ALLOWLISTED", path)
+        query = urllib.parse.urlencode(params or {})
+        full = path + (("?" + query) if query else "")
+        status, headers, raw = self._connector(
+            "GET", BASE_HOST, full, dict(FIXED_HEADERS), self._timeout)
+        if 300 <= status < 400:
+            raise TransportRefusal("REDIRECT_REFUSED", f"{status} -> "
+                                   f"{headers.get('Location', '?')}")
+        return status, raw
+
+
+class Governor:
+    """Rolling-minute rate limit + total cap + retry/429 discipline.
+    now_s/sleep_s are injected (live: time.time/time.sleep)."""
+
+    def __init__(self, now_s, sleep_s, per_minute=10, total_cap=5000,
+                 state=None):
+        self._now, self._sleep = now_s, sleep_s
+        self.per_minute, self.total_cap = per_minute, total_cap
+        self.state = state if state is not None else {
+            "total_requests": 0, "request_times": [], "rate_limit_events": []}
+
+    def _prune(self):
+        cutoff = self._now() - 60.0
+        self.state["request_times"] = [
+            t for t in self.state["request_times"] if t > cutoff]
+
+    def acquire(self, deadline_s=None):
+        """Wait (or refuse) until a request slot is available. Returns
+        True when the caller may fire; raises StopCondition at the total
+        cap; returns False when the deadline cannot be met (caller GAPs)."""
+        if self.state["total_requests"] >= self.total_cap:
+            raise StopCondition("REQUEST_CAP",
+                                f"total {self.state['total_requests']}")
+        self._prune()
+        if len(self.state["request_times"]) >= self.per_minute:
+            wait = self.state["request_times"][0] + 60.0 - self._now()
+            if deadline_s is not None and self._now() + wait > deadline_s:
+                return False
+            self._sleep(max(wait, 0.0))
+            self._prune()
+        self.state["request_times"].append(self._now())
+        self.state["total_requests"] += 1
+        return True
+
+    def note_response(self, status):
+        if status == 429:
+            now = self._now()
+            recent = [t for t in self.state["rate_limit_events"]
+                      if now - t <= 600.0]
+            recent.append(now)
+            self.state["rate_limit_events"] = recent
+            if len(recent) >= 2:
+                raise StopCondition("RATE_LIMITED",
+                                    "second 429 within 10 minutes")
+
+    def fetch(self, transport, path, params=None, deadline_s=None,
+              backoff=(5.0, 15.0)):
+        """One logical fetch: governed, ≤2 retries on transport errors /
+        5xx only. 4xx returns as a response (preserved raw by caller).
+        Returns (status, raw) or ('GAP', reason)."""
+        attempts = 0
+        while True:
+            if not self.acquire(deadline_s=deadline_s):
+                return ("GAP", "DEADLINE_UNMET")
+            try:
+                status, raw = transport.get(path, params)
+            except TransportRefusal:
+                raise
+            except Exception as e:
+                status, raw = None, str(e).encode()
+                err = TransportError(str(e))
+            if status is not None:
+                self.note_response(status)
+                if status < 500:
+                    return (status, raw)
+                err = TransportError(f"HTTP {status}")
+            attempts += 1
+            if attempts > len(backoff):
+                return ("GAP", f"RETRIES_EXHAUSTED:{err}")
+            if deadline_s is not None and \
+                    self._now() + backoff[attempts - 1] > deadline_s:
+                return ("GAP", "DEADLINE_UNMET")
+            self._sleep(backoff[attempts - 1])
+
+    def get_all_pages(self, transport, path, params=None, deadline_s=None):
+        """Cursor pagination; every page is a governed, counted fetch."""
+        pages, cursor = [], None
+        while True:
+            p = dict(params or {})
+            if cursor:
+                p["cursor"] = cursor
+            res = self.fetch(transport, path, p, deadline_s=deadline_s)
+            if res[0] == "GAP":
+                return ("GAP", res[1])
+            status, raw = res
+            pages.append(raw)
+            try:
+                body = json.loads(raw.decode("utf-8"))
+            except Exception:
+                return pages
+            cursor = body.get("cursor")
+            if not cursor:
+                return pages
