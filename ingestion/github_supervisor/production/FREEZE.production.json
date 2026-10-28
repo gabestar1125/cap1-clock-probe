@@ -1,0 +1,66 @@
+{
+ "activation_A": "2026-11-03T12:00:00Z",
+ "budgets": {
+  "concurrency": 1,
+  "max_recovery_per_day": 3,
+  "max_retries": 2,
+  "per_minute": 10,
+  "storage_cap_bytes": 524288000,
+  "total_requests": 5000
+ },
+ "code_hashes": {
+  "cap1_sha256": "5e854872116fbec8c02ad63a0216f29d5ff06d6a9bad69372cbf2a987ea8ba50",
+  "config_sha256": "77abaee418df93e9a27834d13fb40b43b04e96f9b6aeeb7ca0fc5786f1427771",
+  "transport_sha256": "00539951430f5bff496edebf02b59357f89dcdfe09f6f27301d5842eeb54d0ec"
+ },
+ "dat": {
+  "clock_pass": true,
+  "note": "tv_pass: frozen transport suite 11/11 PASS (byte-identical x2) + production wiring suite 23/23. clock_pass: GitHub clock probe 2026-10-28 \u2014 chrony stratum-1 PHC0 both architectures, derived S-C bounds 0.137 ms (x64) / 0.040 ms (ARM) vs the 100 ms activation gate. Segment 1's LIVE S-C record on the activation run remains the operative gate (bound > 100 ms -> ABORTED:CLOCK_GATE, zero requests).",
+  "tv_pass": true
+ },
+ "denominator_rule": "EXCLUDE_BOUNDARY_INELIGIBLE",
+ "hard_end": "2026-11-05T12:00:00Z",
+ "label": "CAP-1 ACTIVATION FREEZE \u2014 authorized 2026-10-28 (principal directive; A named under Amendment 2 as corrected)",
+ "phase": {
+  "chunk_interval_s": 1800,
+  "claim_stale_s": 900,
+  "dispatch_lead_s": 1800,
+  "final_grace_s": 900,
+  "heartbeat_s": 300,
+  "phase_b_s": 900,
+  "redispatch_offsets_s": [
+   360,
+   720
+  ],
+  "tail_s": 300,
+  "tick_interval_s": 120
+ },
+ "runner_leg": "ubuntu-24.04-arm",
+ "schema": "cap1-freeze/1",
+ "segment_plan": {
+  "lengths_s": [
+   18000,
+   18000,
+   18000,
+   18000,
+   18000,
+   18000,
+   18000,
+   18000,
+   18000,
+   10800
+  ]
+ },
+ "series": [
+  "KXBTC15M",
+  "KXETH15M",
+  "KXSOL15M"
+ ],
+ "synthetic": false,
+ "thresholds": {
+  "activation_clock_bound_ms": 100,
+  "consecutive_over_max_stop": 3,
+  "per_observation_max_ms": 250,
+  "t300_min_pct": 0.98
+ }
+}
