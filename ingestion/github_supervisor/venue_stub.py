@@ -1,1 +1,206 @@
-IiIiU3ludGhldGljIHZlbnVlICsgcmVxdWVzdCBpbnN0cnVtZW50YXRpb24gKGxhYi9yZWhlYXJzYWwgb25seSkuCgpUaGUgc3R1YiBzZXJ2ZXMgS2Fsc2hpLXNoYXBlZCByZXNwb25zZXMgZm9yIGZpeHR1cmUgbWFya2V0cyB0aHJvdWdoCnRoZSBmcm96ZW4gSHR0cFRyYW5zcG9ydCdzIGNvbm5lY3RvciBzZWFtIOKAlCB0aGUgZXhhY3Qgc2VhbSB0aGUgZnJvemVuCkUyRSBzdWl0ZSB1c2VzLiBJdCBtYWtlcyBaRVJPIG5ldHdvcmsgY2FsbHMuIEZpeHR1cmUgdW5pdmVyc2VzIGFyZQpnZW5lcmF0ZWQgb24gdGhlIGZyb3plbiA5MDAtc2Vjb25kIGNsb3NlIGdyaWQsIHNraXBwaW5nIHRoZSBjZW5zdXMKVGh1cnNkYXkgaG9sZSBjbG9zZXMgKHRoZSB2ZW51ZSBuZXZlciBjcmVhdGVzIHRob3NlIG1hcmtldHMpLCBzbyB0aGUKY29tcG9zZWQgcmVhZGVyJ3MgTkVWRVJfQ1JFQVRFRCBhY2NvdW50aW5nIGlzIGdlbnVpbmVseSBleGVyY2lzZWQuCgpJbnN0cnVtZW50YXRpb24gcmVjb3JkcyBldmVyeSBjb25uZWN0b3IgY2FsbCB3aXRoIGluL291dCB0aW1lc3RhbXBzCihmcm9tIGFuIGluamVjdGVkIGNsb2NrKSBzbyByYXRlIGFuZCBjb25jdXJyZW5jeSBhcmUgTUVBU1VSRUQgZnJvbQpyZXF1ZXN0IGludGVydmFscywgbmV2ZXIgYXNzZXJ0ZWQuCiIiIgppbXBvcnQgaGFzaGxpYgppbXBvcnQganNvbgppbXBvcnQgdGltZQppbXBvcnQgdXJsbGliLnBhcnNlCmZyb20gZGF0ZXRpbWUgaW1wb3J0IGRhdGV0aW1lLCB0aW1lem9uZQoKZnJvbSAuIGltcG9ydCBnaF9jb21tb24gYXMgRwoKIyBDZW5zdXMtZXhhY3QgVGh1cnNkYXkgaG9sZSAoU0hBUkVEX01BUktFVF9DQUxFTkRBUl9TUEVDKTogY3J5cHRvCiMgc2VyaWVzIG1hcmtldHMgYXJlIG5ldmVyIGNyZWF0ZWQgd2l0aCB0aGVzZSBVVEMgY2xvc2UgdGltZXMuClRIVVJTREFZX0hPTEVfQ0xPU0VTID0geyg3LCAxNSksICg3LCAzMCksICg3LCA0NSksICg4LCAwKSwgKDgsIDE1KSwKICAgICAgICAgICAgICAgICAgICAgICAgKDgsIDMwKSwgKDgsIDQ1KSwgKDksIDApfQpHUklEX1MgPSA5MDAKCgpkZWYgaXNfdGh1cnNkYXlfaG9sZV9jbG9zZShlcG9jaF9tcyk6CiAgICBkdCA9IGRhdGV0aW1lLmZyb210aW1lc3RhbXAoZXBvY2hfbXMgLyAxMDAwLCB0aW1lem9uZS51dGMpCiAgICByZXR1cm4gZHQud2Vla2RheSgpID09IDMgYW5kIChkdC5ob3VyLCBkdC5taW51dGUpIGluIFwKICAgICAgICBUSFVSU0RBWV9IT0xFX0NMT1NFUwoKCmRlZiBncmlkX21hcmtldHMoc2VyaWVzX2xpc3QsIHdpbmRvd19sb19tcywgd2luZG93X2hpX21zLCAqLAogICAgICAgICAgICAgICAgIHN0cmlrZV9iYXNlPTEwMC4wKToKICAgICIiIkRldGVybWluaXN0aWMgZml4dHVyZSB1bml2ZXJzZTogZm9yIGVhY2ggc2VyaWVzLCBhIG1hcmtldAogICAgY2xvc2luZyBhdCBldmVyeSBncmlkIGluc3RhbnQgaW4gKGxvIC0gOTAwcywgaGkgKyA5MDBzXSAoc28gbGVhZC1pbgogICAgYW5kIHRhaWwgbWFya2V0cyBleGlzdCksIGV4Y2VwdCBUaHVyc2RheS1ob2xlIGNsb3Nlcy4gU3RyaWtlIGlzIGEKICAgIGRldGVybWluaXN0aWMgZnVuY3Rpb24gb2YgdGhlIHRpY2tlci4iIiIKICAgIG91dCA9IHt9CiAgICBmaXJzdCA9ICh3aW5kb3dfbG9fbXMgLy8gKEdSSURfUyAqIDEwMDApKSAqIEdSSURfUyAqIDEwMDAKICAgIHQgPSBmaXJzdCAtIEdSSURfUyAqIDEwMDAKICAgIHdoaWxlIHQgPD0gd2luZG93X2hpX21zICsgR1JJRF9TICogMTAwMDoKICAgICAgICBpZiBub3QgaXNfdGh1cnNkYXlfaG9sZV9jbG9zZSh0KToKICAgICAgICAgICAgZm9yIHNlcmllcyBpbiBzZXJpZXNfbGlzdDoKICAgICAgICAgICAgICAgIGNsb3NlX2lzbyA9IEcuaXNvX29mX21zKHQpCiAgICAgICAgICAgICAgICBvcGVuX2lzbyA9IEcuaXNvX29mX21zKHQgLSBHUklEX1MgKiAxMDAwKQogICAgICAgICAgICAgICAgdGlja2VyID0gIiVzLSVzIiAlIChzZXJpZXMsIGNsb3NlX2lzby5yZXBsYWNlKAogICAgICAgICAgICAgICAgICAgICItIiwgIiIpLnJlcGxhY2UoIjoiLCAiIikucmVwbGFjZSgiVCIsICItIikpCiAgICAgICAgICAgICAgICBkaWdlc3QgPSBoYXNobGliLnNoYTI1Nih0aWNrZXIuZW5jb2RlKCkpLmRpZ2VzdCgpCiAgICAgICAgICAgICAgICBzdHJpa2UgPSBzdHJpa2VfYmFzZSArIChkaWdlc3RbMF0gJSA1MCkgKiAwLjUKICAgICAgICAgICAgICAgIG91dFt0aWNrZXJdID0gewogICAgICAgICAgICAgICAgICAgICJ0aWNrZXIiOiB0aWNrZXIsICJzZXJpZXNfdGlja2VyIjogc2VyaWVzLAogICAgICAgICAgICAgICAgICAgICJzdGF0dXMiOiAiYWN0aXZlIiwgIm9wZW5fdGltZSI6IG9wZW5faXNvLAogICAgICAgICAgICAgICAgICAgICJjbG9zZV90aW1lIjogY2xvc2VfaXNvLCAiZmxvb3Jfc3RyaWtlIjogc3RyaWtlLAogICAgICAgICAgICAgICAgICAgICJzdHJpa2VfdHlwZSI6ICJncmVhdGVyX29yX2VxdWFsIiwKICAgICAgICAgICAgICAgICAgICAicnVsZXNfcHJpbWFyeSI6ICJTeW50aGV0aWMgZml4dHVyZSBtYXJrZXQuIiwKICAgICAgICAgICAgICAgICAgICAidXBkYXRlZF90aW1lIjogb3Blbl9pc299CiAgICAgICAgdCArPSBHUklEX1MgKiAxMDAwCiAgICByZXR1cm4gb3V0CgoKY2xhc3MgU3R1YlZlbnVlOgogICAgIiIiQ29ubmVjdG9yIGNhbGxhYmxlOiAobWV0aG9kLCBob3N0LCBwYXRoLCBoZWFkZXJzLCB0aW1lb3V0KSAtPgogICAgKHN0YXR1cywgaGVhZGVycywgcmF3KS4gQmVoYXZpb3VyIHNjcmlwdDoKICAgICAgbGF0ZW5jeV9zOiBmbG9hdCwgb3IgY2FsbGFibGUoY2FsbF9ubykgLT4gZmxvYXQgKHNlY29uZHMgdGhlCiAgICAgICAgY2FsbCBvY2N1cGllczsgdmlydHVhbCBjbG9ja3MgYXJlIGFkdmFuY2VkIGJ5IHRoZSBjYWxsZXIncwogICAgICAgIGhhcm5lc3MsIHJlYWwgY2xvY2tzIHZpYSB0aW1lLnNsZWVwKQogICAgICBmYWlsdXJlczogY2FsbGFibGUoY2FsbF9ubywga2luZCwga2V5KSAtPiBOb25lIHwgKCJzdGF0dXMiLCBjb2RlKQogICAgICAgIHwgInJhaXNlIiAgIChraW5kOiAibGlzdGluZyIgfCAibWFya2V0IikKICAgIEEgYGNsb2NrYCAob2JqZWN0IHdpdGggbm93X3MoKSkgbWF5IGJlIGF0dGFjaGVkOyB3aGVuIGxhdGVuY3kgaXMKICAgIGNvbnN1bWVkIGluIHZpcnR1YWwgbW9kZSB0aGUgaGFybmVzcyBhZHZhbmNlcyBpdCBleHRlcm5hbGx5IOKAlCB0aGlzCiAgICBjb25uZWN0b3Igb25seSByZXBvcnRzIHRoZSBsYXRlbmN5IGl0IGFwcGxpZWQgdmlhIGxhc3RfbGF0ZW5jeV9zLgogICAgIiIiCgogICAgZGVmIF9faW5pdF9fKHNlbGYsIG1hcmtldHMsIG5vd19mbiwgbGF0ZW5jeV9zPTAuMCwgZmFpbHVyZXM9Tm9uZSwKICAgICAgICAgICAgICAgICBzbGVlcF9mbj1Ob25lLCBsaXN0X2xvb2thaGVhZF9zPTApOgogICAgICAgIHNlbGYubWFya2V0cyA9IG1hcmtldHMKICAgICAgICBzZWxmLl9ub3cgPSBub3dfZm4KICAgICAgICBzZWxmLmxhdGVuY3lfcyA9IGxhdGVuY3lfcwogICAgICAgIHNlbGYuZmFpbHVyZXMgPSBmYWlsdXJlcwogICAgICAgIHNlbGYuX3NsZWVwID0gc2xlZXBfZm4KICAgICAgICAjIE1hcmtldHMgYmVjb21lIGxpc3RhYmxlIHRoaXMgbG9uZyBiZWZvcmUgdGhlaXIgb3Blbl90aW1lLgogICAgICAgICMgVGhlIGZyb3plbiBFMkUgZml4dHVyZSB1c2VkIDA7IGEgcmVhbCB2ZW51ZSBsaXN0cyBtYXJrZXRzCiAgICAgICAgIyB3aGVuIHRoZXkgYXJlIGNyZWF0ZWQsIHdlbGwgYmVmb3JlIHRoZXkgb3BlbiwgYW5kIHRoZQogICAgICAgICMgZnJvemVuIGRpc2NvdmVyeSBjYWRlbmNlICg5MDAgcykgcGx1cyAxODAgcyBzbG90IGxhdGVuZXNzCiAgICAgICAgIyBjYW5ub3Qgb3RoZXJ3aXNlIGV2ZXIgY2FwdHVyZSBhbiBPUEVOIHNsb3Qg4oCUIHRoZSByZWhlYXJzYWwKICAgICAgICAjIHVzZXMgYSAzNjAwIHMgbG9va2FoZWFkIGFuZCBzYXlzIHNvIGluIGl0cyBmcmVlemUgbGFiZWwuCiAgICAgICAgc2VsZi5saXN0X2xvb2thaGVhZF9zID0gbGlzdF9sb29rYWhlYWRfcwogICAgICAgIHNlbGYuY2FsbHMgPSAwCiAgICAgICAgc2VsZi5sYXN0X2xhdGVuY3lfcyA9IDAuMAoKICAgIGRlZiBfbGF0ZW5jeShzZWxmKToKICAgICAgICBsYXQgPSBzZWxmLmxhdGVuY3lfcyhzZWxmLmNhbGxzKSBpZiBjYWxsYWJsZShzZWxmLmxhdGVuY3lfcykgXAogICAgICAgICAgICBlbHNlIHNlbGYubGF0ZW5jeV9zCiAgICAgICAgc2VsZi5sYXN0X2xhdGVuY3lfcyA9IGxhdAogICAgICAgIGlmIGxhdCBhbmQgc2VsZi5fc2xlZXAgaXMgbm90IE5vbmU6CiAgICAgICAgICAgIHNlbGYuX3NsZWVwKGxhdCkKICAgICAgICByZXR1cm4gbGF0CgogICAgZGVmIF9fY2FsbF9fKHNlbGYsIG1ldGhvZCwgaG9zdCwgcGF0aCwgaGVhZGVycywgdGltZW91dCk6CiAgICAgICAgc2VsZi5jYWxscyArPSAxCiAgICAgICAgcSA9IHVybGxpYi5wYXJzZS5wYXJzZV9xcyh1cmxsaWIucGFyc2UudXJscGFyc2UocGF0aCkucXVlcnkpCiAgICAgICAgaWYgInRpY2tlciIgaW4gcToKICAgICAgICAgICAga2luZCwga2V5ID0gIm1hcmtldCIsIHFbInRpY2tlciJdWzBdCiAgICAgICAgZWxzZToKICAgICAgICAgICAga2luZCwga2V5ID0gImxpc3RpbmciLCBxLmdldCgic2VyaWVzX3RpY2tlciIsIFsiPyJdKVswXQogICAgICAgIHNlbGYuX2xhdGVuY3koKQogICAgICAgIGlmIHNlbGYuZmFpbHVyZXMgaXMgbm90IE5vbmU6CiAgICAgICAgICAgIHZlcmRpY3QgPSBzZWxmLmZhaWx1cmVzKHNlbGYuY2FsbHMsIGtpbmQsIGtleSkKICAgICAgICAgICAgaWYgdmVyZGljdCA9PSAicmFpc2UiOgogICAgICAgICAgICAgICAgcmFpc2UgQ29ubmVjdGlvbkVycm9yKCJpbmplY3RlZCB0cmFuc3BvcnQgZmFpbHVyZSIpCiAgICAgICAgICAgIGlmIGlzaW5zdGFuY2UodmVyZGljdCwgdHVwbGUpIGFuZCB2ZXJkaWN0WzBdID09ICJzdGF0dXMiOgogICAgICAgICAgICAgICAgcmV0dXJuIHZlcmRpY3RbMV0sIHt9LCBqc29uLmR1bXBzKAogICAgICAgICAgICAgICAgICAgIHsiZXJyb3IiOiAiaW5qZWN0ZWQifSkuZW5jb2RlKCkKICAgICAgICBpZiBraW5kID09ICJtYXJrZXQiOgogICAgICAgICAgICBtID0gc2VsZi5tYXJrZXRzW2tleV0KICAgICAgICAgICAgcmV0dXJuIDIwMCwge30sIGpzb24uZHVtcHMoeyJtYXJrZXRzIjogW21dfSkuZW5jb2RlKCkKICAgICAgICBob3Jpem9uID0gRy5pc29fb2ZfbXMoaW50KHNlbGYuX25vdygpICogMTAwMCkKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgKyBzZWxmLmxpc3RfbG9va2FoZWFkX3MgKiAxMDAwKQogICAgICAgIGxpc3RlZCA9IFttIGZvciBtIGluIHNlbGYubWFya2V0cy52YWx1ZXMoKQogICAgICAgICAgICAgICAgICBpZiBtWyJzZXJpZXNfdGlja2VyIl0gPT0ga2V5CiAgICAgICAgICAgICAgICAgIGFuZCBtWyJvcGVuX3RpbWUiXSA8PSBob3Jpem9uXQogICAgICAgIGxpc3RlZC5zb3J0KGtleT1sYW1iZGEgbTogbVsiY2xvc2VfdGltZSJdKQogICAgICAgIHJldHVybiAyMDAsIHt9LCBqc29uLmR1bXBzKHsibWFya2V0cyI6IGxpc3RlZCwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgImN1cnNvciI6IE5vbmV9KS5lbmNvZGUoKQoKCmNsYXNzIEluc3RydW1lbnRlZENvbm5lY3RvcjoKICAgICIiIldyYXBzIGEgY29ubmVjdG9yOyBhcHBlbmRzIHtzZXEsIGtpbmQsIGtleSwgdF9pbiwgdF9vdXR9IHRvIGEKICAgIHNpbmsgbGlzdCBmb3IgZXZlcnkgY2FsbCAodGltZXN0YW1wcyBmcm9tIHRoZSBpbmplY3RlZCBjbG9jaykuIiIiCgogICAgZGVmIF9faW5pdF9fKHNlbGYsIGlubmVyLCBub3dfZm4sIHNpbmspOgogICAgICAgIHNlbGYuaW5uZXIgPSBpbm5lcgogICAgICAgIHNlbGYuX25vdyA9IG5vd19mbgogICAgICAgIHNlbGYuc2luayA9IHNpbmsKCiAgICBkZWYgX19jYWxsX18oc2VsZiwgbWV0aG9kLCBob3N0LCBwYXRoLCBoZWFkZXJzLCB0aW1lb3V0KToKICAgICAgICBxID0gdXJsbGliLnBhcnNlLnBhcnNlX3FzKHVybGxpYi5wYXJzZS51cmxwYXJzZShwYXRoKS5xdWVyeSkKICAgICAgICBraW5kID0gIm1hcmtldCIgaWYgInRpY2tlciIgaW4gcSBlbHNlICJsaXN0aW5nIgogICAgICAgIGtleSA9IHEuZ2V0KCJ0aWNrZXIiLCBxLmdldCgic2VyaWVzX3RpY2tlciIsIFsiPyJdKSlbMF0KICAgICAgICB0X2luID0gc2VsZi5fbm93KCkKICAgICAgICB0cnk6CiAgICAgICAgICAgIHJlcyA9IHNlbGYuaW5uZXIobWV0aG9kLCBob3N0LCBwYXRoLCBoZWFkZXJzLCB0aW1lb3V0KQogICAgICAgICAgICBzdGF0dXMgPSByZXNbMF0KICAgICAgICBleGNlcHQgRXhjZXB0aW9uOgogICAgICAgICAgICBzZWxmLnNpbmsuYXBwZW5kKHsia2luZCI6IGtpbmQsICJrZXkiOiBrZXksICJ0X2luIjogdF9pbiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgInRfb3V0Ijogc2VsZi5fbm93KCksCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICJzdGF0dXMiOiAiRVhDIn0pCiAgICAgICAgICAgIHJhaXNlCiAgICAgICAgc2VsZi5zaW5rLmFwcGVuZCh7ImtpbmQiOiBraW5kLCAia2V5Ijoga2V5LCAidF9pbiI6IHRfaW4sCiAgICAgICAgICAgICAgICAgICAgICAgICAgInRfb3V0Ijogc2VsZi5fbm93KCksICJzdGF0dXMiOiBzdGF0dXN9KQogICAgICAgIHJldHVybiByZXMKCgpkZWYgbWF4X3JvbGxpbmdfcmVsZWFzZXMobG9nLCB3aW5kb3dfcz02MC4wKToKICAgICIiIldvcnN0IG51bWJlciBvZiByZXF1ZXN0IFNUQVJUUyBpbiBhbnkgcm9sbGluZyB3aW5kb3cuIiIiCiAgICBzdGFydHMgPSBzb3J0ZWQoZVsidF9pbiJdIGZvciBlIGluIGxvZykKICAgIHdvcnN0LCBqID0gMCwgMAogICAgZm9yIGksIHQgaW4gZW51bWVyYXRlKHN0YXJ0cyk6CiAgICAgICAgd2hpbGUgc3RhcnRzW2pdIDw9IHQgLSB3aW5kb3dfczoKICAgICAgICAgICAgaiArPSAxCiAgICAgICAgd29yc3QgPSBtYXgod29yc3QsIGkgLSBqICsgMSkKICAgIHJldHVybiB3b3JzdAoKCmRlZiBtYXhfY29uY3VycmVuY3kobG9nKToKICAgICIiIldvcnN0IG51bWJlciBvZiBzaW11bHRhbmVvdXNseSBpbi1mbGlnaHQgcmVxdWVzdHMsIGZyb20gdGhlCiAgICByZWNvcmRlZCBbdF9pbiwgdF9vdXRdIGludGVydmFscyAoYW4gaW50ZXJ2YWwgZW5kaW5nIGV4YWN0bHkgd2hlbgogICAgYW5vdGhlciBzdGFydHMgZG9lcyBub3Qgb3ZlcmxhcCBpdCkuIiIiCiAgICBldmVudHMgPSBbXQogICAgZm9yIGUgaW4gbG9nOgogICAgICAgIGV2ZW50cy5hcHBlbmQoKGVbInRfaW4iXSwgMSkpCiAgICAgICAgZXZlbnRzLmFwcGVuZCgoZVsidF9vdXQiXSwgLTEpKQogICAgZXZlbnRzLnNvcnQoa2V5PWxhbWJkYSB4OiAoeFswXSwgeFsxXSkpICAjIGVuZHMgYmVmb3JlIHN0YXJ0cyBhdCB0aWVzCiAgICBjdXIgPSB3b3JzdCA9IDAKICAgIGZvciBfdCwgZCBpbiBldmVudHM6CiAgICAgICAgY3VyICs9IGQKICAgICAgICB3b3JzdCA9IG1heCh3b3JzdCwgY3VyKQogICAgcmV0dXJuIHdvcnN0CgoKY2xhc3MgV2FsbENsb2NrOgogICAgZGVmIG5vd19zKHNlbGYpOgogICAgICAgIHJldHVybiB0aW1lLnRpbWUoKQoKICAgIGRlZiBzbGVlcF9zKHNlbGYsIHMpOgogICAgICAgIHRpbWUuc2xlZXAocykKCgpjbGFzcyBWaXJ0dWFsQ2xvY2s6CiAgICAiIiJEZXRlcm1pbmlzdGljIGFjY2VsZXJhdGVkIGNsb2NrIGZvciB0aGUgbGFiIGNoYWluIGRyaXZlci4iIiIKCiAgICBkZWYgX19pbml0X18oc2VsZiwgc3RhcnRfcyk6CiAgICAgICAgc2VsZi50ID0gZmxvYXQoc3RhcnRfcykKCiAgICBkZWYgbm93X3Moc2VsZik6CiAgICAgICAgcmV0dXJuIHNlbGYudAoKICAgIGRlZiBzbGVlcF9zKHNlbGYsIHMpOgogICAgICAgIHNlbGYudCArPSBzCgogICAgZGVmIGFkdmFuY2VfdG8oc2VsZiwgdCk6CiAgICAgICAgaWYgdCA+IHNlbGYudDoKICAgICAgICAgICAgc2VsZi50ID0gZmxvYXQodCkK
+"""Synthetic venue + request instrumentation (lab/rehearsal only).
+
+The stub serves Kalshi-shaped responses for fixture markets through
+the frozen HttpTransport's connector seam — the exact seam the frozen
+E2E suite uses. It makes ZERO network calls. Fixture universes are
+generated on the frozen 900-second close grid, skipping the census
+Thursday hole closes (the venue never creates those markets), so the
+composed reader's NEVER_CREATED accounting is genuinely exercised.
+
+Instrumentation records every connector call with in/out timestamps
+(from an injected clock) so rate and concurrency are MEASURED from
+request intervals, never asserted.
+"""
+import hashlib
+import json
+import time
+import urllib.parse
+from datetime import datetime, timezone
+
+from . import gh_common as G
+
+# Census-exact Thursday hole (SHARED_MARKET_CALENDAR_SPEC): crypto
+# series markets are never created with these UTC close times.
+THURSDAY_HOLE_CLOSES = {(7, 15), (7, 30), (7, 45), (8, 0), (8, 15),
+                        (8, 30), (8, 45), (9, 0)}
+GRID_S = 900
+
+
+def is_thursday_hole_close(epoch_ms):
+    dt = datetime.fromtimestamp(epoch_ms / 1000, timezone.utc)
+    return dt.weekday() == 3 and (dt.hour, dt.minute) in \
+        THURSDAY_HOLE_CLOSES
+
+
+def grid_markets(series_list, window_lo_ms, window_hi_ms, *,
+                 strike_base=100.0):
+    """Deterministic fixture universe: for each series, a market
+    closing at every grid instant in (lo - 900s, hi + 900s] (so lead-in
+    and tail markets exist), except Thursday-hole closes. Strike is a
+    deterministic function of the ticker."""
+    out = {}
+    first = (window_lo_ms // (GRID_S * 1000)) * GRID_S * 1000
+    t = first - GRID_S * 1000
+    while t <= window_hi_ms + GRID_S * 1000:
+        if not is_thursday_hole_close(t):
+            for series in series_list:
+                close_iso = G.iso_of_ms(t)
+                open_iso = G.iso_of_ms(t - GRID_S * 1000)
+                ticker = "%s-%s" % (series, close_iso.replace(
+                    "-", "").replace(":", "").replace("T", "-"))
+                digest = hashlib.sha256(ticker.encode()).digest()
+                strike = strike_base + (digest[0] % 50) * 0.5
+                out[ticker] = {
+                    "ticker": ticker, "series_ticker": series,
+                    "status": "active", "open_time": open_iso,
+                    "close_time": close_iso, "floor_strike": strike,
+                    "strike_type": "greater_or_equal",
+                    "rules_primary": "Synthetic fixture market.",
+                    "updated_time": open_iso}
+        t += GRID_S * 1000
+    return out
+
+
+class StubVenue:
+    """Connector callable: (method, host, path, headers, timeout) ->
+    (status, headers, raw). Behaviour script:
+      latency_s: float, or callable(call_no) -> float (seconds the
+        call occupies; virtual clocks are advanced by the caller's
+        harness, real clocks via time.sleep)
+      failures: callable(call_no, kind, key) -> None | ("status", code)
+        | "raise"   (kind: "listing" | "market")
+    A `clock` (object with now_s()) may be attached; when latency is
+    consumed in virtual mode the harness advances it externally — this
+    connector only reports the latency it applied via last_latency_s.
+    """
+
+    def __init__(self, markets, now_fn, latency_s=0.0, failures=None,
+                 sleep_fn=None, list_lookahead_s=0):
+        self.markets = markets
+        self._now = now_fn
+        self.latency_s = latency_s
+        self.failures = failures
+        self._sleep = sleep_fn
+        # Markets become listable this long before their open_time.
+        # The frozen E2E fixture used 0; a real venue lists markets
+        # when they are created, well before they open, and the
+        # frozen discovery cadence (900 s) plus 180 s slot lateness
+        # cannot otherwise ever capture an OPEN slot — the rehearsal
+        # uses a 3600 s lookahead and says so in its freeze label.
+        self.list_lookahead_s = list_lookahead_s
+        self.calls = 0
+        self.last_latency_s = 0.0
+
+    def _latency(self):
+        lat = self.latency_s(self.calls) if callable(self.latency_s) \
+            else self.latency_s
+        self.last_latency_s = lat
+        if lat and self._sleep is not None:
+            self._sleep(lat)
+        return lat
+
+    def __call__(self, method, host, path, headers, timeout):
+        self.calls += 1
+        q = urllib.parse.parse_qs(urllib.parse.urlparse(path).query)
+        if "ticker" in q:
+            kind, key = "market", q["ticker"][0]
+        else:
+            kind, key = "listing", q.get("series_ticker", ["?"])[0]
+        self._latency()
+        if self.failures is not None:
+            verdict = self.failures(self.calls, kind, key)
+            if verdict == "raise":
+                raise ConnectionError("injected transport failure")
+            if isinstance(verdict, tuple) and verdict[0] == "status":
+                return verdict[1], {}, json.dumps(
+                    {"error": "injected"}).encode()
+        if kind == "market":
+            m = self.markets[key]
+            return 200, {}, json.dumps({"markets": [m]}).encode()
+        horizon = G.iso_of_ms(int(self._now() * 1000)
+                              + self.list_lookahead_s * 1000)
+        listed = [m for m in self.markets.values()
+                  if m["series_ticker"] == key
+                  and m["open_time"] <= horizon]
+        listed.sort(key=lambda m: m["close_time"])
+        return 200, {}, json.dumps({"markets": listed,
+                                    "cursor": None}).encode()
+
+
+class InstrumentedConnector:
+    """Wraps a connector; appends {seq, kind, key, t_in, t_out} to a
+    sink list for every call (timestamps from the injected clock)."""
+
+    def __init__(self, inner, now_fn, sink):
+        self.inner = inner
+        self._now = now_fn
+        self.sink = sink
+
+    def __call__(self, method, host, path, headers, timeout):
+        q = urllib.parse.parse_qs(urllib.parse.urlparse(path).query)
+        kind = "market" if "ticker" in q else "listing"
+        key = q.get("ticker", q.get("series_ticker", ["?"]))[0]
+        t_in = self._now()
+        try:
+            res = self.inner(method, host, path, headers, timeout)
+            status = res[0]
+        except Exception:
+            self.sink.append({"kind": kind, "key": key, "t_in": t_in,
+                              "t_out": self._now(),
+                              "status": "EXC"})
+            raise
+        self.sink.append({"kind": kind, "key": key, "t_in": t_in,
+                          "t_out": self._now(), "status": status})
+        return res
+
+
+def max_rolling_releases(log, window_s=60.0):
+    """Worst number of request STARTS in any rolling window."""
+    starts = sorted(e["t_in"] for e in log)
+    worst, j = 0, 0
+    for i, t in enumerate(starts):
+        while starts[j] <= t - window_s:
+            j += 1
+        worst = max(worst, i - j + 1)
+    return worst
+
+
+def max_concurrency(log):
+    """Worst number of simultaneously in-flight requests, from the
+    recorded [t_in, t_out] intervals (an interval ending exactly when
+    another starts does not overlap it)."""
+    events = []
+    for e in log:
+        events.append((e["t_in"], 1))
+        events.append((e["t_out"], -1))
+    events.sort(key=lambda x: (x[0], x[1]))  # ends before starts at ties
+    cur = worst = 0
+    for _t, d in events:
+        cur += d
+        worst = max(worst, cur)
+    return worst
+
+
+class WallClock:
+    def now_s(self):
+        return time.time()
+
+    def sleep_s(self, s):
+        time.sleep(s)
+
+
+class VirtualClock:
+    """Deterministic accelerated clock for the lab chain driver."""
+
+    def __init__(self, start_s):
+        self.t = float(start_s)
+
+    def now_s(self):
+        return self.t
+
+    def sleep_s(self, s):
+        self.t += s
+
+    def advance_to(self, t):
+        if t > self.t:
+            self.t = float(t)
