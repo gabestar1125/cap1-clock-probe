@@ -1,1 +1,323 @@
-IyEvdXNyL2Jpbi9lbnYgcHl0aG9uMwoiIiJDQVAtMSBHaXRIdWIgQWN0aW9ucyBjbG9jay1ldmlkZW5jZSBwcm9iZS4KClB1cnBvc2U6IHNldHRsZSwgZW1waXJpY2FsbHksIHdoZXRoZXIgYSBHaXRIdWItaG9zdGVkIHJ1bm5lciBjYW4gcHJvZHVjZSBhCnNlY3Rpb24tQy1zaGFwZWQgY2xvY2stcmVhZGluZXNzIGV2aWRlbmNlIHJlY29yZCAoZnJvemVuIHNwZWM6IHN5bmMgc291cmNlIGFuZApoZWFsdGggaWRlbnRpZmllZDsgdGhlIGRhZW1vbidzIG93biBvZmZzZXQgZXN0aW1hdGUgYW5kIHVuY2VydGFpbnR5IC8gcm9vdApkaXNwZXJzaW9uIGZpZ3VyZXMgd2l0aCBMT0NBTCB0aW1lc3RhbXBzOyBhIGRlcml2YXRpb24gb3ZlciByZWNvcmRlZCBudW1iZXJzCndob3NlIGJvdW5kIG11c3QgYmUgPD0gMTAwIG1zIGZvciBhY3RpdmF0aW9uLCB3aXRoIHRoZSBmcm96ZW4gcGVyLW9ic2VydmF0aW9uCm1heGltdW0gb2YgMjUwIG1zKS4KCkRlc2lnbiBydWxlcyAoaW5oZXJpdGVkIGZyb20gdGhlIENBUC0xIGV2aWRlbmNlIGRpc2NpcGxpbmUpOgotIFB1cmUgc3RhbmRhcmQgbGlicmFyeS4gTm8gbmV0d29yayBjYWxscyBleGNlcHQgdGhlIGV4cGxpY2l0bHkgbGFiZWxsZWQKICBVRFAvMTIzIGRpYWdub3N0aWMgKHdoaWNoIGlzIE5PVCBkYWVtb24gZXZpZGVuY2UgYW5kIG5ldmVyIGZlZWRzIHRoZQogIGRlcml2YXRpb24pLgotIEV2ZXJ5IGNhcHR1cmVkIHRpbWVzdGFtcCBpcyBMT0NBTCAodGhpcyBob3N0J3Mgd2FsbCBjbG9jaykgdW5sZXNzIGEgZmllbGQKICBuYW1lIHNheXMgb3RoZXJ3aXNlLiBSYXcgY29tbWFuZCBvdXRwdXRzIGFyZSBwcmVzZXJ2ZWQgdmVyYmF0aW0uCi0gRmFpbCBob25lc3Q6IGlmIHRoZSBkYWVtb24gaXMgYWJzZW50LCB1bnN5bmNocm9uaXNlZCwgb3IgZG9lcyBub3QgZXhwb3NlIGFuCiAgb2Zmc2V0IGVzdGltYXRlIEFORCBhIGRpc3BlcnNpb24gZmlndXJlLCB0aGUgZGVyaXZhdGlvbiBpcyByZWNvcmRlZCBhcwogIElNUE9TU0lCTEUgd2l0aCB0aGUgcmVhc29uLCBuZXZlciBhcHByb3hpbWF0ZWQuCi0gVGhlIHNjcmlwdCBuZXZlciByYWlzZXMgb24gYSBtaXNzaW5nIHRvb2w7IGFic2VuY2UgaXMgaXRzZWxmIGV2aWRlbmNlLgoKT3V0cHV0OiBvbmUgSlNPTiBkb2N1bWVudCAocGF0aCBmcm9tIC0tb3V0LCBkZWZhdWx0IGNsb2NrX3Byb2JlX2V2aWRlbmNlLmpzb24pLgoiIiIKCmltcG9ydCBhcmdwYXJzZQppbXBvcnQganNvbgppbXBvcnQgb3MKaW1wb3J0IHBsYXRmb3JtCmltcG9ydCByZQppbXBvcnQgc29ja2V0CmltcG9ydCBzdHJ1Y3QKaW1wb3J0IHN1YnByb2Nlc3MKaW1wb3J0IHN5cwppbXBvcnQgdGltZQoKUFJPQkVfVkVSU0lPTiA9ICJjYXAxLWdoYS1jbG9jay1wcm9iZS8xIgpBQ1RJVkFUSU9OX0JPVU5EX01TID0gMTAwLjAgICAgICAgICAgIyBmcm96ZW4gc2VjdGlvbi1DIGFjdGl2YXRpb24gdGhyZXNob2xkClBFUl9PQlNFUlZBVElPTl9NQVhfTVMgPSAyNTAuMCAgICAgICAjIGZyb3plbiBDQVAxX0NPTkZJR19WMSBtYXhpbXVtCk5UUF9TRVJWRVJTID0gWyJ0aW1lLmNsb3VkZmxhcmUuY29tIiwgInRpbWUuZ29vZ2xlLmNvbSIsICJwb29sLm50cC5vcmciXQpOVFBfRVBPQ0hfREVMVEEgPSAyMjA4OTg4ODAwICAjIHNlY29uZHMgYmV0d2VlbiAxOTAwLTAxLTAxIGFuZCAxOTcwLTAxLTAxCgoKZGVmIG5vd19sb2NhbF9pc28oKToKICAgIHJldHVybiB0aW1lLnN0cmZ0aW1lKCIlWS0lbS0lZFQlSDolTTolUyIsIHRpbWUuZ210aW1lKCkpICsgKAogICAgICAgICIuJTAzZFoiICUgaW50KCh0aW1lLnRpbWUoKSAlIDEpICogMTAwMCkpCgoKZGVmIHJ1bl9jYXB0dXJlKGFyZ3YsIHRpbWVvdXQ9MTUpOgogICAgIiIiUnVuIGEgcmVhZC1vbmx5IGNvbW1hbmQ7IHJldHVybiBhIHJlY29yZCB3aXRoIHZlcmJhdGltIG91dHB1dC4iIiIKICAgIHJlYyA9IHsiYXJndiI6IGFyZ3YsICJjYXB0dXJlZF9hdF9sb2NhbCI6IG5vd19sb2NhbF9pc28oKX0KICAgIHRyeToKICAgICAgICBwID0gc3VicHJvY2Vzcy5ydW4oYXJndiwgY2FwdHVyZV9vdXRwdXQ9VHJ1ZSwgdGV4dD1UcnVlLAogICAgICAgICAgICAgICAgICAgICAgICAgICB0aW1lb3V0PXRpbWVvdXQpCiAgICAgICAgcmVjWyJleGl0X2NvZGUiXSA9IHAucmV0dXJuY29kZQogICAgICAgIHJlY1sic3Rkb3V0Il0gPSBwLnN0ZG91dAogICAgICAgIHJlY1sic3RkZXJyIl0gPSBwLnN0ZGVycgogICAgZXhjZXB0IEZpbGVOb3RGb3VuZEVycm9yOgogICAgICAgIHJlY1siZXJyb3IiXSA9ICJUT09MX0FCU0VOVCIKICAgIGV4Y2VwdCBzdWJwcm9jZXNzLlRpbWVvdXRFeHBpcmVkOgogICAgICAgIHJlY1siZXJyb3IiXSA9ICJUSU1FT1VUIgogICAgZXhjZXB0IEV4Y2VwdGlvbiBhcyBlOiAgIyBhYnNlbmNlL2ZhaWx1cmUgaXMgZXZpZGVuY2UsIG5ldmVyIGZhdGFsCiAgICAgICAgcmVjWyJlcnJvciJdID0gIiVzOiAlcyIgJSAodHlwZShlKS5fX25hbWVfXywgZSkKICAgIHJldHVybiByZWMKCgpkZWYgbWVhc3VyZV9ncmFudWxhcml0eV9tcyhzYW1wbGVzPTIwMDApOgogICAgIiIiU21hbGxlc3Qgbm9uemVybyB3YWxsLWNsb2NrIHN0ZXAgb2JzZXJ2YWJsZSBmcm9tIFB5dGhvbiwgaW4gbXMuIiIiCiAgICBiZXN0ID0gTm9uZQogICAgcHJldiA9IHRpbWUudGltZV9ucygpCiAgICBmb3IgXyBpbiByYW5nZShzYW1wbGVzKToKICAgICAgICBjdXIgPSB0aW1lLnRpbWVfbnMoKQogICAgICAgIGQgPSBjdXIgLSBwcmV2CiAgICAgICAgaWYgZCA+IDA6CiAgICAgICAgICAgIGlmIGJlc3QgaXMgTm9uZSBvciBkIDwgYmVzdDoKICAgICAgICAgICAgICAgIGJlc3QgPSBkCiAgICAgICAgICAgIHByZXYgPSBjdXIKICAgIHJldHVybiAoYmVzdCAvIDFlNikgaWYgYmVzdCBpcyBub3QgTm9uZSBlbHNlIE5vbmUKCgpkZWYgbWVhc3VyZV9kcmlmdCh3aW5kb3dfcz0zMC4wKToKICAgICIiIldhbGwtdnMtbW9ub3RvbmljIGRyaWZ0IG92ZXIgdGhlIHdpbmRvdzsgcmV0dXJucyBwcG0gYW5kIGVuZHBvaW50cy4iIiIKICAgIHcwLCBtMCA9IHRpbWUudGltZSgpLCB0aW1lLm1vbm90b25pYygpCiAgICB0aW1lLnNsZWVwKHdpbmRvd19zKQogICAgdzEsIG0xID0gdGltZS50aW1lKCksIHRpbWUubW9ub3RvbmljKCkKICAgIHdhbGwgPSB3MSAtIHcwCiAgICBtb25vID0gbTEgLSBtMAogICAgcHBtID0gKCh3YWxsIC0gbW9ubykgLyBtb25vICogMWU2KSBpZiBtb25vID4gMCBlbHNlIE5vbmUKICAgIHJldHVybiB7IndpbmRvd19zIjogd2luZG93X3MsICJ3YWxsX2VsYXBzZWRfcyI6IHdhbGwsCiAgICAgICAgICAgICJtb25vdG9uaWNfZWxhcHNlZF9zIjogbW9ubywgImRyaWZ0X3BwbSI6IHBwbSwKICAgICAgICAgICAgInN0YXJ0ZWRfYXRfbG9jYWwiOiBOb25lLCAiZW5kZWRfYXRfbG9jYWwiOiBub3dfbG9jYWxfaXNvKCl9CgoKZGVmIG50cF91ZHBfZGlhZ25vc3RpYyhzZXJ2ZXIsIHRpbWVvdXQ9My4wKToKICAgICIiIk9uZSByYXcgTlRQIGNsaWVudCBleGNoYW5nZSBvdmVyIFVEUC8xMjMuCgogICAgRElBR05PU1RJQyBPTkxZOiBlc3RhYmxpc2hlcyB3aGV0aGVyIG91dGJvdW5kIFVEUC8xMjMgd29ya3MgZnJvbSB0aGlzCiAgICBob3N0IGF0IGFsbC4gVGhlIENyaXN0aWFuIG9mZnNldCBjb21wdXRlZCBoZXJlIGlzIG5vdCBkYWVtb24gZXZpZGVuY2UKICAgIGFuZCBpcyBuZXZlciB1c2VkIGluIHRoZSBzZWN0aW9uLUMgZGVyaXZhdGlvbi4KICAgICIiIgogICAgcmVjID0geyJzZXJ2ZXIiOiBzZXJ2ZXIsICJjaGVja2VkX2F0X2xvY2FsIjogbm93X2xvY2FsX2lzbygpfQogICAgdHJ5OgogICAgICAgIGFkZHIgPSBzb2NrZXQuZ2V0aG9zdGJ5bmFtZShzZXJ2ZXIpCiAgICBleGNlcHQgRXhjZXB0aW9uIGFzIGU6CiAgICAgICAgcmVjWyJyZXN1bHQiXSA9ICJETlNfRkFJTDogJXMiICUgZQogICAgICAgIHJldHVybiByZWMKICAgIHJlY1sicmVzb2x2ZWRfaXAiXSA9IGFkZHIKICAgIHBrdCA9IGJ5dGVhcnJheSg0OCkKICAgIHBrdFswXSA9IDB4MUIgICMgTEk9MCwgVk49MywgTW9kZT0zIChjbGllbnQpCiAgICBzID0gc29ja2V0LnNvY2tldChzb2NrZXQuQUZfSU5FVCwgc29ja2V0LlNPQ0tfREdSQU0pCiAgICBzLnNldHRpbWVvdXQodGltZW91dCkKICAgIHRyeToKICAgICAgICB0MCA9IHRpbWUudGltZSgpCiAgICAgICAgcy5zZW5kdG8oYnl0ZXMocGt0KSwgKGFkZHIsIDEyMykpCiAgICAgICAgZGF0YSwgXyA9IHMucmVjdmZyb20oNTEyKQogICAgICAgIHQzID0gdGltZS50aW1lKCkKICAgICAgICByZWNbInJlc3VsdCJdID0gIlJFU1BPTlNFIgogICAgICAgIHJlY1sicnR0X21zIl0gPSAodDMgLSB0MCkgKiAxMDAwLjAKICAgICAgICBpZiBsZW4oZGF0YSkgPj0gNDg6CiAgICAgICAgICAgIHNlYywgZnJhYyA9IHN0cnVjdC51bnBhY2soIiFJSSIsIGRhdGFbNDA6NDhdKQogICAgICAgICAgICBzZXJ2ZXJfdHggPSAoc2VjIC0gTlRQX0VQT0NIX0RFTFRBKSArIGZyYWMgLyAyKiozMgogICAgICAgICAgICByZWNbImNyaXN0aWFuX29mZnNldF9tc19kaWFnbm9zdGljX29ubHkiXSA9ICgKICAgICAgICAgICAgICAgIChzZXJ2ZXJfdHggLSAodDAgKyB0MykgLyAyLjApICogMTAwMC4wKQogICAgICAgICAgICByZWNbInN0cmF0dW0iXSA9IGRhdGFbMV0KICAgICAgICBlbHNlOgogICAgICAgICAgICByZWNbIm5vdGUiXSA9ICJzaG9ydCByZXNwb25zZSAoJWQgYnl0ZXMpIiAlIGxlbihkYXRhKQogICAgZXhjZXB0IHNvY2tldC50aW1lb3V0OgogICAgICAgIHJlY1sicmVzdWx0Il0gPSAiTk9fUkVTUE9OU0VfVElNRU9VVCIKICAgIGV4Y2VwdCBQZXJtaXNzaW9uRXJyb3IgYXMgZToKICAgICAgICByZWNbInJlc3VsdCJdID0gIlNFTkRfREVOSUVEOiAlcyIgJSBlCiAgICBleGNlcHQgRXhjZXB0aW9uIGFzIGU6CiAgICAgICAgcmVjWyJyZXN1bHQiXSA9ICJFUlJPUjogJXM6ICVzIiAlICh0eXBlKGUpLl9fbmFtZV9fLCBlKQogICAgZmluYWxseToKICAgICAgICBzLmNsb3NlKCkKICAgIHJldHVybiByZWMKCgpkZWYgX2Zsb2F0X2FmdGVyKHRleHQsIGxhYmVsKToKICAgIG0gPSByZS5zZWFyY2gocmUuZXNjYXBlKGxhYmVsKSArIHIiXHMqOlxzKigtP1swLTldKyg/OlwuWzAtOV0rKT8pIiwgdGV4dCkKICAgIHJldHVybiBmbG9hdChtLmdyb3VwKDEpKSBpZiBtIGVsc2UgTm9uZQoKCmRlZiBwYXJzZV9jaHJvbnljX3RyYWNraW5nKHN0ZG91dCk6CiAgICAiIiJCZXN0LWVmZm9ydCBwYXJzZSBvZiBgY2hyb255YyB0cmFja2luZ2A7IHJhdyBvdXRwdXQgc3RheXMgcHJpbWFyeS4iIiIKICAgIGlmIG5vdCBzdGRvdXQ6CiAgICAgICAgcmV0dXJuIE5vbmUKICAgIG91dCA9IHt9CiAgICBtID0gcmUuc2VhcmNoKHIiU3lzdGVtIHRpbWVccyo6XHMqKFswLTkuXSspIHNlY29uZHMgKHNsb3d8ZmFzdCkiLCBzdGRvdXQpCiAgICBpZiBtOgogICAgICAgIHZhbCA9IGZsb2F0KG0uZ3JvdXAoMSkpICogKDEgaWYgbS5ncm91cCgyKSA9PSAiZmFzdCIgZWxzZSAtMSkKICAgICAgICBvdXRbInN5c3RlbV90aW1lX29mZnNldF9zIl0gPSB2YWwKICAgIG91dFsicm9vdF9kaXNwZXJzaW9uX3MiXSA9IF9mbG9hdF9hZnRlcihzdGRvdXQsICJSb290IGRpc3BlcnNpb24iKQogICAgb3V0WyJyb290X2RlbGF5X3MiXSA9IF9mbG9hdF9hZnRlcihzdGRvdXQsICJSb290IGRlbGF5IikKICAgIG91dFsidXBkYXRlX2ludGVydmFsX3MiXSA9IF9mbG9hdF9hZnRlcihzdGRvdXQsICJVcGRhdGUgaW50ZXJ2YWwiKQogICAgbSA9IHJlLnNlYXJjaChyIkxlYXAgc3RhdHVzXHMqOlxzKiguKykiLCBzdGRvdXQpCiAgICBpZiBtOgogICAgICAgIG91dFsibGVhcF9zdGF0dXMiXSA9IG0uZ3JvdXAoMSkuc3RyaXAoKQogICAgbSA9IHJlLnNlYXJjaChyIlN0cmF0dW1ccyo6XHMqKFswLTldKykiLCBzdGRvdXQpCiAgICBpZiBtOgogICAgICAgIG91dFsic3RyYXR1bSJdID0gaW50KG0uZ3JvdXAoMSkpCiAgICByZXR1cm4gb3V0CgoKZGVmIHBhcnNlX3RpbWVkYXRlY3RsKHN0YXR1c19vdXQsIHRpbWVzeW5jX291dCk6CiAgICBvdXQgPSB7fQogICAgaWYgc3RhdHVzX291dDoKICAgICAgICBtID0gcmUuc2VhcmNoKHIiU3lzdGVtIGNsb2NrIHN5bmNocm9uaXplZDpccyooXHcrKSIsIHN0YXR1c19vdXQpCiAgICAgICAgaWYgbToKICAgICAgICAgICAgb3V0WyJzeXN0ZW1fY2xvY2tfc3luY2hyb25pemVkIl0gPSAobS5ncm91cCgxKSA9PSAieWVzIikKICAgICAgICBtID0gcmUuc2VhcmNoKHIiTlRQIHNlcnZpY2U6XHMqKC4rKSIsIHN0YXR1c19vdXQpCiAgICAgICAgaWYgbToKICAgICAgICAgICAgb3V0WyJudHBfc2VydmljZSJdID0gbS5ncm91cCgxKS5zdHJpcCgpCiAgICBpZiB0aW1lc3luY19vdXQ6CiAgICAgICAgIyBzeXN0ZW1kID49IDI1MCBwcmludHMgYW4gIk9mZnNldDoiIGxpbmUgaW4gdGltZXN5bmMtc3RhdHVzIHdoZW4gdGhlCiAgICAgICAgIyBkYWVtb24gaGFzIGEgY3VycmVudCBlc3RpbWF0ZTsgYWJzZW5jZSBpcyByZWNvcmRlZCwgbm90IGFzc3VtZWQuCiAgICAgICAgb2ZmID0gX2Zsb2F0X2FmdGVyKHRpbWVzeW5jX291dCwgIk9mZnNldCIpCiAgICAgICAgaWYgb2ZmIGlzIG5vdCBOb25lOgogICAgICAgICAgICBvdXRbInRpbWVzeW5jX29mZnNldF9yYXciXSA9IG9mZgogICAgICAgIG0gPSByZS5zZWFyY2gociJTZXJ2ZXI6XHMqKC4rKSIsIHRpbWVzeW5jX291dCkKICAgICAgICBpZiBtOgogICAgICAgICAgICBvdXRbInNlcnZlciJdID0gbS5ncm91cCgxKS5zdHJpcCgpCiAgICAgICAgbSA9IHJlLnNlYXJjaChyIlBvbGwgaW50ZXJ2YWw6XHMqKC4rKSIsIHRpbWVzeW5jX291dCkKICAgICAgICBpZiBtOgogICAgICAgICAgICBvdXRbInBvbGxfaW50ZXJ2YWwiXSA9IG0uZ3JvdXAoMSkuc3RyaXAoKQogICAgcmV0dXJuIG91dAoKCmRlZiBkZXJpdmUoZGFlbW9uLCBncmFudWxhcml0eV9tcywgZHJpZnQpOgogICAgIiIiU2VjdGlvbi1DIGRlcml2YXRpb24gb3ZlciByZWNvcmRlZCBpbnB1dHMgb25seS4KCiAgICBib3VuZCA9IHxkYWVtb24gb2Zmc2V0fCArIHJvb3QgZGlzcGVyc2lvbiArIGRyaWZ0IGFsbG93YW5jZSArIGdyYW51bGFyaXR5LgogICAgRHJpZnQgYWxsb3dhbmNlID0gfG1lYXN1cmVkIGRyaWZ0IHBwbXwgeCB1cGRhdGUgaW50ZXJ2YWwgd2hlbiB0aGUgZGFlbW9uCiAgICByZXBvcnRzIG9uZTsgb3RoZXJ3aXNlIHRoZSBkZXJpdmF0aW9uIGNhbm5vdCBiZSBjZXJ0aWZpZWQuCiAgICAiIiIKICAgIGQgPSB7ImZvcm11bGEiOiAifG9mZnNldHwgKyByb290X2Rpc3BlcnNpb24gKyBkcmlmdF9hbGxvd2FuY2UgKyBncmFudWxhcml0eSIsCiAgICAgICAgICJhY3RpdmF0aW9uX3RocmVzaG9sZF9tcyI6IEFDVElWQVRJT05fQk9VTkRfTVMsCiAgICAgICAgICJwZXJfb2JzZXJ2YXRpb25fbWF4X21zIjogUEVSX09CU0VSVkFUSU9OX01BWF9NU30KICAgIGlmIGRhZW1vbiBpcyBOb25lOgogICAgICAgIGRbInN0YXR1cyJdID0gIklNUE9TU0lCTEUiCiAgICAgICAgZFsicmVhc29uIl0gPSAibm8gZGFlbW9uIGV2aWRlbmNlIGNhcHR1cmVkIgogICAgICAgIHJldHVybiBkCiAgICBpZiBkYWVtb24uZ2V0KCJzeW5jaHJvbmlzZWQiKSBpcyBub3QgVHJ1ZToKICAgICAgICBkWyJzdGF0dXMiXSA9ICJJTVBPU1NJQkxFIgogICAgICAgIGRbInJlYXNvbiJdID0gImRhZW1vbiBub3Qgc3luY2hyb25pc2VkIChvciBzeW5jIHN0YXRlIHVucHJvdmVuKSIKICAgICAgICByZXR1cm4gZAogICAgb2ZmID0gZGFlbW9uLmdldCgib2Zmc2V0X3MiKQogICAgZGlzcCA9IGRhZW1vbi5nZXQoInJvb3RfZGlzcGVyc2lvbl9zIikKICAgIGlmIG9mZiBpcyBOb25lIG9yIGRpc3AgaXMgTm9uZToKICAgICAgICBkWyJzdGF0dXMiXSA9ICJJTVBPU1NJQkxFIgogICAgICAgIGRbInJlYXNvbiJdID0gKCJkYWVtb24gZG9lcyBub3QgZXhwb3NlIGJvdGggYW4gb2Zmc2V0IGVzdGltYXRlIGFuZCBhICIKICAgICAgICAgICAgICAgICAgICAgICAicm9vdC1kaXNwZXJzaW9uIGZpZ3VyZSBpbiBjYXB0dXJlZCBvdXRwdXQiKQogICAgICAgIHJldHVybiBkCiAgICB1cGQgPSBkYWVtb24uZ2V0KCJ1cGRhdGVfaW50ZXJ2YWxfcyIpCiAgICBwcG0gPSBkcmlmdC5nZXQoImRyaWZ0X3BwbSIpCiAgICBpZiB1cGQgaXMgTm9uZSBvciBwcG0gaXMgTm9uZToKICAgICAgICBkWyJzdGF0dXMiXSA9ICJJTVBPU1NJQkxFIgogICAgICAgIGRbInJlYXNvbiJdID0gImRyaWZ0IGFsbG93YW5jZSB1bmJvdW5kZWQgKG5vIHVwZGF0ZSBpbnRlcnZhbCBvciBkcmlmdCBtZWFzdXJlKSIKICAgICAgICByZXR1cm4gZAogICAgZHJpZnRfYWxsb3dfbXMgPSBhYnMocHBtKSAqIDFlLTYgKiB1cGQgKiAxMDAwLjAKICAgIGdyYW4gPSBncmFudWxhcml0eV9tcyBpZiBncmFudWxhcml0eV9tcyBpcyBub3QgTm9uZSBlbHNlIDAuMAogICAgYm91bmQgPSBhYnMob2ZmKSAqIDEwMDAuMCArIGRpc3AgKiAxMDAwLjAgKyBkcmlmdF9hbGxvd19tcyArIGdyYW4KICAgIGQudXBkYXRlKHsKICAgICAgICAic3RhdHVzIjogIkRFUklWRUQiLAogICAgICAgICJvZmZzZXRfbXMiOiBhYnMob2ZmKSAqIDEwMDAuMCwKICAgICAgICAicm9vdF9kaXNwZXJzaW9uX21zIjogZGlzcCAqIDEwMDAuMCwKICAgICAgICAiZHJpZnRfYWxsb3dhbmNlX21zIjogZHJpZnRfYWxsb3dfbXMsCiAgICAgICAgImdyYW51bGFyaXR5X21zIjogZ3JhbiwKICAgICAgICAiYm91bmRfbXMiOiBib3VuZCwKICAgICAgICAicGFzc2VzX2FjdGl2YXRpb25fMTAwbXMiOiBib3VuZCA8PSBBQ1RJVkFUSU9OX0JPVU5EX01TLAogICAgICAgICJwYXNzZXNfcGVyX29ic2VydmF0aW9uXzI1MG1zIjogYm91bmQgPD0gUEVSX09CU0VSVkFUSU9OX01BWF9NUywKICAgIH0pCiAgICByZXR1cm4gZAoKCmRlZiBtYWluKCk6CiAgICBhcCA9IGFyZ3BhcnNlLkFyZ3VtZW50UGFyc2VyKCkKICAgIGFwLmFkZF9hcmd1bWVudCgiLS1vdXQiLCBkZWZhdWx0PSJjbG9ja19wcm9iZV9ldmlkZW5jZS5qc29uIikKICAgIGFwLmFkZF9hcmd1bWVudCgiLS1kcmlmdC13aW5kb3ciLCB0eXBlPWZsb2F0LCBkZWZhdWx0PTMwLjApCiAgICBhcmdzID0gYXAucGFyc2VfYXJncygpCgogICAgZXYgPSB7InByb2JlIjogUFJPQkVfVkVSU0lPTiwgInN0YXJ0ZWRfYXRfbG9jYWwiOiBub3dfbG9jYWxfaXNvKCksCiAgICAgICAgICAidGltZXN0YW1wcyI6ICJhbGwgdGltZXN0YW1wcyBMT0NBTCBob3N0IHdhbGwgY2xvY2sgdW5sZXNzIG5hbWVkIn0KCiAgICBldlsiZW52aXJvbm1lbnQiXSA9IHsKICAgICAgICAicGxhdGZvcm0iOiBwbGF0Zm9ybS5wbGF0Zm9ybSgpLAogICAgICAgICJtYWNoaW5lIjogcGxhdGZvcm0ubWFjaGluZSgpLAogICAgICAgICJweXRob24iOiBzeXMudmVyc2lvbiwKICAgICAgICAicnVubmVyX2VudiI6IHtrOiBvcy5lbnZpcm9uLmdldChrKSBmb3IgayBpbgogICAgICAgICAgICAgICAgICAgICAgICgiUlVOTkVSX09TIiwgIlJVTk5FUl9BUkNIIiwgIlJVTk5FUl9OQU1FIiwKICAgICAgICAgICAgICAgICAgICAgICAgIkltYWdlT1MiLCAiSW1hZ2VWZXJzaW9uIiwgIkdJVEhVQl9SVU5fSUQiLAogICAgICAgICAgICAgICAgICAgICAgICAiR0lUSFVCX1dPUktGTE9XIikgaWYgb3MuZW52aXJvbi5nZXQoayl9LAogICAgfQoKICAgIGNhcHMgPSB7fQogICAgZm9yIG5hbWUsIGFyZ3YgaW4gKAogICAgICAgICgidW5hbWUiLCBbInVuYW1lIiwgIi1hIl0pLAogICAgICAgICgib3NfcmVsZWFzZSIsIFsiY2F0IiwgIi9ldGMvb3MtcmVsZWFzZSJdKSwKICAgICAgICAoInRpbWVkYXRlY3RsX3N0YXR1cyIsIFsidGltZWRhdGVjdGwiLCAic3RhdHVzIl0pLAogICAgICAgICgidGltZWRhdGVjdGxfdGltZXN5bmNfc3RhdHVzIiwgWyJ0aW1lZGF0ZWN0bCIsICJ0aW1lc3luYy1zdGF0dXMiXSksCiAgICAgICAgKCJjaHJvbnljX3RyYWNraW5nIiwgWyJjaHJvbnljIiwgInRyYWNraW5nIl0pLAogICAgICAgICgiY2hyb255Y19zb3VyY2VzIiwgWyJjaHJvbnljIiwgInNvdXJjZXMiLCAiLXYiXSksCiAgICAgICAgKCJzeXN0ZW1jdGxfY2hyb255IiwgWyJzeXN0ZW1jdGwiLCAic3RhdHVzIiwgImNocm9ueSIsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICItLW5vLXBhZ2VyIl0pLAogICAgICAgICgic3lzdGVtY3RsX3RpbWVzeW5jZCIsIFsic3lzdGVtY3RsIiwgInN0YXR1cyIsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICJzeXN0ZW1kLXRpbWVzeW5jZCIsICItLW5vLXBhZ2VyIl0pLAogICAgKToKICAgICAgICBjYXBzW25hbWVdID0gcnVuX2NhcHR1cmUoYXJndikKICAgIGV2WyJjYXB0dXJlc19zdGFydCJdID0gY2FwcwoKICAgIGV2WyJncmFudWxhcml0eV9tcyJdID0gbWVhc3VyZV9ncmFudWxhcml0eV9tcygpCiAgICBldlsidWRwMTIzX2RpYWdub3N0aWMiXSA9IFtudHBfdWRwX2RpYWdub3N0aWMocykgZm9yIHMgaW4gTlRQX1NFUlZFUlNdCiAgICBkcmlmdCA9IG1lYXN1cmVfZHJpZnQoYXJncy5kcmlmdF93aW5kb3cpCiAgICBldlsiZHJpZnQiXSA9IGRyaWZ0CgogICAgIyBSZS1jYXB0dXJlIHRoZSBkYWVtb24gc3RhdGUgYWZ0ZXIgdGhlIGRyaWZ0IHdpbmRvdyAoc3RhYmlsaXR5IGNoZWNrKS4KICAgIGV2WyJjYXB0dXJlc19lbmQiXSA9IHsKICAgICAgICAidGltZWRhdGVjdGxfc3RhdHVzIjogcnVuX2NhcHR1cmUoWyJ0aW1lZGF0ZWN0bCIsICJzdGF0dXMiXSksCiAgICAgICAgInRpbWVkYXRlY3RsX3RpbWVzeW5jX3N0YXR1cyI6IHJ1bl9jYXB0dXJlKAogICAgICAgICAgICBbInRpbWVkYXRlY3RsIiwgInRpbWVzeW5jLXN0YXR1cyJdKSwKICAgICAgICAiY2hyb255Y190cmFja2luZyI6IHJ1bl9jYXB0dXJlKFsiY2hyb255YyIsICJ0cmFja2luZyJdKSwKICAgIH0KCiAgICAjIERhZW1vbiBldmlkZW5jZSBhc3NlbWJseTogY2hyb255IHByZWZlcnJlZCAoaXQgZXhwb3NlcyByb290CiAgICAjIGRpc3BlcnNpb24pOyB0aW1lc3luY2QgdXNlZCBvbmx5IGluc29mYXIgYXMgaXRzIGNhcHR1cmVkIG91dHB1dAogICAgIyBhY3R1YWxseSBjYXJyaWVzIHRoZSByZXF1aXJlZCBmaWd1cmVzLgogICAgZGFlbW9uID0gTm9uZQogICAgY2hyb255ID0gcGFyc2VfY2hyb255Y190cmFja2luZygKICAgICAgICBjYXBzWyJjaHJvbnljX3RyYWNraW5nIl0uZ2V0KCJzdGRvdXQiKSBvciAiIikKICAgIHRkYyA9IHBhcnNlX3RpbWVkYXRlY3RsKGNhcHNbInRpbWVkYXRlY3RsX3N0YXR1cyJdLmdldCgic3Rkb3V0Iikgb3IgIiIsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICBjYXBzWyJ0aW1lZGF0ZWN0bF90aW1lc3luY19zdGF0dXMiXS5nZXQoCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgInN0ZG91dCIpIG9yICIiKQogICAgaWYgY2hyb255IGlzIG5vdCBOb25lIGFuZCAoInN5c3RlbV90aW1lX29mZnNldF9zIiBpbiBjaHJvbnkgb3IKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICJyb290X2Rpc3BlcnNpb25fcyIgaW4gY2hyb255KToKICAgICAgICBkYWVtb24gPSB7CiAgICAgICAgICAgICJraW5kIjogImNocm9ueSIsCiAgICAgICAgICAgICJzeW5jaHJvbmlzZWQiOiAoY2hyb255LmdldCgibGVhcF9zdGF0dXMiKSA9PSAiTm9ybWFsIiksCiAgICAgICAgICAgICJvZmZzZXRfcyI6IGNocm9ueS5nZXQoInN5c3RlbV90aW1lX29mZnNldF9zIiksCiAgICAgICAgICAgICJyb290X2Rpc3BlcnNpb25fcyI6IGNocm9ueS5nZXQoInJvb3RfZGlzcGVyc2lvbl9zIiksCiAgICAgICAgICAgICJ1cGRhdGVfaW50ZXJ2YWxfcyI6IGNocm9ueS5nZXQoInVwZGF0ZV9pbnRlcnZhbF9zIiksCiAgICAgICAgICAgICJzdHJhdHVtIjogY2hyb255LmdldCgic3RyYXR1bSIpLAogICAgICAgIH0KICAgIGVsaWYgdGRjOgogICAgICAgIGRhZW1vbiA9IHsKICAgICAgICAgICAgImtpbmQiOiAic3lzdGVtZC10aW1lc3luY2QiLAogICAgICAgICAgICAic3luY2hyb25pc2VkIjogdGRjLmdldCgic3lzdGVtX2Nsb2NrX3N5bmNocm9uaXplZCIpLAogICAgICAgICAgICAib2Zmc2V0X3MiOiBOb25lLCAgICAgICAgICAjIHRpbWVzeW5jLXN0YXR1cyBleHBvc2VzIG5vIHNpZ25lZAogICAgICAgICAgICAicm9vdF9kaXNwZXJzaW9uX3MiOiBOb25lLCAgIyBvZmZzZXQvZGlzcGVyc2lvbiBwYWlyIGluIGdlbmVyYWwKICAgICAgICAgICAgInVwZGF0ZV9pbnRlcnZhbF9zIjogTm9uZSwKICAgICAgICAgICAgInNlcnZlciI6IHRkYy5nZXQoInNlcnZlciIpLAogICAgICAgIH0KICAgIGV2WyJkYWVtb25fZXZpZGVuY2UiXSA9IGRhZW1vbgogICAgZXZbImRlcml2YXRpb24iXSA9IGRlcml2ZShkYWVtb24sIGV2WyJncmFudWxhcml0eV9tcyJdLCBkcmlmdCkKICAgIGV2WyJmaW5pc2hlZF9hdF9sb2NhbCJdID0gbm93X2xvY2FsX2lzbygpCgogICAgd2l0aCBvcGVuKGFyZ3Mub3V0LCAidyIpIGFzIGY6CiAgICAgICAganNvbi5kdW1wKGV2LCBmLCBpbmRlbnQ9Miwgc29ydF9rZXlzPVRydWUpCiAgICBwcmludCgicHJvYmUgY29tcGxldGUgLT4gJXMiICUgYXJncy5vdXQpCiAgICBwcmludCgiZGFlbW9uOiIsIGpzb24uZHVtcHMoZGFlbW9uKSkKICAgIHByaW50KCJkZXJpdmF0aW9uOiIsIGpzb24uZHVtcHMoZXZbImRlcml2YXRpb24iXSkpCiAgICByZXR1cm4gMAoKCmlmIF9fbmFtZV9fID09ICJfX21haW5fXyI6CiAgICBzeXMuZXhpdChtYWluKCkpCg==
+#!/usr/bin/env python3
+"""CAP-1 GitHub Actions clock-evidence probe.
+
+Purpose: settle, empirically, whether a GitHub-hosted runner can produce a
+section-C-shaped clock-readiness evidence record (frozen spec: sync source and
+health identified; the daemon's own offset estimate and uncertainty / root
+dispersion figures with LOCAL timestamps; a derivation over recorded numbers
+whose bound must be <= 100 ms for activation, with the frozen per-observation
+maximum of 250 ms).
+
+Design rules (inherited from the CAP-1 evidence discipline):
+- Pure standard library. No network calls except the explicitly labelled
+  UDP/123 diagnostic (which is NOT daemon evidence and never feeds the
+  derivation).
+- Every captured timestamp is LOCAL (this host's wall clock) unless a field
+  name says otherwise. Raw command outputs are preserved verbatim.
+- Fail honest: if the daemon is absent, unsynchronised, or does not expose an
+  offset estimate AND a dispersion figure, the derivation is recorded as
+  IMPOSSIBLE with the reason, never approximated.
+- The script never raises on a missing tool; absence is itself evidence.
+
+Output: one JSON document (path from --out, default clock_probe_evidence.json).
+"""
+
+import argparse
+import json
+import os
+import platform
+import re
+import socket
+import struct
+import subprocess
+import sys
+import time
+
+PROBE_VERSION = "cap1-gha-clock-probe/1"
+ACTIVATION_BOUND_MS = 100.0          # frozen section-C activation threshold
+PER_OBSERVATION_MAX_MS = 250.0       # frozen CAP1_CONFIG_V1 maximum
+NTP_SERVERS = ["time.cloudflare.com", "time.google.com", "pool.ntp.org"]
+NTP_EPOCH_DELTA = 2208988800  # seconds between 1900-01-01 and 1970-01-01
+
+
+def now_local_iso():
+    return time.strftime("%Y-%m-%dT%H:%M:%S", time.gmtime()) + (
+        ".%03dZ" % int((time.time() % 1) * 1000))
+
+
+def run_capture(argv, timeout=15):
+    """Run a read-only command; return a record with verbatim output."""
+    rec = {"argv": argv, "captured_at_local": now_local_iso()}
+    try:
+        p = subprocess.run(argv, capture_output=True, text=True,
+                           timeout=timeout)
+        rec["exit_code"] = p.returncode
+        rec["stdout"] = p.stdout
+        rec["stderr"] = p.stderr
+    except FileNotFoundError:
+        rec["error"] = "TOOL_ABSENT"
+    except subprocess.TimeoutExpired:
+        rec["error"] = "TIMEOUT"
+    except Exception as e:  # absence/failure is evidence, never fatal
+        rec["error"] = "%s: %s" % (type(e).__name__, e)
+    return rec
+
+
+def measure_granularity_ms(samples=2000):
+    """Smallest nonzero wall-clock step observable from Python, in ms."""
+    best = None
+    prev = time.time_ns()
+    for _ in range(samples):
+        cur = time.time_ns()
+        d = cur - prev
+        if d > 0:
+            if best is None or d < best:
+                best = d
+            prev = cur
+    return (best / 1e6) if best is not None else None
+
+
+def measure_drift(window_s=30.0):
+    """Wall-vs-monotonic drift over the window; returns ppm and endpoints."""
+    w0, m0 = time.time(), time.monotonic()
+    time.sleep(window_s)
+    w1, m1 = time.time(), time.monotonic()
+    wall = w1 - w0
+    mono = m1 - m0
+    ppm = ((wall - mono) / mono * 1e6) if mono > 0 else None
+    return {"window_s": window_s, "wall_elapsed_s": wall,
+            "monotonic_elapsed_s": mono, "drift_ppm": ppm,
+            "started_at_local": None, "ended_at_local": now_local_iso()}
+
+
+def ntp_udp_diagnostic(server, timeout=3.0):
+    """One raw NTP client exchange over UDP/123.
+
+    DIAGNOSTIC ONLY: establishes whether outbound UDP/123 works from this
+    host at all. The Cristian offset computed here is not daemon evidence
+    and is never used in the section-C derivation.
+    """
+    rec = {"server": server, "checked_at_local": now_local_iso()}
+    try:
+        addr = socket.gethostbyname(server)
+    except Exception as e:
+        rec["result"] = "DNS_FAIL: %s" % e
+        return rec
+    rec["resolved_ip"] = addr
+    pkt = bytearray(48)
+    pkt[0] = 0x1B  # LI=0, VN=3, Mode=3 (client)
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    s.settimeout(timeout)
+    try:
+        t0 = time.time()
+        s.sendto(bytes(pkt), (addr, 123))
+        data, _ = s.recvfrom(512)
+        t3 = time.time()
+        rec["result"] = "RESPONSE"
+        rec["rtt_ms"] = (t3 - t0) * 1000.0
+        if len(data) >= 48:
+            sec, frac = struct.unpack("!II", data[40:48])
+            server_tx = (sec - NTP_EPOCH_DELTA) + frac / 2**32
+            rec["cristian_offset_ms_diagnostic_only"] = (
+                (server_tx - (t0 + t3) / 2.0) * 1000.0)
+            rec["stratum"] = data[1]
+        else:
+            rec["note"] = "short response (%d bytes)" % len(data)
+    except socket.timeout:
+        rec["result"] = "NO_RESPONSE_TIMEOUT"
+    except PermissionError as e:
+        rec["result"] = "SEND_DENIED: %s" % e
+    except Exception as e:
+        rec["result"] = "ERROR: %s: %s" % (type(e).__name__, e)
+    finally:
+        s.close()
+    return rec
+
+
+def _float_after(text, label):
+    m = re.search(re.escape(label) + r"\s*:\s*(-?[0-9]+(?:\.[0-9]+)?)", text)
+    return float(m.group(1)) if m else None
+
+
+def parse_chronyc_tracking(stdout):
+    """Best-effort parse of `chronyc tracking`; raw output stays primary."""
+    if not stdout:
+        return None
+    out = {}
+    m = re.search(r"System time\s*:\s*([0-9.]+) seconds (slow|fast)", stdout)
+    if m:
+        val = float(m.group(1)) * (1 if m.group(2) == "fast" else -1)
+        out["system_time_offset_s"] = val
+    out["root_dispersion_s"] = _float_after(stdout, "Root dispersion")
+    out["root_delay_s"] = _float_after(stdout, "Root delay")
+    out["update_interval_s"] = _float_after(stdout, "Update interval")
+    m = re.search(r"Leap status\s*:\s*(.+)", stdout)
+    if m:
+        out["leap_status"] = m.group(1).strip()
+    m = re.search(r"Stratum\s*:\s*([0-9]+)", stdout)
+    if m:
+        out["stratum"] = int(m.group(1))
+    return out
+
+
+def parse_timedatectl(status_out, timesync_out):
+    out = {}
+    if status_out:
+        m = re.search(r"System clock synchronized:\s*(\w+)", status_out)
+        if m:
+            out["system_clock_synchronized"] = (m.group(1) == "yes")
+        m = re.search(r"NTP service:\s*(.+)", status_out)
+        if m:
+            out["ntp_service"] = m.group(1).strip()
+    if timesync_out:
+        # systemd >= 250 prints an "Offset:" line in timesync-status when the
+        # daemon has a current estimate; absence is recorded, not assumed.
+        off = _float_after(timesync_out, "Offset")
+        if off is not None:
+            out["timesync_offset_raw"] = off
+        m = re.search(r"Server:\s*(.+)", timesync_out)
+        if m:
+            out["server"] = m.group(1).strip()
+        m = re.search(r"Poll interval:\s*(.+)", timesync_out)
+        if m:
+            out["poll_interval"] = m.group(1).strip()
+    return out
+
+
+def derive(daemon, granularity_ms, drift):
+    """Section-C derivation over recorded inputs only.
+
+    bound = |daemon offset| + root dispersion + drift allowance + granularity.
+    Drift allowance = |measured drift ppm| x update interval when the daemon
+    reports one; otherwise the derivation cannot be certified.
+    """
+    d = {"formula": "|offset| + root_dispersion + drift_allowance + granularity",
+         "activation_threshold_ms": ACTIVATION_BOUND_MS,
+         "per_observation_max_ms": PER_OBSERVATION_MAX_MS}
+    if daemon is None:
+        d["status"] = "IMPOSSIBLE"
+        d["reason"] = "no daemon evidence captured"
+        return d
+    if daemon.get("synchronised") is not True:
+        d["status"] = "IMPOSSIBLE"
+        d["reason"] = "daemon not synchronised (or sync state unproven)"
+        return d
+    off = daemon.get("offset_s")
+    disp = daemon.get("root_dispersion_s")
+    if off is None or disp is None:
+        d["status"] = "IMPOSSIBLE"
+        d["reason"] = ("daemon does not expose both an offset estimate and a "
+                       "root-dispersion figure in captured output")
+        return d
+    upd = daemon.get("update_interval_s")
+    ppm = drift.get("drift_ppm")
+    if upd is None or ppm is None:
+        d["status"] = "IMPOSSIBLE"
+        d["reason"] = "drift allowance unbounded (no update interval or drift measure)"
+        return d
+    drift_allow_ms = abs(ppm) * 1e-6 * upd * 1000.0
+    gran = granularity_ms if granularity_ms is not None else 0.0
+    bound = abs(off) * 1000.0 + disp * 1000.0 + drift_allow_ms + gran
+    d.update({
+        "status": "DERIVED",
+        "offset_ms": abs(off) * 1000.0,
+        "root_dispersion_ms": disp * 1000.0,
+        "drift_allowance_ms": drift_allow_ms,
+        "granularity_ms": gran,
+        "bound_ms": bound,
+        "passes_activation_100ms": bound <= ACTIVATION_BOUND_MS,
+        "passes_per_observation_250ms": bound <= PER_OBSERVATION_MAX_MS,
+    })
+    return d
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--out", default="clock_probe_evidence.json")
+    ap.add_argument("--drift-window", type=float, default=30.0)
+    args = ap.parse_args()
+
+    ev = {"probe": PROBE_VERSION, "started_at_local": now_local_iso(),
+          "timestamps": "all timestamps LOCAL host wall clock unless named"}
+
+    ev["environment"] = {
+        "platform": platform.platform(),
+        "machine": platform.machine(),
+        "python": sys.version,
+        "runner_env": {k: os.environ.get(k) for k in
+                       ("RUNNER_OS", "RUNNER_ARCH", "RUNNER_NAME",
+                        "ImageOS", "ImageVersion", "GITHUB_RUN_ID",
+                        "GITHUB_WORKFLOW") if os.environ.get(k)},
+    }
+
+    caps = {}
+    for name, argv in (
+        ("uname", ["uname", "-a"]),
+        ("os_release", ["cat", "/etc/os-release"]),
+        ("timedatectl_status", ["timedatectl", "status"]),
+        ("timedatectl_timesync_status", ["timedatectl", "timesync-status"]),
+        ("chronyc_tracking", ["chronyc", "tracking"]),
+        ("chronyc_sources", ["chronyc", "sources", "-v"]),
+        ("systemctl_chrony", ["systemctl", "status", "chrony",
+                              "--no-pager"]),
+        ("systemctl_timesyncd", ["systemctl", "status",
+                                 "systemd-timesyncd", "--no-pager"]),
+    ):
+        caps[name] = run_capture(argv)
+    ev["captures_start"] = caps
+
+    ev["granularity_ms"] = measure_granularity_ms()
+    ev["udp123_diagnostic"] = [ntp_udp_diagnostic(s) for s in NTP_SERVERS]
+    drift = measure_drift(args.drift_window)
+    ev["drift"] = drift
+
+    # Re-capture the daemon state after the drift window (stability check).
+    ev["captures_end"] = {
+        "timedatectl_status": run_capture(["timedatectl", "status"]),
+        "timedatectl_timesync_status": run_capture(
+            ["timedatectl", "timesync-status"]),
+        "chronyc_tracking": run_capture(["chronyc", "tracking"]),
+    }
+
+    # Daemon evidence assembly: chrony preferred (it exposes root
+    # dispersion); timesyncd used only insofar as its captured output
+    # actually carries the required figures.
+    daemon = None
+    chrony = parse_chronyc_tracking(
+        caps["chronyc_tracking"].get("stdout") or "")
+    tdc = parse_timedatectl(caps["timedatectl_status"].get("stdout") or "",
+                            caps["timedatectl_timesync_status"].get(
+                                "stdout") or "")
+    if chrony is not None and ("system_time_offset_s" in chrony or
+                               "root_dispersion_s" in chrony):
+        daemon = {
+            "kind": "chrony",
+            "synchronised": (chrony.get("leap_status") == "Normal"),
+            "offset_s": chrony.get("system_time_offset_s"),
+            "root_dispersion_s": chrony.get("root_dispersion_s"),
+            "update_interval_s": chrony.get("update_interval_s"),
+            "stratum": chrony.get("stratum"),
+        }
+    elif tdc:
+        daemon = {
+            "kind": "systemd-timesyncd",
+            "synchronised": tdc.get("system_clock_synchronized"),
+            "offset_s": None,          # timesync-status exposes no signed
+            "root_dispersion_s": None,  # offset/dispersion pair in general
+            "update_interval_s": None,
+            "server": tdc.get("server"),
+        }
+    ev["daemon_evidence"] = daemon
+    ev["derivation"] = derive(daemon, ev["granularity_ms"], drift)
+    ev["finished_at_local"] = now_local_iso()
+
+    with open(args.out, "w") as f:
+        json.dump(ev, f, indent=2, sort_keys=True)
+    print("probe complete -> %s" % args.out)
+    print("daemon:", json.dumps(daemon))
+    print("derivation:", json.dumps(ev["derivation"]))
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
