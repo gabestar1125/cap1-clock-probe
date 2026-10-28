@@ -1,0 +1,167 @@
+# CAP-1 supervisor SYNTHETIC rehearsal — stub venue, accelerated
+# virtual clock, ZERO venue requests. Proves PV-1 (GITHUB_TOKEN
+# self-dispatch) and then runs the full 10-segment chain + seal on
+# GitHub infrastructure (the on-GitHub form of DAT-2b / DAT-5 /
+# DAT-6). This file is pasted by the principal via the web UI (the
+# connector cannot write workflow files); everything else in the
+# repo is pushed by Muse via the connector.
+name: cap1-supervisor-rehearsal
+
+on:
+  workflow_dispatch:
+    inputs:
+      segment_index:
+        description: "Segment index (0 = PV-1, 1..10 = chain, 99 = seal)"
+        required: true
+        type: string
+      manifest_sha256:
+        description: "Dispatch input: freeze SHA-256 for segment 1, predecessor manifest hash otherwise, PV-1 nonce for role pv1_target"
+        required: true
+        type: string
+      role:
+        description: "pv1_source | pv1_target | segment | seal"
+        required: true
+        type: choice
+        options: [pv1_source, pv1_target, segment, seal]
+
+permissions:
+  contents: write   # evidence + claim refs
+  actions: write    # workflow_dispatch self-dispatch (PV-1)
+
+jobs:
+  pv1-source:
+    if: inputs.role == 'pv1_source'
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - name: Dispatch pv1_target using ONLY the job GITHUB_TOKEN
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NONCE: ${{ inputs.manifest_sha256 }}
+        run: |
+          set -euo pipefail
+          code=$(curl -sS -o /tmp/resp.txt -w "%{http_code}" -X POST \
+            "https://api.github.com/repos/${{ github.repository }}/actions/workflows/cap1-supervisor-rehearsal.yml/dispatches" \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            -d "{\"ref\":\"main\",\"inputs\":{\"segment_index\":\"0\",\"manifest_sha256\":\"$NONCE\",\"role\":\"pv1_target\"}}")
+          echo "dispatch HTTP $code"
+          cat /tmp/resp.txt || true
+          test "$code" = "204"
+          echo "{\"pv1_source_run\": \"${{ github.run_id }}\", \"nonce\": \"$NONCE\", \"dispatch_http\": $code}" > pv1_source.json
+      - name: Commit dispatch receipt to rehearsal-evidence
+        run: |
+          set -euo pipefail
+          git clone --quiet "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" ev
+          cd ev
+          git config user.email "cap1-rehearsal@localhost"
+          git config user.name "cap1-rehearsal"
+          git checkout -B rehearsal-evidence
+          mkdir -p pv1
+          cp ../pv1_source.json "pv1/source-${{ github.run_id }}.json"
+          git add .
+          git commit -m "PV-1 source dispatch receipt ${{ github.run_id }}"
+          git push origin rehearsal-evidence
+
+  pv1-target:
+    if: inputs.role == 'pv1_target'
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - name: Record PV-1 success evidence
+        run: |
+          set -euo pipefail
+          echo "{\"pv1_target_run\": \"${{ github.run_id }}\", \"nonce_received\": \"${{ inputs.manifest_sha256 }}\"}" > pv1_target.json
+          git clone --quiet "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" ev
+          cd ev
+          git config user.email "cap1-rehearsal@localhost"
+          git config user.name "cap1-rehearsal"
+          git checkout -B rehearsal-evidence
+          mkdir -p pv1
+          cp ../pv1_target.json "pv1/target-${{ github.run_id }}.json"
+          git add .
+          git commit -m "PV-1 target reached via GITHUB_TOKEN dispatch"
+          for i in 1 2 3 4 5; do
+            git push origin rehearsal-evidence && break
+            git pull --rebase origin rehearsal-evidence
+          done
+
+  segment:
+    if: inputs.role == 'segment'
+    runs-on: ubuntu-24.04-arm
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Compute this segment's virtual start
+        id: vstart
+        run: |
+          python3 - <<'EOF'
+          import json, os
+          fz = json.load(open("ingestion/github_supervisor/rehearsal/FREEZE.rehearsal.json"))
+          from datetime import datetime, timezone
+          a = datetime.strptime(fz["activation_A"], "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc).timestamp()
+          k = int("${{ inputs.segment_index }}")
+          start = a + sum(fz["segment_plan"]["lengths_s"][:k-1]) - fz["phase"]["dispatch_lead_s"] - 60
+          with open(os.environ["GITHUB_OUTPUT"], "a") as f:
+              f.write("vstart=%d\n" % start)
+          EOF
+      - name: Run supervisor segment (synthetic, virtual clock)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CAP1_REQUEST_LOG: ${{ runner.temp }}/requests.jsonl
+        run: |
+          set -euo pipefail
+          python3 ingestion/github_supervisor/seg_main.py \
+            --freeze ingestion/github_supervisor/rehearsal/FREEZE.rehearsal.json \
+            --role segment \
+            --segment "${{ inputs.segment_index }}" \
+            --run-id "gh-${{ github.run_id }}-s${{ inputs.segment_index }}" \
+            --dispatch-input "${{ inputs.manifest_sha256 }}" \
+            --work-root "${{ runner.temp }}/work" \
+            --backend git \
+            --repo-dir "${{ runner.temp }}/repo" \
+            --origin "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" \
+            --dispatch github \
+            --github-repo "${{ github.repository }}" \
+            --workflow-file cap1-supervisor-rehearsal.yml \
+            --virtual-start "${{ steps.vstart.outputs.vstart }}" \
+            --section-c synthetic:1.0 \
+            --probe synthetic:5 \
+            --image-version rehearsal-1
+      - name: Upload instrumented request log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: requests-seg-${{ inputs.segment_index }}-${{ github.run_id }}
+          path: ${{ runner.temp }}/requests.jsonl
+          if-no-files-found: ignore
+
+  seal:
+    if: inputs.role == 'seal'
+    runs-on: ubuntu-24.04-arm
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Run seal + composed verdict (synthetic)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          python3 ingestion/github_supervisor/seg_main.py \
+            --freeze ingestion/github_supervisor/rehearsal/FREEZE.rehearsal.json \
+            --role seal \
+            --run-id "gh-${{ github.run_id }}-seal" \
+            --dispatch-input "${{ inputs.manifest_sha256 }}" \
+            --work-root "${{ runner.temp }}/work" \
+            --backend git \
+            --repo-dir "${{ runner.temp }}/repo" \
+            --origin "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" \
+            --dispatch github \
+            --github-repo "${{ github.repository }}" \
+            --workflow-file cap1-supervisor-rehearsal.yml \
+            --section-c synthetic:1.0 \
+            --probe synthetic:5 \
+            --image-version rehearsal-1
