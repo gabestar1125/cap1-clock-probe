@@ -1,1 +1,97 @@
-IiIiVHJhbnNwb3J0UGFjZXIg4oCUIHRoZSBzdXBlcnZpc29yJ3MgcmF0ZS9jb25jdXJyZW5jeSBtZWNoYW5pc20gZm9yCnNlZ21lbnQgb3ZlcmxhcHMgKHByaW5jaXBhbCByZWZpbmVtZW50IChpaSk7IHByb29mIGluClJBVEVfQ09OQ1VSUkVOQ1lfUFJPT0YubWQpLgoKVGhlIGZyb3plbiBHb3Zlcm5vciBlbmZvcmNlcyAxMCByZXF1ZXN0cy9taW51dGUgYW5kIHRoZSBmcm96ZW4gcnVubmVyCmlzIHNlcXVlbnRpYWwg4oCUIGJ1dCBvbmx5IElOU0lERSBvbmUgam9iLiBEdXJpbmcgYW4gb3ZlcmxhcCB0d28gam9icwpleGlzdCwgZWFjaCB3aXRoIGl0cyBvd24gZ292ZXJub3IsIHNvIHdpdGhvdXQgYSBjcm9zcy1qb2IgbWVjaGFuaXNtIHRoZQpwYWlyIGNvdWxkIGluIHByaW5jaXBsZSBzdW0gcGFzdCAxMC9taW4gYW5kIHJlYWNoIGNvbmN1cnJlbmN5IDIuIFRoZQpwYWNlciBpcyBhIHRyYW5zcG9ydCB3cmFwcGVyICh0aGUgZnJvemVuIHJ1bm5lcidzIG93biBpbmplY3Rpb24gc2VhbToKVGljayh0cmFuc3BvcnQ9Li4uKSkgdGhhdCByZXN0b3JlcyB0aGUgZnJvemVuIGJvdW5kcyBhY3Jvc3MgdGhlIHBhaXIKZHVyaW5nIFBoYXNlIEIgYnkgQ09OU1RSVUNUSU9OOgoKLSBQZXItam9iIFBoYXNlLUIgY2FwOiB0aGUgcGFjZXIgYWRtaXRzIGF0IG1vc3QgYHBoYXNlX2JfY2FwYCAoNSkKICB2ZW51ZS1kaXJlY3RlZCByZWxlYXNlcyBpbiBhbnkgcm9sbGluZyA2MCBzIHdpbmRvdyBvZiBJVFMgam9iLiBUaGUKICBwYXJ0bmVyIGpvYidzIHBhY2VyIGFkbWl0cyBhdCBtb3N0IDUgaW4gYW55IHJvbGxpbmcgNjAgcy4gQW55IDYwIHMKICB3aW5kb3cgdGhlcmVmb3JlIHNlZXMgYXQgbW9zdCA1ICsgNSA9IDEwIHJlbGVhc2VzIGNvbWJpbmVkLAogIHJlZ2FyZGxlc3Mgb2YgYWxpZ25tZW50LgotIE1pbnV0ZS1wYXJpdHkgcmVsZWFzZSB3aW5kb3dzOiB0aGUgb3V0Z29pbmcgam9iIG1heSByZWxlYXNlIG9ubHkgaW4KICBldmVuIG1pbnV0ZXMgKG1pbnV0ZV9pbmRleCAlIDIgPT0gMCksIHRoZSBpbmNvbWluZyBvbmx5IGluIG9kZAogIG1pbnV0ZXMgKHJvbGVzIGFzc2lnbmVkIGJ5IHRoZSBzZWdtZW50IHJ1biByZWNvcmQpLiBSZWxlYXNlcyBhcmUKICBhZGRpdGlvbmFsbHkgZ3VhcmRlZCBzbyBhIHJlbGVhc2VkIHJlcXVlc3Qg4oCUIGJvdW5kZWQgYnkgdGhlIGZyb3plbgogIHRyYW5zcG9ydCdzIDEwIHMgdGltZW91dCBwbHVzIGEgc2FmZXR5IG1hcmdpbiDigJQgY29tcGxldGVzIGluc2lkZSBpdHMKICByZWxlYXNlIG1pbnV0ZS4gVmVudWUgcmVxdWVzdHMgZnJvbSB0aGUgdHdvIGpvYnMgdGhlcmVmb3JlIG9jY3VweQogIGRpc2pvaW50IG1pbnV0ZXMsIGFuZCBpbi1mbGlnaHQgaW50ZXJ2YWxzIChlYWNoIDwgNjAgcyBhbmQgY29udGFpbmVkCiAgaW4gb25lIG1pbnV0ZSkgY2FuIG5ldmVyIG92ZXJsYXA6IGNvbmN1cnJlbmN5IDw9IDEgYXQgZXZlcnkgaW5zdGFudC4KLSBPdXRzaWRlIFBoYXNlIEIgKHNpbmdsZSBhY3RpdmUgam9iKSB0aGUgcGFjZXIgaXMgYSBwYXNzLXRocm91Z2ggYW5kCiAgdGhlIGZyb3plbiBnb3Zlcm5vcidzIG93biBsaW1pdHMgZ292ZXJuLgoKVGhlIHBhY2VyIGNvdW50cyBSRUxFQVNFUyAoY2FsbHMgaW50byB0aGUgd3JhcHBlZCB0cmFuc3BvcnQpLiBUaGUKZ292ZXJub3IgYWJvdmUgaXQgY291bnRzIGFjcXVpc2l0aW9ucywgYSBzdXBlcnNldCBpbiB0aW1lIChhbgphY3F1aXNpdGlvbiBwcmVjZWRlcyBpdHMgcmVsZWFzZSksIHNvIGdvdmVybm9yIGFjY291bnRpbmcgc3RheXMKY29uc2VydmF0aXZlLiBPbmUgZGlzY2xvc2VkIHNlbWFudGljcyBub3RlOiBiZWNhdXNlIHBhY2luZyBoYXBwZW5zCmluc2lkZSB0aGUgdHJhbnNwb3J0IHN0YWNrLCBhbiBvYnNlcnZhdGlvbidzIHNlbmRfbG9jYWxfbXMgaXMgc3RhbXBlZApieSB0aGUgZW5naW5lIGp1c3QgYmVmb3JlIHRoZSBwYWNlZCBjYWxsIOKAlCB0aGUgZWxpZ2liaWxpdHktY3JpdGljYWwKcmVjZWlwdF9sb2NhbF9tcyBpcyBleGFjdCwgYW5kIHJlY2VpcHQgPj0gc2VuZCBhbHdheXMgKHRoZSBlbmdpbmUncwpUSU1FU1RBTVBfT1JERVIgY2hlY2sgaXMgdW5hZmZlY3RlZCkuCiIiIgppbXBvcnQgdGltZQoKIyBGcm96ZW4gdHJhbnNwb3J0IHRpbWVvdXQgKGNhcDFfdHJhbnNwb3J0Lkh0dHBUcmFuc3BvcnQgZGVmYXVsdCkuClRSQU5TUE9SVF9USU1FT1VUX1MgPSAxMC4wCkNPTVBMRVRJT05fR1VBUkRfUyA9IFRSQU5TUE9SVF9USU1FT1VUX1MgKyA1LjAgICAjIHJlbGVhc2UgZGVhZGxpbmUgaW4KIyB0aGUgcmVsZWFzZSBtaW51dGU6IHNlY29uZF9vZl9taW51dGUgKyBndWFyZCA8PSA2MCBhbHdheXMgaG9sZHMuCgoKY2xhc3MgVHJhbnNwb3J0UGFjZXI6CiAgICAiIiJXcmFwcyBhbiBvYmplY3Qgd2l0aCAuZ2V0KHBhdGgsIHBhcmFtcykgLT4gKHN0YXR1cywgcmF3KS4iIiIKCiAgICBkZWYgX19pbml0X18oc2VsZiwgaW5uZXIsIG5vd19mbj10aW1lLnRpbWUsIHNsZWVwX2ZuPXRpbWUuc2xlZXAsCiAgICAgICAgICAgICAgICAgcGhhc2VfYl9jYXA9NSk6CiAgICAgICAgc2VsZi5pbm5lciA9IGlubmVyCiAgICAgICAgc2VsZi5fbm93LCBzZWxmLl9zbGVlcCA9IG5vd19mbiwgc2xlZXBfZm4KICAgICAgICBzZWxmLnBoYXNlX2JfY2FwID0gcGhhc2VfYl9jYXAKICAgICAgICBzZWxmLm1vZGUgPSAiTk9STUFMIiAgICAgICAgICAjIE5PUk1BTCB8IFBIQVNFX0IKICAgICAgICBzZWxmLnBhcml0eSA9IE5vbmUgICAgICAgICAgICAjIDAgPSBldmVuIG1pbnV0ZXMsIDEgPSBvZGQKICAgICAgICBzZWxmLl9yZWxlYXNlcyA9IFtdICAgICAgICAgICAjIHJlbGVhc2UgdGltZXMgKHBoYXNlIEIgb25seSkKICAgICAgICBzZWxmLnRvdGFsX3JlbGVhc2VzID0gMAogICAgICAgIHNlbGYubWF4X2hvbGRfcyA9IDAuMAoKICAgIGRlZiBzZXRfcGhhc2VfYihzZWxmLCBwYXJpdHkpOgogICAgICAgIHNlbGYubW9kZSA9ICJQSEFTRV9CIgogICAgICAgIHNlbGYucGFyaXR5ID0gcGFyaXR5CgogICAgZGVmIHNldF9ub3JtYWwoc2VsZik6CiAgICAgICAgc2VsZi5tb2RlID0gIk5PUk1BTCIKICAgICAgICBzZWxmLnBhcml0eSA9IE5vbmUKCiAgICBkZWYgX3dhaXRfZm9yX3dpbmRvdyhzZWxmKToKICAgICAgICAiIiJTbGVlcCB1bnRpbCB0aGlzIGpvYiBtYXkgcmVsZWFzZSBhIHJlcXVlc3QgdW5kZXIgdGhlCiAgICAgICAgUGhhc2UtQiBydWxlczsgcmV0dXJucyB0aGUgcmVsZWFzZSBpbnN0YW50LiIiIgogICAgICAgIHdoaWxlIFRydWU6CiAgICAgICAgICAgIG5vdyA9IHNlbGYuX25vdygpCiAgICAgICAgICAgIG1pbnV0ZSA9IGludChub3cgLy8gNjApCiAgICAgICAgICAgIGlmIG1pbnV0ZSAlIDIgIT0gc2VsZi5wYXJpdHk6CiAgICAgICAgICAgICAgICBzZWxmLl9zbGVlcCg2MC4wIC0gKG5vdyAlIDYwLjApICsgMC4wMDEpCiAgICAgICAgICAgICAgICBjb250aW51ZQogICAgICAgICAgICBpZiBub3cgJSA2MC4wICsgQ09NUExFVElPTl9HVUFSRF9TID4gNjAuMDoKICAgICAgICAgICAgICAgICMgVG9vIGxhdGUgaW4gdGhpcyBtaW51dGU6IGEgcmVsZWFzZWQgcmVxdWVzdCBtaWdodCBub3QKICAgICAgICAgICAgICAgICMgY29tcGxldGUgaW5zaWRlIGl0LiBXYWl0IGZvciB0aGUgbmV4dCBvd24gbWludXRlLgogICAgICAgICAgICAgICAgc2VsZi5fc2xlZXAoMTIwLjAgLSAobm93ICUgNjAuMCkgKyAwLjAwMSkKICAgICAgICAgICAgICAgIGNvbnRpbnVlCiAgICAgICAgICAgIGN1dG9mZiA9IG5vdyAtIDYwLjAKICAgICAgICAgICAgc2VsZi5fcmVsZWFzZXMgPSBbdCBmb3IgdCBpbiBzZWxmLl9yZWxlYXNlcyBpZiB0ID4gY3V0b2ZmXQogICAgICAgICAgICBpZiBsZW4oc2VsZi5fcmVsZWFzZXMpID49IHNlbGYucGhhc2VfYl9jYXA6CiAgICAgICAgICAgICAgICB3YWl0ID0gc2VsZi5fcmVsZWFzZXNbMF0gKyA2MC4wIC0gbm93CiAgICAgICAgICAgICAgICBzZWxmLl9zbGVlcChtYXgod2FpdCwgMC4wMDEpKQogICAgICAgICAgICAgICAgY29udGludWUKICAgICAgICAgICAgcmV0dXJuIG5vdwoKICAgIGRlZiBnZXQoc2VsZiwgcGF0aCwgcGFyYW1zPU5vbmUpOgogICAgICAgIGlmIHNlbGYubW9kZSA9PSAiUEhBU0VfQiI6CiAgICAgICAgICAgIHN0YXJ0ID0gc2VsZi5fbm93KCkKICAgICAgICAgICAgcmVsZWFzZSA9IHNlbGYuX3dhaXRfZm9yX3dpbmRvdygpCiAgICAgICAgICAgIHNlbGYubWF4X2hvbGRfcyA9IG1heChzZWxmLm1heF9ob2xkX3MsIHJlbGVhc2UgLSBzdGFydCkKICAgICAgICAgICAgc2VsZi5fcmVsZWFzZXMuYXBwZW5kKHJlbGVhc2UpCiAgICAgICAgc2VsZi50b3RhbF9yZWxlYXNlcyArPSAxCiAgICAgICAgcmV0dXJuIHNlbGYuaW5uZXIuZ2V0KHBhdGgsIHBhcmFtcykK
+"""TransportPacer — the supervisor's rate/concurrency mechanism for
+segment overlaps (principal refinement (ii); proof in
+RATE_CONCURRENCY_PROOF.md).
+
+The frozen Governor enforces 10 requests/minute and the frozen runner
+is sequential — but only INSIDE one job. During an overlap two jobs
+exist, each with its own governor, so without a cross-job mechanism the
+pair could in principle sum past 10/min and reach concurrency 2. The
+pacer is a transport wrapper (the frozen runner's own injection seam:
+Tick(transport=...)) that restores the frozen bounds across the pair
+during Phase B by CONSTRUCTION:
+
+- Per-job Phase-B cap: the pacer admits at most `phase_b_cap` (5)
+  venue-directed releases in any rolling 60 s window of ITS job. The
+  partner job's pacer admits at most 5 in any rolling 60 s. Any 60 s
+  window therefore sees at most 5 + 5 = 10 releases combined,
+  regardless of alignment.
+- Minute-parity release windows: the outgoing job may release only in
+  even minutes (minute_index % 2 == 0), the incoming only in odd
+  minutes (roles assigned by the segment run record). Releases are
+  additionally guarded so a released request — bounded by the frozen
+  transport's 10 s timeout plus a safety margin — completes inside its
+  release minute. Venue requests from the two jobs therefore occupy
+  disjoint minutes, and in-flight intervals (each < 60 s and contained
+  in one minute) can never overlap: concurrency <= 1 at every instant.
+- Outside Phase B (single active job) the pacer is a pass-through and
+  the frozen governor's own limits govern.
+
+The pacer counts RELEASES (calls into the wrapped transport). The
+governor above it counts acquisitions, a superset in time (an
+acquisition precedes its release), so governor accounting stays
+conservative. One disclosed semantics note: because pacing happens
+inside the transport stack, an observation's send_local_ms is stamped
+by the engine just before the paced call — the eligibility-critical
+receipt_local_ms is exact, and receipt >= send always (the engine's
+TIMESTAMP_ORDER check is unaffected).
+"""
+import time
+
+# Frozen transport timeout (cap1_transport.HttpTransport default).
+TRANSPORT_TIMEOUT_S = 10.0
+COMPLETION_GUARD_S = TRANSPORT_TIMEOUT_S + 5.0   # release deadline in
+# the release minute: second_of_minute + guard <= 60 always holds.
+
+
+class TransportPacer:
+    """Wraps an object with .get(path, params) -> (status, raw)."""
+
+    def __init__(self, inner, now_fn=time.time, sleep_fn=time.sleep,
+                 phase_b_cap=5):
+        self.inner = inner
+        self._now, self._sleep = now_fn, sleep_fn
+        self.phase_b_cap = phase_b_cap
+        self.mode = "NORMAL"          # NORMAL | PHASE_B
+        self.parity = None            # 0 = even minutes, 1 = odd
+        self._releases = []           # release times (phase B only)
+        self.total_releases = 0
+        self.max_hold_s = 0.0
+
+    def set_phase_b(self, parity):
+        self.mode = "PHASE_B"
+        self.parity = parity
+
+    def set_normal(self):
+        self.mode = "NORMAL"
+        self.parity = None
+
+    def _wait_for_window(self):
+        """Sleep until this job may release a request under the
+        Phase-B rules; returns the release instant."""
+        while True:
+            now = self._now()
+            minute = int(now // 60)
+            if minute % 2 != self.parity:
+                self._sleep(60.0 - (now % 60.0) + 0.001)
+                continue
+            if now % 60.0 + COMPLETION_GUARD_S > 60.0:
+                # Too late in this minute: a released request might not
+                # complete inside it. Wait for the next own minute.
+                self._sleep(120.0 - (now % 60.0) + 0.001)
+                continue
+            cutoff = now - 60.0
+            self._releases = [t for t in self._releases if t > cutoff]
+            if len(self._releases) >= self.phase_b_cap:
+                wait = self._releases[0] + 60.0 - now
+                self._sleep(max(wait, 0.001))
+                continue
+            return now
+
+    def get(self, path, params=None):
+        if self.mode == "PHASE_B":
+            start = self._now()
+            release = self._wait_for_window()
+            self.max_hold_s = max(self.max_hold_s, release - start)
+            self._releases.append(release)
+        self.total_releases += 1
+        return self.inner.get(path, params)
