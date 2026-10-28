@@ -1,0 +1,73 @@
+# CAP-1 clock-evidence probe — .github/workflows/cap1-clock-probe.yml
+# in the PUBLIC probe repository (github.com/gabestar1125/cap1-clock-probe).
+#
+# v2 (2026-10-28) — adapted to the Muse GitHub connector's actual surface:
+# the connector can create repositories and push files, but exposes no
+# workflow-dispatch and no artifact-download tool. Therefore:
+#   * Trigger is `push` (the push itself is dispatched manually from the
+#     Muse VM via the connector) plus `workflow_dispatch` for the record.
+#     GitHub's `schedule` event is never used (documented delays/drops).
+#   * Evidence returns by git, not by artifact download: each leg commits
+#     its clock_probe_evidence.json to its own branch
+#     probe-results/<runner> and pushes it; the Muse VM reads it back
+#     through the connector's reviewed read tools. (The feasibility study
+#     named git commits as an acceptable evidence handoff.) The artifact
+#     upload is kept as a second copy.
+# The probe script is unchanged (probe_clock.py, SHA-256 pinned in
+# PROBE_DESIGN.md's lab manifest).
+name: cap1-clock-probe
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - probe_clock.py
+      - .github/workflows/cap1-clock-probe.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  probe:
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-24.04, ubuntu-24.04-arm]
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 15
+    steps:
+      - name: Check out probe
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run clock-evidence probe
+        run: python probe_clock.py --out clock_probe_evidence.json
+
+      - name: Upload evidence artifact (second copy)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: clock-probe-${{ matrix.runner }}
+          path: clock_probe_evidence.json
+          retention-days: 90
+          if-no-files-found: warn
+
+      - name: Commit evidence to its results branch
+        if: always()
+        run: |
+          if [ ! -f clock_probe_evidence.json ]; then
+            echo '{"probe_error":"no evidence file produced"}' > clock_probe_evidence.json
+          fi
+          git config user.name "cap1-clock-probe"
+          git config user.email "cap1-clock-probe@users.noreply.github.com"
+          git checkout -B "probe-results/${{ matrix.runner }}"
+          mkdir -p results
+          cp clock_probe_evidence.json "results/${{ matrix.runner }}.json"
+          git add results/
+          git commit -m "clock probe evidence: ${{ matrix.runner }} (run ${{ github.run_id }})"
+          git push --force origin "probe-results/${{ matrix.runner }}"
