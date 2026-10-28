@@ -1,1 +1,5 @@
-IiIiS2Fsc2hpIHJlc2VhcmNoLWluZ2VzdGlvbiBsYXllciDigJQgTWlsZXN0b25lIEktMSBzbGljZSAoSU5HLTIsIElORy02LCBJTkctNykuCgpJc29sYXRlZCBsYWIgbGlicmFyeS4gTm8gdmVudWUgY2xpZW50LCBubyB0cmFkZXIgaW1wb3J0cywgbm8gb3JkZXIgdHlwZXMuClNlZSBLQUxTSElfUkVTRUFSQ0hfSU5HRVNUSU9OX0FSQ0hJVEVDVFVSRV9WMS5tZCAvIENPTlRSQUNUU19WMS4KIiIiCg==
+"""Kalshi research-ingestion layer — Milestone I-1 slice (ING-2, ING-6, ING-7).
+
+Isolated lab library. No venue client, no trader imports, no order types.
+See KALSHI_RESEARCH_INGESTION_ARCHITECTURE_V1.md / CONTRACTS_V1.
+"""
