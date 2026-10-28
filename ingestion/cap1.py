@@ -1,1 +1,287 @@
-IiIiQ0FQLTEg4oCUIGZvcndhcmQgc3RyaWtlLWNhcHR1cmUgY29tcG9uZW50IChMQUIgaW1wbGVtZW50YXRpb24sIEctQ0FQMS1CVUlMRCkuCgpJbXBsZW1lbnRzIHRoZSBSZXYgMiBkZXNpZ246IGV4aXN0ZW5jZS1iYXNlZCBkaXNjb3ZlcnkgKG9mZmxpbmUgZm9ybSksCm1hcmtldC1hbmNob3JlZCBjYXB0dXJlIHNsb3RzLCBjb21wbGV0ZSByYXctcmVzcG9uc2UgcHJlc2VydmF0aW9uIHdpdGgKTE9DQUwvT0JTRVJWRUQgcHJvdmVuYW5jZSBlbnZlbG9wZXMsIGhhc2gtY2hhaW5lZCBldmlkZW5jZSBzdG9yZXMsIEdBUAphbmQgSU5WQUxJRCBoYW5kbGluZywgYW1lbmRtZW50IGRldGVjdGlvbiB3aXRoIHRlcm1pbmFsIHF1YXJhbnRpbmUsIGFuZApoZWFsdGggc3VtbWFyaWVzLiBFbGlnaWJpbGl0eSBhcHBsaWVzIHRoZSBmcm96ZW4gQ0FQMV9DT05GSUdfVjEKY2xvY2stdW5jZXJ0YWludHkgcnVsZS4gVGhpcyBtb2R1bGUgcGVyZm9ybXMgTk8gbmV0d29yayBJL086IHRyYW5zcG9ydAppcyBhbiBpbmplY3RlZCBjYWxsYWJsZSAoZml4dHVyZXMvc2ltdWxhdG9yIGluIHRoZSBsYWIpLgoiIiIKaW1wb3J0IGhhc2hsaWIKaW1wb3J0IGpzb24KaW1wb3J0IG9zCmltcG9ydCBzeXMKZnJvbSBkYXRldGltZSBpbXBvcnQgZGF0ZXRpbWUsIHRpbWV6b25lCgpzeXMucGF0aC5pbnNlcnQoMCwgb3MucGF0aC5kaXJuYW1lKG9zLnBhdGguZGlybmFtZShvcy5wYXRoLmFic3BhdGgoX19maWxlX18pKSkpCmZyb20gaW5nZXN0aW9uLmNsb2NrIGltcG9ydCBmbXRfdHMKCkNPTkZJR19QQVRIID0gb3MucGF0aC5qb2luKG9zLnBhdGguZGlybmFtZShvcy5wYXRoLmFic3BhdGgoX19maWxlX18pKSwKICAgICAgICAgICAgICAgICAgICAgICAgICAgImNhcDFfY29uZmlnX3YxLmpzb24iKQpTTE9UUyA9ICgiT1BFTiIsICJULTYwMCIsICJULTMzMCIsICJULTkwIiwgIlBPU1QtQ0xPU0UiKQpXQVRDSEVEX1BBUkFNUyA9ICgiZmxvb3Jfc3RyaWtlIiwgIm9wZW5fdGltZSIsICJjbG9zZV90aW1lIiwgInJ1bGVzX3ByaW1hcnkiKQoKCmRlZiBfY2Fub24obykgLT4gc3RyOgogICAgcmV0dXJuIGpzb24uZHVtcHMobywgc29ydF9rZXlzPVRydWUsIHNlcGFyYXRvcnM9KCIsIiwgIjoiKSkKCgpkZWYgX2NoYWluX2hhc2gocHJldl9oYXNoLCByZWNvcmQpIC0+IHN0cjoKICAgIHJldHVybiBoYXNobGliLnNoYTI1NigocHJldl9oYXNoICsgX2Nhbm9uKHJlY29yZCkpLmVuY29kZSgpKS5oZXhkaWdlc3QoKQoKCmRlZiBwYXJzZV9pc29fbXMocyk6CiAgICBkdCA9IGRhdGV0aW1lLnN0cnB0aW1lKHMsICIlWS0lbS0lZFQlSDolTTolU1oiKS5yZXBsYWNlKAogICAgICAgIHR6aW5mbz10aW1lem9uZS51dGMpCiAgICByZXR1cm4gaW50KGR0LnRpbWVzdGFtcCgpICogMTAwMCkKCgpkZWYgbG9hZF9jb25maWcocGF0aD1DT05GSUdfUEFUSCk6CiAgICByYXcgPSBvcGVuKHBhdGgsICJyYiIpLnJlYWQoKQogICAgcmV0dXJuIGpzb24ubG9hZHMocmF3KSwgaGFzaGxpYi5zaGEyNTYocmF3KS5oZXhkaWdlc3QoKQoKCmNsYXNzIENoYWluU3RvcmU6CiAgICAiIiJPbmUgaGFzaC1jaGFpbmVkIEpTT05MIGV2aWRlbmNlIHN0b3JlIChzaW5nbGUgd3JpdGVyKS4iIiIKCiAgICBkZWYgX19pbml0X18oc2VsZiwgcGF0aCk6CiAgICAgICAgc2VsZi5wYXRoID0gcGF0aAogICAgICAgIHNlbGYucmVjb3JkcyA9IFtdCiAgICAgICAgc2VsZi50aXAgPSAiR0VORVNJUyIKICAgICAgICBpZiBvcy5wYXRoLmV4aXN0cyhwYXRoKToKICAgICAgICAgICAgc2VsZi5fbG9hZF9hbmRfdmVyaWZ5KCkKCiAgICBkZWYgX2xvYWRfYW5kX3ZlcmlmeShzZWxmKToKICAgICAgICBwcmV2ID0gIkdFTkVTSVMiCiAgICAgICAgd2l0aCBvcGVuKHNlbGYucGF0aCwgInIiLCBlbmNvZGluZz0idXRmLTgiKSBhcyBmOgogICAgICAgICAgICBmb3IgaSwgbGluZSBpbiBlbnVtZXJhdGUoZik6CiAgICAgICAgICAgICAgICBsaW5lID0gbGluZS5zdHJpcCgpCiAgICAgICAgICAgICAgICBpZiBub3QgbGluZToKICAgICAgICAgICAgICAgICAgICBjb250aW51ZQogICAgICAgICAgICAgICAgdHJ5OgogICAgICAgICAgICAgICAgICAgIGVudiA9IGpzb24ubG9hZHMobGluZSkKICAgICAgICAgICAgICAgIGV4Y2VwdCBqc29uLkpTT05EZWNvZGVFcnJvciBhcyBlOgogICAgICAgICAgICAgICAgICAgIHJhaXNlIFZhbHVlRXJyb3IoZiJjaGFpbiBjb3JydXB0IGF0IGxpbmUge2l9OiB7ZX0iKQogICAgICAgICAgICAgICAgaWYgZW52LmdldCgicHJldl9oYXNoIikgIT0gcHJldiBvciBcCiAgICAgICAgICAgICAgICAgICAgICAgIF9jaGFpbl9oYXNoKHByZXYsIGVudlsicmVjb3JkIl0pICE9IGVudi5nZXQoImhhc2giKToKICAgICAgICAgICAgICAgICAgICByYWlzZSBWYWx1ZUVycm9yKGYiY2hhaW4gYnJlYWsgYXQgbGluZSB7aX0iKQogICAgICAgICAgICAgICAgcHJldiA9IGVudlsiaGFzaCJdCiAgICAgICAgICAgICAgICBzZWxmLnJlY29yZHMuYXBwZW5kKGVudlsicmVjb3JkIl0pCiAgICAgICAgc2VsZi50aXAgPSBwcmV2CgogICAgZGVmIGFwcGVuZChzZWxmLCByZWNvcmQpOgogICAgICAgIGVudiA9IHsic2VxIjogbGVuKHNlbGYucmVjb3JkcykgKyAxLCAicHJldl9oYXNoIjogc2VsZi50aXAsCiAgICAgICAgICAgICAgICJyZWNvcmQiOiByZWNvcmR9CiAgICAgICAgZW52WyJoYXNoIl0gPSBfY2hhaW5faGFzaChzZWxmLnRpcCwgcmVjb3JkKQogICAgICAgIHdpdGggb3BlbihzZWxmLnBhdGgsICJhIiwgZW5jb2Rpbmc9InV0Zi04IikgYXMgZjoKICAgICAgICAgICAgZi53cml0ZShqc29uLmR1bXBzKGVudiwgc29ydF9rZXlzPVRydWUpICsgIlxuIikKICAgICAgICAgICAgZi5mbHVzaCgpCiAgICAgICAgICAgIG9zLmZzeW5jKGYuZmlsZW5vKCkpCiAgICAgICAgc2VsZi5yZWNvcmRzLmFwcGVuZChyZWNvcmQpCiAgICAgICAgc2VsZi50aXAgPSBlbnZbImhhc2giXQogICAgICAgIHJldHVybiBlbnZbImhhc2giXQoKCmNsYXNzIFJhd1N0b3JlOgogICAgIiIiQ29tcGxldGUgcmF3IHJlc3BvbnNlIGJ5dGVzLCBiYXNlNjQtY2FycmllZCwgc2VwYXJhdGVseSBjaGFpbmVkLiIiIgoKICAgIGRlZiBfX2luaXRfXyhzZWxmLCBwYXRoKToKICAgICAgICBzZWxmLnBhdGggPSBwYXRoCiAgICAgICAgc2VsZi5wYXlsb2FkcyA9IHt9CiAgICAgICAgc2VsZi50aXAgPSAiR0VORVNJUyIKICAgICAgICBpZiBvcy5wYXRoLmV4aXN0cyhwYXRoKToKICAgICAgICAgICAgcHJldiA9ICJHRU5FU0lTIgogICAgICAgICAgICB3aXRoIG9wZW4ocGF0aCwgInIiLCBlbmNvZGluZz0idXRmLTgiKSBhcyBmOgogICAgICAgICAgICAgICAgZm9yIGksIGxpbmUgaW4gZW51bWVyYXRlKGYpOgogICAgICAgICAgICAgICAgICAgIGVudiA9IGpzb24ubG9hZHMobGluZSkKICAgICAgICAgICAgICAgICAgICByZWMgPSBlbnZbInJlY29yZCJdCiAgICAgICAgICAgICAgICAgICAgaWYgZW52LmdldCgicHJldl9oYXNoIikgIT0gcHJldiBvciBcCiAgICAgICAgICAgICAgICAgICAgICAgICAgICBfY2hhaW5faGFzaChwcmV2LCByZWMpICE9IGVudi5nZXQoImhhc2giKToKICAgICAgICAgICAgICAgICAgICAgICAgcmFpc2UgVmFsdWVFcnJvcihmInJhdyBjaGFpbiBicmVhayBhdCBsaW5lIHtpfSIpCiAgICAgICAgICAgICAgICAgICAgaW1wb3J0IGJhc2U2NAogICAgICAgICAgICAgICAgICAgIHNlbGYucGF5bG9hZHNbcmVjWyJwYXlsb2FkX3NoYTI1NiJdXSA9IGJhc2U2NC5iNjRkZWNvZGUoCiAgICAgICAgICAgICAgICAgICAgICAgIHJlY1sicGF5bG9hZF9iNjQiXSkKICAgICAgICAgICAgICAgICAgICBwcmV2ID0gZW52WyJoYXNoIl0KICAgICAgICAgICAgc2VsZi50aXAgPSBwcmV2CgogICAgZGVmIHB1dChzZWxmLCBwYXlsb2FkOiBieXRlcykgLT4gc3RyOgogICAgICAgIGltcG9ydCBiYXNlNjQKICAgICAgICBkaWdlc3QgPSBoYXNobGliLnNoYTI1NihwYXlsb2FkKS5oZXhkaWdlc3QoKQogICAgICAgIGlmIGRpZ2VzdCBpbiBzZWxmLnBheWxvYWRzOgogICAgICAgICAgICByZXR1cm4gZGlnZXN0CiAgICAgICAgcmVjID0geyJwYXlsb2FkX3NoYTI1NiI6IGRpZ2VzdCwKICAgICAgICAgICAgICAgInBheWxvYWRfYjY0IjogYmFzZTY0LmI2NGVuY29kZShwYXlsb2FkKS5kZWNvZGUoKX0KICAgICAgICBlbnYgPSB7InNlcSI6IGxlbihzZWxmLnBheWxvYWRzKSArIDEsICJwcmV2X2hhc2giOiBzZWxmLnRpcCwKICAgICAgICAgICAgICAgInJlY29yZCI6IHJlY30KICAgICAgICBlbnZbImhhc2giXSA9IF9jaGFpbl9oYXNoKHNlbGYudGlwLCByZWMpCiAgICAgICAgd2l0aCBvcGVuKHNlbGYucGF0aCwgImEiLCBlbmNvZGluZz0idXRmLTgiKSBhcyBmOgogICAgICAgICAgICBmLndyaXRlKGpzb24uZHVtcHMoZW52LCBzb3J0X2tleXM9VHJ1ZSkgKyAiXG4iKQogICAgICAgICAgICBmLmZsdXNoKCkKICAgICAgICAgICAgb3MuZnN5bmMoZi5maWxlbm8oKSkKICAgICAgICBzZWxmLnBheWxvYWRzW2RpZ2VzdF0gPSBwYXlsb2FkCiAgICAgICAgc2VsZi50aXAgPSBlbnZbImhhc2giXQogICAgICAgIHJldHVybiBkaWdlc3QKCgpkZWYgYnVpbGRfb2JzZXJ2YXRpb24oKiwgdGlja2VyLCBzZXJpZXMsIHNsb3QsIGVuZHBvaW50LCBwYXJhbXMsIHN0YXR1cywKICAgICAgICAgICAgICAgICAgICAgIHJhdzogYnl0ZXMsIHNlbmRfbXMsIHJlY2VpcHRfbXMsIGNsb2NrX3N0YXR1cywKICAgICAgICAgICAgICAgICAgICAgIGJvdW5kX21zLCBwYXlsb2FkX3NoYTI1Nik6CiAgICAiIiJBc3NlbWJsZSBvbmUgb2JzZXJ2YXRpb24gcmVjb3JkIHdpdGggaXRzIHByb3ZlbmFuY2UgZW52ZWxvcGUgYW5kCiAgICB2YWxpZGl0eSBhc3Nlc3NtZW50IChkZXNpZ24gc2VjLiAzRCkuIiIiCiAgICBvYnMgPSB7ImtpbmQiOiAiT0JTRVJWQVRJT04iLCAidGlja2VyIjogdGlja2VyLCAic2VyaWVzIjogc2VyaWVzLAogICAgICAgICAgICJzbG90Ijogc2xvdCwgImVuZHBvaW50IjogZW5kcG9pbnQsICJwYXJhbXMiOiBwYXJhbXMsCiAgICAgICAgICAgImh0dHBfc3RhdHVzIjogc3RhdHVzLCAicGF5bG9hZF9zaGEyNTYiOiBwYXlsb2FkX3NoYTI1NiwKICAgICAgICAgICAic2VuZF9sb2NhbF9tcyI6IHNlbmRfbXMsICJyZWNlaXB0X2xvY2FsX21zIjogcmVjZWlwdF9tcywKICAgICAgICAgICAidmVudWVfb2JzZXJ2ZWQiOiBOb25lLCAiY2xvY2tfc3RhdHVzIjogY2xvY2tfc3RhdHVzLAogICAgICAgICAgICJtYXJrZXQiOiBOb25lLCAidmFsaWRpdHkiOiAiVkFMSUQiLCAiaW52YWxpZF9yZWFzb24iOiBOb25lfQogICAgaWYgaGFzaGxpYi5zaGEyNTYocmF3KS5oZXhkaWdlc3QoKSAhPSBwYXlsb2FkX3NoYTI1NjoKICAgICAgICBvYnNbInZhbGlkaXR5Il0sIG9ic1siaW52YWxpZF9yZWFzb24iXSA9ICJJTlZBTElEIiwgIlBBWUxPQURfSEFTSF9NSVNNQVRDSCIKICAgICAgICByZXR1cm4gb2JzCiAgICB0cnk6CiAgICAgICAgcGF5bG9hZCA9IGpzb24ubG9hZHMocmF3LmRlY29kZSgidXRmLTgiKSkKICAgICAgICBtYXJrZXQgPSBwYXlsb2FkWyJtYXJrZXRzIl1bMF0gaWYgIm1hcmtldHMiIGluIHBheWxvYWQgZWxzZSBwYXlsb2FkCiAgICBleGNlcHQgRXhjZXB0aW9uOgogICAgICAgIG9ic1sidmFsaWRpdHkiXSwgb2JzWyJpbnZhbGlkX3JlYXNvbiJdID0gIklOVkFMSUQiLCAiVU5QQVJTRUFCTEUiCiAgICAgICAgcmV0dXJuIG9icwogICAgb2JzWyJtYXJrZXQiXSA9IHtrOiBtYXJrZXQuZ2V0KGspIGZvciBrIGluCiAgICAgICAgICAgICAgICAgICAgICgidGlja2VyIiwgInNlcmllc190aWNrZXIiLCAic3RhdHVzIiwgIm9wZW5fdGltZSIsCiAgICAgICAgICAgICAgICAgICAgICAiY2xvc2VfdGltZSIsICJmbG9vcl9zdHJpa2UiLCAic3RyaWtlX3R5cGUiLAogICAgICAgICAgICAgICAgICAgICAgInJ1bGVzX3ByaW1hcnkiLCAidXBkYXRlZF90aW1lIil9CiAgICBpZiBtYXJrZXQuZ2V0KCJ1cGRhdGVkX3RpbWUiKToKICAgICAgICBvYnNbInZlbnVlX29ic2VydmVkIl0gPSB7InVwZGF0ZWRfdGltZSI6IG1hcmtldFsidXBkYXRlZF90aW1lIl19CiAgICBpZiByZWNlaXB0X21zIDwgc2VuZF9tczoKICAgICAgICBvYnNbInZhbGlkaXR5Il0sIG9ic1siaW52YWxpZF9yZWFzb24iXSA9ICJJTlZBTElEIiwgIlRJTUVTVEFNUF9PUkRFUiIKICAgIGVsaWYgY2xvY2tfc3RhdHVzLmdldCgic3RhdGUiKSAhPSAiU1lOQ0VEIjoKICAgICAgICBvYnNbInZhbGlkaXR5Il0sIG9ic1siaW52YWxpZF9yZWFzb24iXSA9ICJJTlZBTElEIiwgIkNMT0NLX1VOS05PV04iCiAgICBlbGlmIGNsb2NrX3N0YXR1cy5nZXQoInVuY2VydGFpbnR5X21zIikgaXMgTm9uZToKICAgICAgICBvYnNbInZhbGlkaXR5Il0sIG9ic1siaW52YWxpZF9yZWFzb24iXSA9ICJJTlZBTElEIiwgIkNMT0NLX1VOTUVBU1VSRUQiCiAgICBlbGlmIGNsb2NrX3N0YXR1c1sidW5jZXJ0YWludHlfbXMiXSA+IGJvdW5kX21zOgogICAgICAgIG9ic1sidmFsaWRpdHkiXSwgb2JzWyJpbnZhbGlkX3JlYXNvbiJdID0gIklOVkFMSUQiLCAiQ0xPQ0tfRVhDRVNTSVZFIgogICAgZWxpZiBvYnNbInZlbnVlX29ic2VydmVkIl0gaXMgbm90IE5vbmU6CiAgICAgICAgdmVudWVfbXMgPSBwYXJzZV9pc29fbXMob2JzWyJ2ZW51ZV9vYnNlcnZlZCJdWyJ1cGRhdGVkX3RpbWUiXSkKICAgICAgICBpZiB2ZW51ZV9tcyAtIHJlY2VpcHRfbXMgPiBjbG9ja19zdGF0dXNbInVuY2VydGFpbnR5X21zIl06CiAgICAgICAgICAgIG9ic1sidmFsaWRpdHkiXSwgb2JzWyJpbnZhbGlkX3JlYXNvbiJdID0gXAogICAgICAgICAgICAgICAgIklOVkFMSUQiLCAiVkVOVUVfVFNfSU5DT05TSVNURU5UIgogICAgaWYgb2JzWyJ2YWxpZGl0eSJdID09ICJWQUxJRCIgYW5kIG1hcmtldC5nZXQoImZsb29yX3N0cmlrZSIpIGlzIE5vbmU6CiAgICAgICAgb2JzWyJ2YWxpZGl0eSJdLCBvYnNbImludmFsaWRfcmVhc29uIl0gPSAiSU5WQUxJRCIsICJNSVNTSU5HX0ZJRUxEIgogICAgcmV0dXJuIG9icwoKCmRlZiBzbG90X3RpbWVzKG1hcmtldCk6CiAgICBvcGVuX21zID0gcGFyc2VfaXNvX21zKG1hcmtldFsib3Blbl90aW1lIl0pCiAgICBjbG9zZV9tcyA9IHBhcnNlX2lzb19tcyhtYXJrZXRbImNsb3NlX3RpbWUiXSkKICAgIHJldHVybiB7Ik9QRU4iOiBvcGVuX21zICsgNTAwMCwgIlQtNjAwIjogY2xvc2VfbXMgLSA2MDBfMDAwLAogICAgICAgICAgICAiVC0zMzAiOiBjbG9zZV9tcyAtIDMzMF8wMDAsICJULTkwIjogY2xvc2VfbXMgLSA5MF8wMDAsCiAgICAgICAgICAgICJQT1NULUNMT1NFIjogY2xvc2VfbXMgKyA2MF8wMDB9CgoKY2xhc3MgQ2FwdHVyZUVuZ2luZToKICAgICIiIkRyaXZlcyBjYXB0dXJlcyBvdmVyIGFuIGluamVjdGVkIHRyYW5zcG9ydCArIGluamVjdGVkIGNsb2NrLgogICAgdHJhbnNwb3J0KGVuZHBvaW50LCBwYXJhbXMpIC0+IChzdGF0dXMsIHJhd19ieXRlcykuIGNsb2NrLm5vd19tcygpCiAgICB5aWVsZHMgc3VjY2Vzc2l2ZSBMT0NBTCBpbnN0YW50cyAoc2VuZCwgdGhlbiByZWNlaXB0KS4iIiIKCiAgICBkZWYgX19pbml0X18oc2VsZiwgY2hhaW46IENoYWluU3RvcmUsIHJhdzogUmF3U3RvcmUsIHRyYW5zcG9ydCwgY2xvY2ssCiAgICAgICAgICAgICAgICAgY2xvY2tfc3RhdHVzX2ZuLCBib3VuZF9tcyk6CiAgICAgICAgc2VsZi5jaGFpbiwgc2VsZi5yYXcgPSBjaGFpbiwgcmF3CiAgICAgICAgc2VsZi50cmFuc3BvcnQsIHNlbGYuY2xvY2sgPSB0cmFuc3BvcnQsIGNsb2NrCiAgICAgICAgc2VsZi5jbG9ja19zdGF0dXNfZm4sIHNlbGYuYm91bmRfbXMgPSBjbG9ja19zdGF0dXNfZm4sIGJvdW5kX21zCgogICAgZGVmIGNhcHR1cmUoc2VsZiwgbWFya2V0LCBzbG90LCBhdF9tcyk6CiAgICAgICAgcGFyYW1zID0geyJ0aWNrZXIiOiBtYXJrZXRbInRpY2tlciJdfQogICAgICAgIHNlbmRfbXMgPSBzZWxmLmNsb2NrLm5vd19tcygpCiAgICAgICAgdHJ5OgogICAgICAgICAgICBzdGF0dXMsIHJhdyA9IHNlbGYudHJhbnNwb3J0KCIvbWFya2V0cyIsIHBhcmFtcykKICAgICAgICBleGNlcHQgRXhjZXB0aW9uOgogICAgICAgICAgICBzZWxmLmNoYWluLmFwcGVuZCh7ImtpbmQiOiAiR0FQIiwgInRpY2tlciI6IG1hcmtldFsidGlja2VyIl0sCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAic2VyaWVzIjogbWFya2V0WyJzZXJpZXNfdGlja2VyIl0sCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAic2xvdCI6IHNsb3QsICJzY2hlZHVsZWRfbXMiOiBhdF9tcywKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICJyZWFzb24iOiAiVFJBTlNQT1JUX0ZBSUxVUkUifSkKICAgICAgICAgICAgcmV0dXJuIE5vbmUKICAgICAgICByZWNlaXB0X21zID0gc2VsZi5jbG9jay5ub3dfbXMoKQogICAgICAgIGRpZ2VzdCA9IHNlbGYucmF3LnB1dChyYXcpCiAgICAgICAgb2JzID0gYnVpbGRfb2JzZXJ2YXRpb24oCiAgICAgICAgICAgIHRpY2tlcj1tYXJrZXRbInRpY2tlciJdLCBzZXJpZXM9bWFya2V0WyJzZXJpZXNfdGlja2VyIl0sCiAgICAgICAgICAgIHNsb3Q9c2xvdCwgZW5kcG9pbnQ9Ii9tYXJrZXRzIiwgcGFyYW1zPXBhcmFtcywgc3RhdHVzPXN0YXR1cywKICAgICAgICAgICAgcmF3PXJhdywgc2VuZF9tcz1zZW5kX21zLCByZWNlaXB0X21zPXJlY2VpcHRfbXMsCiAgICAgICAgICAgIGNsb2NrX3N0YXR1cz1zZWxmLmNsb2NrX3N0YXR1c19mbigpLCBib3VuZF9tcz1zZWxmLmJvdW5kX21zLAogICAgICAgICAgICBwYXlsb2FkX3NoYTI1Nj1kaWdlc3QpCiAgICAgICAgc2VsZi5jaGFpbi5hcHBlbmQob2JzKQogICAgICAgIHJldHVybiBvYnMKCiAgICBkZWYgcnVuX21hcmtldChzZWxmLCBtYXJrZXQpOgogICAgICAgIHRpbWVzID0gc2xvdF90aW1lcyhtYXJrZXQpCiAgICAgICAgb3V0ID0gW10KICAgICAgICBmb3Igc2xvdCBpbiBTTE9UUzoKICAgICAgICAgICAgb3V0LmFwcGVuZChzZWxmLmNhcHR1cmUobWFya2V0LCBzbG90LCB0aW1lc1tzbG90XSkpCiAgICAgICAgZGV0ZWN0X2FtZW5kbWVudHMoc2VsZi5jaGFpbiwgbWFya2V0WyJ0aWNrZXIiXSkKICAgICAgICByZXR1cm4gb3V0CgoKZGVmIGRldGVjdF9hbWVuZG1lbnRzKGNoYWluOiBDaGFpblN0b3JlLCB0aWNrZXIpOgogICAgIiIiQ29tcGFyZSBzdWNjZXNzaXZlIFZBTElEIG9ic2VydmF0aW9uczsgYW55IHdhdGNoZWQtcGFyYW1ldGVyIGNoYW5nZQogICAgYXBwZW5kcyBhbiBBTUVORE1FTlQgZXZlbnQgKyBRVUFSQU5USU5FIHJlY29yZCAodGVybWluYWwsIHNlYy4gM0UpLiIiIgogICAgaWYgaXNfcXVhcmFudGluZWQoY2hhaW4sIHRpY2tlcik6CiAgICAgICAgcmV0dXJuIFtdICAjIGFscmVhZHkgdGVybWluYWw7IG5vIGZ1cnRoZXIgZXZlbnRzLCBubyByZXN1bWUKICAgIHNlZW4gPSB7fQogICAgZXZlbnRzID0gW10KICAgIGZvciByZWMgaW4gY2hhaW4ucmVjb3JkczoKICAgICAgICBpZiByZWMuZ2V0KCJraW5kIikgIT0gIk9CU0VSVkFUSU9OIiBvciByZWNbInRpY2tlciJdICE9IHRpY2tlciBcCiAgICAgICAgICAgICAgICBvciByZWNbInZhbGlkaXR5Il0gIT0gIlZBTElEIjoKICAgICAgICAgICAgY29udGludWUKICAgICAgICBtID0gcmVjWyJtYXJrZXQiXQogICAgICAgIGZvciBwYXJhbSBpbiBXQVRDSEVEX1BBUkFNUzoKICAgICAgICAgICAgdmFsdWUgPSBtLmdldChwYXJhbSkKICAgICAgICAgICAgaWYgcGFyYW0gaW4gc2VlbiBhbmQgc2VlbltwYXJhbV0gIT0gdmFsdWU6CiAgICAgICAgICAgICAgICBjaGFpbi5hcHBlbmQoeyJraW5kIjogIkFNRU5ETUVOVCIsICJ0aWNrZXIiOiB0aWNrZXIsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICJwYXJhbWV0ZXIiOiBwYXJhbSwgInByaW9yIjogc2VlbltwYXJhbV0sCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICJuZXciOiB2YWx1ZSwgImRldGVjdGVkX2luX3Nsb3QiOiByZWNbInNsb3QiXX0pCiAgICAgICAgICAgICAgICBjaGFpbi5hcHBlbmQoeyJraW5kIjogIlFVQVJBTlRJTkUiLCAidGlja2VyIjogdGlja2VyLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAicmVhc29uIjogZiJBTUVORE1FTlQ6e3BhcmFtfSJ9KQogICAgICAgICAgICAgICAgZXZlbnRzLmFwcGVuZChwYXJhbSkKICAgICAgICAgICAgICAgIHJldHVybiBldmVudHMKICAgICAgICAgICAgc2VlbltwYXJhbV0gPSB2YWx1ZQogICAgcmV0dXJuIGV2ZW50cwoKCmRlZiBpc19xdWFyYW50aW5lZChjaGFpbjogQ2hhaW5TdG9yZSwgdGlja2VyKSAtPiBib29sOgogICAgcmV0dXJuIGFueShyLmdldCgia2luZCIpID09ICJRVUFSQU5USU5FIiBhbmQgclsidGlja2VyIl0gPT0gdGlja2VyCiAgICAgICAgICAgICAgIGZvciByIGluIGNoYWluLnJlY29yZHMpCgoKZGVmIHBpdF9lbGlnaWJsZShjaGFpbjogQ2hhaW5TdG9yZSwgdGlja2VyLCBkZWNpc2lvbl9tcywgYm91bmRfbXMpOgogICAgIiIiRGVzaWduIHNlYy4gQiArIGZyb3plbiBjb25maWcgcnVsZTogYSBWQUxJRCwgbm9uLXF1YXJhbnRpbmVkLAogICAgc3RyaWtlLWNvbnNpc3RlbnQgb2JzZXJ2YXRpb24gd2l0aCByZWNlaXB0ICsgdW5jZXJ0YWludHkgPD0gZGVjaXNpb24KICAgIGluc3RhbnQgKGFuZCB1bmNlcnRhaW50eSA8PSBib3VuZCkgbWFrZXMgdGhlIG1hcmtldCBlbGlnaWJsZS4iIiIKICAgIGlmIGlzX3F1YXJhbnRpbmVkKGNoYWluLCB0aWNrZXIpOgogICAgICAgIHJldHVybiB7ImVsaWdpYmxlIjogRmFsc2UsICJyZWFzb24iOiAiUVVBUkFOVElORUQifQogICAgc3RyaWtlcyA9IHNldCgpCiAgICBiZXN0ID0gTm9uZQogICAgZm9yIHJlYyBpbiBjaGFpbi5yZWNvcmRzOgogICAgICAgIGlmIHJlYy5nZXQoImtpbmQiKSAhPSAiT0JTRVJWQVRJT04iIG9yIHJlY1sidGlja2VyIl0gIT0gdGlja2VyIFwKICAgICAgICAgICAgICAgIG9yIHJlY1sidmFsaWRpdHkiXSAhPSAiVkFMSUQiOgogICAgICAgICAgICBjb250aW51ZQogICAgICAgIHVuYyA9IHJlY1siY2xvY2tfc3RhdHVzIl0uZ2V0KCJ1bmNlcnRhaW50eV9tcyIpCiAgICAgICAgaWYgdW5jIGlzIE5vbmUgb3IgdW5jID4gYm91bmRfbXM6CiAgICAgICAgICAgIGNvbnRpbnVlCiAgICAgICAgaWYgcmVjWyJyZWNlaXB0X2xvY2FsX21zIl0gKyB1bmMgPD0gZGVjaXNpb25fbXM6CiAgICAgICAgICAgIHN0cmlrZXMuYWRkKHJlY1sibWFya2V0Il1bImZsb29yX3N0cmlrZSJdKQogICAgICAgICAgICBiZXN0ID0gcmVjCiAgICBpZiBiZXN0IGlzIE5vbmU6CiAgICAgICAgcmV0dXJuIHsiZWxpZ2libGUiOiBGYWxzZSwgInJlYXNvbiI6ICJOT19WQUxJRF9PQlNFUlZBVElPTl9JTl9USU1FIn0KICAgIGlmIGxlbihzdHJpa2VzKSA+IDE6CiAgICAgICAgcmV0dXJuIHsiZWxpZ2libGUiOiBGYWxzZSwgInJlYXNvbiI6ICJDT05UUkFESUNUT1JZX1NUUklLRVMifQogICAgcmV0dXJuIHsiZWxpZ2libGUiOiBUcnVlLCAicmVhc29uIjogTm9uZSwKICAgICAgICAgICAgInN0cmlrZSI6IGJlc3RbIm1hcmtldCJdWyJmbG9vcl9zdHJpa2UiXSwKICAgICAgICAgICAgInJlY2VpcHRfbG9jYWxfbXMiOiBiZXN0WyJyZWNlaXB0X2xvY2FsX21zIl19CgoKZGVmIGhlYWx0aF9zdW1tYXJ5KGNoYWluOiBDaGFpblN0b3JlKToKICAgIGNvdW50cyA9IHt9CiAgICBmb3IgciBpbiBjaGFpbi5yZWNvcmRzOgogICAgICAgIGtleSA9IHIuZ2V0KCJraW5kIikKICAgICAgICBpZiBrZXkgPT0gIk9CU0VSVkFUSU9OIjoKICAgICAgICAgICAga2V5ID0gZiJPQlNFUlZBVElPTl97clsndmFsaWRpdHknXX0iCiAgICAgICAgY291bnRzW2tleV0gPSBjb3VudHMuZ2V0KGtleSwgMCkgKyAxCiAgICBjb3VudHNbInRpcF9oYXNoIl0gPSBjaGFpbi50aXAKICAgIHJldHVybiBjb3VudHMK
+"""CAP-1 — forward strike-capture component (LAB implementation, G-CAP1-BUILD).
+
+Implements the Rev 2 design: existence-based discovery (offline form),
+market-anchored capture slots, complete raw-response preservation with
+LOCAL/OBSERVED provenance envelopes, hash-chained evidence stores, GAP
+and INVALID handling, amendment detection with terminal quarantine, and
+health summaries. Eligibility applies the frozen CAP1_CONFIG_V1
+clock-uncertainty rule. This module performs NO network I/O: transport
+is an injected callable (fixtures/simulator in the lab).
+"""
+import hashlib
+import json
+import os
+import sys
+from datetime import datetime, timezone
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from ingestion.clock import fmt_ts
+
+CONFIG_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                           "cap1_config_v1.json")
+SLOTS = ("OPEN", "T-600", "T-330", "T-90", "POST-CLOSE")
+WATCHED_PARAMS = ("floor_strike", "open_time", "close_time", "rules_primary")
+
+
+def _canon(o) -> str:
+    return json.dumps(o, sort_keys=True, separators=(",", ":"))
+
+
+def _chain_hash(prev_hash, record) -> str:
+    return hashlib.sha256((prev_hash + _canon(record)).encode()).hexdigest()
+
+
+def parse_iso_ms(s):
+    dt = datetime.strptime(s, "%Y-%m-%dT%H:%M:%SZ").replace(
+        tzinfo=timezone.utc)
+    return int(dt.timestamp() * 1000)
+
+
+def load_config(path=CONFIG_PATH):
+    raw = open(path, "rb").read()
+    return json.loads(raw), hashlib.sha256(raw).hexdigest()
+
+
+class ChainStore:
+    """One hash-chained JSONL evidence store (single writer)."""
+
+    def __init__(self, path):
+        self.path = path
+        self.records = []
+        self.tip = "GENESIS"
+        if os.path.exists(path):
+            self._load_and_verify()
+
+    def _load_and_verify(self):
+        prev = "GENESIS"
+        with open(self.path, "r", encoding="utf-8") as f:
+            for i, line in enumerate(f):
+                line = line.strip()
+                if not line:
+                    continue
+                try:
+                    env = json.loads(line)
+                except json.JSONDecodeError as e:
+                    raise ValueError(f"chain corrupt at line {i}: {e}")
+                if env.get("prev_hash") != prev or \
+                        _chain_hash(prev, env["record"]) != env.get("hash"):
+                    raise ValueError(f"chain break at line {i}")
+                prev = env["hash"]
+                self.records.append(env["record"])
+        self.tip = prev
+
+    def append(self, record):
+        env = {"seq": len(self.records) + 1, "prev_hash": self.tip,
+               "record": record}
+        env["hash"] = _chain_hash(self.tip, record)
+        with open(self.path, "a", encoding="utf-8") as f:
+            f.write(json.dumps(env, sort_keys=True) + "\n")
+            f.flush()
+            os.fsync(f.fileno())
+        self.records.append(record)
+        self.tip = env["hash"]
+        return env["hash"]
+
+
+class RawStore:
+    """Complete raw response bytes, base64-carried, separately chained."""
+
+    def __init__(self, path):
+        self.path = path
+        self.payloads = {}
+        self.tip = "GENESIS"
+        if os.path.exists(path):
+            prev = "GENESIS"
+            with open(path, "r", encoding="utf-8") as f:
+                for i, line in enumerate(f):
+                    env = json.loads(line)
+                    rec = env["record"]
+                    if env.get("prev_hash") != prev or \
+                            _chain_hash(prev, rec) != env.get("hash"):
+                        raise ValueError(f"raw chain break at line {i}")
+                    import base64
+                    self.payloads[rec["payload_sha256"]] = base64.b64decode(
+                        rec["payload_b64"])
+                    prev = env["hash"]
+            self.tip = prev
+
+    def put(self, payload: bytes) -> str:
+        import base64
+        digest = hashlib.sha256(payload).hexdigest()
+        if digest in self.payloads:
+            return digest
+        rec = {"payload_sha256": digest,
+               "payload_b64": base64.b64encode(payload).decode()}
+        env = {"seq": len(self.payloads) + 1, "prev_hash": self.tip,
+               "record": rec}
+        env["hash"] = _chain_hash(self.tip, rec)
+        with open(self.path, "a", encoding="utf-8") as f:
+            f.write(json.dumps(env, sort_keys=True) + "\n")
+            f.flush()
+            os.fsync(f.fileno())
+        self.payloads[digest] = payload
+        self.tip = env["hash"]
+        return digest
+
+
+def build_observation(*, ticker, series, slot, endpoint, params, status,
+                      raw: bytes, send_ms, receipt_ms, clock_status,
+                      bound_ms, payload_sha256):
+    """Assemble one observation record with its provenance envelope and
+    validity assessment (design sec. 3D)."""
+    obs = {"kind": "OBSERVATION", "ticker": ticker, "series": series,
+           "slot": slot, "endpoint": endpoint, "params": params,
+           "http_status": status, "payload_sha256": payload_sha256,
+           "send_local_ms": send_ms, "receipt_local_ms": receipt_ms,
+           "venue_observed": None, "clock_status": clock_status,
+           "market": None, "validity": "VALID", "invalid_reason": None}
+    if hashlib.sha256(raw).hexdigest() != payload_sha256:
+        obs["validity"], obs["invalid_reason"] = "INVALID", "PAYLOAD_HASH_MISMATCH"
+        return obs
+    try:
+        payload = json.loads(raw.decode("utf-8"))
+        market = payload["markets"][0] if "markets" in payload else payload
+    except Exception:
+        obs["validity"], obs["invalid_reason"] = "INVALID", "UNPARSEABLE"
+        return obs
+    obs["market"] = {k: market.get(k) for k in
+                     ("ticker", "series_ticker", "status", "open_time",
+                      "close_time", "floor_strike", "strike_type",
+                      "rules_primary", "updated_time")}
+    if market.get("updated_time"):
+        obs["venue_observed"] = {"updated_time": market["updated_time"]}
+    if receipt_ms < send_ms:
+        obs["validity"], obs["invalid_reason"] = "INVALID", "TIMESTAMP_ORDER"
+    elif clock_status.get("state") != "SYNCED":
+        obs["validity"], obs["invalid_reason"] = "INVALID", "CLOCK_UNKNOWN"
+    elif clock_status.get("uncertainty_ms") is None:
+        obs["validity"], obs["invalid_reason"] = "INVALID", "CLOCK_UNMEASURED"
+    elif clock_status["uncertainty_ms"] > bound_ms:
+        obs["validity"], obs["invalid_reason"] = "INVALID", "CLOCK_EXCESSIVE"
+    elif obs["venue_observed"] is not None:
+        venue_ms = parse_iso_ms(obs["venue_observed"]["updated_time"])
+        if venue_ms - receipt_ms > clock_status["uncertainty_ms"]:
+            obs["validity"], obs["invalid_reason"] = \
+                "INVALID", "VENUE_TS_INCONSISTENT"
+    if obs["validity"] == "VALID" and market.get("floor_strike") is None:
+        obs["validity"], obs["invalid_reason"] = "INVALID", "MISSING_FIELD"
+    return obs
+
+
+def slot_times(market):
+    open_ms = parse_iso_ms(market["open_time"])
+    close_ms = parse_iso_ms(market["close_time"])
+    return {"OPEN": open_ms + 5000, "T-600": close_ms - 600_000,
+            "T-330": close_ms - 330_000, "T-90": close_ms - 90_000,
+            "POST-CLOSE": close_ms + 60_000}
+
+
+class CaptureEngine:
+    """Drives captures over an injected transport + injected clock.
+    transport(endpoint, params) -> (status, raw_bytes). clock.now_ms()
+    yields successive LOCAL instants (send, then receipt)."""
+
+    def __init__(self, chain: ChainStore, raw: RawStore, transport, clock,
+                 clock_status_fn, bound_ms):
+        self.chain, self.raw = chain, raw
+        self.transport, self.clock = transport, clock
+        self.clock_status_fn, self.bound_ms = clock_status_fn, bound_ms
+
+    def capture(self, market, slot, at_ms):
+        params = {"ticker": market["ticker"]}
+        send_ms = self.clock.now_ms()
+        try:
+            status, raw = self.transport("/markets", params)
+        except Exception:
+            self.chain.append({"kind": "GAP", "ticker": market["ticker"],
+                               "series": market["series_ticker"],
+                               "slot": slot, "scheduled_ms": at_ms,
+                               "reason": "TRANSPORT_FAILURE"})
+            return None
+        receipt_ms = self.clock.now_ms()
+        digest = self.raw.put(raw)
+        obs = build_observation(
+            ticker=market["ticker"], series=market["series_ticker"],
+            slot=slot, endpoint="/markets", params=params, status=status,
+            raw=raw, send_ms=send_ms, receipt_ms=receipt_ms,
+            clock_status=self.clock_status_fn(), bound_ms=self.bound_ms,
+            payload_sha256=digest)
+        self.chain.append(obs)
+        return obs
+
+    def run_market(self, market):
+        times = slot_times(market)
+        out = []
+        for slot in SLOTS:
+            out.append(self.capture(market, slot, times[slot]))
+        detect_amendments(self.chain, market["ticker"])
+        return out
+
+
+def detect_amendments(chain: ChainStore, ticker):
+    """Compare successive VALID observations; any watched-parameter change
+    appends an AMENDMENT event + QUARANTINE record (terminal, sec. 3E)."""
+    if is_quarantined(chain, ticker):
+        return []  # already terminal; no further events, no resume
+    seen = {}
+    events = []
+    for rec in chain.records:
+        if rec.get("kind") != "OBSERVATION" or rec["ticker"] != ticker \
+                or rec["validity"] != "VALID":
+            continue
+        m = rec["market"]
+        for param in WATCHED_PARAMS:
+            value = m.get(param)
+            if param in seen and seen[param] != value:
+                chain.append({"kind": "AMENDMENT", "ticker": ticker,
+                              "parameter": param, "prior": seen[param],
+                              "new": value, "detected_in_slot": rec["slot"]})
+                chain.append({"kind": "QUARANTINE", "ticker": ticker,
+                              "reason": f"AMENDMENT:{param}"})
+                events.append(param)
+                return events
+            seen[param] = value
+    return events
+
+
+def is_quarantined(chain: ChainStore, ticker) -> bool:
+    return any(r.get("kind") == "QUARANTINE" and r["ticker"] == ticker
+               for r in chain.records)
+
+
+def pit_eligible(chain: ChainStore, ticker, decision_ms, bound_ms):
+    """Design sec. B + frozen config rule: a VALID, non-quarantined,
+    strike-consistent observation with receipt + uncertainty <= decision
+    instant (and uncertainty <= bound) makes the market eligible."""
+    if is_quarantined(chain, ticker):
+        return {"eligible": False, "reason": "QUARANTINED"}
+    strikes = set()
+    best = None
+    for rec in chain.records:
+        if rec.get("kind") != "OBSERVATION" or rec["ticker"] != ticker \
+                or rec["validity"] != "VALID":
+            continue
+        unc = rec["clock_status"].get("uncertainty_ms")
+        if unc is None or unc > bound_ms:
+            continue
+        if rec["receipt_local_ms"] + unc <= decision_ms:
+            strikes.add(rec["market"]["floor_strike"])
+            best = rec
+    if best is None:
+        return {"eligible": False, "reason": "NO_VALID_OBSERVATION_IN_TIME"}
+    if len(strikes) > 1:
+        return {"eligible": False, "reason": "CONTRADICTORY_STRIKES"}
+    return {"eligible": True, "reason": None,
+            "strike": best["market"]["floor_strike"],
+            "receipt_local_ms": best["receipt_local_ms"]}
+
+
+def health_summary(chain: ChainStore):
+    counts = {}
+    for r in chain.records:
+        key = r.get("kind")
+        if key == "OBSERVATION":
+            key = f"OBSERVATION_{r['validity']}"
+        counts[key] = counts.get(key, 0) + 1
+    counts["tip_hash"] = chain.tip
+    return counts
