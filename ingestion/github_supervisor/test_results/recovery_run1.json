@@ -1,0 +1,117 @@
+{
+ "passed": 22,
+ "results": [
+  {
+   "detail": "\"dispatch\": {\"segment_index\": 2, \"manifest_sha256\": \"96f0e1e4372d3c9b06941302f7801cf580d292502e548df733a6a3285869dd4a\", \"role\": \"segment\"}}\n{\"segment\": 1, \"exit_reason\": \"HANDED_OFF\", \"exit_code\": 0}\n",
+   "pass": true,
+   "test": "t1.summary"
+  },
+  {
+   "detail": "{'segment': 1, 'exit_reason': 'HANDED_OFF', 'exit_code': 0}",
+   "pass": true,
+   "test": "t1.handed_off"
+  },
+  {
+   "detail": "t1-fresh",
+   "pass": true,
+   "test": "t1.claim_ours_no_takeover"
+  },
+  {
+   "detail": "",
+   "pass": true,
+   "test": "t1.no_recovery_started"
+  },
+  {
+   "detail": "HANDED_OFF",
+   "pass": true,
+   "test": "t1.final_handed_off"
+  },
+  {
+   "detail": "seg-02 manifest doc_hash anchors the fixture to tonight's recorded dispatch input",
+   "pass": true,
+   "test": "t2.fixture_input_matches"
+  },
+  {
+   "detail": "gh-40790946031-s3",
+   "pass": true,
+   "test": "t2.fixture_dead_claim"
+  },
+  {
+   "detail": "\"dispatch\": {\"segment_index\": 4, \"manifest_sha256\": \"73a094daac477b88125d3e6c7699d251bf9a5bf84ca0037bfff9449b41b8262b\", \"role\": \"segment\"}}\n{\"segment\": 3, \"exit_reason\": \"HANDED_OFF\", \"exit_code\": 0}\n",
+   "pass": true,
+   "test": "t2.summary"
+  },
+  {
+   "detail": "{'segment': 3, 'exit_reason': 'HANDED_OFF', 'exit_code': 0}",
+   "pass": true,
+   "test": "t2.handed_off"
+  },
+  {
+   "detail": "t2-recovery",
+   "pass": true,
+   "test": "t2.recovery_started_published"
+  },
+  {
+   "detail": "t2-recovery takeover_of={'claim_commit': 'e0ecb6d56b50faf94bb544bf0ab723c70ae62f10', 'heartbeat_age_s': 960.0, 'run_id': 'gh-40790946031-s3'}",
+   "pass": true,
+   "test": "t2.claim_takeover_recorded"
+  },
+  {
+   "detail": "exit=HANDED_OFF crosscheck=OK cohort_records={'DISCOVERY': 20, 'OBSERVATION_VALID': 300}",
+   "pass": true,
+   "test": "t2.final_ok"
+  },
+  {
+   "detail": "",
+   "pass": true,
+   "test": "t3.first_dispatch_not_recovery"
+  },
+  {
+   "detail": "t3-live",
+   "pass": true,
+   "test": "t3.live_claim_held"
+  },
+  {
+   "detail": "",
+   "pass": true,
+   "test": "t3.redispatch_auto_recovery"
+  },
+  {
+   "detail": "REFUSED:4",
+   "pass": true,
+   "test": "t3.fresh_takeover_refused_check4"
+  },
+  {
+   "detail": "takeover refused: claim is not stale; takeover refused",
+   "pass": true,
+   "test": "t3.refusal_is_takeover_refusal"
+  },
+  {
+   "detail": "t3-live",
+   "pass": true,
+   "test": "t3.claim_still_live_owner"
+  },
+  {
+   "detail": "owner_errors=[]",
+   "pass": true,
+   "test": "t4.summary"
+  },
+  {
+   "detail": "{'segment': 3, 'exit_reason': 'REFUSED:4', 'exit_code': 3}",
+   "pass": true,
+   "test": "t4.refused_check4"
+  },
+  {
+   "detail": "gh-40790946031-s3",
+   "pass": true,
+   "test": "t4.claim_still_live_owner"
+  },
+  {
+   "detail": "",
+   "pass": true,
+   "test": "t4.no_recovery_started"
+  }
+ ],
+ "suite": "test_recovery_wiring",
+ "total": 22
+}
