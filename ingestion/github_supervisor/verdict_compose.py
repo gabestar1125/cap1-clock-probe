@@ -162,6 +162,42 @@ def compose(freeze, segments):
                     f"{G.DENOMINATOR_MAX_INELIGIBLE}: accounting FAIL")
     pct300 = (ok300 / denominator) if denominator else 0.0
 
+    # --- D1: coverage terms itemized (the r1 wart) -------------------
+    # Each coverage term that fails is named in fail_reasons with its
+    # exact numbers, not left implicit in the boolean `passed`.
+    if denominator > 0 and pct300 < thr["t300_min_pct"]:
+        fail.append(f"T-300 coverage {ok300}/{denominator} = "
+                    f"{pct300:.4f} below threshold "
+                    f"{thr['t300_min_pct']}")
+    if okboth != denominator:
+        fail.append(f"eligible_both {okboth} != denominator "
+                    f"{denominator}")
+    if defects > 0:
+        fail.append(f"provenance defects relied upon: {defects}")
+
+    # --- D1: authoritative-final gating ------------------------------
+    # Every segment must carry an AUTHORITATIVE final (segments[i]
+    # ["final"], read by the seal from final.json — per-attempt
+    # records under attempts/ are transparency only and never
+    # substitute). The authoritative final must be CLEAN: HANDED_OFF
+    # for segments 1..N-1, WINDOW_END for segment N. A segment whose
+    # only terminal record is a non-clean attempt (the r3 seg-05
+    # shape: final.json occupied by an aborted takeover) therefore
+    # FAILS here, itemized. Legacy segment dicts without an
+    # "attempts" key are read exactly as before, plus this check.
+    for seg in segments:
+        f = seg.get("final")
+        if f is None:
+            fail.append(f"seg {seg['index']}: authoritative final "
+                        f"missing")
+            continue
+        want_clean = "WINDOW_END" if seg["index"] == len(segments) \
+            else "HANDED_OFF"
+        if f.get("exit_reason") != want_clean:
+            fail.append(f"seg {seg['index']}: authoritative final "
+                        f"not clean: {f.get('exit_reason')} "
+                        f"(run {f.get('run_id')})")
+
     # --- end-boundary exclusions (computed, deterministic) ------------
     end_excluded = sum(
         1 for _t, (_o, m) in cohort.items()
