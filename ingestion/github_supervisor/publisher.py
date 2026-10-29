@@ -25,7 +25,22 @@ MUTABLE_PATHS = {"heartbeat.json"}
 
 
 class PublicationError(Exception):
-    pass
+    """Publication failure with durable-safe metadata (Fix B).
+
+    attempts:   number of the push attempt in progress when the
+                error was raised (1 for a publisher that tries once).
+    exhausted:  True only when raised after the push-attempt loop
+                was exhausted without success.
+    last_error: the underlying error text (e.g. final push stderr);
+                callers must sanitize before persisting it."""
+
+    def __init__(self, message="", *, attempts=0, exhausted=False,
+                 last_error=None):
+        super().__init__(message)
+        self.attempts = int(attempts)
+        self.exhausted = bool(exhausted)
+        self.last_error = str(last_error) if last_error is not None \
+            else str(message)
 
 
 class IntegrityError(PublicationError):
@@ -51,8 +66,9 @@ class DirPublisher:
             with open(full, "rb") as f:
                 if f.read() == data:
                     return "IDEMPOTENT"
-            raise IntegrityError(
-                f"write-once violation at {branch}/{relpath}")
+            msg = f"write-once violation at {branch}/{relpath}"
+            raise IntegrityError(msg, attempts=1, exhausted=False,
+                                 last_error=msg)
         os.makedirs(os.path.dirname(full), exist_ok=True)
         tmp = full + ".tmp"
         with open(tmp, "wb") as f:
@@ -200,42 +216,60 @@ class GitPublisher:
         for attempt in range(1, self.max_push_attempts + 1):
             if attempt > 1:
                 self._sleep(self._backoff_for(attempt))
-            # (Re-)evaluate against the CURRENT remote state before
-            # every attempt: on attempt 1 this is the original
-            # write-once pre-check; on a retry it resolves the
-            # ambiguity of a rejected push — identical bytes that
-            # landed anyway are IDEMPOTENT, different bytes at a
-            # write-once path are an IntegrityError, never an
-            # overwrite.
-            existing = self.read(branch, relpath)
-            if existing is not None and not mutable:
-                if existing == data:
-                    return "IDEMPOTENT"
-                raise IntegrityError(
-                    f"write-once violation at {branch}/{relpath}")
-            self._checkout(branch, force=attempt > 1)
-            full = os.path.join(self.repo, relpath)
-            os.makedirs(os.path.dirname(full), exist_ok=True)
-            with open(full, "wb") as f:
-                f.write(data)
-            self._git("add", relpath)
-            status = self._git("status", "--porcelain",
-                               check=False).stdout
-            if status.strip():
-                self._git("commit", "--quiet", "-m",
-                          "cap1 publish %s" % relpath)
-            # Push even when nothing new was committed: after a
-            # resync that kept an unpushed local commit (branch not
-            # yet on the remote), HEAD itself is the payload. An
-            # up-to-date push is a harmless no-op.
-            push = self._git("push", "origin",
-                             "HEAD:refs/heads/%s" % branch, check=False)
+            try:
+                # (Re-)evaluate against the CURRENT remote state
+                # before every attempt: on attempt 1 this is the
+                # original write-once pre-check; on a retry it
+                # resolves the ambiguity of a rejected push —
+                # identical bytes that landed anyway are IDEMPOTENT,
+                # different bytes at a write-once path are an
+                # IntegrityError, never an overwrite.
+                existing = self.read(branch, relpath)
+                if existing is not None and not mutable:
+                    if existing == data:
+                        return "IDEMPOTENT"
+                    msg = (f"write-once violation at "
+                           f"{branch}/{relpath}")
+                    raise IntegrityError(msg, attempts=attempt,
+                                         exhausted=False,
+                                         last_error=msg)
+                self._checkout(branch, force=attempt > 1)
+                full = os.path.join(self.repo, relpath)
+                os.makedirs(os.path.dirname(full), exist_ok=True)
+                with open(full, "wb") as f:
+                    f.write(data)
+                self._git("add", relpath)
+                status = self._git("status", "--porcelain",
+                                   check=False).stdout
+                if status.strip():
+                    self._git("commit", "--quiet", "-m",
+                              "cap1 publish %s" % relpath)
+                # Push even when nothing new was committed: after a
+                # resync that kept an unpushed local commit (branch
+                # not yet on the remote), HEAD itself is the payload.
+                # An up-to-date push is a harmless no-op.
+                push = self._git(
+                    "push", "origin",
+                    "HEAD:refs/heads/%s" % branch, check=False)
+            except PublicationError as e:
+                # Immediate raise path (write-once pre-check, or a
+                # _checkout/_git failure): annotate truthfully with
+                # the attempt in progress; NOT loop exhaustion.
+                if not getattr(e, "attempts", 0):
+                    e.attempts = attempt
+                e.exhausted = False
+                if not getattr(e, "last_error", None):
+                    e.last_error = str(e)
+                raise
             if push.returncode == 0:
                 self.bytes_published += len(data)
                 return "PUBLISHED"
             last_err = push.stderr.strip()
-        raise PublicationError("push %s after %d attempts: %s" % (
-            branch, self.max_push_attempts, last_err))
+        raise PublicationError(
+            "push %s after %d attempts: %s" % (
+                branch, self.max_push_attempts, last_err),
+            attempts=self.max_push_attempts, exhausted=True,
+            last_error=last_err)
 
 
 class FailingPublisher:
@@ -257,7 +291,10 @@ class FailingPublisher:
         if self.always or self.fail_next > 0:
             if self.fail_next > 0:
                 self.fail_next -= 1
-            raise PublicationError("injected publication failure")
+            raise PublicationError(
+                "injected publication failure", attempts=1,
+                exhausted=False,
+                last_error="injected publication failure")
         return self.inner.publish(branch, relpath, data)
 
     def read(self, branch, relpath):
