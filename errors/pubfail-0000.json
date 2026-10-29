@@ -1,0 +1,1 @@
+{"at_local":"2026-11-10T16:45:00.000Z","attempts":1,"branch":"cap1-r3-segments/seg-02","category":"WRITE_ONCE_CONFLICT","error_excerpt":"write-once violation at cap1-r3-segments/seg-02/refused.json","exhausted":false,"relpath":"refused.json","run_id":"gh-40925067933-s2","schema":"cap1-pubfail/1","segment_index":2}
