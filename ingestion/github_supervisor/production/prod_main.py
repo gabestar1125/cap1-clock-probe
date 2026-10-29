@@ -202,6 +202,10 @@ def drive_segment(job, clock):
     print(json.dumps({"segment": job.k,
                       "exit_reason": job.exit_reason,
                       "exit_code": job.exit_code}))
+    # Fix B: ONE bounded publication-error summary line (categories
+    # only — never raw stderr). Stdout only; no dispatch inputs or
+    # workflow behaviour change.
+    print(job.publication_error_summary_line())
     return job.exit_code
 
 
