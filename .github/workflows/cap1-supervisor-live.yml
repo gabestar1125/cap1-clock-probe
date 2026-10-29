@@ -1,0 +1,103 @@
+# CAP-1 supervisor LIVE collection — REAL venue requests (public
+# Kalshi GET endpoints only, under the frozen Governor: 10/min,
+# concurrency 1, <=2 retries, 5,000 total budget). The production
+# entry (prod_main.py) is freeze-guarded: without the activation
+# freeze at ingestion/github_supervisor/production/
+# FREEZE.production.json whose canonical SHA-256 equals the
+# dispatch input, it exits BLOCKED (code 4) having made zero
+# requests. Segment 1 additionally gates on the live section-C
+# record (derived bound <= 100 ms) before its first capture.
+#
+# This file is pasted by the principal via the web UI (the
+# connector cannot write workflow files); everything else in the
+# repo is pushed by Muse via the connector. It mirrors the
+# rehearsal workflow's inputs and permissions; the rehearsal-only
+# pv1_source/pv1_target jobs are omitted — PV-1 is proven and
+# recorded, and the live workflow carries only the two production
+# roles (segment, seal).
+name: cap1-supervisor-live
+
+on:
+  workflow_dispatch:
+    inputs:
+      segment_index:
+        description: "Segment index (1..10 = chain, 99 = seal)"
+        required: true
+        type: string
+      manifest_sha256:
+        description: "Dispatch input: freeze SHA-256 for segment 1, predecessor manifest hash otherwise"
+        required: true
+        type: string
+      role:
+        description: "segment | seal"
+        required: true
+        type: choice
+        options: [segment, seal]
+
+permissions:
+  contents: write   # evidence + claim refs
+  actions: write    # workflow_dispatch self-dispatch (PV-1)
+
+jobs:
+  segment:
+    if: inputs.role == 'segment'
+    runs-on: ubuntu-24.04-arm
+    timeout-minutes: 355
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Run supervisor segment (LIVE, wall clock, chrony)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CAP1_REQUEST_LOG: ${{ runner.temp }}/requests.jsonl
+        run: |
+          set -euo pipefail
+          python3 ingestion/github_supervisor/production/prod_main.py \
+            --freeze ingestion/github_supervisor/production/FREEZE.production.json \
+            --role segment \
+            --segment "${{ inputs.segment_index }}" \
+            --run-id "gh-${{ github.run_id }}-s${{ inputs.segment_index }}" \
+            --dispatch-input "${{ inputs.manifest_sha256 }}" \
+            --work-root "${{ runner.temp }}/work" \
+            --backend git \
+            --repo-dir "${{ runner.temp }}/repo" \
+            --origin "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" \
+            --dispatch github \
+            --github-repo "${{ github.repository }}" \
+            --workflow-file cap1-supervisor-live.yml \
+            --image-version live-1
+      - name: Upload instrumented request log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: requests-seg-${{ inputs.segment_index }}-${{ github.run_id }}
+          path: ${{ runner.temp }}/requests.jsonl
+          if-no-files-found: ignore
+
+  seal:
+    if: inputs.role == 'seal'
+    runs-on: ubuntu-24.04-arm
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Run seal + composed verdict (LIVE)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          python3 ingestion/github_supervisor/production/prod_main.py \
+            --freeze ingestion/github_supervisor/production/FREEZE.production.json \
+            --role seal \
+            --run-id "gh-${{ github.run_id }}-seal" \
+            --dispatch-input "${{ inputs.manifest_sha256 }}" \
+            --work-root "${{ runner.temp }}/work" \
+            --backend git \
+            --repo-dir "${{ runner.temp }}/repo" \
+            --origin "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" \
+            --dispatch github \
+            --github-repo "${{ github.repository }}" \
+            --workflow-file cap1-supervisor-live.yml \
+            --image-version live-1
