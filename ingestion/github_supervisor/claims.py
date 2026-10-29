@@ -56,8 +56,13 @@ class DirClaimStore:
     <root>/cap1-claims/seg-NN.json is the live claim; takeover history
     is appended to seg-NN.takeovers.jsonl."""
 
-    def __init__(self, root):
-        self.dir = os.path.join(root, "cap1-claims")
+    def __init__(self, root, namespace=None):
+        # Namespace-isolated layout for a freeze carrying
+        # evidence_namespace ("cap1-r2-claims"); the default (None)
+        # is the legacy layout, byte-identical to before.
+        name = "cap1-%s-claims" % namespace if namespace \
+            else "cap1-claims"
+        self.dir = os.path.join(root, name)
         os.makedirs(self.dir, exist_ok=True)
 
     def _path(self, segment_index):
@@ -188,8 +193,13 @@ class GitClaimStore:
     server-side atomicity of a single ref update, identical for a local
     bare repository and for GitHub."""
 
-    def __init__(self, repo_dir):
+    def __init__(self, repo_dir, namespace=None):
         self.repo = repo_dir
+        # Freeze-driven evidence namespace (gh_common.
+        # evidence_namespace): None = legacy refs, byte-identical
+        # to before; "r2" = refs/heads/cap1-r2-claims/seg-NN, fully
+        # disjoint from the legacy claim refs in the same repo.
+        self.namespace = namespace or None
 
     def _git(self, *args, check=True):
         p = subprocess.run(["git", "-C", self.repo] + list(args),
@@ -200,6 +210,9 @@ class GitClaimStore:
         return p
 
     def _ref(self, segment_index):
+        if self.namespace:
+            return "refs/heads/cap1-%s-claims/seg-%02d" % (
+                self.namespace, segment_index)
         return "refs/heads/cap1-claims/seg-%02d" % segment_index
 
     def _remote_ref_sha(self, segment_index):
