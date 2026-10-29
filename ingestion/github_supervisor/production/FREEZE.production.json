@@ -1,5 +1,5 @@
 {
- "activation_A": "2026-11-10T12:00:00Z",
+ "activation_A": "2026-10-30T00:00:00Z",
  "budgets": {
   "concurrency": 1,
   "max_recovery_per_day": 3,
@@ -15,12 +15,12 @@
  },
  "dat": {
   "clock_pass": true,
-  "note": "tv_pass: frozen transport suite 11/11 PASS (byte-identical x2) + production wiring suite 23/23. clock_pass: GitHub clock probe 2026-10-28 \u2014 chrony stratum-1 PHC0 both architectures, derived S-C bounds 0.137 ms (x64) / 0.040 ms (ARM) vs the 100 ms activation gate. Segment 1's LIVE S-C record on the activation run remains the operative gate (bound > 100 ms -> ABORTED:CLOCK_GATE, zero requests).",
+  "note": "tv_pass: frozen transport suite 11/11 PASS (byte-identical x2) + production suite 28/28 on the D1-D4 corrected code. clock_pass: GitHub clock probe 2026-10-28 \u2014 chrony stratum-1 PHC0 both architectures, derived S-C bounds 0.137 ms (x64) / 0.040 ms (ARM) vs the 100 ms activation gate. Segment 1's LIVE S-C record on the activation run remains the operative gate (bound > 100 ms -> ABORTED:CLOCK_GATE, zero requests).",
   "tv_pass": true
  },
  "denominator_rule": "EXCLUDE_BOUNDARY_INELIGIBLE",
- "hard_end": "2026-11-12T12:00:00Z",
- "label": "CAP-1 ACTIVATION FREEZE \u2014 authorized 2026-10-29 (principal directive: remediation acceptance + conditional November 10 activation; A = Tuesday 2026-11-10 under the Amendment 2 Tuesday rule). Supersedes the Nov 3 freeze (159f9461\u2026), which must not be reused.",
+ "hard_end": "2026-11-01T00:00:00Z",
+ "label": "CAP-1 ACTIVATION FREEZE \u2014 authorized 2026-10-29 (principal directive: EARLIEST SAFE ACTIVATION; Amendment 3 any-weekday rule). A = Friday 2026-10-30 00:00 UTC, hard end 2026-11-01 00:00 UTC. Supersedes the Nov 10 freeze (481817c2\u2026), which must not be dispatched or reused.",
  "phase": {
   "chunk_interval_s": 1800,
   "claim_stale_s": 900,
@@ -33,6 +33,7 @@
    720
   ],
   "tail_s": 300,
+  "takeover_confirm_s": 360,
   "tick_interval_s": 120
  },
  "runner_leg": "ubuntu-24.04-arm",
