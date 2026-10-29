@@ -61,7 +61,8 @@ class ChainHarness:
         self.remote_dir = os.path.join(root, "remote")
         self.publisher = publisher or DirPublisher(self.remote_dir)
         self.claims = claim_store or claims_mod.DirClaimStore(
-            os.path.join(root, "claims"))
+            os.path.join(root, "claims"),
+            namespace=G.evidence_namespace(freeze))
         self.start_s = clock_start_s if clock_start_s is not None \
             else freeze["_a_ms"] / 1000.0 \
             - freeze["phase"]["dispatch_lead_s"] - 3600
@@ -191,9 +192,11 @@ class ChainHarness:
     # --------------------------------------------------------- summary
     def summary(self):
         finals = {}
+        ns = G.evidence_namespace(self.fz)
         for k in range(1, len(self.fz["segment_plan"]["lengths_s"])
                        + 1):
-            raw = self.publisher.read(sup.seg_branch(k), "final.json")
+            raw = self.publisher.read(sup.seg_branch(k, ns),
+                                      "final.json")
             finals[k] = json.loads(raw) if raw else None
         return {"finals": finals,
                 "events": self.events,
