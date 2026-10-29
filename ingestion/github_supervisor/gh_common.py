@@ -21,7 +21,8 @@ PROD_SEGMENT_LENGTHS_S = [18000] * 9 + [10800]          # 9x5h + 3h = 48h
 PROD_PHASE = {"dispatch_lead_s": 1800, "phase_b_s": 900, "tail_s": 300,
               "chunk_interval_s": 1800, "heartbeat_s": 300,
               "tick_interval_s": 120, "redispatch_offsets_s": [360, 720],
-              "final_grace_s": 900, "claim_stale_s": 900}
+              "final_grace_s": 900, "claim_stale_s": 900,
+              "takeover_confirm_s": 360}
 PROD_THRESHOLDS = {"t300_min_pct": 0.98,
                    "activation_clock_bound_ms": 100,
                    "per_observation_max_ms": 250,
