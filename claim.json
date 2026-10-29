@@ -1,0 +1,1 @@
+{"against_sha256":"e43fc28359546acf76f4ce289a140e24e090efb551093ab58b0d9e6c38bb28cf","claimed_at_local":"2026-11-11T07:45:00.000Z","run_id":"gh-40926455863-s5","schema":"cap1-claim/1","segment_index":5,"takeover_of":{"claim_commit":"e10a9ce10e15b4ff2ea2c24d8ab65067847f97c6","heartbeat_age_s":960.0,"run_id":"gh-40926433958-s5"}}
