@@ -27,7 +27,9 @@ step()+sleep on the wall clock.
 """
 import json
 import os
+import re
 import sys
+import tempfile
 
 _HERE = os.path.dirname(os.path.abspath(__file__))
 _LAB = os.path.dirname(os.path.dirname(_HERE))
@@ -39,6 +41,7 @@ from . import gh_common as G  # noqa: E402
 from . import claims as claims_mod  # noqa: E402
 from . import verdict_compose  # noqa: E402
 from .pacer import TransportPacer  # noqa: E402
+from .publisher import IntegrityError  # noqa: E402
 
 ING_DIR = os.path.join(_LAB, "ingestion")
 COHORT_SLOTS = R.COHORT_SLOTS
@@ -60,6 +63,87 @@ def seal_branch(namespace=None):
     if namespace:
         return "cap1-%s-seal" % namespace
     return "cap1-seal"
+
+
+_CHUNK_RE = re.compile(r"^chunks/chunk-(\d+)\.json$")
+
+
+def _new_pub_error_state():
+    return {"counter": 0, "records": 0, "record_failures": 0,
+            "total": 0, "categories": {}, "in_record": False}
+
+
+def _attempt_pub_error_record(publisher, branch, *, segment_index,
+                              run_id, relpath, exc, at_local, state):
+    """Fix B: publish ONE write-once sanitized error record for a
+    failed publish, via a DIRECT publisher call. Never raises and
+    never records recursively (guarded by state["in_record"] and by
+    bypassing the caller's _publish funnel). Mutates `state`:
+    total/categories are updated for every failure; records /
+    record_failures count the record publish outcome."""
+    category = G.classify_publication_error(exc)
+    state["total"] = state.get("total", 0) + 1
+    cats = state.setdefault("categories", {})
+    cats[category] = cats.get(category, 0) + 1
+    if state.get("in_record"):
+        return category
+    state["in_record"] = True
+    try:
+        seq = state.get("counter", 0)
+        state["counter"] = seq + 1
+        excerpt_src = getattr(exc, "last_error", None) or str(exc)
+        doc = {
+            "schema": "cap1-pubfail/1",
+            "segment_index": segment_index,
+            "run_id": run_id,
+            "branch": branch,
+            "relpath": relpath,
+            "attempts": int(getattr(exc, "attempts", 0) or 0),
+            "exhausted": bool(getattr(exc, "exhausted", False)),
+            "category": category,
+            "error_excerpt": G.sanitize_error_text(excerpt_src),
+            "at_local": at_local}
+        data = (G.canon(doc) + "\n").encode()
+        publisher.publish(branch, "errors/pubfail-%04d.json" % seq,
+                          data)
+        state["records"] = state.get("records", 0) + 1
+    except Exception:
+        state["record_failures"] = \
+            state.get("record_failures", 0) + 1
+    finally:
+        state["in_record"] = False
+    return category
+
+
+def _chunk_inventory(publisher, branch):
+    """Authoritative chunk inventory: [(index, relpath)] sorted by
+    index, established via publisher.list() where available.
+    Raises on a list() error or an unparseable entry under chunks/;
+    falls back to sequential reads only for legacy wrappers that
+    provide no list() at all."""
+    list_fn = getattr(publisher, "list", None)
+    if list_fn is None:
+        out = []
+        idx = 0
+        while publisher.read(branch,
+                             "chunks/chunk-%04d.json" % idx) \
+                is not None:
+            out.append((idx, "chunks/chunk-%04d.json" % idx))
+            idx += 1
+        return out
+    entries = list_fn(branch, "chunks/")
+    out = []
+    for entry in entries or []:
+        m = _CHUNK_RE.match(entry)
+        if not m:
+            raise ValueError("unparseable chunk entry: %r" % entry)
+        out.append((int(m.group(1)), entry))
+    out.sort()
+    return out
+
+
+def _is_contiguous(indices):
+    return list(indices) == list(range(len(indices)))
 
 
 class OwnershipFilter:
@@ -164,6 +248,36 @@ class SegmentJob:
         self._sealed_tick_done = False
         self._pub_failures = 0
         self.bytes_published = 0
+        # Fix A: sha256 of the exact published bytes per chunk index.
+        self._chunk_hashes = {}
+        self._last_gate_verified_chunks = 0
+        self._publication_gate_info = None
+        # Fix B: durable publication-error record state.
+        self._pub_err_state = _new_pub_error_state()
+
+    # ------------------------------------------------- Fix B helpers
+    @property
+    def _pub_error_record_failures(self):
+        return self._pub_err_state["record_failures"]
+
+    @_pub_error_record_failures.setter
+    def _pub_error_record_failures(self, value):
+        self._pub_err_state["record_failures"] = value
+
+    def publication_error_summary(self):
+        st = self._pub_err_state
+        return {"total": st["total"],
+                "categories": dict(st["categories"]),
+                "records": st["records"],
+                "record_failures": st["record_failures"]}
+
+    def publication_error_summary_line(self):
+        s = self.publication_error_summary()
+        return ("PUBLICATION_ERRORS total=%d categories=%s "
+                "records=%d record_failures=%d" % (
+                    s["total"],
+                    json.dumps(s["categories"], sort_keys=True),
+                    s["records"], s["record_failures"]))
 
     # ------------------------------------------------------------- util
     def _now_ms(self):
@@ -179,7 +293,20 @@ class SegmentJob:
         data = (G.canon(doc) + "\n").encode() \
             if not isinstance(doc, bytes) else doc
         before = self.publisher.bytes_published
-        res = self.publisher.publish(self.branch, relpath, data)
+        try:
+            res = self.publisher.publish(self.branch, relpath, data)
+        except Exception as e:
+            # Fix B: FIRST classify+sanitize and attempt the durable
+            # error record, THEN re-raise so every existing caller's
+            # control flow is unchanged. The record attempt itself
+            # never raises (see _attempt_pub_error_record).
+            _attempt_pub_error_record(
+                self.publisher, self.branch,
+                segment_index=self.k, run_id=self.run_id,
+                relpath=relpath, exc=e,
+                at_local=G.iso_local_label(self.clock.now_s()),
+                state=self._pub_err_state)
+            raise
         self.bytes_published += self.publisher.bytes_published - before
         return res
 
@@ -425,6 +552,98 @@ class SegmentJob:
             if idx > 10000:
                 return False
 
+    # ------------------------------------------------ Fix A: gate
+    def _verify_own_publication(self, attested_lines, attested_head,
+                                require_local_complete=False):
+        """Publication-completeness gate: RE-READ this segment's own
+        chunks from the backend (the same publisher.read/list path
+        successors and the seal use — never in-memory counters).
+        Returns (ok, detail); self._last_gate_verified_chunks holds
+        the number of chunks re-read and verified."""
+        self._last_gate_verified_chunks = 0
+        if attested_lines is None:
+            return False, "attested_lines missing"
+        try:
+            inventory = _chunk_inventory(self.publisher, self.branch)
+        except Exception as e:
+            return False, "chunk inventory failed: %s" % \
+                G.sanitize_error_text(e)
+        indices = [i for i, _p in inventory]
+        if not _is_contiguous(indices):
+            return False, "chunk indices non-contiguous: %s" % \
+                (indices[:20],)
+        missing = [i for i in sorted(self._chunk_hashes)
+                   if i not in set(indices)]
+        if missing:
+            return False, ("published chunk indices missing on "
+                           "re-read: %s" % (missing[:20],))
+        chunks = []
+        for idx, relpath in inventory:
+            raw = self.publisher.read(self.branch, relpath)
+            if raw is None:
+                return False, "listed chunk %d unreadable" % idx
+            if idx in self._chunk_hashes and \
+                    G.sha256_bytes(raw) != self._chunk_hashes[idx]:
+                return False, ("chunk %d re-read bytes differ from "
+                               "published bytes" % idx)
+            try:
+                chunks.append(json.loads(raw))
+            except Exception as e:
+                return False, "chunk %d unparseable: %s" % (idx, e)
+        self._last_gate_verified_chunks = len(chunks)
+        # Reconstruction from the re-read chunks must reach the
+        # attested cohort line count with the attested head.
+        attested_ok = False
+        if attested_lines == 0 and attested_head in (None, "GENESIS"):
+            attested_ok = True
+        for chunk in chunks:
+            cohort = chunk.get("files", {}).get("cohort", {})
+            if cohort.get("to_line") == attested_lines:
+                if chunk.get("chain_heads", {}).get(
+                        "cohort") == attested_head:
+                    attested_ok = True
+                break
+            if cohort.get("to_line", 0) > attested_lines:
+                break
+        if not attested_ok:
+            return False, ("no re-read chunk reaches attested "
+                           "cohort lines=%s head=%s" % (
+                               attested_lines, attested_head))
+        if require_local_complete:
+            # Tail completeness (HANDED_OFF / WINDOW_END): the
+            # reconstructed files must cover ALL local lines, so a
+            # failed tail chunk cannot hide unpublished captures
+            # behind an already-attested manifest head.
+            dest = tempfile.mkdtemp(prefix="gate-reconstruct-")
+            try:
+                counts = reconstruct_chain_files(
+                    self.publisher, self.branch, dest)
+            except Exception as e:
+                return False, "reconstruction failed: %s" % \
+                    G.sanitize_error_text(e)
+            for name in ("cohort", "ops", "raw_cohort", "raw_ops"):
+                local_n = len(self._chain_lines(name))
+                if counts.get(name, 0) != local_n:
+                    return False, (
+                        "reconstructed %s lines %s != local %s"
+                        % (name, counts.get(name, 0), local_n))
+        return True, "verified %d chunks; attested cohort lines=%s" \
+            % (len(chunks), attested_lines)
+
+    def _block_publication_incomplete(self, attested_lines,
+                                      attested_head, detail):
+        info = {"attested_lines": attested_lines,
+                "attested_head": attested_head,
+                "verified_chunks": self._last_gate_verified_chunks,
+                "detail": str(detail)}
+        self._publication_gate_info = info
+        self._event("PUBLICATION_GATE_FAILED",
+                    attested_lines=attested_lines,
+                    attested_head=attested_head,
+                    verified_chunks=self._last_gate_verified_chunks,
+                    detail=str(detail))
+        self._terminate("BLOCKED:PUBLICATION_INCOMPLETE", 7)
+
     def _claim_heartbeat_age(self):
         fn = getattr(self.claims, "heartbeat_age", None)
         if fn is not None:
@@ -555,35 +774,82 @@ class SegmentJob:
         actuals become a bound, not an exact count (disclosed in
         RECOVERY_FEASIBILITY.md; the seal's budget check governs by
         bound for any chain containing a recovered segment)."""
-        first = self._read_remote(self.branch,
-                                  "chunks/chunk-0000.json")
-        if first is None:
-            return False
-        reconstruct_chain_files(self.publisher, self.branch,
-                                self.workdir)
-        idx = 0
-        while True:
-            chunk = self._read_remote(
-                self.branch, "chunks/chunk-%04d.json" % idx)
-            if chunk is None:
-                break
+        # Fix C.1: the chunk inventory is established AUTHORITATIVELY
+        # via publisher.list(); a single transient read->None can no
+        # longer truncate it (P4 finding a'). Any doubt makes the
+        # restore UNVERIFIABLE and blocks the segment fail-closed
+        # instead of guessing a too-low _chunk_idx.
+        try:
+            inventory = _chunk_inventory(self.publisher, self.branch)
+        except Exception as e:
+            return self._block_restore_unverifiable(
+                "chunk inventory failed: %s"
+                % G.sanitize_error_text(e))
+        if not inventory:
+            return False    # died pre-chunk: legitimate fresh start
+        indices = [i for i, _p in inventory]
+        if not _is_contiguous(indices):
+            return self._block_restore_unverifiable(
+                "chunk indices non-contiguous: %s" % (indices[:20],))
+        try:
+            reconstruct_chain_files(self.publisher, self.branch,
+                                    self.workdir)
+        except Exception as e:
+            return self._block_restore_unverifiable(
+                "chain reconstruction failed: %s"
+                % G.sanitize_error_text(e))
+        last_chunk = None
+        for idx, relpath in inventory:
+            raw = self.publisher.read(self.branch, relpath)
+            if raw is None:
+                return self._block_restore_unverifiable(
+                    "listed chunk %d reads as None" % idx)
+            try:
+                chunk = json.loads(raw)
+            except Exception as e:
+                return self._block_restore_unverifiable(
+                    "listed chunk %d unparseable: %s" % (idx, e))
+            self._chunk_hashes[idx] = G.sha256_bytes(raw)
             for name, fr in chunk.get("files", {}).items():
                 self._published_lines[name] = fr.get("to_line", 0)
-            idx += 1
-        self._chunk_idx = idx
+            last_chunk = chunk
+        self._chunk_idx = len(inventory)
+        # Cross-check: reconstructed local lines must equal the last
+        # chunk's cumulative to_line for every file it carries.
+        if last_chunk is not None:
+            for name, fr in last_chunk.get("files", {}).items():
+                try:
+                    local_n = len(self._chain_lines(name))
+                except Exception as e:
+                    return self._block_restore_unverifiable(
+                        "reconstructed %s unreadable: %s" % (name, e))
+                if local_n != fr.get("to_line", 0):
+                    return self._block_restore_unverifiable(
+                        "reconstructed %s lines %s != last chunk "
+                        "to_line %s" % (name, local_n,
+                                        fr.get("to_line", 0)))
         records = sum(len(self._chain_lines(name))
                       for name in ("cohort", "ops"))
         per_fetch = 1 + self.fz["budgets"]["max_retries"]
         self._recovered_usage_estimate = \
             records * per_fetch \
             + len(self.fz["series"]) * per_fetch * 10
-        self._event("RECOVERY_CHAIN_RESTORED", chunks=idx,
+        self._event("RECOVERY_CHAIN_RESTORED",
+                    chunks=self._chunk_idx,
                     records=records,
                     usage_estimate=self._recovered_usage_estimate)
         return True
 
+    def _block_restore_unverifiable(self, detail):
+        self._event("RESTORE_UNVERIFIABLE",
+                    detail=G.sanitize_error_text(detail))
+        self._terminate("BLOCKED:RESTORE_UNVERIFIABLE", 7)
+        return False
+
     def _step_start(self):
         self._restore_from_branch()
+        if self.finished:
+            return None
         self._write_runner_freeze()
         self._seed_state()
         if self.k > 1:
@@ -762,6 +1028,8 @@ class SegmentJob:
                 self._crosscheck()
         if self._next_chunk is not None and now >= self._next_chunk:
             self._publish_chunk()
+            if self.finished:
+                return
             self._next_chunk = now + \
                 self.fz["phase"]["chunk_interval_s"]
             self._storage_check()
@@ -805,14 +1073,24 @@ class SegmentJob:
                  "published_at_local": G.iso_local_label(
                      self.clock.now_s()),
                  "files": files, "chain_heads": heads}
+        idx = self._chunk_idx
+        data = (G.canon(chunk) + "\n").encode()
         try:
-            self._publish("chunks/chunk-%04d.json" % self._chunk_idx,
-                          chunk)
+            self._publish("chunks/chunk-%04d.json" % idx, data)
         except Exception as e:
             self._pub_failures += 1
             self._event("PUBLICATION_FAILURE", where="chunk",
                         error=str(e))
+            if isinstance(e, IntegrityError):
+                # Fix C.2: write-once conflict at the current index
+                # means local and published state have irreconcilably
+                # diverged. The Fix-B record was already written
+                # inside _publish. Halt instead of retrying this
+                # index for the rest of the window.
+                self._terminate("ABORTED:CHAIN_INTEGRITY", 6)
             return
+        # Fix A.1: record the exact published bytes' hash.
+        self._chunk_hashes[idx] = G.sha256_bytes(data)
         for name in files:
             self._published_lines[name] = files[name]["to_line"]
         self._chunk_idx += 1
@@ -949,8 +1227,23 @@ class SegmentJob:
 
     def _publish_manifest_and_dispatch(self):
         self._publish_chunk()          # attested head must be published
+        if self.finished:
+            return                     # chunk integrity halt (Fix C.2)
+        # NOTE: _build_manifest publishes handoff_markets.json; that
+        # file is hash-referenced only by the manifest, so if the
+        # gate below blocks the manifest, the handoff file remains
+        # on the branch unreferenced (disclosed in the fix report).
         self.manifest = self._build_manifest()
         self.manifest_sha = G.doc_hash(self.manifest)
+        attested_lines = self.manifest.get("chain_lines", {}).get(
+            "cohort")
+        attested_head = self.manifest.get("chain_head_hash")
+        ok, detail = self._verify_own_publication(
+            attested_lines, attested_head)
+        if not ok:
+            self._block_publication_incomplete(
+                attested_lines, attested_head, detail)
+            return
         try:
             self._publish("manifest.json", self.manifest)
         except Exception as e:
@@ -1084,6 +1377,19 @@ class SegmentJob:
 
     def _finish_handed_off(self):
         self._publish_chunk()
+        if self.finished:
+            return                     # chunk integrity halt (Fix C.2)
+        if self.manifest is not None:
+            attested_lines = self.manifest.get(
+                "chain_lines", {}).get("cohort")
+            attested_head = self.manifest.get("chain_head_hash")
+            ok, detail = self._verify_own_publication(
+                attested_lines, attested_head,
+                require_local_complete=True)
+            if not ok:
+                self._block_publication_incomplete(
+                    attested_lines, attested_head, detail)
+                return
         self._write_final("HANDED_OFF")
         self._event("HANDED_OFF")
         self.finished = True
@@ -1092,7 +1398,19 @@ class SegmentJob:
 
     def _finish_window_end(self):
         self._publish_chunk()
+        if self.finished:
+            return                     # chunk integrity halt (Fix C.2)
         seal_manifest = self._build_manifest(seal=True)
+        attested_lines = seal_manifest.get("chain_lines", {}).get(
+            "cohort")
+        attested_head = seal_manifest.get("chain_head_hash")
+        ok, detail = self._verify_own_publication(
+            attested_lines, attested_head,
+            require_local_complete=True)
+        if not ok:
+            self._block_publication_incomplete(
+                attested_lines, attested_head, detail)
+            return
         try:
             self._publish("manifest.json", seal_manifest)
         except Exception as e:
@@ -1114,7 +1432,13 @@ class SegmentJob:
         self.exit_code = 0
 
     def _write_final(self, exit_reason):
-        counts = self._record_counts()
+        try:
+            counts = self._record_counts()
+        except Exception:
+            # A blocked/restore final must still be writable even
+            # when the local chains are unreadable.
+            counts = {"cohort": {"tip_hash": "GENESIS"},
+                      "ops": {"tip_hash": "GENESIS"}}
         tick_state = None
         sp = os.path.join(self.workdir, "state.json")
         if os.path.exists(sp):
@@ -1140,9 +1464,17 @@ class SegmentJob:
                    - (self.seed_initial - self.seed_credit)},
                "clock": clock_sum,
                "crosscheck": self.crosscheck,
-               "publication": {"chunks_published": self._chunk_idx,
-                               "failures": self._pub_failures},
+               "publication": {
+                   "chunks_published": self._chunk_idx,
+                   "failures": self._pub_failures,
+                   "error_records": {
+                       "count": self._pub_err_state["records"],
+                       "record_failures":
+                           self._pub_err_state["record_failures"],
+                       "location": "errors/"}},
                "storage_bytes_published": self.bytes_published}
+        if self._publication_gate_info is not None:
+            doc["publication_gate"] = dict(self._publication_gate_info)
         try:
             self._publish("final.json", doc)
         except Exception as e:
@@ -1160,12 +1492,24 @@ def reconstruct_chain_files(publisher, branch, dest_dir):
     states absolute line ranges — a later chunk's range wins."""
     os.makedirs(dest_dir, exist_ok=True)
     contents = {}
-    idx = 0
-    while True:
-        raw = publisher.read(branch, "chunks/chunk-%04d.json" % idx)
+    # Fix C.3: inventory via publisher.list(); read exactly the
+    # listed indices in order. A listed-but-unreadable chunk RAISES
+    # instead of silently truncating the chain. (Legacy wrappers
+    # without list() keep the old sequential-read behaviour via
+    # _chunk_inventory's fallback.)
+    inventory = _chunk_inventory(publisher, branch)
+    indices = [i for i, _p in inventory]
+    if not _is_contiguous(indices):
+        raise ValueError("chunk indices non-contiguous on %s: %s"
+                         % (branch, indices[:20]))
+    chunks = []
+    for idx, relpath in inventory:
+        raw = publisher.read(branch, relpath)
         if raw is None:
-            break
-        chunk = json.loads(raw)
+            raise RuntimeError(
+                "listed chunk %d on %s is unreadable" % (idx, branch))
+        chunks.append(json.loads(raw))
+    for chunk in chunks:
         for name, part in chunk.get("files", {}).items():
             lines = contents.setdefault(name, [])
             start = part["from_line"]
@@ -1177,7 +1521,6 @@ def reconstruct_chain_files(publisher, branch, dest_dir):
             lines[start:end] = part["lines"]
             fname = name + ".json" if name in ("cohort", "ops") else name
             contents.setdefault("_fname_" + name, fname)
-        idx += 1
     counts = {}
     for name, lines in contents.items():
         if name.startswith("_fname_"):
@@ -1207,8 +1550,39 @@ class SealJob:
         self.n = len(freeze["segment_plan"]["lengths_s"])
         self.branch = seal_branch(G.evidence_namespace(freeze))
         self.verdict = None
+        # Fix B (minimal, seal path): same error-record treatment.
+        self._pub_err_state = _new_pub_error_state()
+
+    def _publish(self, relpath, doc):
+        data = (G.canon(doc) + "\n").encode() \
+            if not isinstance(doc, bytes) else doc
+        try:
+            return self.publisher.publish(self.branch, relpath, data)
+        except Exception as e:
+            category = _attempt_pub_error_record(
+                self.publisher, self.branch,
+                segment_index=self.n + 1, run_id=self.run_id,
+                relpath=relpath, exc=e,
+                at_local=G.iso_local_label(
+                    getattr(self, "_now_s", 0.0)),
+                state=self._pub_err_state)
+            self.events.append({
+                "event": "PUBLICATION_FAILURE", "where": relpath,
+                "category": category,
+                "error_records": self._pub_err_state["records"],
+                "record_failures":
+                    self._pub_err_state["record_failures"]})
+            raise
+
+    def publication_error_summary(self):
+        st = self._pub_err_state
+        return {"total": st["total"],
+                "categories": dict(st["categories"]),
+                "records": st["records"],
+                "record_failures": st["record_failures"]}
 
     def run(self, dispatch_input, now_s=0.0):
+        self._now_s = now_s
         # Claim the seal role atomically (segment index n+1).
         try:
             self.claims.claim(self.n + 1, self.run_id, dispatch_input,
@@ -1219,37 +1593,50 @@ class SealJob:
             return 3
         except claims_mod.ClaimHeld:
             pass
-        segments = []
-        seal_dir = os.path.join(self.work_root, "seal")
-        os.makedirs(seal_dir, exist_ok=True)
-        for k in range(1, self.n + 1):
-            branch = seg_branch(k, G.evidence_namespace(self.fz))
-            dest = os.path.join(seal_dir, "seg-%02d" % k)
-            reconstruct_chain_files(self.publisher, branch, dest)
-            manifest = self._read(branch, "manifest.json")
-            final = self._read(branch, "final.json")
-            segments.append({
-                "index": k,
-                "cohort_chain_path": os.path.join(dest, "cohort.json"),
-                "manifest": manifest, "final": final})
-        self.verdict = verdict_compose.compose(self.fz, segments)
-        seal = {"schema": "cap1-seal/1",
-                "sealed_at_local": "recorded by publisher commit",
-                "run_id": self.run_id,
-                "freeze_sha256": self.fz["_sha256"],
-                "synthetic": bool(self.fz.get("synthetic")),
-                "verdict": self.verdict["verdict"],
-                "fail_reasons": self.verdict["fail_reasons"],
-                "segment_finals": [
-                    {"segment": s["index"],
-                     "exit_reason": (s["final"] or {}).get(
-                         "exit_reason"),
-                     "present": s["final"] is not None}
-                    for s in segments]}
-        for name, doc in (("SEAL.json", seal),
-                          ("verdict.json", self.verdict)):
-            data = (G.canon(doc) + "\n").encode()
-            self.publisher.publish(self.branch, name, data)
+        # Fix C.3: a reconstruction / composition / publication
+        # failure must fail LOUDLY — a recorded SEAL_FAILED event
+        # and a nonzero return — never a verdict composed from a
+        # silently truncated chain.
+        try:
+            segments = []
+            seal_dir = os.path.join(self.work_root, "seal")
+            os.makedirs(seal_dir, exist_ok=True)
+            for k in range(1, self.n + 1):
+                branch = seg_branch(k, G.evidence_namespace(self.fz))
+                dest = os.path.join(seal_dir, "seg-%02d" % k)
+                reconstruct_chain_files(self.publisher, branch, dest)
+                manifest = self._read(branch, "manifest.json")
+                final = self._read(branch, "final.json")
+                segments.append({
+                    "index": k,
+                    "cohort_chain_path": os.path.join(
+                        dest, "cohort.json"),
+                    "manifest": manifest, "final": final})
+            self.verdict = verdict_compose.compose(self.fz, segments)
+            seal = {"schema": "cap1-seal/1",
+                    "sealed_at_local": "recorded by publisher commit",
+                    "run_id": self.run_id,
+                    "freeze_sha256": self.fz["_sha256"],
+                    "synthetic": bool(self.fz.get("synthetic")),
+                    "verdict": self.verdict["verdict"],
+                    "fail_reasons": self.verdict["fail_reasons"],
+                    "segment_finals": [
+                        {"segment": s["index"],
+                         "exit_reason": (s["final"] or {}).get(
+                             "exit_reason"),
+                         "present": s["final"] is not None}
+                        for s in segments]}
+            for name, doc in (("SEAL.json", seal),
+                              ("verdict.json", self.verdict)):
+                self._publish(name, doc)
+        except Exception as e:
+            self.events.append({
+                "event": "SEAL_FAILED", "run_id": self.run_id,
+                "error": G.sanitize_error_text(e),
+                "error_records": self._pub_err_state["records"],
+                "record_failures":
+                    self._pub_err_state["record_failures"]})
+            return 6
         self.events.append({"event": "SEALED",
                             "verdict": self.verdict["verdict"]})
         return 0
