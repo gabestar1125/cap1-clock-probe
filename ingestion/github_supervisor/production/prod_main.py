@@ -151,7 +151,7 @@ def build_segment_job(*, freeze, segment_index, run_id, publisher,
     clock = clock if clock is not None else WallClock()
     if connector is None:
         connector = build_live_connector(clock)
-    return sup.SegmentJob(
+    job = sup.SegmentJob(
         freeze=freeze, segment_index=segment_index, run_id=run_id,
         publisher=publisher, claim_store=claim_store,
         dispatcher=dispatcher, connector=connector, clock=clock,
@@ -163,6 +163,22 @@ def build_segment_job(*, freeze, segment_index, run_id, publisher,
         dispatch_input=dispatch_input,
         image_version=image_version,
         events=events if events is not None else [])
+    # Recovery auto-detection (fix for the unreachable-takeover
+    # defect): a prior claim in the store makes this dispatch a
+    # recovery, wiring SegmentJob._step_claim's takeover branch.
+    # A first-ever dispatch (no prior claim) keeps recovery=False
+    # and the takeover path unreachable. Read-only arbitration
+    # only — the claim step still refuses takeover of a LIVE claim.
+    # The production clock is the wall clock: NO timing offset is
+    # applied here (the virtual-clock staleness offset exists only
+    # in the rehearsal entry, seg_main).
+    try:
+        prior_claim = claim_store.read(segment_index)
+    except Exception:
+        prior_claim = None
+    if prior_claim is not None:
+        job.recovery = True
+    return job
 
 
 def build_seal_job(*, freeze, run_id, publisher, claim_store,
