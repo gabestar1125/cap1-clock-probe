@@ -192,13 +192,22 @@ class ChainHarness:
     # --------------------------------------------------------- summary
     def summary(self):
         finals = {}
+        attempts = {}
         ns = G.evidence_namespace(self.fz)
         for k in range(1, len(self.fz["segment_plan"]["lengths_s"])
                        + 1):
+            # D2: finals[k] is the AUTHORITATIVE final only
+            # (final.json — the completing instance's clean record,
+            # or None when no instance completed cleanly); per-
+            # attempt terminal records are surfaced separately
+            # under attempts[k], never folded into finals[k].
             raw = self.publisher.read(sup.seg_branch(k, ns),
                                       "final.json")
             finals[k] = json.loads(raw) if raw else None
+            attempts[k] = sup.enumerate_attempt_records(
+                self.publisher, sup.seg_branch(k, ns))
         return {"finals": finals,
+                "attempts": attempts,
                 "events": self.events,
                 "seal_verdict": (self.seal_job.verdict
                                  if self.seal_job else None),
