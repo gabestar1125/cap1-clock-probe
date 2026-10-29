@@ -43,6 +43,51 @@ class PrintDispatch(RecordingDispatch):
         return super().dispatch(**kw)
 
 
+def detect_prior_claim(claim_store, segment_index):
+    """Recovery auto-detection (fix for the unreachable-takeover
+    defect): a segment is a RECOVERY dispatch iff the claim store
+    already holds a claim for it. Read-only arbitration only — the
+    supervisor's claim step still decides (a live claim's takeover
+    is refused there; a first-ever dispatch, with no prior claim,
+    keeps recovery=False and the takeover path unreachable).
+    Returns the claim doc, or None. Any read failure is treated as
+    no claim: the claim step itself remains the arbiter."""
+    read = getattr(claim_store, "read", None)
+    if read is None:
+        return None
+    try:
+        return read(segment_index)
+    except Exception:
+        return None
+
+
+def last_sign_of_life_s(publisher, segment_index, claim_doc):
+    """Epoch seconds of the previous instance's last sign of life:
+    the segment branch's heartbeat.json at_local, falling back to
+    the claim's claimed_at_local — the supervisor's own fallback
+    order in SegmentJob._claim_heartbeat_age. None if neither
+    parses."""
+    at_local = None
+    try:
+        raw = publisher.read(sup.seg_branch(segment_index),
+                             "heartbeat.json")
+    except Exception:
+        raw = None
+    if raw:
+        try:
+            at_local = json.loads(raw).get("at_local")
+        except Exception:
+            at_local = None
+    if not at_local and claim_doc:
+        at_local = claim_doc.get("claimed_at_local")
+    if not at_local:
+        return None
+    try:
+        return G.parse_iso(at_local[:19] + "Z") / 1000.0
+    except Exception:
+        return None
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser()
     ap.add_argument("--freeze", required=True)
@@ -84,7 +129,36 @@ def main(argv=None):
     else:
         dispatcher = PrintDispatch()
 
-    clock = VirtualClock(args.virtual_start) \
+    # Recovery auto-detection, evaluated BEFORE the job is built:
+    # a prior claim in the store makes this dispatch a recovery.
+    prior_claim = None
+    if args.role != "seal":
+        prior_claim = detect_prior_claim(claim_store, args.segment)
+
+    clock_start = args.virtual_start
+    if args.virtual_start is not None and prior_claim is not None:
+        # Rehearsal virtual-clock staleness (seg_main only; the
+        # production entry is wall-clock and takes no offset): the
+        # workflow formula pins EVERY instance of a segment to the
+        # same virtual start, so a recovery instance would measure
+        # the dead instance's heartbeat age as ~0 and the takeover
+        # would refuse "not stale" forever. Resume the timeline
+        # just past the staleness gap instead: the recovery
+        # instance's clock starts at the dead instance's last sign
+        # of life + claim_stale_s + 60 — the earliest virtual
+        # instant at which the claim is genuinely stale, so the
+        # measured age is the true gap the frozen rule requires,
+        # neither fabricated larger nor smaller in effect (any
+        # later start measures an even older heartbeat; the
+        # supervisor's slot accounting keys off absolute slot
+        # times, so the missed interval is accounted, not hidden).
+        last = last_sign_of_life_s(publisher, args.segment,
+                                   prior_claim)
+        if last is not None:
+            stale_s = freeze["phase"].get("claim_stale_s", 900)
+            clock_start = max(clock_start, last + stale_s + 60)
+
+    clock = VirtualClock(clock_start) \
         if args.virtual_start is not None else WallClock()
 
     if args.section_c.startswith("synthetic:"):
@@ -122,6 +196,11 @@ def main(argv=None):
         probe_provider=probe_provider,
         dispatch_input=args.dispatch_input,
         image_version=args.image_version, events=[])
+    if prior_claim is not None:
+        # Wire the takeover path (SegmentJob._step_claim): with a
+        # prior claim present this dispatch may take over a STALE
+        # claim; a live claim still refuses there.
+        job.recovery = True
     while not job.finished:
         wake = job.step()
         if wake is None:
