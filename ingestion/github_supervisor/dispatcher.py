@@ -55,10 +55,22 @@ class GitHubDispatch:
     GITHUB_TOKEN (env GH_TOKEN/GITHUB_TOKEN). Used only inside Actions
     jobs (rehearsal/production); never from the lab."""
 
-    def __init__(self, repo, workflow_file, ref="main"):
+    def __init__(self, repo, workflow_file, ref="main",
+                 freeze_file=None):
         self.repo = repo                # "owner/name"
         self.workflow_file = workflow_file
         self.ref = ref
+        # Optional freeze_file input forwarding (rehearsal workflow
+        # v2): a chained run must hand its SUCCESSORS the same
+        # freeze it was itself dispatched with — the workflow's
+        # default is rehearsal #1's freeze, so an r2 segment that
+        # did not forward this would strand its successor on the
+        # wrong freeze (check-2 refusal). None (the production
+        # construction) sends NO extra input: the live workflow
+        # declares no freeze_file input and GitHub rejects
+        # dispatches carrying undeclared inputs, so the default
+        # request body is byte-identical to before.
+        self.freeze_file = freeze_file
 
     def dispatch(self, *, segment_index, manifest_sha256, role="segment"):
         token = os.environ.get("GH_TOKEN") or os.environ.get(
@@ -67,9 +79,11 @@ class GitHubDispatch:
             raise DispatchError("no GITHUB_TOKEN in environment")
         url = ("https://api.github.com/repos/%s/actions/workflows/%s/"
                "dispatches" % (self.repo, self.workflow_file))
-        body = json.dumps({"ref": self.ref, "inputs": {
-            "segment_index": str(segment_index),
-            "manifest_sha256": manifest_sha256, "role": role}})
+        inputs = {"segment_index": str(segment_index),
+                  "manifest_sha256": manifest_sha256, "role": role}
+        if self.freeze_file is not None:
+            inputs["freeze_file"] = self.freeze_file
+        body = json.dumps({"ref": self.ref, "inputs": inputs})
         p = subprocess.run(
             ["curl", "-sS", "-X", "POST", url,
              "-H", "Authorization: Bearer %s" % token,
