@@ -61,7 +61,8 @@ def detect_prior_claim(claim_store, segment_index):
         return None
 
 
-def last_sign_of_life_s(publisher, segment_index, claim_doc):
+def last_sign_of_life_s(publisher, segment_index, claim_doc,
+                        namespace=None):
     """Epoch seconds of the previous instance's last sign of life:
     the segment branch's heartbeat.json at_local, falling back to
     the claim's claimed_at_local — the supervisor's own fallback
@@ -69,7 +70,7 @@ def last_sign_of_life_s(publisher, segment_index, claim_doc):
     parses."""
     at_local = None
     try:
-        raw = publisher.read(sup.seg_branch(segment_index),
+        raw = publisher.read(sup.seg_branch(segment_index, namespace),
                              "heartbeat.json")
     except Exception:
         raw = None
@@ -113,19 +114,33 @@ def main(argv=None):
 
     ing_dir = os.path.join(_LAB, "ingestion")
     freeze = G.load_freeze(args.freeze, ing_dir)
+    # Freeze-driven evidence namespace: absent/empty (production,
+    # rehearsal #1) -> None -> every branch/claim name below is the
+    # legacy name, byte-identical. Present ("r2") -> the run's
+    # evidence lives in its own namespace in the same repo.
+    ns = G.evidence_namespace(freeze)
 
     if args.backend == "git":
         publisher = GitPublisher.clone(args.origin, args.repo_dir) \
             if not os.path.exists(os.path.join(args.repo_dir, ".git")) \
             else GitPublisher(args.repo_dir)
-        claim_store = claims_mod.GitClaimStore(args.repo_dir)
+        claim_store = claims_mod.GitClaimStore(args.repo_dir,
+                                               namespace=ns)
     else:
         publisher = DirPublisher(args.remote_dir)
-        claim_store = claims_mod.DirClaimStore(args.claims_dir)
+        claim_store = claims_mod.DirClaimStore(args.claims_dir,
+                                               namespace=ns)
 
     if args.dispatch == "github":
+        # Forward the freeze this job was itself invoked with, so
+        # every successor in the chain loads the SAME freeze (the
+        # workflow's freeze_file default is rehearsal #1's freeze;
+        # an r2 chain that did not forward it would strand segment
+        # 2 on the wrong freeze). The rehearsal workflow declares
+        # the freeze_file input (v2); seg_main serves only it.
         dispatcher = GitHubDispatch(args.github_repo,
-                                    args.workflow_file)
+                                    args.workflow_file,
+                                    freeze_file=args.freeze)
     else:
         dispatcher = PrintDispatch()
 
@@ -153,7 +168,7 @@ def main(argv=None):
         # supervisor's slot accounting keys off absolute slot
         # times, so the missed interval is accounted, not hidden).
         last = last_sign_of_life_s(publisher, args.segment,
-                                   prior_claim)
+                                   prior_claim, namespace=ns)
         if last is not None:
             stale_s = freeze["phase"].get("claim_stale_s", 900)
             clock_start = max(clock_start, last + stale_s + 60)
