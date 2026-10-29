@@ -23,6 +23,11 @@ on:
         required: true
         type: choice
         options: [pv1_source, pv1_target, segment, seal]
+      freeze_file:
+        description: "Freeze file path (rehearsal #2 passes FREEZE.rehearsal2.json)"
+        required: false
+        type: string
+        default: "ingestion/github_supervisor/rehearsal/FREEZE.rehearsal.json"
 
 permissions:
   contents: write   # evidence + claim refs
@@ -98,7 +103,7 @@ jobs:
         run: |
           python3 - <<'EOF'
           import json, os
-          fz = json.load(open("ingestion/github_supervisor/rehearsal/FREEZE.rehearsal.json"))
+          fz = json.load(open("${{ inputs.freeze_file }}"))
           from datetime import datetime, timezone
           a = datetime.strptime(fz["activation_A"], "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc).timestamp()
           k = int("${{ inputs.segment_index }}")
@@ -113,7 +118,7 @@ jobs:
         run: |
           set -euo pipefail
           python3 ingestion/github_supervisor/seg_main.py \
-            --freeze ingestion/github_supervisor/rehearsal/FREEZE.rehearsal.json \
+            --freeze "${{ inputs.freeze_file }}" \
             --role segment \
             --segment "${{ inputs.segment_index }}" \
             --run-id "gh-${{ github.run_id }}-s${{ inputs.segment_index }}" \
@@ -151,7 +156,7 @@ jobs:
         run: |
           set -euo pipefail
           python3 ingestion/github_supervisor/seg_main.py \
-            --freeze ingestion/github_supervisor/rehearsal/FREEZE.rehearsal.json \
+            --freeze "${{ inputs.freeze_file }}" \
             --role seal \
             --run-id "gh-${{ github.run_id }}-seal" \
             --dispatch-input "${{ inputs.manifest_sha256 }}" \
