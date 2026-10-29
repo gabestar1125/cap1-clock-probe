@@ -45,8 +45,21 @@ COHORT_SLOTS = R.COHORT_SLOTS
 LATENESS_MS = R.LATENESS_MS
 
 
-def seg_branch(k):
+def seg_branch(k, namespace=None):
+    """Evidence branch for segment k. With no namespace (absent or
+    empty freeze field — production and all pre-existing freezes)
+    the name is byte-identical to the legacy form; with a namespace
+    ("r2") the run's branches are isolated from every other run
+    sharing the repository."""
+    if namespace:
+        return "cap1-%s-segments/seg-%02d" % (namespace, k)
     return "cap1-segments/seg-%02d" % k
+
+
+def seal_branch(namespace=None):
+    if namespace:
+        return "cap1-%s-seal" % namespace
+    return "cap1-seal"
 
 
 class OwnershipFilter:
@@ -87,6 +100,7 @@ class SegmentJob:
                  work_root, section_c_provider, probe_provider,
                  dispatch_input, image_version="unknown", events=None):
         self.fz = freeze
+        self.ns = G.evidence_namespace(freeze)
         self._dispatch_input = dispatch_input
         self.k = segment_index
         self.n = len(freeze["segment_plan"]["lengths_s"])
@@ -107,7 +121,7 @@ class SegmentJob:
         self.t_phase_b = self.b_hi - phase["phase_b_s"] * 1000
         self.t_tail_end = self.b_hi + phase["tail_s"] * 1000
         self.t_lead_b = self.b_lo - phase["phase_b_s"] * 1000
-        self.branch = seg_branch(segment_index)
+        self.branch = seg_branch(segment_index, self.ns)
         self.workdir = os.path.join(work_root, "seg-%02d"
                                     % segment_index)
         os.makedirs(self.workdir, exist_ok=True)
@@ -302,7 +316,7 @@ class SegmentJob:
         # only loads the predecessor manifest (read-only).
         if self.k > 1:
             self.pred_manifest = self._read_remote(
-                seg_branch(self.k - 1), "manifest.json")
+                seg_branch(self.k - 1, self.ns), "manifest.json")
         self.state = "VERIFY"
         return self.clock.now_s()
 
@@ -346,7 +360,7 @@ class SegmentJob:
             cur = m
             while cur.get("segment_index", 1) > 1:
                 prev = self._read_remote(
-                    seg_branch(cur["segment_index"] - 1),
+                    seg_branch(cur["segment_index"] - 1, self.ns),
                     "manifest.json")
                 if prev is None or G.doc_hash(prev) != \
                         cur.get("predecessor_manifest_sha256"):
@@ -376,7 +390,7 @@ class SegmentJob:
                                        "not reproduce manifest")
             # Handoff market list integrity (its hash is in the
             # manifest); the list itself is consumed at START.
-            hm = self._read_remote(seg_branch(self.k - 1),
+            hm = self._read_remote(seg_branch(self.k - 1, self.ns),
                                    "handoff_markets.json")
             if hm is None or G.doc_hash(hm) != \
                     m.get("successor_markets_sha256"):
@@ -397,7 +411,7 @@ class SegmentJob:
         idx = 0
         while True:
             chunk = self._read_remote(
-                seg_branch(self.k - 1), "chunks/chunk-%04d.json" % idx)
+                seg_branch(self.k - 1, self.ns), "chunks/chunk-%04d.json" % idx)
             if chunk is None:
                 return False
             files = chunk.get("files", {})
@@ -962,7 +976,7 @@ class SegmentJob:
     def _maybe_attestation_check(self, now):
         if self.manifest is None or self._attestation_confirmed:
             return
-        started = self._read_remote(seg_branch(self.k + 1),
+        started = self._read_remote(seg_branch(self.k + 1, self.ns),
                                     "started.json")
         if started is not None:
             self._attestation_confirmed = True
@@ -978,7 +992,7 @@ class SegmentJob:
 
     # ------------------------------------------------------ crosscheck
     def _crosscheck(self):
-        pred = self._read_remote(seg_branch(self.k - 1), "final.json")
+        pred = self._read_remote(seg_branch(self.k - 1, self.ns), "final.json")
         if pred is None:
             grace = self.fz["phase"].get("final_grace_s", 900)
             if self._now_ms() > self.b_lo + grace * 1000:
@@ -1045,7 +1059,7 @@ class SegmentJob:
         dest = tempfile.mkdtemp(prefix="pred-final-")
         try:
             reconstruct_chain_files(self.publisher,
-                                    seg_branch(self.k - 1), dest)
+                                    seg_branch(self.k - 1, self.ns), dest)
             chain = cap1.ChainStore(os.path.join(dest, "cohort.json"))
         except Exception:
             self._event("CROSSCHECK_CLOCK_ADOPT_FAILED")
@@ -1191,7 +1205,7 @@ class SealJob:
         self.work_root = work_root
         self.events = events if events is not None else []
         self.n = len(freeze["segment_plan"]["lengths_s"])
-        self.branch = "cap1-seal"
+        self.branch = seal_branch(G.evidence_namespace(freeze))
         self.verdict = None
 
     def run(self, dispatch_input, now_s=0.0):
@@ -1209,7 +1223,7 @@ class SealJob:
         seal_dir = os.path.join(self.work_root, "seal")
         os.makedirs(seal_dir, exist_ok=True)
         for k in range(1, self.n + 1):
-            branch = seg_branch(k)
+            branch = seg_branch(k, G.evidence_namespace(self.fz))
             dest = os.path.join(seal_dir, "seg-%02d" % k)
             reconstruct_chain_files(self.publisher, branch, dest)
             manifest = self._read(branch, "manifest.json")
