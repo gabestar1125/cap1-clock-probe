@@ -108,6 +108,21 @@ def load_freeze(path, ingestion_dir):
     return fz
 
 
+def evidence_namespace(fz):
+    """The freeze's OPTIONAL evidence namespace. Absent or empty
+    (the production case, and every freeze written before this
+    field existed) returns None, and every evidence branch name
+    derived from it is byte-identical to the legacy names. A
+    present namespace (e.g. "r2" for the clean rehearsal re-run)
+    isolates that run's evidence branches and claim refs from any
+    other run sharing the repository, without touching the other
+    run's records."""
+    ns = (fz or {}).get("evidence_namespace")
+    if isinstance(ns, str) and ns.strip():
+        return ns.strip()
+    return None
+
+
 def segment_bounds(fz):
     """[(B_k_ms, B_k+1_ms)] for k = 1..N from the freeze's plan."""
     out, t = [], fz["_a_ms"]
