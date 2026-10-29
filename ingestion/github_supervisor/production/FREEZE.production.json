@@ -1,5 +1,5 @@
 {
- "activation_A": "2026-11-03T12:00:00Z",
+ "activation_A": "2026-11-10T12:00:00Z",
  "budgets": {
   "concurrency": 1,
   "max_recovery_per_day": 3,
@@ -19,8 +19,8 @@
   "tv_pass": true
  },
  "denominator_rule": "EXCLUDE_BOUNDARY_INELIGIBLE",
- "hard_end": "2026-11-05T12:00:00Z",
- "label": "CAP-1 ACTIVATION FREEZE \u2014 authorized 2026-10-28 (principal directive; A named under Amendment 2 as corrected)",
+ "hard_end": "2026-11-12T12:00:00Z",
+ "label": "CAP-1 ACTIVATION FREEZE \u2014 authorized 2026-10-29 (principal directive: remediation acceptance + conditional November 10 activation; A = Tuesday 2026-11-10 under the Amendment 2 Tuesday rule). Supersedes the Nov 3 freeze (159f9461\u2026), which must not be reused.",
  "phase": {
   "chunk_interval_s": 1800,
   "claim_stale_s": 900,
