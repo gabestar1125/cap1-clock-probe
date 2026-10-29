@@ -73,6 +73,23 @@ def _new_pub_error_state():
             "total": 0, "categories": {}, "in_record": False}
 
 
+_PUBFAIL_UNSAFE_RE = re.compile(r"[^A-Za-z0-9_.-]")
+
+
+def _pubfail_record_name(run_id, seq):
+    """D4: the run-scoped publication-error record name,
+    "errors/pubfail-<run_id>-<seq>.json". <run_id> is path-sanitized
+    deterministically — every character outside [A-Za-z0-9_.-]
+    becomes "-" (run_ids like gh-40876932070-s6 pass through
+    unchanged) — and <seq> is the caller's PER-INSTANCE counter,
+    %04d. No branch scanning and no shared counter: two instances
+    can never compute the same name unless they share a run_id,
+    which the dispatch layer makes impossible (run_ids are unique
+    per dispatch)."""
+    safe = _PUBFAIL_UNSAFE_RE.sub("-", str(run_id))
+    return "errors/pubfail-%s-%04d.json" % (safe, seq)
+
+
 def _attempt_pub_error_record(publisher, branch, *, segment_index,
                               run_id, relpath, exc, at_local, state):
     """Fix B: publish ONE write-once sanitized error record for a
@@ -91,6 +108,11 @@ def _attempt_pub_error_record(publisher, branch, *, segment_index,
     try:
         seq = state.get("counter", 0)
         state["counter"] = seq + 1
+        # D4: run-scoped name (see _pubfail_record_name) — the
+        # pre-D4 shared "errors/pubfail-%04d.json" name let two
+        # instances of one segment collide on seq 0, losing the
+        # second instance's record to the write-once path.
+        record_name = _pubfail_record_name(run_id, seq)
         excerpt_src = getattr(exc, "last_error", None) or str(exc)
         doc = {
             "schema": "cap1-pubfail/1",
@@ -98,14 +120,14 @@ def _attempt_pub_error_record(publisher, branch, *, segment_index,
             "run_id": run_id,
             "branch": branch,
             "relpath": relpath,
+            "record_name": record_name,
             "attempts": int(getattr(exc, "attempts", 0) or 0),
             "exhausted": bool(getattr(exc, "exhausted", False)),
             "category": category,
             "error_excerpt": G.sanitize_error_text(excerpt_src),
             "at_local": at_local}
         data = (G.canon(doc) + "\n").encode()
-        publisher.publish(branch, "errors/pubfail-%04d.json" % seq,
-                          data)
+        publisher.publish(branch, record_name, data)
         state["records"] = state.get("records", 0) + 1
     except Exception:
         state["record_failures"] = \
@@ -144,6 +166,46 @@ def _chunk_inventory(publisher, branch):
 
 def _is_contiguous(indices):
     return list(indices) == list(range(len(indices)))
+
+
+CLEAN_EXIT_REASONS = ("HANDED_OFF", "WINDOW_END")
+
+_ATTEMPT_RE = re.compile(r"^attempts/final\.(.+)\.json$")
+
+
+def enumerate_attempt_records(publisher, branch):
+    """D2: the per-attempt terminal records on a segment branch
+    (attempts/final.<run_id>.json), as parsed docs sorted by
+    relpath. Transparency only — never an authoritative input.
+
+    Enumeration uses publisher.list() where the publisher provides
+    it. A publisher WITHOUT list() cannot enumerate run-scoped
+    names (they are not sequential, so the _chunk_inventory-style
+    sequential probe has nothing to probe): it yields an empty
+    list, never an error — the same applies to a branch with no
+    attempts/ directory and to a failing list() call. Unparseable
+    or unreadable attempt entries are skipped (they are not
+    verdict input; the authoritative final is checked separately).
+    """
+    list_fn = getattr(publisher, "list", None)
+    if list_fn is None:
+        return []
+    try:
+        entries = list_fn(branch, "attempts/")
+    except Exception:
+        return []
+    out = []
+    for entry in sorted(entries or []):
+        if not _ATTEMPT_RE.match(entry):
+            continue
+        try:
+            raw = publisher.read(branch, entry)
+            doc = json.loads(raw) if raw is not None else None
+        except Exception:
+            doc = None
+        if isinstance(doc, dict):
+            out.append(doc)
+    return out
 
 
 class OwnershipFilter:
@@ -254,6 +316,16 @@ class SegmentJob:
         self._publication_gate_info = None
         # Fix B: durable publication-error record state.
         self._pub_err_state = _new_pub_error_state()
+        # D2(b): set by _write_final when a CLEAN finalize could not
+        # land and could not be superseded by a verified clean
+        # occupier — the _finish_* paths then terminate nonzero.
+        self._finalize_failed = False
+        # D3: pending takeover confirmation — None, or a dict with
+        # the first stale reading's heartbeat snapshot and the
+        # job-clock time at which the confirmation step is due.
+        # State lives only on this job instance; the wait is
+        # scheduled by returning confirm_at as the step's wake.
+        self._takeover_pending = None
 
     # ------------------------------------------------- Fix B helpers
     @property
@@ -675,9 +747,76 @@ class SegmentJob:
                     return None
         return None
 
+    # ------------------------------------------------ D3: takeover
+    def _takeover_confirm_s(self):
+        """The freeze's phase.takeover_confirm_s as a positive
+        number, else None. A freeze that cannot support a CONFIRMED
+        takeover (field missing, non-numeric, bool, or <= 0) must
+        never produce an unconfirmed one, so None refuses closed.
+        The value is read from the freeze record (self.fz["phase"])
+        — never a constant — exactly like every other phase value;
+        production freezes carry 360 (gh_common.PROD_PHASE), which
+        exceeds heartbeat_s=300, so a live owner necessarily beats
+        inside the confirmation window."""
+        v = self.fz["phase"].get("takeover_confirm_s")
+        if isinstance(v, bool) or not isinstance(v, (int, float)):
+            return None
+        return float(v) if v > 0 else None
+
+    def _heartbeat_snapshot(self):
+        """Identity of the owner's sign-of-life records AS READ:
+        the segment branch's heartbeat record {present, run_id,
+        at_local, sha256 of the raw record bytes} PLUS the claim
+        record's identity {claim_present, claim_run_id,
+        claim_at_local, claim_sha256 (canonical hash of the claim
+        doc as read)}. The claim fields matter for the shape
+        _claim_heartbeat_age's fallback exists for — a job killed
+        AFTER claiming but BEFORE its first heartbeat has no
+        heartbeat record at all; its staleness evidence is the
+        claim record itself, and claims.py documents that such a
+        segment must still become recoverable (an early kill must
+        not brick it forever). Missing or unreadable records yield
+        present=False (never an exception, never a guess)."""
+        raw = None
+        try:
+            raw = self.publisher.read(self.branch, "heartbeat.json")
+        except Exception:
+            raw = None
+        doc = None
+        if raw is not None:
+            try:
+                parsed = json.loads(raw)
+            except Exception:
+                parsed = None
+            if isinstance(parsed, dict):
+                doc = parsed
+        claim = None
+        read = getattr(self.claims, "read", None)
+        if read is not None:
+            try:
+                claim = read(self.k)
+            except Exception:
+                claim = None
+            if not isinstance(claim, dict):
+                claim = None
+        return {"present": raw is not None,
+                "run_id": doc.get("run_id") if doc else None,
+                "at_local": doc.get("at_local") if doc else None,
+                "sha256": G.sha256_bytes(raw)
+                if raw is not None else None,
+                "claim_present": claim is not None,
+                "claim_run_id": claim.get("run_id")
+                if claim else None,
+                "claim_at_local": claim.get("claimed_at_local")
+                if claim else None,
+                "claim_sha256": G.doc_hash(claim)
+                if claim else None}
+
     def _step_claim(self):
         against = self.fz["_sha256"] if self.k == 1 else \
             G.doc_hash(self.pred_manifest)
+        if self._takeover_pending is not None:
+            return self._step_takeover_confirm(against)
         try:
             self.claims.claim(self.k, self.run_id, against,
                               self.clock.now_s())
@@ -688,18 +827,113 @@ class SegmentJob:
                 return self._refuse(4, "atomic claim lost: %s" % e)
             # Recovery path: CAS takeover of a STALE claim only
             # (claims.py). A live claim is never taken over.
+            confirm_s = self._takeover_confirm_s()
+            if confirm_s is None:
+                return self._refuse(
+                    4, "takeover refused: freeze phase "
+                    "takeover_confirm_s missing or not a positive "
+                    "number; confirmed takeover unsupported")
             age = self._claim_heartbeat_age()
             stale = self.fz["phase"].get("claim_stale_s", 900)
-            try:
-                self.claims.takeover(self.k, self.run_id, against,
-                                     self.clock.now_s(), stale, age)
-                self._event("RECOVERY_TAKEOVER", heartbeat_age_s=age)
-            except claims_mod.ClaimHeld:
-                pass
-            except claims_mod.ClaimLost as e2:
-                return self._refuse(4, "takeover refused: %s" % e2)
+            if age is None or age < stale:
+                # Not stale on this reading: the pre-D3 behaviour —
+                # the claim store itself refuses (its threshold is
+                # age <= stale_after_s; a None age is no evidence),
+                # surfacing here as a check-4 refusal.
+                try:
+                    self.claims.takeover(self.k, self.run_id, against,
+                                         self.clock.now_s(), stale,
+                                         age)
+                    self._event("RECOVERY_TAKEOVER",
+                                heartbeat_age_s=age)
+                except claims_mod.ClaimHeld:
+                    pass
+                except claims_mod.ClaimLost as e2:
+                    return self._refuse(4, "takeover refused: %s" % e2)
+            else:
+                # D3: a single stale reading no longer suffices.
+                # Snapshot the owner's heartbeat identity and DEFER
+                # the decision by takeover_confirm_s of job-clock
+                # time — the step returns the confirmation time as
+                # its wake (no sleeping, no blocking; the injected
+                # clock decides what the interval means, identically
+                # for rehearsal and production).
+                self._takeover_pending = {
+                    "snapshot": self._heartbeat_snapshot(),
+                    "first_age_s": age,
+                    "confirm_at_s": self.clock.now_s() + confirm_s}
+                self._event("TAKEOVER_CONFIRM_PENDING",
+                            heartbeat_age_s=age, confirm_s=confirm_s)
+                return self._takeover_pending["confirm_at_s"]
         self.state = "CLOCK_GATE"
         return self.clock.now_s()
+
+    def _step_takeover_confirm(self, against):
+        """D3 confirmation step: re-read the owner's heartbeat from
+        the branch and decide on BOTH readings.
+        (a) advanced (raw hash / run_id / at_local changed) -> the
+            owner is alive: refuse check 4, claim untouched;
+        (b) byte-identical AND still stale -> claims.takeover
+            exactly as the pre-D3 path did;
+        (c) missing/unreadable at either reading -> refuse check 4:
+            death is unconfirmed, and takeover never proceeds on
+            missing evidence."""
+        pending = self._takeover_pending
+        now = self.clock.now_s()
+        if now < pending["confirm_at_s"]:
+            return pending["confirm_at_s"]     # stepped early; wait
+        self._takeover_pending = None
+        snap = pending["snapshot"]
+        cur = self._heartbeat_snapshot()
+        if snap["claim_present"] and (
+                not cur["claim_present"]
+                or cur["claim_sha256"] != snap["claim_sha256"]
+                or cur["claim_run_id"] != snap["claim_run_id"]
+                or cur["claim_at_local"] != snap["claim_at_local"]):
+            return self._refuse(
+                4, "takeover refused: claim record changed during "
+                "the confirmation window; owner death unconfirmed")
+        if snap["present"]:
+            if not cur["present"]:
+                return self._refuse(
+                    4, "takeover refused: heartbeat record missing "
+                    "or unreadable at confirmation; owner death "
+                    "unconfirmed")
+            if cur["sha256"] != snap["sha256"] \
+                    or cur["run_id"] != snap["run_id"] \
+                    or cur["at_local"] != snap["at_local"]:
+                return self._refuse(
+                    4, "takeover refused: owner heartbeat advanced "
+                    "during the confirmation window; owner is alive")
+        else:
+            # No heartbeat record at the first reading: staleness
+            # rested on the claim record (owner killed before its
+            # first heartbeat). A heartbeat APPEARING during the
+            # window is a new sign of life; a vanished/unreadable
+            # claim record leaves death unconfirmed. Only a fully
+            # unchanged sign-of-life picture proceeds.
+            if cur["present"]:
+                return self._refuse(
+                    4, "takeover refused: heartbeat record appeared "
+                    "during the confirmation window; owner death "
+                    "unconfirmed")
+            if not snap["claim_present"] or not cur["claim_present"]:
+                return self._refuse(
+                    4, "takeover refused: no heartbeat or claim "
+                    "record at confirmation; owner death "
+                    "unconfirmed")
+        age = self._claim_heartbeat_age()
+        stale = self.fz["phase"].get("claim_stale_s", 900)
+        try:
+            self.claims.takeover(self.k, self.run_id, against, now,
+                                 stale, age)
+            self._event("RECOVERY_TAKEOVER", heartbeat_age_s=age)
+        except claims_mod.ClaimHeld:
+            pass
+        except claims_mod.ClaimLost as e2:
+            return self._refuse(4, "takeover refused: %s" % e2)
+        self.state = "CLOCK_GATE"
+        return now
 
     def _step_clock_gate(self):
         rec = self.section_c_provider()
@@ -1285,6 +1519,18 @@ class SegmentJob:
 
     # ------------------------------------------------------ crosscheck
     def _crosscheck(self):
+        # D2: the predecessor's AUTHORITATIVE record is final.json
+        # only. With D2 routing, final.json is (when present) always
+        # the completing instance's clean record, because non-clean
+        # terminations land in attempts/. Attempts are DELIBERATELY
+        # never consulted here: if the predecessor has NO final.json
+        # (no instance completed cleanly), the existing behaviour is
+        # explicit — crosscheck stays PENDING until the grace bound,
+        # then UNRESOLVED; no attempt is adopted as authoritative,
+        # and neither the STOP check nor the final_global bound nor
+        # the section-F adoption (which recomputes from the
+        # predecessor's published CHUNKS, below) is driven by an
+        # attempt record.
         pred = self._read_remote(seg_branch(self.k - 1, self.ns), "final.json")
         if pred is None:
             grace = self.fz["phase"].get("final_grace_s", 900)
@@ -1391,6 +1637,12 @@ class SegmentJob:
                     attested_lines, attested_head, detail)
                 return
         self._write_final("HANDED_OFF")
+        if self._finalize_failed:
+            # D2(b): the clean final neither landed nor was
+            # superseded by a verified clean occupier — finalize is
+            # a failure, terminated through the existing path.
+            self._terminate("BLOCKED:FINALIZE_FAILED", 7)
+            return
         self._event("HANDED_OFF")
         self.finished = True
         self.exit_reason = "HANDED_OFF"
@@ -1419,6 +1671,10 @@ class SegmentJob:
         self.manifest = seal_manifest
         self.manifest_sha = G.doc_hash(seal_manifest)
         self._write_final("WINDOW_END")
+        if self._finalize_failed:
+            # D2(b): no seal dispatch on a failed finalize.
+            self._terminate("BLOCKED:FINALIZE_FAILED", 7)
+            return
         try:
             self.dispatcher.dispatch(
                 segment_index=self.n + 1,
@@ -1471,12 +1727,86 @@ class SegmentJob:
                        "count": self._pub_err_state["records"],
                        "record_failures":
                            self._pub_err_state["record_failures"],
-                       "location": "errors/"}},
+                       "location": "errors/",
+                       "naming": "pubfail-<run_id>-<seq>"}},
                "storage_bytes_published": self.bytes_published}
         if self._publication_gate_info is not None:
             doc["publication_gate"] = dict(self._publication_gate_info)
+        # ---- D2(a): terminal-record routing ----------------------
+        # A CLEAN exit (HANDED_OFF / WINDOW_END) is the segment's
+        # AUTHORITATIVE final and publishes to final.json with the
+        # unchanged cap1-final/1 schema. ANY non-clean exit publishes
+        # the same-shaped doc, plus "record_role": "attempt", to the
+        # per-attempt path attempts/final.<run_id>.json — a
+        # superseded attempt can therefore never occupy the
+        # authoritative path (the r3 seg-05 defect). _refuse is
+        # unaffected (refused.json is published pre-claim, never via
+        # _write_final).
+        clean = exit_reason in CLEAN_EXIT_REASONS
+        if not clean:
+            doc["record_role"] = "attempt"
+        target = "final.json" if clean else \
+            "attempts/final.%s.json" % self.run_id
         try:
-            self._publish("final.json", doc)
+            self._publish(target, doc)
+        except IntegrityError as e:
+            if not clean:
+                self._event("PUBLICATION_FAILURE", where="final",
+                            error=str(e))
+                return doc
+            # ---- D2(b): two-clean-finalizes backstop -------------
+            # Construction argument (see stage report): only the
+            # atomic-claim holder reaches finalize, and a successor
+            # takes over only a STALE claim, so two clean finalizes
+            # for one segment should be impossible; write-once
+            # final.json is the backstop if that argument is ever
+            # defeated (the r3 zombie shape, with the roles
+            # reversed). On a write-once collision, RE-READ the
+            # occupying final: if it is itself a clean final for
+            # THIS segment, this job degrades its own terminal
+            # record to its attempt path with superseded_final —
+            # its clean exit stands (the _finish_* paths see
+            # _finalize_failed is False) and the seal enumerates
+            # the attempt. If the occupier is NOT clean or is
+            # unreadable, finalize FAILS: _finalize_failed makes
+            # _finish_handed_off/_finish_window_end terminate
+            # BLOCKED:FINALIZE_FAILED / 7 instead of claiming a
+            # clean exit whose record never landed.
+            occupier = None
+            try:
+                occupier = self._read_remote(self.branch, "final.json")
+            except Exception:
+                occupier = None
+            if isinstance(occupier, dict) \
+                    and occupier.get("segment_index") == self.k \
+                    and occupier.get("exit_reason") \
+                    in CLEAN_EXIT_REASONS:
+                attempt_doc = dict(doc)
+                attempt_doc["record_role"] = "attempt"
+                attempt_doc["superseded_final"] = True
+                try:
+                    self._publish(
+                        "attempts/final.%s.json" % self.run_id,
+                        attempt_doc)
+                    self._event(
+                        "FINAL_SUPERSEDED",
+                        occupier_run_id=occupier.get("run_id"),
+                        occupier_exit_reason=occupier.get(
+                            "exit_reason"))
+                    return attempt_doc
+                except Exception as e2:
+                    self._event("PUBLICATION_FAILURE", where="final",
+                                error=str(e2))
+            self._finalize_failed = True
+            self._event(
+                "FINALIZE_FAILED",
+                occupier_exit_reason=(occupier or {}).get(
+                    "exit_reason") if isinstance(occupier, dict)
+                else None,
+                detail="clean final.json publish collided and the "
+                       "occupier is not a verified clean final for "
+                       "this segment")
+            return doc
         except Exception as e:
             self._event("PUBLICATION_FAILURE", where="final",
                         error=str(e))
@@ -1606,12 +1936,19 @@ class SealJob:
                 dest = os.path.join(seal_dir, "seg-%02d" % k)
                 reconstruct_chain_files(self.publisher, branch, dest)
                 manifest = self._read(branch, "manifest.json")
+                # D2: final.json is the AUTHORITATIVE final (the
+                # completing instance's clean record when one
+                # exists; non-clean terminations live under
+                # attempts/ and never occupy this path).
                 final = self._read(branch, "final.json")
+                attempts = enumerate_attempt_records(
+                    self.publisher, branch)
                 segments.append({
                     "index": k,
                     "cohort_chain_path": os.path.join(
                         dest, "cohort.json"),
-                    "manifest": manifest, "final": final})
+                    "manifest": manifest, "final": final,
+                    "attempts": attempts})
             self.verdict = verdict_compose.compose(self.fz, segments)
             seal = {"schema": "cap1-seal/1",
                     "sealed_at_local": "recorded by publisher commit",
@@ -1625,7 +1962,19 @@ class SealJob:
                          "exit_reason": (s["final"] or {}).get(
                              "exit_reason"),
                          "present": s["final"] is not None}
-                        for s in segments]}
+                        for s in segments],
+                    # D2/D1 transparency: every per-attempt terminal
+                    # record on every segment branch, enumerated
+                    # from attempts/. Not a verdict input beyond
+                    # D1's authoritative-final check (compose does
+                    # not fail on attempts when a clean
+                    # authoritative final exists).
+                    "attempt_records": [
+                        {"segment": s["index"],
+                         "run_id": a.get("run_id"),
+                         "exit_reason": a.get("exit_reason")}
+                        for s in segments
+                        for a in s.get("attempts", [])]}
             for name, doc in (("SEAL.json", seal),
                               ("verdict.json", self.verdict)):
                 self._publish(name, doc)
