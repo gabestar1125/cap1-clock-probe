@@ -9,11 +9,17 @@ mutable path (it is a liveness signal, not evidence).
   the branch layout; used by every offline test).
 - GitPublisher: the remote is a git repository; each branch is a real
   branch, created orphan on first publication, committed and pushed.
-  Exercised offline against local bare repositories; on GitHub it is
-  the rehearsal/live mechanism.
+  A rejected push is retried a bounded number of times with resync
+  (see GitPublisher.publish): publications are idempotent and
+  content-addressed, so a resync-and-retry cannot corrupt evidence —
+  it can only discover that the content already landed, that a
+  write-once path was violated meanwhile, or land the same bytes on
+  the current tip. Exercised offline against local bare repositories;
+  on GitHub it is the rehearsal/live mechanism.
 """
 import os
 import subprocess
+import time
 
 MUTABLE_PATHS = {"heartbeat.json"}
 
@@ -86,11 +92,28 @@ class GitPublisher:
     branch is a protocol property (the atomic claim), so a porcelain
     checkout/commit/push cycle per publication is safe. Exercised
     offline against local bare repositories; on GitHub the clone's
-    origin is the repository HTTPS URL with the job token."""
+    origin is the repository HTTPS URL with the job token.
 
-    def __init__(self, clone_dir):
+    Push resilience: a single rejected push used to be fatal to the
+    publishing segment (observed on GitHub, 2026-10-29 run #16: the
+    server answered a handoff publication with "fatal error in
+    commit_refs" and the uncaught PublicationError killed the job
+    after it had captured its full window — no final.json, no
+    successor dispatch). publish() therefore retries a rejected push
+    a bounded number of times (max_push_attempts total attempts,
+    push_backoff_s between them), resynchronising to the current
+    remote tip and re-evaluating the write-once state before every
+    attempt, so a push that secretly landed resolves as IDEMPOTENT
+    and a write-once violation that landed meanwhile still raises
+    IntegrityError instead of being overwritten."""
+
+    def __init__(self, clone_dir, max_push_attempts=3,
+                 push_backoff_s=(1.0, 3.0)):
         self.repo = clone_dir
         self.bytes_published = 0
+        self.max_push_attempts = max(1, int(max_push_attempts))
+        self.push_backoff_s = tuple(push_backoff_s)
+        self._sleep = time.sleep      # injectable: tests zero/hook it
         self._env = dict(
             os.environ, GIT_AUTHOR_NAME="cap1-supervisor",
             GIT_AUTHOR_EMAIL="cap1@localhost",
@@ -99,12 +122,12 @@ class GitPublisher:
         self._branch = None
 
     @classmethod
-    def clone(cls, origin, clone_dir):
+    def clone(cls, origin, clone_dir, **kw):
         p = subprocess.run(["git", "clone", origin, clone_dir],
                            capture_output=True, text=True, timeout=300)
         if p.returncode != 0:
             raise PublicationError("clone: %s" % p.stderr.strip())
-        return cls(clone_dir)
+        return cls(clone_dir, **kw)
 
     def _git(self, *args, check=True):
         p = subprocess.run(["git", "-C", self.repo] + list(args),
@@ -121,14 +144,20 @@ class GitPublisher:
         out = p.stdout.strip()
         return out.split()[0] if out else None
 
-    def _checkout(self, branch):
-        if self._branch == branch:
+    def _checkout(self, branch, force=False):
+        if self._branch == branch and not force:
             return
         self._git("fetch", "origin", check=False)
         local = "pub/%s" % branch
         if self._remote_tip(branch) is not None:
             self._git("checkout", "-B", local,
                       "refs/remotes/origin/%s" % branch)
+        elif self._branch == branch:
+            # Resync retry and the branch still does not exist
+            # remotely: our local pub branch already carries the
+            # commit an earlier attempt built — keep it; the retry
+            # simply re-pushes it.
+            return
         else:
             self._git("checkout", "--orphan", local)
             self._git("rm", "-rf", "--quiet", ".", check=False)
@@ -158,30 +187,55 @@ class GitPublisher:
         return sorted(x for x in p.stdout.splitlines()
                       if x.startswith(prefix))
 
+    def _backoff_for(self, attempt):
+        """Sleep duration before attempt `attempt` (>= 2)."""
+        if not self.push_backoff_s:
+            return 0.0
+        idx = min(attempt - 2, len(self.push_backoff_s) - 1)
+        return self.push_backoff_s[idx]
+
     def publish(self, branch, relpath, data: bytes):
-        existing = self.read(branch, relpath)
-        if existing is not None and not _is_mutable(relpath):
-            if existing == data:
-                return "IDEMPOTENT"
-            raise IntegrityError(
-                f"write-once violation at {branch}/{relpath}")
-        self._checkout(branch)
-        full = os.path.join(self.repo, relpath)
-        os.makedirs(os.path.dirname(full), exist_ok=True)
-        with open(full, "wb") as f:
-            f.write(data)
-        self._git("add", relpath)
-        status = self._git("status", "--porcelain", check=False).stdout
-        if status.strip():
-            self._git("commit", "--quiet", "-m",
-                      "cap1 publish %s" % relpath)
+        mutable = _is_mutable(relpath)
+        last_err = ""
+        for attempt in range(1, self.max_push_attempts + 1):
+            if attempt > 1:
+                self._sleep(self._backoff_for(attempt))
+            # (Re-)evaluate against the CURRENT remote state before
+            # every attempt: on attempt 1 this is the original
+            # write-once pre-check; on a retry it resolves the
+            # ambiguity of a rejected push — identical bytes that
+            # landed anyway are IDEMPOTENT, different bytes at a
+            # write-once path are an IntegrityError, never an
+            # overwrite.
+            existing = self.read(branch, relpath)
+            if existing is not None and not mutable:
+                if existing == data:
+                    return "IDEMPOTENT"
+                raise IntegrityError(
+                    f"write-once violation at {branch}/{relpath}")
+            self._checkout(branch, force=attempt > 1)
+            full = os.path.join(self.repo, relpath)
+            os.makedirs(os.path.dirname(full), exist_ok=True)
+            with open(full, "wb") as f:
+                f.write(data)
+            self._git("add", relpath)
+            status = self._git("status", "--porcelain",
+                               check=False).stdout
+            if status.strip():
+                self._git("commit", "--quiet", "-m",
+                          "cap1 publish %s" % relpath)
+            # Push even when nothing new was committed: after a
+            # resync that kept an unpushed local commit (branch not
+            # yet on the remote), HEAD itself is the payload. An
+            # up-to-date push is a harmless no-op.
             push = self._git("push", "origin",
                              "HEAD:refs/heads/%s" % branch, check=False)
-            if push.returncode != 0:
-                raise PublicationError("push %s: %s" % (
-                    branch, push.stderr.strip()))
-        self.bytes_published += len(data)
-        return "PUBLISHED"
+            if push.returncode == 0:
+                self.bytes_published += len(data)
+                return "PUBLISHED"
+            last_err = push.stderr.strip()
+        raise PublicationError("push %s after %d attempts: %s" % (
+            branch, self.max_push_attempts, last_err))
 
 
 class FailingPublisher:
