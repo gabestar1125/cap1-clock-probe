@@ -1,0 +1,1 @@
+{"at_local":"2026-11-11T08:15:00.000Z","attempts":1,"branch":"cap1-r3-segments/seg-05","category":"WRITE_ONCE_CONFLICT","error_excerpt":"write-once violation at [REDACTED].json","exhausted":false,"relpath":"chunks/chunk-0000.json","run_id":"gh-40926455863-s5","schema":"cap1-pubfail/1","segment_index":5}
