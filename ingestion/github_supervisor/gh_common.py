@@ -6,6 +6,7 @@ never constants — amendment section 2.5), and segment-plan derivation.
 import hashlib
 import json
 import os
+import re
 from datetime import datetime, timezone
 
 FREEZE_SCHEMA = "cap1-freeze/1"
@@ -49,6 +50,61 @@ def sha256_file(path) -> str:
 def doc_hash(doc) -> str:
     """Hash of a JSON document over its canonical serialization."""
     return sha256_bytes(canon(doc).encode())
+
+
+def sanitize_error_text(text) -> str:
+    """Durable-safe excerpt of an error message (Fix B): strips
+    credentials and token material, collapses whitespace, and
+    truncates to at most 300 characters. Pure and deterministic."""
+    s = "" if text is None else str(text)
+    # URLs containing userinfo: scheme://user[:pw]@host -> scheme://[REDACTED]@host
+    s = re.sub(r"([A-Za-z][A-Za-z0-9+.-]*://)[^\s/@]+@",
+               r"\1[REDACTED]@", s)
+    # Authorization header values (to end of value/line).
+    s = re.sub(r"(?i)(authorization\s*:\s*)\S+(?:\s+\S+)?",
+               r"\1[REDACTED]", s)
+    # Bearer tokens.
+    s = re.sub(r"(?i)\bBearer\s+\S+", "Bearer [REDACTED]", s)
+    # x-access-token credentials, in header or URL-ish form.
+    s = re.sub(r"(?i)x-access-token\s*[:=@]?\s*\S*",
+               "x-access-token=[REDACTED]", s)
+    # Well-known GitHub token prefixes.
+    s = re.sub(r"\b(?:ghp|gho|ghu|ghs|ghr)_[A-Za-z0-9_]+",
+               "[REDACTED]", s)
+    s = re.sub(r"\bgithub_pat_[A-Za-z0-9_]+", "[REDACTED]", s)
+    # Any remaining run of >=32 hex / base64-ish characters (raw
+    # tokens, hashes, session material embedded in stderr).
+    s = re.sub(r"[A-Za-z0-9+/=_-]{32,}", "[REDACTED]", s)
+    s = re.sub(r"\s+", " ", s).strip()
+    return s[:300]
+
+
+def classify_publication_error(exc) -> str:
+    """Category for a publication failure (Fix B). IntegrityError
+    (by type name, so this module need not import publisher) is a
+    write-once conflict; otherwise the (sanitized) message text
+    decides, with non-fast-forward checked before generic push
+    rejection because git phrases the former inside the latter."""
+    if exc is None:
+        return "UNKNOWN"
+    if type(exc).__name__ == "IntegrityError":
+        return "WRITE_ONCE_CONFLICT"
+    text = getattr(exc, "last_error", None) or str(exc)
+    low = str(text).lower()
+    if "write-once" in low or "write_once" in low:
+        return "WRITE_ONCE_CONFLICT"
+    if "non-fast-forward" in low:
+        return "NON_FAST_FORWARD"
+    if "commit_refs" in low or "remote rejected" in low \
+            or "[rejected]" in low or "rejected" in low:
+        return "PUSH_REJECTED"
+    if any(tok in low for tok in (
+            "resolve", "could not resolve", "connection", "connect",
+            "timeout", "timed out", "fetch", "ssl", "network",
+            "temporary failure", "name or service", "unreachable",
+            "econnreset", "broken pipe")):
+        return "TRANSPORT"
+    return "UNKNOWN"
 
 
 def parse_iso(s) -> int:
