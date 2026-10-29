@@ -234,14 +234,20 @@ def main(argv=None, *, _connector=None, _clock=None,
         print(json.dumps({"activation": "BLOCKED", "reason": err}))
         return BLOCKED_EXIT
 
+    # The production freeze carries no evidence_namespace, so ns
+    # is None here and every claim ref below is the legacy ref,
+    # byte-identical to before this field existed.
+    ns = G.evidence_namespace(freeze)
     if args.backend == "git":
         publisher = GitPublisher.clone(args.origin, args.repo_dir) \
             if not os.path.exists(os.path.join(args.repo_dir, ".git")) \
             else GitPublisher(args.repo_dir)
-        claim_store = claims_mod.GitClaimStore(args.repo_dir)
+        claim_store = claims_mod.GitClaimStore(args.repo_dir,
+                                               namespace=ns)
     else:
         publisher = DirPublisher(args.remote_dir)
-        claim_store = claims_mod.DirClaimStore(args.claims_dir)
+        claim_store = claims_mod.DirClaimStore(args.claims_dir,
+                                               namespace=ns)
 
     if args.dispatch == "github":
         dispatcher = GitHubDispatch(args.github_repo,
