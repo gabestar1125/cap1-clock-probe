@@ -226,6 +226,9 @@ def main(argv=None):
     print(json.dumps({"segment": args.segment,
                       "exit_reason": job.exit_reason,
                       "exit_code": job.exit_code}))
+    # Fix B: ONE bounded publication-error summary line (categories
+    # only — never raw stderr).
+    print(job.publication_error_summary_line())
     return job.exit_code
 
 
