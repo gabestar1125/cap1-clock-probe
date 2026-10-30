@@ -32,9 +32,53 @@ def _chain_hash(prev_hash, record) -> str:
 
 
 def parse_iso_ms(s):
-    dt = datetime.strptime(s, "%Y-%m-%dT%H:%M:%SZ").replace(
-        tzinfo=timezone.utc)
-    return int(dt.timestamp() * 1000)
+    """Parse a venue ISO-8601 UTC timestamp to epoch milliseconds.
+
+    Accepted shapes (and nothing else):
+      YYYY-MM-DDTHH:MM:SSZ
+      YYYY-MM-DDTHH:MM:SS.<frac>Z    (<frac> = one or more ASCII digits)
+
+    The fractional part is a decimal fraction of one second. The
+    result is the whole-second epoch-millisecond value PLUS the
+    fraction truncated (floored) to whole milliseconds: ".5" ->
+    +500 ms, ".392551" -> +392 ms, ".0000001" -> +0 ms, ".9999999" ->
+    +999 ms; it can never round up into the next second. Whole-second
+    inputs return exactly what the previous strptime-based
+    implementation returned (a strict superset of the old grammar —
+    the venue's live `updated_time` carries microseconds, which the
+    old whole-second-only grammar rejected with ValueError and killed
+    the 2026-10-30 live activation at its first capture tick).
+
+    Anything malformed raises ValueError: a missing or lowercase "Z",
+    a numeric UTC offset, an empty or non-digit fraction, out-of-range
+    date/time fields, extra or missing characters, whitespace, or a
+    non-string input.
+    """
+    if not isinstance(s, str):
+        raise ValueError("timestamp must be a string: %r" % (s,))
+    frac_ms = 0
+    body = s
+    if len(s) >= 21 and s[19] == ".":
+        if not s.endswith("Z"):
+            raise ValueError("malformed timestamp: %r" % (s,))
+        frac = s[20:-1]
+        if not frac or not (frac.isascii() and frac.isdigit()):
+            raise ValueError("malformed timestamp fraction: %r" % (s,))
+        frac_ms = int((frac + "000")[:3])
+        body = s[:19] + "Z"
+    if len(body) != 20 or body[4] != "-" or body[7] != "-" \
+            or body[10] != "T" or body[13] != ":" or body[16] != ":" \
+            or body[19] != "Z":
+        raise ValueError("malformed timestamp: %r" % (s,))
+    fields = (body[0:4], body[5:7], body[8:10], body[11:13],
+              body[14:16], body[17:19])
+    if not all(f.isascii() and f.isdigit() for f in fields):
+        raise ValueError("malformed timestamp: %r" % (s,))
+    year, mon, day, hh, mm, ss = (int(f) for f in fields)
+    # datetime construction is the range check: month 13, day 32,
+    # hour 24, second 60, year 0, ... all raise ValueError here.
+    dt = datetime(year, mon, day, hh, mm, ss, tzinfo=timezone.utc)
+    return int(dt.timestamp() * 1000) + frac_ms
 
 
 def load_config(path=CONFIG_PATH):
@@ -188,7 +232,12 @@ class CaptureEngine:
         self.clock_status_fn, self.bound_ms = clock_status_fn, bound_ms
 
     def capture(self, market, slot, at_ms):
-        params = {"ticker": market["ticker"]}
+        # The documented single-market filter is "tickers" (plural).
+        # The singular "ticker" parameter is IGNORED by the venue,
+        # which returns its default 100-market page; build_observation
+        # would then consume markets[0] — the wrong market under this
+        # market's label (proven live, Phase D 2026-10-30).
+        params = {"tickers": market["ticker"]}
         send_ms = self.clock.now_ms()
         try:
             status, raw = self.transport("/markets", params)
