@@ -61,8 +61,14 @@ def sha(p):
 
 
 def ms_of(s):
-    return int(datetime.strptime(s, "%Y-%m-%dT%H:%M:%SZ").replace(
-        tzinfo=timezone.utc).timestamp() * 1000)
+    # Routed through cap1.parse_iso_ms (round-2 correction): the
+    # runner parses venue-supplied open/close stamps here, and the
+    # old strict whole-second strptime was the same crash class as
+    # the round-1 updated_time defect. parse_iso_ms is a strict
+    # superset on canonical stamps (identical outputs, battery-
+    # proven in test_capture_path_live.py) and applies the
+    # documented fractional-truncation semantics otherwise.
+    return cap1.parse_iso_ms(s)
 
 
 def iso_of(ms):
