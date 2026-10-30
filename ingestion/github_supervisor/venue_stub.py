@@ -50,13 +50,20 @@ def grid_markets(series_list, window_lo_ms, window_hi_ms, *,
                     "-", "").replace(":", "").replace("T", "-"))
                 digest = hashlib.sha256(ticker.encode()).digest()
                 strike = strike_base + (digest[0] % 50) * 0.5
+                if digest[1] % 4 == 0:
+                    updated_time = open_iso
+                else:
+                    micros = int.from_bytes(digest[2:5], "big") % 1000000
+                    if micros == 0:
+                        micros = 1
+                    updated_time = "%s.%06dZ" % (open_iso[:-1], micros)
                 out[ticker] = {
                     "ticker": ticker, "series_ticker": series,
                     "status": "active", "open_time": open_iso,
                     "close_time": close_iso, "floor_strike": strike,
                     "strike_type": "greater_or_equal",
                     "rules_primary": "Synthetic fixture market.",
-                    "updated_time": open_iso}
+                    "updated_time": updated_time}
         t += GRID_S * 1000
     return out
 
@@ -102,10 +109,22 @@ class StubVenue:
     def __call__(self, method, host, path, headers, timeout):
         self.calls += 1
         q = urllib.parse.parse_qs(urllib.parse.urlparse(path).query)
-        if "ticker" in q:
-            kind, key = "market", q["ticker"][0]
+        if "tickers" in q:
+            # The documented filter: exactly the requested market(s).
+            kind = "market"
+            key = q["tickers"][0].split(",")[0]
+            keys = q["tickers"][0].split(",")
+        elif "ticker" in q:
+            # The venue IGNORES the singular parameter (proven live,
+            # Phase D 2026-10-30) and serves its default unfiltered
+            # page. Modelled faithfully: a regression to the singular
+            # form now observes the wrong market loudly instead of
+            # passing silently (round-1 stub implemented the singular
+            # form, which is why no rehearsal could see the defect).
+            kind, key, keys = "default", q["ticker"][0], None
         else:
-            kind, key = "listing", q.get("series_ticker", ["?"])[0]
+            kind, key, keys = "listing", \
+                q.get("series_ticker", ["?"])[0], None
         self._latency()
         if self.failures is not None:
             verdict = self.failures(self.calls, kind, key)
@@ -115,8 +134,19 @@ class StubVenue:
                 return verdict[1], {}, json.dumps(
                     {"error": "injected"}).encode()
         if kind == "market":
-            m = self.markets[key]
-            return 200, {}, json.dumps({"markets": [m]}).encode()
+            return 200, {}, json.dumps(
+                {"markets": [self.markets[k] for k in keys]}).encode()
+        if kind == "default":
+            universe = list(self.markets.values())
+            offset = 0
+            cur = q.get("cursor", [None])[0]
+            if cur and cur.startswith("stub-page-"):
+                offset = (int(cur.rsplit("-", 1)[1]) - 1) * 100
+            page = universe[offset:offset + 100]
+            nxt = "stub-page-%d" % (offset // 100 + 2) \
+                if offset + 100 < len(universe) else None
+            return 200, {}, json.dumps({"markets": page,
+                                        "cursor": nxt}).encode()
         horizon = G.iso_of_ms(int(self._now() * 1000)
                               + self.list_lookahead_s * 1000)
         listed = [m for m in self.markets.values()
@@ -138,8 +168,12 @@ class InstrumentedConnector:
 
     def __call__(self, method, host, path, headers, timeout):
         q = urllib.parse.parse_qs(urllib.parse.urlparse(path).query)
-        kind = "market" if "ticker" in q else "listing"
-        key = q.get("ticker", q.get("series_ticker", ["?"]))[0]
+        if "tickers" in q:
+            kind, key = "market", q["tickers"][0].split(",")[0]
+        elif "ticker" in q:
+            kind, key = "default", q["ticker"][0]
+        else:
+            kind, key = "listing", q.get("series_ticker", ["?"])[0]
         t_in = self._now()
         try:
             res = self.inner(method, host, path, headers, timeout)
