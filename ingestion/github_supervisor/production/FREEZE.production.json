@@ -1,5 +1,5 @@
 {
- "activation_A": "2026-10-30T00:00:00Z",
+ "activation_A": "2026-10-30T04:00:00Z",
  "budgets": {
   "concurrency": 1,
   "max_recovery_per_day": 3,
@@ -19,8 +19,9 @@
   "tv_pass": true
  },
  "denominator_rule": "EXCLUDE_BOUNDARY_INELIGIBLE",
- "hard_end": "2026-11-01T00:00:00Z",
- "label": "CAP-1 ACTIVATION FREEZE \u2014 authorized 2026-10-29 (principal directive: EARLIEST SAFE ACTIVATION; Amendment 3 any-weekday rule). A = Friday 2026-10-30 00:00 UTC, hard end 2026-11-01 00:00 UTC. Supersedes the Nov 10 freeze (481817c2\u2026), which must not be dispatched or reused.",
+ "evidence_namespace": "live1",
+ "hard_end": "2026-11-01T04:00:00Z",
+ "label": "CAP-1 ACTIVATION FREEZE (CORRECTED) \u2014 authorized 2026-10-29 (principal directive: EARLIEST SAFE ACTIVATION; Amendment 3 any-weekday rule; corrected freeze approved 2026-10-29 ~19:57 EDT). A = Friday 2026-10-30 04:00 UTC, hard end 2026-11-01 04:00 UTC. evidence_namespace 'live1': the bare production namespace is occupied by rehearsal #1's preserved records (it predated the namespace mechanism), so the live run writes cap1-live1-* branches; no historical record is overwritten, deleted, or reused. Supersedes the undispatched Oct 30 00:00Z freeze (579171d8\u2026) and the Nov 10 freeze (481817c2\u2026); neither must be dispatched.",
  "phase": {
   "chunk_interval_s": 1800,
   "claim_stale_s": 900,
