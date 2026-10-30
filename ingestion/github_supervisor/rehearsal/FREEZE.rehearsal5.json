@@ -1,0 +1,68 @@
+{
+ "activation_A": "2026-11-10T12:00:00Z",
+ "budgets": {
+  "concurrency": 1,
+  "max_recovery_per_day": 3,
+  "max_retries": 2,
+  "per_minute": 10,
+  "storage_cap_bytes": 524288000,
+  "total_requests": 5000
+ },
+ "code_hashes": {
+  "cap1_sha256": "8b19b73550cfd973cb6cb142cace540e7c1143ee89a67ff596b4e58e0b155185",
+  "config_sha256": "77abaee418df93e9a27834d13fb40b43b04e96f9b6aeeb7ca0fc5786f1427771",
+  "transport_sha256": "00539951430f5bff496edebf02b59357f89dcdfe09f6f27301d5842eeb54d0ec"
+ },
+ "dat": {
+  "clock_pass": true,
+  "note": "SYNTHETIC rehearsal freeze \u2014 DAT flags are fixture values, not destination evidence",
+  "tv_pass": true
+ },
+ "denominator_rule": "EXCLUDE_BOUNDARY_INELIGIBLE",
+ "evidence_namespace": "r5",
+ "hard_end": "2026-11-12T12:00:00Z",
+ "label": "SYNTHETIC REHEARSAL FREEZE #5 (CORRECTED-ENGINE VERIFICATION) - NOT AN ACTIVATION FREEZE. Accelerated virtual-clock rehearsal on GitHub Actions with the venue-faithful stub (plural tickers semantics + fractional/whole timestamp mix); zero venue requests. Runs the capture-path corrected engine (cap1 8b19b735: parse_iso_ms fractional + tickers plural; cap1_run cda06d85: ms_of via parse_iso_ms) against the November 10 window geometry (Thursday hole inside). Evidence namespace 'r5', fully isolated.",
+ "phase": {
+  "chunk_interval_s": 1800,
+  "claim_stale_s": 900,
+  "dispatch_lead_s": 1800,
+  "final_grace_s": 900,
+  "heartbeat_s": 300,
+  "phase_b_s": 900,
+  "redispatch_offsets_s": [
+   360,
+   720
+  ],
+  "tail_s": 300,
+  "takeover_confirm_s": 360,
+  "tick_interval_s": 120
+ },
+ "runner_leg": "ubuntu-24.04-arm",
+ "schema": "cap1-freeze/1",
+ "segment_plan": {
+  "lengths_s": [
+   18000,
+   18000,
+   18000,
+   18000,
+   18000,
+   18000,
+   18000,
+   18000,
+   18000,
+   10800
+  ]
+ },
+ "series": [
+  "KXBTC15M",
+  "KXETH15M",
+  "KXSOL15M"
+ ],
+ "synthetic": true,
+ "thresholds": {
+  "activation_clock_bound_ms": 100,
+  "consecutive_over_max_stop": 3,
+  "per_observation_max_ms": 250,
+  "t300_min_pct": 0.98
+ }
+}
