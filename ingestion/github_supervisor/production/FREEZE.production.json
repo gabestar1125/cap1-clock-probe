@@ -1,5 +1,5 @@
 {
- "activation_A": "2026-10-30T04:00:00Z",
+ "activation_A": "2026-11-01T17:00:00Z",
  "budgets": {
   "concurrency": 1,
   "max_recovery_per_day": 3,
@@ -9,19 +9,19 @@
   "total_requests": 5000
  },
  "code_hashes": {
-  "cap1_sha256": "5e854872116fbec8c02ad63a0216f29d5ff06d6a9bad69372cbf2a987ea8ba50",
+  "cap1_sha256": "8b19b73550cfd973cb6cb142cace540e7c1143ee89a67ff596b4e58e0b155185",
   "config_sha256": "77abaee418df93e9a27834d13fb40b43b04e96f9b6aeeb7ca0fc5786f1427771",
   "transport_sha256": "00539951430f5bff496edebf02b59357f89dcdfe09f6f27301d5842eeb54d0ec"
  },
  "dat": {
   "clock_pass": true,
-  "note": "tv_pass: frozen transport suite 11/11 PASS (byte-identical x2) + production suite 28/28 on the D1-D4 corrected code. clock_pass: GitHub clock probe 2026-10-28 \u2014 chrony stratum-1 PHC0 both architectures, derived S-C bounds 0.137 ms (x64) / 0.040 ms (ARM) vs the 100 ms activation gate. Segment 1's LIVE S-C record on the activation run remains the operative gate (bound > 100 ms -> ABORTED:CLOCK_GATE, zero requests).",
+  "note": "tv_pass: frozen transport suite 11/11 PASS on the corrected engine bytes; parser regression 47/47 and capture-path suite 15/15 on preserved live payloads; production capture path exercised against raw live venue responses 2026-10-30 (requested market returned for all three series, VALID observations under a synced clock). clock_pass: GitHub clock probe 2026-10-28 (chrony stratum-1 PHC0; derived bounds 0.137 ms x64 / 0.040 ms ARM vs the 100 ms gate) AND the live1 activation run's own S-C record (0.0698 ms, non-synthetic, 2026-10-30). Segment 1's LIVE S-C record on this run remains the operative gate (bound > 100 ms -> ABORTED:CLOCK_GATE, zero requests).",
   "tv_pass": true
  },
  "denominator_rule": "EXCLUDE_BOUNDARY_INELIGIBLE",
- "evidence_namespace": "live1",
- "hard_end": "2026-11-01T04:00:00Z",
- "label": "CAP-1 ACTIVATION FREEZE (CORRECTED) \u2014 authorized 2026-10-29 (principal directive: EARLIEST SAFE ACTIVATION; Amendment 3 any-weekday rule; corrected freeze approved 2026-10-29 ~19:57 EDT). A = Friday 2026-10-30 04:00 UTC, hard end 2026-11-01 04:00 UTC. evidence_namespace 'live1': the bare production namespace is occupied by rehearsal #1's preserved records (it predated the namespace mechanism), so the live run writes cap1-live1-* branches; no historical record is overwritten, deleted, or reused. Supersedes the undispatched Oct 30 00:00Z freeze (579171d8\u2026) and the Nov 10 freeze (481817c2\u2026); neither must be dispatched.",
+ "evidence_namespace": "live2",
+ "hard_end": "2026-11-03T17:00:00Z",
+ "label": "CAP-1 ACTIVATION FREEZE (CORRECTED ENGINE, live2, EARLIEST-FEASIBLE) \u2014 authorized 2026-10-29 (EARLIEST SAFE ACTIVATION) + 2026-10-30 remediation approval + 2026-11-01 continuous-execution and earliest-feasible directives. History: the Nov 1 12:00Z slot was lost (freeze write's cards timed out; both dispatch jobs stood down NO-GO, nothing dispatched); the Nov 2 04:00Z re-slot freeze (3caf3357\u2026) was APPROVED 2026-11-01 14:22Z but its submitting session had died in a runtime restart, so the write never executed \u2014 verified: main still held live1 (44dfd8a6\u2026). This freeze supersedes both drafts; neither must be dispatched. A = Sunday 2026-11-01 17:00 UTC, hard end 2026-11-03 17:00 UTC (dispatch lead 30 min; set from actual deployment + verification time per the principal's instruction). Engine: cap1 8b19b735, cap1_run cda06d85. Rehearsal gate: r6 genuinely clean PASS, independently verified 2026-11-01. Namespace live2 remains record-free.",
  "phase": {
   "chunk_interval_s": 1800,
   "claim_stale_s": 900,
