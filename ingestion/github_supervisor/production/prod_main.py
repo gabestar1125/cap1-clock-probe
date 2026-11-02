@@ -21,8 +21,12 @@ What is different from seg_main, and ONLY this:
   tiling, code hashes matching the frozen files on disk), must NOT
   be synthetic, must carry the production constants (series, segment
   plan, phase, budgets, thresholds — DAT-3), must carry DAT
-  tv_pass/clock_pass, and the dispatch input must equal the freeze
-  file's canonical SHA-256. Any failure prints
+  tv_pass/clock_pass, and — for the segment-1 activation dispatch
+  only — the dispatch input must equal the freeze file's canonical
+  SHA-256 (successor segments are dispatched with the predecessor
+  manifest hash and the seal with the final segment's manifest
+  hash; those inputs are bound by the supervisor's own checks,
+  not here). Any failure prints
   {"activation": "BLOCKED", "reason": ...} and exits 4 — mirroring
   the frozen tick collector's freeze guard (cap1_run.main) — having
   made zero venue requests: the guard performs file reads and hash
@@ -105,13 +109,31 @@ def build_live_connector(clock, log_path=None):
 
 
 # ------------------------------------------------------------ guard
-def activation_guard(freeze_path, dispatch_input, ingestion_dir):
+def activation_guard(freeze_path, dispatch_input, ingestion_dir,
+                     segment_index=1):
     """Validate an ACTIVATION freeze before anything is built.
 
     Returns (freeze, None) on success, (None, reason) on refusal.
     File reads and hash checks only — zero venue requests are
     possible before this passes, and no connector exists yet when
-    it runs."""
+    it runs.
+
+    The dispatch-input comparison binds ONLY the segment-1
+    activation dispatch (segment_index == 1), whose input is the
+    freeze file's canonical SHA-256 by design. A segment k>1 is
+    dispatched with its predecessor segment's MANIFEST hash and
+    the seal with the final segment's manifest hash — never the
+    freeze hash — so for those invocations (segment_index > 1, or
+    None for the seal) the input is NOT compared here; its binding
+    is the supervisor's own verification (SegmentJob check 1:
+    dispatch input vs predecessor manifest hash; check 2: chain
+    reproduction). Every other validation in this guard — freeze
+    loadability, synthetic refusal, DAT flags, series, segment
+    plan, phase, budgets, thresholds — applies unchanged to every
+    invocation. (Before this parameter existed, the comparison ran
+    for every segment and guard-BLOCKED live2's segment 2 three
+    times with zero venue requests; rehearsals never caught it
+    because they enter via seg_main, which has no guard.)"""
     try:
         fz = G.load_freeze(freeze_path, ingestion_dir)
     except Exception as e:
@@ -119,7 +141,7 @@ def activation_guard(freeze_path, dispatch_input, ingestion_dir):
     if fz.get("synthetic"):
         return None, ("freeze is SYNTHETIC (rehearsal/test) — the "
                       "production entry refuses it")
-    if dispatch_input != fz["_sha256"]:
+    if segment_index == 1 and dispatch_input != fz["_sha256"]:
         return None, "dispatch input != freeze canonical hash"
     dat = fz.get("dat") or {}
     if dat.get("tv_pass") is not True or dat.get("clock_pass") is not True:
@@ -232,8 +254,9 @@ def main(argv=None, *, _connector=None, _clock=None,
 
     # ACTIVATION GUARD — before any job, publisher, or connector
     # exists. Zero venue requests on refusal.
-    freeze, err = activation_guard(args.freeze, args.dispatch_input,
-                                   _ING_DIR_PARENT)
+    freeze, err = activation_guard(
+        args.freeze, args.dispatch_input, _ING_DIR_PARENT,
+        segment_index=args.segment if args.role != "seal" else None)
     if freeze is None:
         print(json.dumps({"activation": "BLOCKED", "reason": err}))
         return BLOCKED_EXIT
