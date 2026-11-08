@@ -208,6 +208,126 @@ def enumerate_attempt_records(publisher, branch):
     return out
 
 
+def _sweep_tail_opens(now_ms, hi_ms):
+    """D10: number of grid opens whose sweep rounds can still fire
+    after the manifest instant `now_ms` in a segment ending at
+    `hi_ms`. An open o (a multiple of R.GRID_MS, as cap1_run
+    computes open_ms = (now // GRID_MS) * GRID_MS) is counted iff
+    its close o + GRID_MS is owned by this segment
+    (o + GRID_MS < hi_ms — strict, matching the runner's owner
+    scope in Tick.sweep) AND at least its last sweep round is
+    still in the future at the manifest instant
+    (o + max(SWEEP_OFFSETS_MS) > now_ms; a tick at the dispatch
+    instant itself runs BEFORE publication, inside the attested
+    counts, so rounds at or before `now_ms` need no reserve).
+    Pure arithmetic over the epoch grid — no enumeration."""
+    grid = R.GRID_MS
+    max_off = max(R.SWEEP_OFFSETS_MS)
+    # Smallest k with k*grid > now_ms - max_off (strict).
+    k_min = (now_ms - max_off) // grid + 1
+    # Exclusive supremum: k*grid < hi_ms - grid (strict), i.e.
+    # k < ceil((hi_ms - grid) / grid).
+    k_sup = -((-(hi_ms - grid)) // grid)
+    return max(0, k_sup - k_min)
+
+
+def _sweep_tail_term(fz, now_ms, hi_ms):
+    """D10: tail-reserve term for the runner's sweep channel
+    (cap1_run.Tick.sweep, fired from capture_due in any tick
+    mode). The manifest is published at
+    t_dispatch = b_hi - dispatch_lead_s; after it, sweep rounds
+    for a counted open may ALL still fire, so the bound budgets
+    every round of every counted open — rounds already fired are
+    inside the attested counts via sweeps_done, but the bound
+    conservatively budgets all of them rather than tracking
+    which remain. Per round the runner polls only series with no
+    confirmed market at that open — worst case every series in
+    the freeze (Thursday-hole closes are never confirmed, so at
+    a hole boundary the full series count really is polled).
+    Per series poll: PAGES x per_fetch counted requests, with
+    per_fetch = 1 + budgets.max_retries (the governor fetch unit
+    the existing reserve terms use: 1 attempt + len(backoff)=2
+    retries on 5xx/transport errors) and PAGES = 1, derived as
+    follows: a status=open listing for ONE series at ONE instant
+    contains only that series' currently-open markets; the
+    series' markets are 900 s on a 900 s grid, so at most 2
+    entries (a boundary straddle), returned in a single page by
+    every supported transport (venue default page size 1000 with
+    no limit parameter sent; stub default list_page_size=None =
+    single page). No larger page factor is justified."""
+    per_fetch = 1 + fz["budgets"]["max_retries"]
+    pages = 1
+    return _sweep_tail_opens(now_ms, hi_ms) \
+        * len(R.SWEEP_OFFSETS_MS) * len(fz["series"]) \
+        * pages * per_fetch
+
+
+def _ladder_tail_extra_rungs(attempts):
+    """D12: extra OPEN-ladder rungs still possible for one market
+    whose OPEN slot is pending at the manifest instant, beyond the
+    single logical fetch the pre-existing slot term budgets for it.
+    `attempts` is the ladder position re-derived from the cohort
+    chain by the runner itself (cap1_run.Tick._open_attempts: every
+    OBSERVATION under OPEN plus every TRANSPORT_FAILURE GAP under
+    OPEN), so the count is a deterministic function of recorded
+    state — a restarted or takeover segment re-derives the
+    identical value from the same chain. The ladder fires rung
+    `attempts` next and stops at len(OPEN_LADDER_OFFSETS_MS)
+    attempts; every remaining rung's due (open + offset, max
+    open+150 s) lies inside the OPEN window (open+5 s +
+    LATENESS_MS = open+185 s), so while the window is open every
+    remaining rung can still fire post-manifest if the strike
+    remains unavailable. Pure arithmetic — no enumeration."""
+    return max(0, len(R.OPEN_LADDER_OFFSETS_MS) - attempts - 1)
+
+
+def _ladder_tail_term(fz, tick, now_ms):
+    """D12: tail-reserve term for the Capture-Discipline OPEN
+    ladder (cap1_run.Tick.capture_due, slot OPEN). _tail_reserve's
+    slot term budgets ONE logical fetch (x per_fetch) per pending
+    slot, but a pending OPEN slot whose strike remains unavailable
+    is retried on the ladder OPEN_LADDER_OFFSETS_MS (open+5/+20/
+    +45/+90/+150 s) — up to 5 logical fetches for the one slot.
+    This term budgets exactly the rungs the slot term does not:
+    per cohort market whose OPEN slot the slot term counts at the
+    manifest instant (OPEN not complete per Tick.captured AND
+    now_ms <= open + SLOT_OFFSETS[OPEN] + LATENESS_MS — the
+    identical predicate, so a market counted here is counted
+    there and vice versa), (remaining rungs - 1) x per_fetch,
+    with remaining rungs derived from the recorded ladder
+    position (Tick._open_attempts), NOT from grid arithmetic:
+    a rung whose due has passed but which has not yet been
+    attempted (no tick ran at its due) still fires post-manifest,
+    and only the recorded attempt count sees it. A pure grid
+    count of offsets > now_ms would miss exactly that rung.
+    Conservatism, stated as in the D10 term: every remaining
+    rung is budgeted even though a VALID observation on an
+    earlier post-manifest rung stops the ladder — the term is a
+    worst case over strike availability, which recorded state
+    cannot bound. Markets not yet known at the manifest instant
+    contribute nothing: they hold no pending OPEN slot in this
+    segment (an open the sweep has not confirmed is budgeted in
+    the sweep term's polls only, and a Thursday-hole open is
+    never confirmed at all). per_fetch = 1 +
+    budgets.max_retries, the governor fetch unit both
+    pre-existing reserve terms use."""
+    per_fetch = 1 + fz["budgets"]["max_retries"]
+    extra_rungs = 0
+    for ticker, (seg, m) in tick.known_markets().items():
+        if seg != "cohort":
+            continue
+        chain = tick.chains[seg]
+        if "OPEN" in tick.captured(chain, ticker):
+            continue
+        open_ms = cap1.parse_iso_ms(m["open_time"])
+        window_end = open_ms + R.SLOT_OFFSETS["OPEN"] + LATENESS_MS
+        if now_ms > window_end:
+            continue
+        attempts = tick._open_attempts(chain, ticker)
+        extra_rungs += _ladder_tail_extra_rungs(attempts)
+    return extra_rungs * per_fetch
+
+
 class OwnershipFilter:
     """Transport wrapper: listing responses are restricted to markets
     this segment OWNS (close_time in [lo, hi)); markets owned by the
@@ -306,10 +426,24 @@ class SegmentJob:
         self._attestation_confirmed = False
         self._lead_discovery_done = False
         self._boundary_done = False
+        # D11: tickers already given a BOUNDARY_INELIGIBLE record,
+        # lazily seeded from the cohort chain itself on the first
+        # boundary pass (None = not yet seeded). Chain-seeding —
+        # not the in-memory _boundary_done latch — is what makes
+        # the pass restart/takeover-safe.
+        self._boundary_recorded = None
         self._final_discovery_done = False
         self._sealed_tick_done = False
         self._pub_failures = 0
         self.bytes_published = 0
+        # Step 3 (CD-1): earliest pending capture/sweep instant
+        # (epoch s), refreshed after every tick from the runner's
+        # chains via Tick.next_wake_ms. None = nothing pending (the
+        # pre-Step-3 wake set applies unchanged). Discovery polls
+        # and heartbeats keep their existing cadence: this wake only
+        # ADDS capture-only ticks at slot instants; it never delays
+        # or replaces a FULL tick.
+        self._next_capture_wake = None
         # Fix A: sha256 of the exact published bytes per chunk index.
         self._chunk_hashes = {}
         self._last_gate_verified_chunks = 0
@@ -421,7 +555,7 @@ class SegmentJob:
                          "request_times": [], "rate_limit_events": []},
                  "last_discovery_ms": seed_disc, "restarts": {},
                  "stopped": None, "sealed": False,
-                 "last_tick_status": "ok"}
+                 "last_tick_status": "ok", "sweeps_done": []}
         G.write_json(os.path.join(self.workdir, "state.json"), state)
 
     def _make_tick(self):
@@ -499,7 +633,26 @@ class SegmentJob:
                     tick.stop(e.code, str(e))
                     rc = 5
         self._after_tick(tick)
+        self._refresh_capture_wake()
         return rc
+
+    def _refresh_capture_wake(self):
+        """Step 3 (CD-1): re-derive the next capture/sweep wake
+        from the chains as the last tick left them. Fail-safe: any
+        error leaves the wake unset, i.e. the pre-Step-3 120 s tick
+        behaviour — a wake-computation defect can never wedge or
+        accelerate the segment, it can only lose the CD-1 gain."""
+        try:
+            tick = self._make_tick()
+            w = tick.next_wake_ms(self._now_ms())
+            self._next_capture_wake = (w / 1000.0) if w is not None \
+                else None
+        except Exception:
+            self._next_capture_wake = None
+
+    def _capture_wake_due(self, now):
+        return self._next_capture_wake is not None \
+            and now >= self._next_capture_wake
 
     # ------------------------------------------------------- lifecycle
     def step(self):
@@ -1177,7 +1330,14 @@ class SegmentJob:
             self._next_tick = now + self.fz["phase"]["tick_interval_s"]
             if self.finished:
                 return None
+        elif self._capture_wake_due(now):
+            # Step 3 (CD-1): a slot/sweep instant fell between
+            # lead-in ticks — dispatch it now, capture-only.
+            self._run_tick("CAPTURE_ONLY")
+            if self.finished:
+                return None
         return self._due_wake([self.b_lo / 1000.0, self._next_tick,
+                               self._next_capture_wake,
                                self._next_hb, self._next_chunk])
 
     def _step_active(self):
@@ -1194,6 +1354,12 @@ class SegmentJob:
                 self._run_tick("FULL")
                 self._next_tick = now + \
                     self.fz["phase"]["tick_interval_s"]
+                if self.finished:
+                    return None
+            elif self._capture_wake_due(now):
+                # Step 3 (CD-1): a capture due at the dispatch
+                # instant is likewise inside the attested counts.
+                self._run_tick("CAPTURE_ONLY")
                 if self.finished:
                     return None
             self._publish_manifest_and_dispatch()
@@ -1221,8 +1387,22 @@ class SegmentJob:
             if self.finished:
                 return None
             self._maybe_boundary_records()
+        elif self._capture_wake_due(now):
+            # Step 3 (CD-1): event-woken capture dispatch — a slot
+            # due, OPEN ladder rung, window expiry or sweep round
+            # fell between 120 s ticks. Capture-only: discovery
+            # polls stay on their cadence (the FULL ticks above).
+            self._run_tick("CAPTURE_ONLY")
+            if self.finished:
+                return None
+            # D11: a capture-only tick is where sweep confirmations
+            # land (the sweep fires at the head of capture_due), so
+            # re-evaluate the boundary pass here — promptly, rather
+            # than at the next FULL tick.
+            self._maybe_boundary_records()
         return self._due_wake([
-            self._next_tick, self._next_hb, self._next_chunk,
+            self._next_tick, self._next_capture_wake,
+            self._next_hb, self._next_chunk,
             (self.t_dispatch / 1000.0) if self.k < self.n else
             (self.fz["_end_ms"] / 1000.0)])
 
@@ -1245,11 +1425,19 @@ class SegmentJob:
             self._next_tick = now + self.fz["phase"]["tick_interval_s"]
             if self.finished:
                 return None
+        elif self._capture_wake_due(now):
+            # Step 3 (CD-1): capture dispatch at the slot instant
+            # during the yield tail as well (capture-only already).
+            self._run_tick("CAPTURE_ONLY")
+            if self.finished:
+                return None
         self._maybe_attestation_check(now)
         if now_ms >= self.t_tail_end:
             self._finish_handed_off()
             return None
-        return self._due_wake([self._next_tick, self._next_hb,
+        return self._due_wake([self._next_tick,
+                               self._next_capture_wake,
+                               self._next_hb,
                                self._next_chunk,
                                self.t_tail_end / 1000.0])
 
@@ -1352,25 +1540,52 @@ class SegmentJob:
         beyond-lateness ones as MISSED_SLOT, and the composed reader
         reclassifies those GAPs into BOUNDARY_EXCLUDED /
         SLOT_BEFORE_ACTIVATION (the spec assigns the categories to
-        the verdict-reader layer, section 4)."""
+        the verdict-reader layer, section 4).
+
+        D11: this pass RE-EVALUATES on every call until the window
+        has closed — it must not latch on the first non-empty
+        known set. In-window closes can be confirmed by later
+        channels at any point before they close (in r8 seg-01 the
+        unopened discovery at A could not list the 12:00 closes;
+        the sweep confirmed them at A+15 s, after the old one-shot
+        latch had already sealed the pass with 0 records). The
+        already-recorded set is derived from the cohort chain
+        itself (seeded lazily on first call, maintained on every
+        append), so a restarted/takeover instance re-derives it
+        and can never duplicate a record. The pass is complete —
+        and _boundary_done is set — only when now >= A+300 s AND
+        an evaluation finds no unrecorded candidates; sealing
+        earlier is exactly the D11 failure."""
         if self.k != 1 or self._boundary_done:
             return
+        path = self._chain_path("cohort")
+        if self._boundary_recorded is None:
+            recorded = set()
+            if os.path.exists(path):
+                for rec in cap1.ChainStore(path).records:
+                    if rec.get("kind") == "BOUNDARY_INELIGIBLE":
+                        recorded.add(rec.get("ticker"))
+            self._boundary_recorded = recorded
         tick = self._make_tick()
         known = tick.known_markets()
-        if not known:
-            return
-        self._boundary_done = True
         a_ms = self.fz["_a_ms"]
-        path = self._chain_path("cohort")
-        chain = cap1.ChainStore(path)
+        candidates = []
         for ticker, (seg, m) in sorted(known.items()):
-            if seg != "cohort":
+            if seg != "cohort" \
+                    or ticker in self._boundary_recorded:
                 continue
             close_ms = cap1.parse_iso_ms(m["close_time"])
             if a_ms <= close_ms < a_ms + 300_000:
+                candidates.append((ticker, m))
+        if candidates:
+            chain = cap1.ChainStore(path)
+            for ticker, m in candidates:
                 chain.append({"kind": "BOUNDARY_INELIGIBLE",
                               "ticker": ticker,
                               "close_time": m["close_time"]})
+                self._boundary_recorded.add(ticker)
+        elif self._now_ms() >= a_ms + 300_000:
+            self._boundary_done = True
 
     # -------------------------------------------------- manifest/final
     def _tail_reserve(self):
@@ -1393,7 +1608,24 @@ class SegmentJob:
                 if now <= due + LATENESS_MS:
                     slots += 1
         discovery = len(self.fz["series"]) * 1 * per_fetch
-        return slots * per_fetch + discovery, slots
+        # D10: the sweep is a third post-manifest venue consumer
+        # (alongside the pending cohort slots above and the one
+        # final discovery round at B-300 s); before this term it
+        # was budgeted nowhere, and at a hole boundary — where
+        # the slot term collapses — its spend alone exceeded the
+        # reserve and aborted the successor's crosscheck.
+        sweep = _sweep_tail_term(self.fz, now, self.b_hi)
+        # D12: the OPEN ladder is a fourth post-manifest consumer
+        # hidden inside the slot term's own slot: a pending OPEN
+        # slot can make up to len(OPEN_LADDER_OFFSETS_MS) logical
+        # fetches, of which the slot term budgets one. Before this
+        # term the remaining rungs were budgeted nowhere, and at a
+        # straddling open — where the slot term is at its largest —
+        # their spend alone could exceed the reserve and abort the
+        # successor's crosscheck, exactly as the unbudgeted sweep
+        # did for D10.
+        ladder = _ladder_tail_term(self.fz, tick, now)
+        return slots * per_fetch + discovery + sweep + ladder, slots
 
     def _record_counts(self):
         counts = {}
@@ -1472,8 +1704,18 @@ class SegmentJob:
         attested_lines = self.manifest.get("chain_lines", {}).get(
             "cohort")
         attested_head = self.manifest.get("chain_head_hash")
+        # Step 3 Phase 4 (D9, see step3/D8_DISPOSITION_2026-11-08.md):
+        # the dispatch gate must ALSO verify local completeness, as
+        # both finish gates already do. The cohort-only check passes
+        # vacuously when the attested cohort is empty (0 / GENESIS —
+        # e.g. a takeover instance whose restored cohort is empty and
+        # whose tick legitimately adds no cohort line), so a chunk
+        # whose only new lines are in ops/raw could fail to publish
+        # yet the manifest attesting those unpublished lines would
+        # still be published and the successor dispatched.
         ok, detail = self._verify_own_publication(
-            attested_lines, attested_head)
+            attested_lines, attested_head,
+            require_local_complete=True)
         if not ok:
             self._block_publication_incomplete(
                 attested_lines, attested_head, detail)
