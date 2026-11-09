@@ -90,6 +90,18 @@ def _pubfail_record_name(run_id, seq):
     return "errors/pubfail-%s-%04d.json" % (safe, seq)
 
 
+def _refusal_record_name(run_id):
+    """CHANGE 3: the per-run refusal record name,
+    "refusals/refused-<run_id>.json". <run_id> is sanitized with
+    the same deterministic rule as the D4 pubfail names. Unique
+    per dispatch (run_ids are unique per dispatch), so refusal
+    records are write-once-safe against each other: no refusal
+    can overwrite or write-once-conflict with another run's
+    refusal, and every refusal's check_failed/detail is durable."""
+    safe = _PUBFAIL_UNSAFE_RE.sub("-", str(run_id))
+    return "refusals/refused-%s.json" % safe
+
+
 def _attempt_pub_error_record(publisher, branch, *, segment_index,
                               run_id, relpath, exc, at_local, state):
     """Fix B: publish ONE write-once sanitized error record for a
@@ -678,6 +690,23 @@ class SegmentJob:
                "detail": detail,
                "at_local": G.iso_local_label(self.clock.now_s()),
                "venue_requests_made": 0}
+        # CHANGE 3 (refusal-detail preservation): the durable
+        # record is the per-run path — unique per dispatch, so a
+        # second refusal can never overwrite or conflict with the
+        # first (live4 seg-02: the second check-4 refusal's
+        # check/detail survived in no record; the only trace was
+        # a pubfail carrying neither field). Publication failures
+        # still flow through _publish's Fix B error record and
+        # are swallowed exactly as the legacy path's were.
+        try:
+            self._publish(_refusal_record_name(self.run_id), doc)
+        except Exception:
+            pass
+        # Legacy root path, preserved for compatibility: the
+        # first refusal wins it, exactly as today; a later
+        # refusal's write-once conflict is swallowed exactly as
+        # today — its check/detail is durable in the per-run
+        # record above.
         try:
             self._publish("refused.json", doc)
         except Exception:
@@ -1088,9 +1117,40 @@ class SegmentJob:
         self.state = "CLOCK_GATE"
         return now
 
+    def _publish_clock_readiness(self):
+        """CHANGE 1 (diagnostic record): publish the section-C
+        readiness wait's telemetry as its own durable record,
+        diagnostics/clock_readiness-<run_id>.json on this segment's
+        branch. Called at the head of the clock gate — BEFORE the
+        gate decision — so every attempt that reaches the gate
+        leaves the record, including one that then aborts
+        CLOCK_UNPROVEN. It is not gate evidence: it alters no
+        existing record (started.json, attempt finals and the
+        section-C record keep their exact shapes) and verdict
+        composition never reads it. Never raises: a diagnostic
+        must not break the gate it describes — a publication
+        failure leaves the usual Fix B pubfail via _publish and is
+        swallowed here. Providers that never ran the wait
+        (synthetic lab paths) publish nothing."""
+        try:
+            from . import clock_evidence as ce
+            tele = ce.last_readiness()
+            if not tele:
+                return
+            doc = {"schema": ce.READINESS_SCHEMA,
+                   "segment_index": self.k, "run_id": self.run_id,
+                   "at_local": G.iso_local_label(self.clock.now_s())}
+            doc.update(tele)
+            safe = _PUBFAIL_UNSAFE_RE.sub("-", str(self.run_id))
+            self._publish(
+                "diagnostics/clock_readiness-%s.json" % safe, doc)
+        except Exception:
+            pass
+
     def _step_clock_gate(self):
         rec = self.section_c_provider()
         self.clock_rec = rec
+        self._publish_clock_readiness()
         der = (rec or {}).get("derivation") or {}
         bound = der.get("bound_ms")
         thr = self.fz["thresholds"]
