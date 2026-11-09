@@ -17,7 +17,7 @@ CHUNK_SCHEMA = "cap1-chunk/1"
 # values a REAL freeze record must carry (DAT-3 verifies them); the
 # supervisor itself reads every operative number from the freeze record
 # so synthetic freezes can exercise the same code with small numbers.
-PROD_SEGMENT_LENGTHS_S = [18000] * 9 + [10800]          # 9x5h + 3h = 48h
+PROD_SEGMENT_LENGTHS_S = [18000] * 3                    # 3x5h = 15h (18-h validation amendment 2026-11-09)
 PROD_PHASE = {"dispatch_lead_s": 1800, "phase_b_s": 900, "tail_s": 300,
               "chunk_interval_s": 1800, "heartbeat_s": 300,
               "tick_interval_s": 120, "redispatch_offsets_s": [360, 720, 1020, 1410],
