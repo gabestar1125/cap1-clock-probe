@@ -1,0 +1,1 @@
+{"at_local":"2026-11-09T15:34:20.240Z","bound_s":300.0,"outcome":"converged","poll_interval_s":5.0,"poll_timeout_s":10.0,"polls":1,"run_id":"gh-42645885938-s1","schema":"cap1-clock-readiness/1","segment_index":1,"waited_s":0.002}
