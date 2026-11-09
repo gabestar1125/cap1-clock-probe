@@ -20,6 +20,7 @@ import importlib.util
 import math
 import os
 import subprocess
+import time
 
 _PROBE_PATH = os.path.join(
     os.path.dirname(os.path.abspath(__file__)), os.pardir,
@@ -38,12 +39,114 @@ probe = _load_probe()
 
 SECTION_C_SCHEMA = "cap1-section-c/1"
 
+# --- Bounded clock-readiness wait (live4 seg-02 remediation) --------
+# capture_section_c historically sampled the daemon exactly once,
+# immediately. On a cold runner whose chrony has not yet locked
+# (live4 segment 2: the daemon sample fell ~1 s into the capture on a
+# fresh runner — stratum 0, leap "Not synchronised") that single
+# sample derived IMPOSSIBLE and the segment aborted CLOCK_UNPROVEN,
+# even though the dispatch lead leaves ~1800 s before the segment's
+# window and a fresh runner's daemon typically converges in tens of
+# seconds. The wait below polls the daemon's own tracking report
+# until it reports synchronised — leap status Normal, the same
+# condition the capture records and derive() requires — bounded at
+# 300 s. It changes NO threshold, NO derivation and NO gate-evidence
+# record: on bound exhaustion it returns and the capture below runs
+# exactly as before, sampling the still-unsynchronised daemon and
+# deriving IMPOSSIBLE, so an abort is produced by the unchanged code
+# path with the unchanged record shape. Poll interval 5 s: a chronyc
+# fork/exec costs milliseconds, detection latency is <= 5 s
+# (negligible against the 300 s bound and the >1300 s of worst-case
+# slack in the dispatch lead), and the daemon is not hammered while
+# it converges.
+#
+# Timing integrity (review closure, Nov 9): the deadline is computed
+# on time.monotonic() (elapsed, never wall time), and every poll is
+# a run_capture call with an explicit per-call timeout
+# (CLOCK_WAIT_POLL_TIMEOUT_S), so a stalled chronyc cannot stretch
+# the wait: the loop re-checks the deadline after every poll, hence
+# elapsed <= bound_s + one poll timeout. The wait's telemetry
+# (waited / polls / outcome) is kept in _LAST_READINESS and the
+# supervisor publishes it as a SEPARATE durable diagnostic record
+# (cap1-clock-readiness/1, see supervisor._publish_clock_readiness);
+# it is not part of the section-C record, whose schema is unchanged.
+CLOCK_WAIT_BOUND_S = 300.0
+CLOCK_WAIT_POLL_S = 5.0
+CLOCK_WAIT_POLL_TIMEOUT_S = 10.0
+
+READINESS_SCHEMA = "cap1-clock-readiness/1"
+_LAST_READINESS = None
+
+
+def _daemon_synchronised():
+    """One readiness poll: True iff `chronyc tracking` parses and
+    reports leap status Normal. Any failure to obtain or parse the
+    report is 'not ready', never an exception. The capture is
+    timeout-bounded (run_capture kills a stalled chronyc at
+    CLOCK_WAIT_POLL_TIMEOUT_S and reports TIMEOUT), so one poll
+    costs at most that many seconds."""
+    cap = probe.run_capture(["chronyc", "tracking"],
+                            timeout=CLOCK_WAIT_POLL_TIMEOUT_S)
+    chrony = probe.parse_chronyc_tracking(cap.get("stdout") or "")
+    return bool(chrony) and chrony.get("leap_status") == "Normal"
+
+
+def wait_for_clock_ready(bound_s=CLOCK_WAIT_BOUND_S,
+                         poll_s=CLOCK_WAIT_POLL_S):
+    """Poll until the daemon reports synchronised, bounded by
+    bound_s on a monotonic elapsed clock
+    (elapsed <= bound_s + CLOCK_WAIT_POLL_TIMEOUT_S: the deadline
+    is re-checked after each poll, and no poll can run longer than
+    its subprocess timeout). Never raises: on exhaustion the caller
+    proceeds to the unchanged capture, whose derivation decides the
+    outcome exactly as it does today. Records its telemetry in
+    _LAST_READINESS and returns it as a dict:
+    {"waited_s", "polls", "outcome"} with outcome "converged" or
+    "exhausted"."""
+    global _LAST_READINESS
+    t0 = time.monotonic()
+    polls = 0
+    while True:
+        polls += 1
+        if _daemon_synchronised():
+            tele = {"waited_s": round(time.monotonic() - t0, 3),
+                    "polls": polls, "outcome": "converged",
+                    "bound_s": bound_s, "poll_interval_s": poll_s,
+                    "poll_timeout_s": CLOCK_WAIT_POLL_TIMEOUT_S}
+            _LAST_READINESS = tele
+            return tele
+        waited = time.monotonic() - t0
+        if waited >= bound_s:
+            tele = {"waited_s": round(waited, 3), "polls": polls,
+                    "outcome": "exhausted", "bound_s": bound_s,
+                    "poll_interval_s": poll_s,
+                    "poll_timeout_s": CLOCK_WAIT_POLL_TIMEOUT_S}
+            _LAST_READINESS = tele
+            return tele
+        time.sleep(min(poll_s, bound_s - waited))
+
+
+def last_readiness():
+    """Telemetry of the most recent wait_for_clock_ready call IN
+    THIS PROCESS, or None if the wait has not run. The supervisor
+    publishes it inside the same clock-gate step that invoked the
+    section-C provider, so attribution is to that step's capture;
+    processes that never call capture_section_c (synthetic-provider
+    lab paths) see None and publish nothing."""
+    return dict(_LAST_READINESS) if _LAST_READINESS is not None \
+        else None
+
 
 def capture_section_c(drift_window_s=30.0, runner_env=None):
     """Full section-C-shaped record from this host's daemon, following
     the probe's method exactly (captures verbatim, derivation over
     recorded inputs only, IMPOSSIBLE — never approximated — when the
     daemon cannot support it)."""
+    # Review fix (F4): never let a previous capture's telemetry leak
+    # into this capture's diagnostic publication.
+    global _LAST_READINESS
+    _LAST_READINESS = None
+    wait_for_clock_ready()
     caps = {}
     for name, argv in (
         ("timedatectl_status", ["timedatectl", "status"]),
