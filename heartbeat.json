@@ -1,1 +1,1 @@
-{"at_local":"2026-11-09T20:29:28.151Z","chunks_published":9,"consecutive_over_250ms":0,"gov_total_global":367,"run_id":"gh-42645885938-s1","schema":"cap1-heartbeat/1","segment_index":1,"state":"ACTIVE"}
+{"at_local":"2026-11-09T20:34:28.400Z","chunks_published":11,"consecutive_over_250ms":0,"gov_total_global":373,"run_id":"gh-42645885938-s1","schema":"cap1-heartbeat/1","segment_index":1,"state":"YIELD"}
