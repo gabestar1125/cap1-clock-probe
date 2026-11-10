@@ -57,8 +57,21 @@ def grid_markets(series_list, window_lo_ms, window_hi_ms, *,
                     if micros == 0:
                         micros = 1
                     updated_time = "%s.%06dZ" % (open_iso[:-1], micros)
+                # Venue-shaped: the real venue does NOT echo
+                # series_ticker into market objects. Fixture:
+                # handoff_markets.json, SHA-256
+                # a0518ee845d43b0091cf9367647e257c4f8e842513cda1b494012538cf1585cb,
+                # provenance branch cap1-live6-segments/seg-01,
+                # git blob dabbb8bad72de71a6a3f991b59f281d1cc5faa6b
+                # -- series_ticker is absent on all 60 markets in
+                # that fixture; market objects are venue-shaped
+                # per that fixture. (Its presence here is what hid
+                # the _seed_handoff_markets KeyError from every
+                # rehearsal.) The series is recoverable from the
+                # ticker prefix, which is how the listing filter
+                # below attributes markets.
                 out[ticker] = {
-                    "ticker": ticker, "series_ticker": series,
+                    "ticker": ticker,
                     "status": "active", "open_time": open_iso,
                     "close_time": close_iso, "floor_strike": strike,
                     "strike_type": "greater_or_equal",
@@ -150,7 +163,7 @@ class StubVenue:
         horizon = G.iso_of_ms(int(self._now() * 1000)
                               + self.list_lookahead_s * 1000)
         listed = [m for m in self.markets.values()
-                  if m["series_ticker"] == key
+                  if m["ticker"].split("-", 1)[0] == key
                   and m["open_time"] <= horizon]
         listed.sort(key=lambda m: m["close_time"])
         return 200, {}, json.dumps({"markets": listed,
