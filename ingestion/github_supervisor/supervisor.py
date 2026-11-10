@@ -340,6 +340,66 @@ def _ladder_tail_term(fz, tick, now_ms):
     return extra_rungs * per_fetch
 
 
+class HandoffSeedRefusal(Exception):
+    """Deliberate refusal: a predecessor handoff market's series
+    attribution cannot be established exactly. Raised by
+    _handoff_market_series instead of the bare KeyError that killed
+    both live6 segment-2 runs (diagnosis LIVE6_SEG2_DIAGNOSIS.md):
+    the attribution rules are total — every in-window handoff market
+    either maps to exactly one freeze series or the seed refuses,
+    naming the market. Never a silent skip, never a default."""
+
+
+def _handoff_market_series(key, market, known_series):
+    """Exact series attribution for one harvested handoff market.
+
+    The venue does not echo series_ticker into market objects (the
+    harvest is per-series, but the object itself carries no series
+    field — verified on live6 seg-01's published handoff document:
+    the field is absent on all 60 markets). Attribution therefore
+    rests on the ticker, whose prefix (up to the first "-") IS the
+    series in this universe, cross-checked against any supplied
+    field and against the freeze's series list:
+
+      supplied series_ticker present and == ticker prefix -> use it
+      supplied series_ticker present and != ticker prefix -> REFUSE
+        (conflicting identity evidence)
+      supplied series_ticker absent -> derive the ticker prefix
+      ticker missing, != its handoff key, or malformed (no "-",
+        empty prefix) -> REFUSE
+      resulting series not in the freeze's series list -> REFUSE
+
+    Every refusal raises HandoffSeedRefusal naming the market."""
+    ticker = market.get("ticker")
+    if not isinstance(ticker, str) or not ticker:
+        raise HandoffSeedRefusal(
+            "handoff market %r: missing ticker" % (key,))
+    if ticker != key:
+        raise HandoffSeedRefusal(
+            "handoff market %r: market ticker %r does not match "
+            "its handoff key - ambiguous identity" % (key, ticker))
+    prefix, sep, _rest = ticker.partition("-")
+    if not sep or not prefix:
+        raise HandoffSeedRefusal(
+            "handoff market %s: malformed ticker - no series "
+            "prefix before the first '-'" % ticker)
+    supplied = market.get("series_ticker")
+    if supplied is not None:
+        if supplied != prefix:
+            raise HandoffSeedRefusal(
+                "handoff market %s: supplied series_ticker %r "
+                "conflicts with ticker prefix %r"
+                % (ticker, supplied, prefix))
+        series = supplied
+    else:
+        series = prefix
+    if series not in known_series:
+        raise HandoffSeedRefusal(
+            "handoff market %s: series %r is not in the freeze "
+            "series list %s" % (ticker, series, sorted(known_series)))
+    return series
+
+
 class OwnershipFilter:
     """Transport wrapper: listing responses are restricted to markets
     this segment OWNS (close_time in [lo, hi)); markets owned by the
@@ -1190,9 +1250,15 @@ class SegmentJob:
                 getattr(self, "_handoff_markets", {}).items()):
             close = cap1.parse_iso_ms(m["close_time"])
             if self.b_lo <= close < self.b_hi:
+                # Validate attribution BEFORE touching any other
+                # field: the refusal must be the deliberate
+                # HandoffSeedRefusal, never a KeyError from the
+                # record construction below.
+                series = _handoff_market_series(
+                    ticker, m, self.fz["series"])
                 markets.append({
                     "ticker": m["ticker"],
-                    "series_ticker": m["series_ticker"],
+                    "series_ticker": series,
                     "open_time": m["open_time"],
                     "close_time": m["close_time"]})
         if not markets:
