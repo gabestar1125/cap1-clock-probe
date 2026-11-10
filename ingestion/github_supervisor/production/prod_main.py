@@ -49,6 +49,7 @@ import argparse
 import json
 import os
 import sys
+import traceback
 
 _HERE = os.path.dirname(os.path.abspath(__file__))
 _GS = os.path.dirname(_HERE)                    # github_supervisor/
@@ -211,24 +212,75 @@ def build_seal_job(*, freeze, run_id, publisher, claim_store,
                        events=events if events is not None else [])
 
 
+def _publish_unhandled_exception(job, clock, exc):
+    """Best-effort attempt-final for an UNHANDLED exception in the
+    drive path. Never raises, and never returns a verdict on the
+    original exception — the caller re-raises it unchanged.
+
+    The record is attempt-final class by the codebase's own D2
+    routing: it is published through SegmentJob._publish (the same
+    funnel every other record uses, so it lands on the segment's
+    own branch) to the per-attempt path _write_final uses for
+    every non-clean exit, attempts/final.<run_id>.json, with
+    "record_role": "attempt". Only sanitized exception text is
+    persisted (gh_common.sanitize_error_text, the Fix B sanitizer);
+    the traceback itself is persisted only as its SHA-256 digest.
+
+    If this publication itself fails, SegmentJob._publish has
+    already attempted the Fix B pubfail record
+    (errors/pubfail-<run_id>-<seq>.json, via
+    _attempt_pub_error_record) before re-raising; that secondary
+    exception is swallowed here so it can neither swallow nor
+    replace the original failure."""
+    try:
+        tb_text = "".join(traceback.format_exception(
+            type(exc), exc, exc.__traceback__))
+        doc = {"schema": "cap1-final/1", "record_role": "attempt",
+               "segment_index": job.k, "run_id": job.run_id,
+               "exit_reason": "UNHANDLED_EXCEPTION",
+               "finished_at_local": G.iso_local_label(clock.now_s()),
+               "at_utc": G.iso_of_ms(int(clock.now_s() * 1000)),
+               "exception_type": type(exc).__name__,
+               "exception_message": G.sanitize_error_text(exc),
+               "traceback_sha256": G.sha256_bytes(tb_text.encode())}
+        job._publish("attempts/final.%s.json" % job.run_id, doc)
+    except Exception:
+        pass
+
+
 def drive_segment(job, clock):
     """The production step loop (seg_main's, unchanged semantics):
-    step, then sleep on the run's clock until the next wake."""
-    while not job.finished:
-        wake = job.step()
-        if wake is None:
-            break
-        delay = wake - clock.now_s()
-        if delay > 0:
-            clock.sleep_s(min(delay, 3600))
-    print(json.dumps({"segment": job.k,
-                      "exit_reason": job.exit_reason,
-                      "exit_code": job.exit_code}))
-    # Fix B: ONE bounded publication-error summary line (categories
-    # only — never raw stderr). Stdout only; no dispatch inputs or
-    # workflow behaviour change.
-    print(job.publication_error_summary_line())
-    return job.exit_code
+    step, then sleep on the run's clock until the next wake.
+
+    Exception-reporting correction (candidate, NOT deployed): an
+    exception escaping the loop is first given a durable
+    attempt-final record (see _publish_unhandled_exception), then
+    RE-RAISED unchanged. Re-raising — rather than returning a code
+    — preserves the exception's own semantics and traceback: the
+    interpreter still exits 1, exactly as the undeployed bytes do,
+    and no designed code (3 refusal / 4 clock abort or guard /
+    5 stop / 7 restore-unverifiable) is ever claimed for a failure
+    that was none of those. On a clean run nothing here changes:
+    same stdout lines, same returned exit code."""
+    try:
+        while not job.finished:
+            wake = job.step()
+            if wake is None:
+                break
+            delay = wake - clock.now_s()
+            if delay > 0:
+                clock.sleep_s(min(delay, 3600))
+        print(json.dumps({"segment": job.k,
+                          "exit_reason": job.exit_reason,
+                          "exit_code": job.exit_code}))
+        # Fix B: ONE bounded publication-error summary line (categories
+        # only — never raw stderr). Stdout only; no dispatch inputs or
+        # workflow behaviour change.
+        print(job.publication_error_summary_line())
+        return job.exit_code
+    except Exception as exc:
+        _publish_unhandled_exception(job, clock, exc)
+        raise
 
 
 # ------------------------------------------------------------ CLI
